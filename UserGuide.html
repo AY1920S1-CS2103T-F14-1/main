@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>AddressBook Level 3 - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>DukeAcademy - User Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DukeCode</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - User Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DukeCode</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link active" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>DukeAcademy - User Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>CS2103T-F14-1</code>      Since: <code>Aug 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -13,20 +13,25 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#viewing-help-code-help-code-em-coming-in-v1-2-em">3.1. Viewing help : <code>help</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#access-homepage-code-home-code-em-coming-in-v1-2-em">3.2. Access Homepage: <code>home</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#find-question-by-title-code-find-code-em-coming-in-v1-2-em">3.3. Find question by title : <code>find</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#browse-by-categories-code-browse-code-em-coming-in-v1-2-em">3.4. Browse by categories: <code>browse</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#viewing-a-question-code-view-code-em-coming-in-v1-2-em">3.5. Viewing a question : <code>view</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#attempting-a-question-code-attempt-code-em-coming-in-v1-2-em">3.6. Attempting a question : <code>attempt</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#saving-your-work-code-save-code-em-coming-in-v1-2-em">3.7. Saving your work : <code>save</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#submitting-your-answer-code-submit-code-em-coming-in-v1-2-em">3.8. Submitting your answer: <code>submit</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em">3.9. Hiding the results window: <code>hideresults</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#reset-your-answer-code-reset-code-em-coming-in-v1-2-em">3.10. Reset your answer: <code>reset</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#view-answers-code-answer-code-em-coming-in-v1-2-em">3.11. View answers: <code>answer</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#exit-the-application-code-exit-code-em-coming-in-v1-2-em">3.12. Exit the application: <code>exit</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#timer-code-timer-code-em-coming-in-v1-2-em">3.13. Timer: <code>timer</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em">3.14. Loading new questions: <code>loadquestions</code> [<em>coming in v1.2</em>]</a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
 <li><a href="#command-summary">5. Command Summary</a></li>
+<li><a href="#question-text-file-format">6. Question text file format</a></li>
 </ul>
 </div>
 </div>
@@ -34,7 +39,19 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Duke code is a learning platform for anyone to practice their coding interview skills! It is an <strong>offline</strong> platform. More importantly, AB3 is <strong>optimized for those who prefer to work with a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. Interested? Jump to the <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started. Enjoy!</p>
+<p>DukeAcademy is a coding practice platform that operates entirely on your local machine without the need for an internet
+connection. Whether you are revising for a test, practicing for a tech interview, or just coding for the sheer joy of
+it, DukeAcademy gives you access to a wide range of programming problems from various categories. Easily find something
+that suits your needs and interests and start honing your skills today!</p>
+</div>
+<div class="paragraph">
+<p>For educators, you can use DukeAcademy as a platform to administer your assignments or practice questions by loading
+your own questions!</p>
+</div>
+<div class="paragraph">
+<p>DukeAcademy is optimized for those who prefer to work with a CLI (Command Line Interface) while still enjoying the
+benefits of a GUI (Graphical User Interface). If you are still unfamiliar with using a CLI (an important skill for all
+programmers), you can get used to it while working on your coding skills!</p>
 </div>
 </div>
 </div>
@@ -44,47 +61,49 @@
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java <code>11</code> or above installed in your Computer.</p>
+<p>Ensure you have Java 11 or above installed in your Computer.</p>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//releases">here</a>.</p>
+<p>Download the latest DukeAcademy.jar <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the file to the folder which you want to use as the home folder for DukeAcademy.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
 </li>
 <li>
+<p>Download a problem set <a href="">here</a>.</p>
+</li>
+<li>
+<p>Copy the file into the home folder for DukeAcademy.</p>
+</li>
+<li>
+<p>Rename it to “default_problem_set.txt”.</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/quickstart1.png" alt="quickstart1" width="790">
+</div>
+</div>
+</li>
+<li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/Ui.png" alt="Ui" width="790">
+<img src="images/userguide/quickstart2.png" alt="quickstart2" width="790">
 </div>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
+<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it. e.g. typing <strong><code>help</code></strong> and pressing
+<kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
-<p>Some example commands you can try:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><code>list</code></strong> : lists all contacts</p>
+<p>View the question ID you want to attempt on the left pane. Type <code>attempt &lt;Qn ID&gt;</code> into the command box to start your
+DukeAcademy experience.</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
-</li>
-<li>
-<p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
-</li>
-<li>
-<p><strong><code>exit</code></strong> : exits the app</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> for details of each command.</p>
+<p>Refer to <a href="#Features">Section 3, &#8220;Features&#8221;</a> to view our full list of commands.</p>
 </li>
 </ol>
 </div>
@@ -101,222 +120,513 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="ulist">
 <ul>
 <li>
-<p>Words in <code>UPPER_CASE</code> are the parameters to be supplied by the user e.g. in <code>add n/NAME</code>, <code>NAME</code> is a parameter which can be used as <code>add n/John Doe</code>.</p>
+<p>Words within square braces <code>[]</code> are the parameters to be supplied by the user e.g. in <code>attempt[id]</code>,
+<code>id</code> is a parameter which can be used as <code>attempt 1</code>.</p>
 </li>
 <li>
-<p>Items in square brackets are optional e.g <code>n/NAME [t/TAG]</code> can be used as <code>n/John Doe t/friend</code> or as <code>n/John Doe</code>.</p>
+<p>Parameters are compulsory.</p>
 </li>
 <li>
-<p>Items with <code>…</code>​ after them can be used multiple times including zero times e.g. <code>[t/TAG]&#8230;&#8203;</code> can be used as <code>&#160;</code> (i.e. 0 times), <code>t/friend</code>, <code>t/friend t/family</code> etc.</p>
-</li>
-<li>
-<p>Parameters can be in any order e.g. if the command specifies <code>n/NAME p/PHONE_NUMBER</code>, <code>p/PHONE_NUMBER n/NAME</code> is also acceptable.</p>
+<p>Parameters with <code>…</code>​ after them can be entered multiple times. e.g. <code>browse [category]&#8230;&#8203;</code> can be used as
+<code>browse easy linkedlist hashtable recursion</code> (i.e. 4 times), etc.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code-em-coming-in-v1-2-em"><a class="link" href="#viewing-help-code-help-code-em-coming-in-v1-2-em">3.1. Viewing help : <code>help</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Opens a window displaying the user guide within the GUI. In the user guide, all available functions within DukeAcademy
+will be listed in alphabetical order.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format</strong>: <code>help</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/quickstart1.png" alt="quickstart1" width="920">
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="access-homepage-code-home-code-em-coming-in-v1-2-em"><a class="link" href="#access-homepage-code-home-code-em-coming-in-v1-2-em">3.2. Access Homepage: <code>home</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-A person can have any number of tags (including 0)
-</td>
-</tr>
-</table>
+<p>Navigates back to the ​ homepage​ where you can see your progress on the current problem set.</p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Format:</strong> <code>home</code></p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
-</li>
-<li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
-</li>
-</ul>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/home.png" alt="home" width="920">
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="find-question-by-title-code-find-code-em-coming-in-v1-2-em"><a class="link" href="#find-question-by-title-code-find-code-em-coming-in-v1-2-em">3.3. Find question by title : <code>find</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Searches for question titles​ that partially match the keywords entered. Results are displayed in
+the list window on the left of the GUI.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p><strong>Format:</strong> <code>find [keyword]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The search is case insensitive. e.g <code>recursion</code> will match <code>Recursion</code>.</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
+<p>The order of the keywords does not matter. e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>Only the title will be searched.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>Any substring in the tilte will be matched. e.g. <code>fib</code> will match <code>fibonacci</code>.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>Questions matching at least one keyword will be displayed (i.e. "OR" search). e.g. <code>integer big</code> will return
+<code>integer x</code>, <code>big decimal</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>find binary search tree</code><br>
+Finds and displays all the questions containing the substrings "binary",  "search" and "tree" in its title.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>find fizzbuzz</code><br>
+Finds and displays all the questions containing the substring "fizzbuzz" in its title.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="browse-by-categories-code-browse-code-em-coming-in-v1-2-em"><a class="link" href="#browse-by-categories-code-browse-code-em-coming-in-v1-2-em">3.4. Browse by categories: <code>browse</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Browses the list of questions​ found in the list window on the left of the GUI
+according to the category specified. Only questions matching the categories will
+be displayed.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>browse [category]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>The category is case insensitive. e.g <code>easy</code> will match <code>Easy</code>.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>Multiple categories can be listed.</p>
 </li>
 <li>
-<p>Only the name is searched.</p>
+<p>A question can have multiple categories. The question will be displayed as long as one category is matched.</p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>Questions matching at least one category will be displayed (i.e. "OR" search). e.g. <code>easy linkedlists</code> will return
+all questions in the categories "easy" and "linkedlist".</p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Available categories:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>easy</p>
+</li>
+<li>
+<p>medium</p>
+</li>
+<li>
+<p>hard</p>
+</li>
+<li>
+<p>arrays</p>
+</li>
+<li>
+<p>linkedlist</p>
+</li>
+<li>
+<p>hashtable</p>
+</li>
+<li>
+<p>trees</p>
+</li>
+<li>
+<p>graphs</p>
+</li>
+<li>
+<p>recursion</p>
+</li>
+<li>
+<p>divideandconquer</p>
+</li>
+<li>
+<p>others</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>browse medium</code><br>
+Finds and displays medium difficulty questions.</p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>browse hashtable linkedlist</code><br>
+Finds and displays questions on hashtables and linked lists.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="viewing-a-question-code-view-code-em-coming-in-v1-2-em"><a class="link" href="#viewing-a-question-code-view-code-em-coming-in-v1-2-em">3.5. Viewing a question : <code>view</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Allows you to ​ preview a question​ by displaying it in the GUI. The question details will be displayed in the right
+window of the GUI.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>view [id]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
+<p>Displays the question with the corresponding id on the right side window of the GUI.</p>
 </li>
 <li>
-<p>The index refers to the index number shown in the displayed person list.</p>
+<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
 </li>
 <li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/view.png" alt="view" width="920">
+</div>
+</div>
 <div class="paragraph">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>view 2</code><br>
+Displays the question with the id "2" in the right side window of the GUI.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="attempting-a-question-code-attempt-code-em-coming-in-v1-2-em"><a class="link" href="#attempting-a-question-code-attempt-code-em-coming-in-v1-2-em">3.6. Attempting a question : <code>attempt</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+<p>Navigates to a question page where you can attempt to ​ solve the question​. The question with the corresponding id will
+be displayed on the left of the GUI. The GUI will now display a text editor on the right which you can use to input
+your answer.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>attempt [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the question with the corresponding id on the left side window of the GUI.</p>
+</li>
+<li>
+<p>Opens a text editor for you to input your answers on the right side window of the GUI.</p>
+</li>
+<li>
+<p>This layout is known as the <strong><em>question page</em></strong>.</p>
+</li>
+<li>
+<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
+</li>
+<li>
+<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/attempt.png" alt="attempt" width="920">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 2</code><br>
+Opens the question page displaying the question with the id "2".</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
+<h3 id="saving-your-work-code-save-code-em-coming-in-v1-2-em"><a class="link" href="#saving-your-work-code-save-code-em-coming-in-v1-2-em">3.7. Saving your work : <code>save</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
+<p>Saves your current question attempt.​ Can only be invoked from the <strong><em>question page</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>save</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Your saved answer will be loaded the next time you ​attempt the question again. e.g. after you <code>save</code> your answer on
+the <strong><em>question page</em></strong> of question 2, the next time you <code>attempt 2</code>, your saved answer will be displayed in the editor.</p>
+</li>
+<li>
+<p>Only input in the text editor will be saved.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<h3 id="submitting-your-answer-code-submit-code-em-coming-in-v1-2-em"><a class="link" href="#submitting-your-answer-code-submit-code-em-coming-in-v1-2-em">3.8. Submitting your answer: <code>submit</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
-There is no need to save manually.</p>
+<p>Submits your current answer.​ Your code will now be compiled and run against the specified test cases. A new window will
+appear on the right of the GUI to display your results. ​Can only be invoked from the <strong><em>question page</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>submit</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only code written in the text editor will be used for compilation.</p>
+</li>
+<li>
+<p>Make sure to check that your code compiles or you will receive an error message.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/submit.png" alt="submit" width="920">
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em"><a class="link" href="#hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em">3.9. Hiding the results window: <code>hideresults</code> [<em>coming in v1.2</em>]</a></h3>
 <div class="paragraph">
-<p><em>{explain how the user can enable/disable data encryption}</em></p>
+<p>Closes the results window if it is opened.​ The question and text editor will expand to fill the remaining space. ​ Can
+only be invoked from the <strong><em>question page</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>hideresult</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You will have to submit your answer again to open the results window after closing it.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reset-your-answer-code-reset-code-em-coming-in-v1-2-em"><a class="link" href="#reset-your-answer-code-reset-code-em-coming-in-v1-2-em">3.10. Reset your answer: <code>reset</code> [<em>coming in v1.2</em>]</a></h3>
+<div class="paragraph">
+<p>Resets the current saved attempt for a question.​ The question being reset is the one that corresponds to the id
+specified. The editor will be empty next time you attempt​ that question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>reset [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This will erase any previously saved answers for the question. The erased answer is not recoverable.</p>
+</li>
+<li>
+<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
+</li>
+<li>
+<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reset 2</code><br>
+Erases the previous answer for the question with the id "2".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="view-answers-code-answer-code-em-coming-in-v1-2-em"><a class="link" href="#view-answers-code-answer-code-em-coming-in-v1-2-em">3.11. View answers: <code>answer</code> [<em>coming in v1.2</em>]</a></h3>
+<div class="paragraph">
+<p>View the formal answer of a problem. ​ The problem statement will be displayed on the left pane, and the sample code will
+be displayed on the right. Can only be invoked from the <strong><em>question page</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>answer</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exit-the-application-code-exit-code-em-coming-in-v1-2-em"><a class="link" href="#exit-the-application-code-exit-code-em-coming-in-v1-2-em">3.12. Exit the application: <code>exit</code> [<em>coming in v1.2</em>]</a></h3>
+<div class="paragraph">
+<p>Exits the application</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>exit</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="timer-code-timer-code-em-coming-in-v1-2-em"><a class="link" href="#timer-code-timer-code-em-coming-in-v1-2-em">3.13. Timer: <code>timer</code> [<em>coming in v1.2</em>]</a></h3>
+<div class="paragraph">
+<p>Displays a timer window on the bottom right of the text editor. ​ Helps to simulate an test condition under which the
+coder is supposed to finish within speculated duration. The timer starts timing the moment a character is entered into
+the text editor.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>timer [time]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The time to is to be entered in the format <strong><em>hhmmss</em></strong>. e.g. <code>timer 013000</code> will start the timer for 1 hour, 30 minutes
+and 0 seconds.</p>
+</li>
+<li>
+<p>Accepted values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>hour: 0 to 99</p>
+</li>
+<li>
+<p>minute: 0 to 59</p>
+</li>
+<li>
+<p>seconds: 0 to 59</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The timer will begin only when a character is input into the text editor.</p>
+</li>
+<li>
+<p>The timer will not be able to be reset.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>timer 013000</code><br>
+Starts a timer that lasts for 1 hour, 30 minutes, 0 seconds.</p>
+</li>
+<li>
+<p><code>timer 995959</code><br>
+Starts a timer that lasts for 99 hour, 59 minutes, 59 seconds.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em"><a class="link" href="#loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em">3.14. Loading new questions: <code>loadquestions</code> [<em>coming in v1.2</em>]</a></h3>
+<div class="paragraph">
+<p>Loads new questions into the application through a text file. Your text file should be in the format specified below.
+Your questions will be loaded the next time you open DukeAcademy.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>loadquestions [filename]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Your text file should be copied into the home directory of DukeAcademy.</p>
+</li>
+<li>
+<p>Your text file should follow the format specified at the bottom of the user guide.</p>
+</li>
+<li>
+<p>The questions in the text file will only be loaded after entering this command.</p>
+</li>
+<li>
+<p>Your text file will have to found in the home directory of DukeAcademy for it to be loaded.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/loadquestions.png" alt="loadquestions" width=""920">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loadquestions my_problem_set.txt</code><br>
+Loads the questions from the file "my_problem_set.txt" located in the home directory of DukeAcademy.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -325,8 +635,25 @@ There is no need to save manually.</p>
 <h2 id="faq"><a class="link" href="#faq">4. FAQ</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<p><strong>Q:</strong> How do I transfer my own problem sets to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Copy the problem set text file into DukeAcademy’s home folder on the other computer
+and repeat the ​ loadquestions​ command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> How do I transfer data to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Install the app in the other computer and overwrite the empty data file it creates
+with the file that contains the data of your previous DukeAcademy folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> What is the format of problem setting?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> It should contain the following: problem statement, input and output files, difficulty
+level, solution, algorithm category. Check out ​ default_problem_set.txt​ for reference.</p>
 </div>
 </div>
 </div>
@@ -336,31 +663,98 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
+<p>Viewing Help: ​<code>help</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p>Home: <code>home</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p>Find by question title: <code>find​ [keyword]</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
+<p>Browse by category: ​<code>browse​ [category]</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p>View: view: ​<code>view​ [id]</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p>Attempt a question: <code>attempt​ [id]</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p>Save: ​<code>save</code></p>
+</li>
+<li>
+<p>Submit:​ <code>submit</code></p>
+</li>
+<li>
+<p>Hide results: ​<code>hideresults</code></p>
+</li>
+<li>
+<p>Reset: ​<code>reset</code></p>
+</li>
+<li>
+<p>View answer: ​<code>answer</code></p>
+</li>
+<li>
+<p>Exit: `exit</p>
+</li>
+<li>
+<p>Timer: <code>timer [hhmmss]</code></p>
+</li>
+<li>
+<p>Load questions: ​<code>loadquestions​ [filename]</code></p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-11 23:45:54 UTC</div></div></div></body></html>
+</div>
+<div class="sect1">
+<h2 id="question-text-file-format"><a class="link" href="#question-text-file-format">6. Question text file format</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/samplequestions.png" alt="samplequestions" width="920">
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The text file is a json list of json objects representing each question.</p>
+</li>
+<li>
+<p>Each question is a json object with the following key-value pairs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>title: a string representing the title of the question</p>
+</li>
+<li>
+<p>description: a string representing the description and preamble of the question</p>
+</li>
+<li>
+<p>tc: a list of json objects representing the list of test cases (see below for details)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Each test case is another json object with the following key-value pairs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>input: the input for the test case</p>
+</li>
+<li>
+<p>result: the expected result for the test case</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-09-30 13:35:21 UTC</div></div></div></body></html>
