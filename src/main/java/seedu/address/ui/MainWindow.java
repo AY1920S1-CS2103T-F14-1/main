@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.profile.Profile;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -34,6 +35,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ProfilePanel profilePanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -49,6 +51,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane profilePanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -118,6 +123,12 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        // Need help here. The Model won't auto-update itself. Make a workaround in
+        // MainWindow.java / CommandResult:executeCommand -> CommandResult.isHome
+        // to manually update scene.
+        profilePanel = new ProfilePanel(logic.getProfile());
+        profilePanelPlaceholder.getChildren().add(profilePanel.getRoot());
     }
 
     /**
@@ -143,6 +154,39 @@ public class MainWindow extends UiPart<Stage> {
             helpWindow.focus();
         }
     }
+
+    /**
+     * Opens a new text file from editor.
+     */
+    @FXML
+    public void handleNew() {
+
+    }
+
+    /**
+     * Opens an existing text file from editor.
+     */
+    @FXML
+    public void handleOpen() {
+
+    }
+
+    /**
+     * Saves the current text file in editor.
+     */
+    @FXML
+    public void handleSave() {
+
+    }
+
+    /**
+     * Saves the current text file in editor, with custom filepath.
+     */
+    @FXML
+    public void handleSaveAs() {
+
+    }
+
 
     void show() {
         primaryStage.show();
@@ -181,6 +225,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (commandResult.isHome()) {
+                profilePanel.setProfileDisplay(logic.getProfile().get(0));
             }
 
             return commandResult;

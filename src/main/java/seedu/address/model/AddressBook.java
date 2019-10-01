@@ -2,19 +2,25 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.profile.Profile;
 
 /**
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
 public class AddressBook implements ReadOnlyAddressBook {
+    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final UniquePersonList persons;
+    private final ArrayList<String> profile;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +31,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        profile = new ArrayList<>();
+        profile.add("initialized dummy text");
     }
 
     public AddressBook() {}
@@ -110,11 +118,22 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                && persons.equals(((AddressBook) other).persons)
+                && profile.equals(((AddressBook) other).profile));
     }
 
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    public void updateProfile(String s) {
+        profile.clear();
+        profile.add(s);
+        logger.info("profile updated in addressbook " + profile.get(0));
+    }
+
+    public ArrayList<String> getProfile() {
+        return profile;
     }
 }

@@ -2,6 +2,7 @@ package seedu.address.logic;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
@@ -15,6 +16,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.Profile;
 import seedu.address.storage.Storage;
 
 /**
@@ -61,6 +63,11 @@ public class LogicManager implements Logic {
         return model.getFilteredPersonList();
     }
 
+    @Override
+    public ArrayList<String> getProfile() {
+        logger.info( "logic is getting profile " + model.getProfile().get(0));
+        return model.getProfile();
+    }
     @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();

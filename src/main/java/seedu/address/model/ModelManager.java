@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.profile.Profile;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +24,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final ArrayList<String> profile;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -35,6 +38,8 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        profile = new ArrayList<>();
+        profile.add("initialised profile placeholder");
     }
 
     public ModelManager() {
@@ -129,7 +134,27 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
+    //============= Profile Page =============================================================================
+
+    /**
+     * Returns the user's profile page. (will be updated to adoc or markdown form).
+     * @param s
+     */
     @Override
+    public void updateProfile(String s) {
+        addressBook.updateProfile(s);
+        profile.clear();
+        profile.add(s);
+        logger.info("updated profile in model manager: " + profile.get(0));
+    }
+
+    /**
+     * Returns the user profile page.
+     */
+    public ArrayList<String> getProfile() {
+        return profile;
+    }
+
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
@@ -145,7 +170,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredPersons.equals(other.filteredPersons)
+                && profile.equals(other.profile);
     }
 
 }
