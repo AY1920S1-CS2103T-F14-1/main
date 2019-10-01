@@ -1,5 +1,9 @@
 package seedu.address.ui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -8,7 +12,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -36,6 +42,7 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ProfilePanel profilePanel;
+    private Editor editorPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -54,6 +61,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane profilePanelPlaceholder;
+
+    @FXML
+    private AnchorPane editorPlaceholder;
 
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
@@ -124,8 +134,13 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        // Need help here. The Model won't auto-update itself. Make a workaround in
-        // MainWindow.java / CommandResult:executeCommand -> CommandResult.isHome
+        editorPanel = new Editor(); //logic.initializeEditor
+        editorPlaceholder.getChildren().add(editorPanel.getRoot());
+
+
+        // Need help here. The Model won't auto-update itself on profile page after initialization.
+        // But PersonCard can auto-update.
+        // Made a workaround in MainWindow.java / CommandResult:executeCommand -> CommandResult.isHome
         // to manually update scene.
         profilePanel = new ProfilePanel(logic.getProfile());
         profilePanelPlaceholder.getChildren().add(profilePanel.getRoot());
@@ -167,8 +182,23 @@ public class MainWindow extends UiPart<Stage> {
      * Opens an existing text file from editor.
      */
     @FXML
-    public void handleOpen() {
+    public void handleOpen() throws IOException {
+        Stage stage = new Stage();
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File selectedFile = chooser.showOpenDialog(stage);
 
+        FileReader FR = new FileReader(selectedFile.getAbsolutePath().toString());
+        BufferedReader BF = new BufferedReader(FR);
+
+        StringBuilder sb = new StringBuilder();
+
+        String myText = "";
+
+        while ((myText = BF.readLine()) != null) {
+            sb.append(myText + "\n");
+        }
+        editorPanel.setTextOutput(sb.toString());
     }
 
     /**
