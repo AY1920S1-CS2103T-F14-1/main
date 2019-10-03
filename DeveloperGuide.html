@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">DukeCode</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>AddressBook Level 3 - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team AY1920S1-CS2103T-F14-1</code>      Since: <code>Sept 2019</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -33,7 +33,12 @@
 <li><a href="#dev-ops">6. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-uc02-view-questions">C.1. Use case: UC02 View Questions</a></li>
+<li><a href="#use-case-uc03-attempt-questions">C.2. Use case: UC03 Attempt Questions</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -628,7 +633,45 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p>has a need to manage a significant number of contacts</p>
+<p>has a need to practice a lot of algorithm / data structure problems with the following conditions satisfied:</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>instant assessment of answers submitted</p>
+</li>
+<li>
+<p>practices under timed conditions</p>
+</li>
+<li>
+<p>automatic progress checker</p>
+</li>
+<li>
+<p>personal tutor to recommend problems with suitable difficulties and topics</p>
+</li>
+<li>
+<p>fun in learning with achievement badges to unlock</p>
+</li>
+<li>
+<p>no WiFi needed,</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>or has a need to distribute problem sets:</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>can set the coding problems easily</p>
+</li>
+<li>
+<p>share problems via link</p>
+</li>
+<li>
+<p>view-only answers protected by passwords</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>prefer desktop apps over other types</p>
@@ -645,7 +688,20 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage contacts faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>:</p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>everyone can learn data structures - anytime, anywhere</p>
+</li>
+<li>
+<p>make coding threshold-less</p>
+</li>
+<li>
+<p>manage contacts faster than a typical mouse/GUI driven app</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -673,70 +729,193 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student from university courses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search problems by partially matching keywords</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify the problem I am required to do asap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">developer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">introduce new problems to the software easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the repository of code challenges can be updated without much hassle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look back on the coding challenges I have completed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revise the concepts used in those problems</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">job seeker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view past interview problems by a company</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increase my chances of getting hired</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the difficulties of each problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">choose to do problems that are more aligned to my standard</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">developer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receive detailed auto-generated error reports if any bug occurs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">correct them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set reminders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded of the problems that I need to solve before a deadline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unorganized coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my progress on different categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know which area I am weak in</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">programming course student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attempt problems under timed condition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I feel more prepared in timed assessments such as labs, practical exam and final exam.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">choose to reveal the answers to the solutions through a password</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify the concepts required to solve a problem before attempting them</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move on to another quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attempt the same problem in different coding languages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test my proficiency at those languages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding amateur</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look at hints/tutorials for the problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">learn something new while attempting a coding challenge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share coding challenges with my friends easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">discuss possible solutions with them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">achievement hunter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the badges that I have earned (and those that I have not)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">feel a sense of accomplishment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conscientious coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily identify problems that I have given up on previously</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tackle them again</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">professor teaching this course</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign a unique hash code for each problem I input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">students can look for the problems quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">picky coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select different themes for the software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the user interface looks more appealing to me</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">programming language polyglot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specifically choose problems designed in a specific language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">practice that language in focus</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view similar/related problems to the one I have just completed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">further deepen my understanding of the concepts used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily distracted coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">switch off all external distractions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">focus better on the problem I am working on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">busy coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save my progress on a problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">come back to it and continue at a later time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive programming enthusiast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my own questions and pose them to my fellow enthusiast friends to solve</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see statistics about my attempts/success rates to track my learning progress</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print a pdf version of the coding problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">give them as practices to my students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see my areas for improvement after completing a coding challenge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">become a better competitive coder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">international student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view translation of the problem statement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aids my understanding of the problem</p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+<p>(For all use cases below, the <strong>System</strong> is the <code>Duke Academy</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-uc01-set-questions" class="discrete">Use case: UC01 Set questions</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>User requests to list persons</p>
+<p>User requests to input problem sets.</p>
 </li>
 <li>
-<p>AddressBook shows a list of persons</p>
+<p>Duke Academy requires a file path.</p>
 </li>
 <li>
-<p>User requests to delete a specific person in the list</p>
+<p>User select file path.</p>
 </li>
 <li>
-<p>AddressBook deletes the person</p>
+<p>Duke Academy imports the problem sets and prompts success message.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
@@ -749,19 +928,157 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>2a. The list is empty.</p>
+<p>4a. The input format is incorrect.</p>
+<div class="paragraph">
+<p>Duke Academy reports wrong format error. Duke Academy resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc02-view-questions"><a class="link" href="#use-case-uc02-view-questions">C.1. Use case: UC02 View Questions</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User finds a question by question ID, title or category.</p>
+</li>
+<li>
+<p>Duke Academy shows a list of problems that matches the keyword.</p>
+</li>
+<li>
+<p>User views the question identified by ID.</p>
+</li>
+<li>
+<p>Duke Academy displays the problem statement of the question.</p>
 <div class="paragraph">
 <p>Use case ends.</p>
 </div>
 </li>
-<li>
-<p>3a. The given index is invalid.</p>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a1. AddressBook shows an error message.</p>
+<p>1a. User inputs wrong keywords.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Duke Academy reports error and prompts link to help page.</p>
+</div>
+<div class="paragraph">
+<p>Use case resumes at step 1.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc03-attempt-questions"><a class="link" href="#use-case-uc03-attempt-questions">C.2. Use case: UC03 Attempt Questions</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses a problem to attempt.</p>
+</li>
+<li>
+<p>Duke Academy shows up the problem statement and an editor.</p>
+</li>
+<li>
+<p>User inputs the code in editor.</p>
+</li>
+<li>
+<p>User submit the answer.</p>
+</li>
+<li>
+<p>Duke Academy compiles the problem and display whether it has passed the test cases.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User requests to reset the previous input in the editor for this question.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Duke Academy clears the cached code.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. User requests to set a timer.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. Duke Academy requests for a time duration.</p>
+</li>
+<li>
+<p>2b2. User inputs a time duration.</p>
+</li>
+<li>
+<p>2b3. Duke Academy displays a timer.</p>
+</li>
+<li>
+<p>2b4. User starts the timer.</p>
+<div class="paragraph">
+<p>Use case resumes from step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. User requests to quit the program.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. Duke Academy requests to save the draft.</p>
+</li>
+<li>
+<p>2c2. User confirms or denies.</p>
+</li>
+<li>
+<p>2c3. Duke Academy follows user&#8217;s preference to save or discard the draft.</p>
+</li>
+<li>
+<p>2d4. Duke Academy exists.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, user chooses to attempt an question imported from external resources.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>*a1. load the questions from file.</p>
+<div class="paragraph">
+<p>*a2. Duke Academy stores the problem in local machine.</p>
+</div>
+<div class="paragraph">
+<p>*a3. User search for the problem imported.</p>
+</div>
+<div class="paragraph">
+<p>*a4. Duke Academy displays the question.</p>
 </div>
 </li>
 </ul>
@@ -769,8 +1086,6 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -783,15 +1098,24 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
 </li>
 <li>
-<p>Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.</p>
+<p>Should be able to hold up to 1000 problem sets without a noticeable sluggishness in performance for typical usage.</p>
 </li>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>Time taken to assess the submitted programmes should not exceed 3 minutes.</p>
+</li>
+<li>
+<p><a href="#encryption">Data not intended for disclosure</a> should be encrypted with minimum needs so that it&#8217;s protected from direct access.</p>
+</li>
+<li>
+<p>Should not take more than 5 seconds to load the initial screen.</p>
+</li>
+<li>
+<p>If interrupted, the program should provide an auto-saved version and prompt for restore when the app opens next time.</p>
+</li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
 </div>
 </div>
 </div>
@@ -804,11 +1128,21 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <dd>
 <p>Windows, Linux, Unix, OS-X</p>
 </dd>
-<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
-<dd>
-<p>A contact detail that is not meant to be shared with others</p>
-</dd>
+<dt class="hdlist1"><a id="encryption"></a> Data not intended for disclosure</dt>
 </dl>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>User information that is not meant to be shared with others.</p>
+</li>
+<li>
+<p>Confidential program sets for technical interviews.</p>
+</li>
+<li>
+<p>To prevent plagiarism, input code files intended for graded school assessment.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -958,4 +1292,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-01 07:50:21 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-03 13:40:25 UTC</div></div></div></body></html>
