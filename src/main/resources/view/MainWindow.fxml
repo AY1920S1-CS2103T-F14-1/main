@@ -52,29 +52,19 @@
             <SplitPane dividerPositions="0.22244488977955912, 0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="200.0" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
 
-                          <VBox fx:id="personList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="200.0" prefHeight="158.0" prefWidth="335.0" styleClass="pane-with-border">
+                          <VBox fx:id="questionList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="200.0" prefHeight="158.0" prefWidth="335.0" styleClass="pane-with-border">
                 <padding>
                   <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
-                <StackPane fx:id="personListPanelPlaceholder" prefHeight="376.0" prefWidth="254.0" VBox.vgrow="ALWAYS" />
+                <StackPane fx:id="questionListPanelPlaceholder" prefHeight="376.0" prefWidth="254.0" VBox.vgrow="ALWAYS" />
               </VBox>
                   <StackPane fx:id="profilePanelPlaceholder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="300.0" prefHeight="398.0" prefWidth="757.0" />
                   <AnchorPane fx:id="editorPlaceholder" prefHeight="200.0" prefWidth="200.0" />
               </items>
             </SplitPane>
 
-<<<<<<< HEAD
               <StackPane fx:id="statusbarPlaceholder" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-=======
-        <VBox fx:id="questionList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
-          </padding>
-          <StackPane fx:id="questionListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-        </VBox>
 
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
->>>>>>> zj_refactor
       </VBox>
     </Scene>
   </scene>

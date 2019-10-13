@@ -11,9 +11,10 @@ import com.dukeacademy.solution.models.JavaFile;
 public interface Compiler {
     /**
      * Compiles the given java file into a class file.
+     *
      * @param file the java file to be compiled.
      * @return the compiled class file.
-     * @throws CompilerException if the file fails to compile due to the compiler.
+     * @throws CompilerException            if the file fails to compile due to the compiler.
      * @throws CompilerFileContentException if the file fails to compile due to the contents.
      */
     public ClassFile compileJavaFile(JavaFile file) throws CompilerException, CompilerFileContentException;

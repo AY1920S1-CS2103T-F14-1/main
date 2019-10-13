@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.logging.Logger;
 
 
+/**
+ * The type Profile panel.
+ */
 public class ProfilePanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -24,11 +27,21 @@ public class ProfilePanel extends UiPart<Region> {
     private TextArea profileDisplay;
 
 
+    /**
+     * Instantiates a new Profile panel.
+     *
+     * @param profile the profile
+     */
     public ProfilePanel(ArrayList<String> profile) {
         super(FXML);
         profileDisplay.setText(profile.get(0));
     }
 
+    /**
+     * Sets profile display.
+     *
+     * @param s the s
+     */
     public void setProfileDisplay(String s) {
         profileDisplay.setText(s);
     }

@@ -11,9 +11,18 @@ import static java.util.Objects.requireNonNull;
 public class Topic {
 
 
+    /**
+     * The constant MESSAGE_CONSTRAINTS.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Topic numbers should only contain numbers, and it should be at least 3 digits long";
+    /**
+     * The constant VALIDATION_REGEX.
+     */
     public static final String VALIDATION_REGEX = "\\d{3,}";
+    /**
+     * The Value.
+     */
     public final String value;
 
     /**
@@ -29,6 +38,9 @@ public class Topic {
 
     /**
      * Returns true if a given string is a valid topic number.
+     *
+     * @param test the test
+     * @return the boolean
      */
     public static boolean isValidPhone(String test) {
         return test.matches(VALIDATION_REGEX);

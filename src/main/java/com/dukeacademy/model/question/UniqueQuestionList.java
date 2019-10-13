@@ -23,10 +23,10 @@ import javafx.collections.ObservableList;
  * unique in terms of identity in the UniqueQuestionList. However, the removal of
  * a question uses Question#equals(Object) so
  * as to ensure that the question with exactly the same fields will be removed.
- *
+ * <p>
  * Supports a minimal set of list operations.
  *
- * @see Question#isSameQuestion(Question)
+ * @see Question#isSameQuestion(Question) Question#isSameQuestion(Question)
  */
 public class UniqueQuestionList implements Iterable<Question> {
 
@@ -36,6 +36,9 @@ public class UniqueQuestionList implements Iterable<Question> {
 
     /**
      * Returns true if the list contains an equivalent question as the given argument.
+     *
+     * @param toCheck the to check
+     * @return the boolean
      */
     public boolean contains(Question toCheck) {
         requireNonNull(toCheck);
@@ -45,6 +48,8 @@ public class UniqueQuestionList implements Iterable<Question> {
     /**
      * Adds a question to the list.
      * The question must not already exist in the list.
+     *
+     * @param toAdd the to add
      */
     public void add(Question toAdd) {
         requireNonNull(toAdd);
@@ -58,6 +63,9 @@ public class UniqueQuestionList implements Iterable<Question> {
      * Replaces the question {@code target} in the list with {@code editedQuestion}.
      * {@code target} must exist in the list.
      * The question identity of {@code editedQuestion} must not be the same as another existing question in the list.
+     *
+     * @param target         the target
+     * @param editedQuestion the edited question
      */
     public void setQuestion(Question target, Question editedQuestion) {
         requireAllNonNull(target, editedQuestion);
@@ -77,6 +85,8 @@ public class UniqueQuestionList implements Iterable<Question> {
     /**
      * Removes the equivalent question from the list.
      * The question must exist in the list.
+     *
+     * @param toRemove the to remove
      */
     public void remove(Question toRemove) {
         requireNonNull(toRemove);
@@ -85,6 +95,11 @@ public class UniqueQuestionList implements Iterable<Question> {
         }
     }
 
+    /**
+     * Sets questions.
+     *
+     * @param replacement the replacement
+     */
     public void setQuestions(UniqueQuestionList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -93,6 +108,8 @@ public class UniqueQuestionList implements Iterable<Question> {
     /**
      * Replaces the contents of this list with {@code questions}.
      * {@code questions} must not contain duplicate questions.
+     *
+     * @param questions the questions
      */
     public void setQuestions(List<Question> questions) {
         requireAllNonNull(questions);
@@ -105,6 +122,8 @@ public class UniqueQuestionList implements Iterable<Question> {
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
+     *
+     * @return the observable list
      */
     public ObservableList<Question> asUnmodifiableObservableList() {
         return internalUnmodifiableList;

@@ -2,7 +2,7 @@ package com.dukeacademy.commons.core.index;
 
 /**
  * Represents a zero-based or one-based index.
- *
+ * <p>
  * {@code Index} should be used right from the start (when parsing in a new user input), so that if the current
  * component wants to communicate with another component, it can send an {@code Index} to avoid having to know what
  * base the other component is using for its index. However, after receiving the {@code Index}, that component can
@@ -23,16 +23,29 @@ public class Index {
         this.zeroBasedIndex = zeroBasedIndex;
     }
 
+    /**
+     * Gets zero based.
+     *
+     * @return the zero based
+     */
     public int getZeroBased() {
         return zeroBasedIndex;
     }
 
+    /**
+     * Gets one based.
+     *
+     * @return the one based
+     */
     public int getOneBased() {
         return zeroBasedIndex + 1;
     }
 
     /**
      * Creates a new {@code Index} using a zero-based index.
+     *
+     * @param zeroBasedIndex the zero based index
+     * @return the index
      */
     public static Index fromZeroBased(int zeroBasedIndex) {
         return new Index(zeroBasedIndex);
@@ -40,6 +53,9 @@ public class Index {
 
     /**
      * Creates a new {@code Index} using a one-based index.
+     *
+     * @param oneBasedIndex the one based index
+     * @return the index
      */
     public static Index fromOneBased(int oneBasedIndex) {
         return new Index(oneBasedIndex - 1);

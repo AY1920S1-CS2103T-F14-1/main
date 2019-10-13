@@ -7,8 +7,14 @@ import com.dukeacademy.model.Model;
  */
 public class ExitCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "exit";
 
+    /**
+     * The constant MESSAGE_EXIT_ACKNOWLEDGEMENT.
+     */
     public static final String MESSAGE_EXIT_ACKNOWLEDGEMENT = "Exiting Difficulty Book as requested ...";
 
     @Override

@@ -26,8 +26,14 @@ import com.dukeacademy.model.tag.Tag;
  */
 public class EditCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "edit";
 
+    /**
+     * The constant MESSAGE_USAGE.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the question identified "
             + "by the index number used in the displayed question list. "
             + "Existing values will be overwritten by the input values.\n"
@@ -41,15 +47,26 @@ public class EditCommand extends Command {
             + CliSyntax.PREFIX_TOPIC + "91234567 "
             + CliSyntax.PREFIX_STATUS + "johndoe@example.com";
 
+    /**
+     * The constant MESSAGE_EDIT_QUESTION_SUCCESS.
+     */
     public static final String MESSAGE_EDIT_QUESTION_SUCCESS = "Edited Question: %1$s";
+    /**
+     * The constant MESSAGE_NOT_EDITED.
+     */
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    /**
+     * The constant MESSAGE_DUPLICATE_QUESTION.
+     */
     public static final String MESSAGE_DUPLICATE_QUESTION = "This question already exists in the question bank.";
 
     private final Index index;
     private final EditQuestionDescriptor editQuestionDescriptor;
 
     /**
-     * @param index of the question in the filtered question list to edit
+     * Instantiates a new Edit command.
+     *
+     * @param index                  of the question in the filtered question list to edit
      * @param editQuestionDescriptor details to edit the question with
      */
     public EditCommand(Index index, EditQuestionDescriptor editQuestionDescriptor) {
@@ -134,11 +151,16 @@ public class EditCommand extends Command {
         private Difficulty difficulty;
         private Set<Tag> tags;
 
+        /**
+         * Instantiates a new Edit question descriptor.
+         */
         public EditQuestionDescriptor() {}
 
         /**
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
+         *
+         * @param toCopy the to copy
          */
         public EditQuestionDescriptor(EditQuestionDescriptor toCopy) {
             setTitle(toCopy.title);
@@ -150,39 +172,81 @@ public class EditCommand extends Command {
 
         /**
          * Returns true if at least one field is edited.
+         *
+         * @return the boolean
          */
         public boolean isAnyFieldEdited() {
             return CollectionUtil.isAnyNonNull(title, topic, status, difficulty, tags);
         }
 
+        /**
+         * Sets title.
+         *
+         * @param title the title
+         */
         public void setTitle(Title title) {
             this.title = title;
         }
 
+        /**
+         * Gets title.
+         *
+         * @return the title
+         */
         public Optional<Title> getTitle() {
             return Optional.ofNullable(title);
         }
 
+        /**
+         * Sets topic.
+         *
+         * @param topic the topic
+         */
         public void setTopic(Topic topic) {
             this.topic = topic;
         }
 
+        /**
+         * Gets topic.
+         *
+         * @return the topic
+         */
         public Optional<Topic> getTopic() {
             return Optional.ofNullable(topic);
         }
 
+        /**
+         * Sets status.
+         *
+         * @param status the status
+         */
         public void setStatus(Status status) {
             this.status = status;
         }
 
+        /**
+         * Gets status.
+         *
+         * @return the status
+         */
         public Optional<Status> getStatus() {
             return Optional.ofNullable(status);
         }
 
+        /**
+         * Sets difficulty.
+         *
+         * @param difficulty the difficulty
+         */
         public void setDifficulty(Difficulty difficulty) {
             this.difficulty = difficulty;
         }
 
+        /**
+         * Gets difficulty.
+         *
+         * @return the difficulty
+         */
         public Optional<Difficulty> getDifficulty() {
             return Optional.ofNullable(difficulty);
         }
@@ -190,6 +254,8 @@ public class EditCommand extends Command {
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
+         *
+         * @param tags the tags
          */
         public void setTags(Set<Tag> tags) {
             this.tags = (tags != null) ? new HashSet<>(tags) : null;
@@ -199,6 +265,8 @@ public class EditCommand extends Command {
          * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
+         *
+         * @return the tags
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();

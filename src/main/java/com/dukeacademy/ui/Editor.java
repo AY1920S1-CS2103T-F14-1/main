@@ -23,6 +23,9 @@ import java.util.logging.Logger;
 import java.awt.datatransfer.StringSelection;
 import java.awt.Toolkit;
 
+/**
+ * The type Editor.
+ */
 public class Editor extends UiPart<Region>{
 
         private final Logger logger = LogsCenter.getLogger(getClass());
@@ -45,7 +48,12 @@ public class Editor extends UiPart<Region>{
         private TextArea textOutput;
 
 
-        @FXML
+    /**
+     * On click btn copy.
+     *
+     * @param e the e
+     */
+    @FXML
         public void onClick_btn_Copy(ActionEvent e) {
             String myText = textOutput.getText().toString();
             StringSelection stringSelection = new StringSelection(myText);
@@ -53,7 +61,13 @@ public class Editor extends UiPart<Region>{
             clipboard.setContents(stringSelection,null);
         }
 
-        @FXML
+    /**
+     * On click btn save.
+     *
+     * @param e the e
+     * @throws IOException the io exception
+     */
+    @FXML
         public void onClick_btn_Save(ActionEvent e) throws IOException {
             Stage stage = new Stage();
             FileChooser chooser = new FileChooser();
@@ -64,21 +78,39 @@ public class Editor extends UiPart<Region>{
             FW.close();
         }
 
-        @FXML
+    /**
+     * On click btn submit.
+     *
+     * @param e the e
+     */
+    @FXML
         public void onClick_btn_Submit(ActionEvent e) {
 
         }
 
-        @FXML
+    /**
+     * On click btn exit.
+     *
+     * @param e the e
+     */
+    @FXML
         public void onClick_btn_Exit(ActionEvent e) {
             //Platfrom.exit()?
         }
 
-        public void setTextOutput(String textOutput) {
+    /**
+     * Sets text output.
+     *
+     * @param textOutput the text output
+     */
+    public void setTextOutput(String textOutput) {
                 this.textOutput.setText(textOutput);
         }
 
-        public Editor() {
+    /**
+     * Instantiates a new Editor.
+     */
+    public Editor() {
                 super(FXML);
         }
 

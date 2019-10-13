@@ -12,8 +12,14 @@ import com.dukeacademy.model.question.Question;
  */
 public class AddCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "add";
 
+    /**
+     * The constant MESSAGE_USAGE.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a question to the question bank. "
             + "Parameters: "
             + CliSyntax.PREFIX_TITLE + "NAME "
@@ -29,13 +35,21 @@ public class AddCommand extends Command {
             + CliSyntax.PREFIX_TAG + "friends "
             + CliSyntax.PREFIX_TAG + "owesMoney";
 
+    /**
+     * The constant MESSAGE_SUCCESS.
+     */
     public static final String MESSAGE_SUCCESS = "New question added: %1$s";
+    /**
+     * The constant MESSAGE_DUPLICATE_QUESTION.
+     */
     public static final String MESSAGE_DUPLICATE_QUESTION = "This question already exists in the question bank";
 
     private final Question toAdd;
 
     /**
      * Creates an AddCommand to add the specified {@code Question}
+     *
+     * @param question the question
      */
     public AddCommand(Question question) {
         requireNonNull(question);

@@ -20,11 +20,17 @@ import com.dukeacademy.model.tag.Tag;
  */
 public class ParserUtil {
 
+    /**
+     * The constant MESSAGE_INVALID_INDEX.
+     */
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
+     * @param oneBasedIndex the one based index
+     * @return the index
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -39,6 +45,8 @@ public class ParserUtil {
      * Parses a {@code String title} into a {@code Title}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param title the title
+     * @return the title
      * @throws ParseException if the given {@code title} is invalid.
      */
     public static Title parseName(String title) throws ParseException {
@@ -54,6 +62,8 @@ public class ParserUtil {
      * Parses a {@code String topic} into a {@code Topic}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param topic the topic
+     * @return the topic
      * @throws ParseException if the given {@code topic} is invalid.
      */
     public static Topic parsePhone(String topic) throws ParseException {
@@ -69,6 +79,8 @@ public class ParserUtil {
      * Parses a {@code String difficulty} into an {@code Difficulty}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param difficulty the difficulty
+     * @return the difficulty
      * @throws ParseException if the given {@code difficulty} is invalid.
      */
     public static Difficulty parseAddress(String difficulty) throws ParseException {
@@ -84,6 +96,8 @@ public class ParserUtil {
      * Parses a {@code String status} into an {@code Status}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param status the status
+     * @return the status
      * @throws ParseException if the given {@code status} is invalid.
      */
     public static Status parseEmail(String status) throws ParseException {
@@ -99,6 +113,8 @@ public class ParserUtil {
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
      *
+     * @param tag the tag
+     * @return the tag
      * @throws ParseException if the given {@code tag} is invalid.
      */
     public static Tag parseTag(String tag) throws ParseException {
@@ -112,6 +128,10 @@ public class ParserUtil {
 
     /**
      * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     *
+     * @param tags the tags
+     * @return the set
+     * @throws ParseException the parse exception
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);

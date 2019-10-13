@@ -26,6 +26,12 @@ public class Question {
 
     /**
      * Every field must be present and not null.
+     *
+     * @param title      the title
+     * @param topic      the topic
+     * @param status     the status
+     * @param difficulty the difficulty
+     * @param tags       the tags
      */
     public Question(Title title, Topic topic, Status status, Difficulty difficulty, Set<Tag> tags) {
         requireAllNonNull(title, topic, status, difficulty, tags);
@@ -36,18 +42,38 @@ public class Question {
         this.tags.addAll(tags);
     }
 
+    /**
+     * Gets title.
+     *
+     * @return the title
+     */
     public Title getTitle() {
         return title;
     }
 
+    /**
+     * Gets topic.
+     *
+     * @return the topic
+     */
     public Topic getTopic() {
         return topic;
     }
 
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
     public Status getStatus() {
         return status;
     }
 
+    /**
+     * Gets difficulty.
+     *
+     * @return the difficulty
+     */
     public Difficulty getDifficulty() {
         return difficulty;
     }
@@ -55,6 +81,8 @@ public class Question {
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.
+     *
+     * @return the tags
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
@@ -63,6 +91,9 @@ public class Question {
     /**
      * Returns true if both questions of the same title have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two questions.
+     *
+     * @param otherQuestion the other question
+     * @return the boolean
      */
     public boolean isSameQuestion(Question otherQuestion) {
         if (otherQuestion == this) {

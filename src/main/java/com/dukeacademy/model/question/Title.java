@@ -10,15 +10,24 @@ import static java.util.Objects.requireNonNull;
  */
 public class Title {
 
+    /**
+     * The constant MESSAGE_CONSTRAINTS.
+     */
     public static final String MESSAGE_CONSTRAINTS =
             "Titles should only contain alphanumeric characters and spaces, and it should not be blank";
 
+    /**
+     * The constant VALIDATION_REGEX.
+     */
     /*
      * The first character of the difficulty must not be a whitespace,
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
 
+    /**
+     * The Full title.
+     */
     public final String fullTitle;
 
     /**
@@ -34,6 +43,9 @@ public class Title {
 
     /**
      * Returns true if a given string is a valid title.
+     *
+     * @param test the test
+     * @return the boolean
      */
     public static boolean isValidTitle(String test) {
         return test.matches(VALIDATION_REGEX);

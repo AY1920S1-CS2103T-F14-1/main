@@ -22,6 +22,9 @@ public class StandardCompiler implements Compiler {
     private static final String MESSAGE_COMPILER_FAILED = "Compiler failed.";
     private JavaCompiler javaCompiler;
 
+    /**
+     * Instantiates a new Standard compiler.
+     */
     public StandardCompiler() {
         this.javaCompiler = ToolProvider.getSystemJavaCompiler();
     }

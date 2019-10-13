@@ -13,13 +13,16 @@ import com.dukeacademy.solution.models.JavaFile;
 public interface CompilerEnvironment {
     /**
      * Creates a Java file within the compiler environment.
+     *
      * @param program the program to be converted to a Java file.
      * @return the file created.
+     * @throws JavaFileCreationException the java file creation exception
      */
     public JavaFile createJavaFile(UserProgram program) throws JavaFileCreationException;
 
     /**
      * Returns the file corresponding to the name provided.
+     *
      * @param name the name of the file, without extension.
      * @return the file corresponding to the name provided.
      * @throws FileNotFoundException if the file does not exists.
@@ -28,6 +31,7 @@ public interface CompilerEnvironment {
 
     /**
      * Clears the environment of any existing files and artifacts.
+     *
      * @throws CompilerEnvironmentException if the environment cannot be cleared.
      */
     public void clearEnvironment() throws CompilerEnvironmentException;
@@ -35,6 +39,7 @@ public interface CompilerEnvironment {
     /**
      * Closes the environment by deleting any created files or directories at the specified location path during
      * initialization.
+     *
      * @throws CompilerEnvironmentException if the environment cannot be closer properly.
      */
     public void close() throws CompilerEnvironmentException;

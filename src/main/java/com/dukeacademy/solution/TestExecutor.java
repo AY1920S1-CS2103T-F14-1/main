@@ -34,6 +34,13 @@ public class TestExecutor {
     private Compiler compiler;
     private ProgramExecutor executor;
 
+    /**
+     * Instantiates a new Test executor.
+     *
+     * @param environment the environment
+     * @param compiler    the compiler
+     * @param executor    the executor
+     */
     public TestExecutor(CompilerEnvironment environment, Compiler compiler, ProgramExecutor executor) {
         this.environment = environment;
         this.compiler = compiler;
@@ -42,8 +49,9 @@ public class TestExecutor {
 
     /**
      * Runs the user's program against a list of test cases.
+     *
      * @param testCases the test cases to be run.
-     * @param program the user's program.
+     * @param program   the user's program.
      * @return a result instance.
      * @throws TestExecutorException if the test executor fails unexpectedly.
      */

@@ -19,6 +19,9 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 @JsonRootName(value = "addressbook")
 class JsonSerializableQuestionBank {
 
+    /**
+     * The constant MESSAGE_DUPLICATE_QUESTION.
+     */
     public static final String MESSAGE_DUPLICATE_QUESTION = "Questions list "
         + "contains duplicate question(s).";
 
@@ -26,6 +29,8 @@ class JsonSerializableQuestionBank {
 
     /**
      * Constructs a {@code JsonSerializableQuestionBank} with the given questions.
+     *
+     * @param questions the questions
      */
     @JsonCreator
     public JsonSerializableQuestionBank(@JsonProperty("questions") List<JsonAdaptedQuestion> questions) {
@@ -44,6 +49,7 @@ class JsonSerializableQuestionBank {
     /**
      * Converts this question bank into the model's {@code QuestionBank} object.
      *
+     * @return the question bank
      * @throws IllegalValueException if there were any data constraints violated.
      */
     public QuestionBank toModelType() throws IllegalValueException {

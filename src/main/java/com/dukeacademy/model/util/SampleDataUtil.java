@@ -17,6 +17,11 @@ import com.dukeacademy.model.tag.Tag;
  * Contains utility methods for populating {@code QuestionBank} with sample data.
  */
 public class SampleDataUtil {
+    /**
+     * Get sample questions question [ ].
+     *
+     * @return the question [ ]
+     */
     public static Question[] getSampleQuestions() {
         return new Question[] {
             new Question(new Title("Alex Yeoh"), new Topic("87438807"), new Status("alexyeoh@example.com"),
@@ -40,6 +45,11 @@ public class SampleDataUtil {
         };
     }
 
+    /**
+     * Gets sample question bank.
+     *
+     * @return the sample question bank
+     */
     public static ReadOnlyQuestionBank getSampleQuestionBank() {
         QuestionBank sampleAb = new QuestionBank();
         for (Question sampleQuestion : getSampleQuestions()) {
@@ -50,6 +60,9 @@ public class SampleDataUtil {
 
     /**
      * Returns a tag set containing the list of strings given.
+     *
+     * @param strings the strings
+     * @return the tag set
      */
     public static Set<Tag> getTagSet(String... strings) {
         return Arrays.stream(strings)

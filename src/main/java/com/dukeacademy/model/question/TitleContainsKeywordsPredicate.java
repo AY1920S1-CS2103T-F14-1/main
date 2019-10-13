@@ -11,6 +11,11 @@ import com.dukeacademy.commons.util.StringUtil;
 public class TitleContainsKeywordsPredicate implements Predicate<Question> {
     private final List<String> keywords;
 
+    /**
+     * Instantiates a new Title contains keywords predicate.
+     *
+     * @param keywords the keywords
+     */
     public TitleContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }

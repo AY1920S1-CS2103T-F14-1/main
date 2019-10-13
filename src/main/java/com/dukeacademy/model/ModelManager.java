@@ -5,6 +5,7 @@ import static com.dukeacademy.commons.util.CollectionUtil.requireAllNonNull;
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -24,9 +25,13 @@ public class ModelManager implements Model {
     private final QuestionBank questionBank;
     private final UserPrefs userPrefs;
     private final FilteredList<Question> filteredQuestions;
+    private final ArrayList<String> profile;
 
     /**
      * Initializes a ModelManager with the given questionBank and userPrefs.
+     *
+     * @param questionBank the question bank
+     * @param userPrefs    the user prefs
      */
     public ModelManager(ReadOnlyQuestionBank questionBank, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -37,8 +42,13 @@ public class ModelManager implements Model {
         this.questionBank = new QuestionBank(questionBank);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredQuestions = new FilteredList<>(this.questionBank.getQuestionList());
+        profile = new ArrayList<>();
+        profile.add("initialised profile placeholder");
     }
 
+    /**
+     * Instantiates a new Model manager.
+     */
     public ModelManager() {
         this(new QuestionBank(), new UserPrefs());
     }
@@ -129,6 +139,27 @@ public class ModelManager implements Model {
     public void updateFilteredQuestionList(Predicate<Question> predicate) {
         requireNonNull(predicate);
         filteredQuestions.setPredicate(predicate);
+    }
+
+    //============= Profile Page =============================================================================
+
+    /**
+     * Returns the user's profile page. (will be updated to adoc or markdown form).
+     * @param s
+     */
+    @Override
+    public void updateProfile(String s) {
+        questionBank.updateProfile(s);
+        profile.clear();
+        profile.add(s);
+        logger.info("updated profile in model manager: " + profile.get(0));
+    }
+
+    /**
+     * Returns the user profile page.
+     */
+    public ArrayList<String> getProfile() {
+        return profile;
     }
 
     @Override

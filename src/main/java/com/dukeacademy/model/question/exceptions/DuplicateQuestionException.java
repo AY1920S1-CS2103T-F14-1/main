@@ -5,6 +5,9 @@ package com.dukeacademy.model.question.exceptions;
  * identity).
  */
 public class DuplicateQuestionException extends RuntimeException {
+    /**
+     * Instantiates a new Duplicate question exception.
+     */
     public DuplicateQuestionException() {
         super("Operation would result in duplicate persons");
     }

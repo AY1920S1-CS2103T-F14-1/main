@@ -15,6 +15,9 @@ import javafx.scene.layout.Region;
  */
 public class CommandBox extends UiPart<Region> {
 
+    /**
+     * The constant ERROR_STYLE_CLASS.
+     */
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
 
@@ -23,6 +26,11 @@ public class CommandBox extends UiPart<Region> {
     @FXML
     private TextField commandTextField;
 
+    /**
+     * Instantiates a new Command box.
+     *
+     * @param commandExecutor the command executor
+     */
     public CommandBox(CommandExecutor commandExecutor) {
         super(FXML);
         this.commandExecutor = commandExecutor;
@@ -71,7 +79,11 @@ public class CommandBox extends UiPart<Region> {
         /**
          * Executes the command and returns the result.
          *
-         * @see Logic#execute(String)
+         * @param commandText the command text
+         * @return the command result
+         * @throws CommandException the command exception
+         * @throws ParseException   the parse exception
+         * @see Logic#execute(String) Logic#execute(String)
          */
         CommandResult execute(String commandText) throws CommandException, ParseException;
     }

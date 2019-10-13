@@ -9,8 +9,18 @@ import com.dukeacademy.commons.core.GuiSettings;
  */
 public interface ReadOnlyUserPrefs {
 
+    /**
+     * Gets gui settings.
+     *
+     * @return the gui settings
+     */
     GuiSettings getGuiSettings();
 
+    /**
+     * Gets question bank file path.
+     *
+     * @return the question bank file path
+     */
     Path getQuestionBankFilePath();
 
 }

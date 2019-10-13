@@ -10,9 +10,18 @@ import static java.util.Objects.requireNonNull;
  */
 public class Tag {
 
+    /**
+     * The constant MESSAGE_CONSTRAINTS.
+     */
     public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
+    /**
+     * The constant VALIDATION_REGEX.
+     */
     public static final String VALIDATION_REGEX = "\\p{Alnum}+";
 
+    /**
+     * The Tag name.
+     */
     public final String tagName;
 
     /**
@@ -28,6 +37,9 @@ public class Tag {
 
     /**
      * Returns true if a given string is a valid tag name.
+     *
+     * @param test the test
+     * @return the boolean
      */
     public static boolean isValidTagName(String test) {
         return test.matches(VALIDATION_REGEX);

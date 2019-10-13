@@ -22,6 +22,12 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
 
+    /**
+     * Instantiates a new Storage manager.
+     *
+     * @param questionBankStorage the question bank storage
+     * @param userPrefsStorage    the user prefs storage
+     */
     public StorageManager(QuestionBankStorage questionBankStorage, UserPrefsStorage userPrefsStorage) {
         super();
         this.questionBankStorage = questionBankStorage;

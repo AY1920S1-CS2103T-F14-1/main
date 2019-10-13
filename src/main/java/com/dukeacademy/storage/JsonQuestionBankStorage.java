@@ -25,6 +25,11 @@ public class JsonQuestionBankStorage implements QuestionBankStorage {
 
     private Path filePath;
 
+    /**
+     * Instantiates a new Json question bank storage.
+     *
+     * @param filePath the file path
+     */
     public JsonQuestionBankStorage(Path filePath) {
         this.filePath = filePath;
     }

@@ -11,8 +11,10 @@ import com.dukeacademy.logic.commands.ClearCommand;
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.DeleteCommand;
 import com.dukeacademy.logic.commands.EditCommand;
+import com.dukeacademy.logic.commands.ExitCommand;
 import com.dukeacademy.logic.commands.FindCommand;
 import com.dukeacademy.logic.commands.HelpCommand;
+import com.dukeacademy.logic.commands.HomeCommand;
 import com.dukeacademy.logic.commands.ListCommand;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
 

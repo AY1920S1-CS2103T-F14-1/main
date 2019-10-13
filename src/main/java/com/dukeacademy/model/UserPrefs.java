@@ -23,6 +23,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
+     *
+     * @param userPrefs the user prefs
      */
     public UserPrefs(ReadOnlyUserPrefs userPrefs) {
         this();
@@ -31,6 +33,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     /**
      * Resets the existing data of this {@code UserPrefs} with {@code newUserPrefs}.
+     *
+     * @param newUserPrefs the new user prefs
      */
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
@@ -42,6 +46,11 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return guiSettings;
     }
 
+    /**
+     * Sets gui settings.
+     *
+     * @param guiSettings the gui settings
+     */
     public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         this.guiSettings = guiSettings;
@@ -51,6 +60,11 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         return questionBankFilePath;
     }
 
+    /**
+     * Sets question bank file path.
+     *
+     * @param questionBankFilePath the question bank file path
+     */
     public void setQuestionBankFilePath(Path questionBankFilePath) {
         requireNonNull(questionBankFilePath);
         this.questionBankFilePath = questionBankFilePath;

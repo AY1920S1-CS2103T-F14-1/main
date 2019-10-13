@@ -22,6 +22,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 class JsonAdaptedQuestion {
 
+    /**
+     * The constant MISSING_FIELD_MESSAGE_FORMAT.
+     */
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Question's %s field is missing!";
 
     private final String title;
@@ -32,6 +35,12 @@ class JsonAdaptedQuestion {
 
     /**
      * Constructs a {@code JsonAdaptedQuestion} with the given question details.
+     *
+     * @param title      the title
+     * @param topic      the topic
+     * @param status     the status
+     * @param difficulty the difficulty
+     * @param tagged     the tagged
      */
     @JsonCreator
     public JsonAdaptedQuestion(@JsonProperty("title") String title, @JsonProperty("topic") String topic,
@@ -48,6 +57,8 @@ class JsonAdaptedQuestion {
 
     /**
      * Converts a given {@code Question} into this class for Jackson use.
+     *
+     * @param source the source
      */
     public JsonAdaptedQuestion(Question source) {
         title = source.getTitle().fullTitle;
@@ -62,6 +73,7 @@ class JsonAdaptedQuestion {
     /**
      * Converts this Jackson-friendly adapted question object into the model's {@code Question} object.
      *
+     * @return the question
      * @throws IllegalValueException if there were any data constraints violated in the adapted question.
      */
     public Question toModelType() throws IllegalValueException {

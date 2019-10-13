@@ -22,6 +22,9 @@ public class StandardProgramExecutor implements ProgramExecutor {
 
     private Runtime runtime;
 
+    /**
+     * Instantiates a new Standard program executor.
+     */
     public StandardProgramExecutor() {
         this.runtime = Runtime.getRuntime();
     }

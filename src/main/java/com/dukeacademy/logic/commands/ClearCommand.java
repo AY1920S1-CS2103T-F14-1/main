@@ -10,7 +10,13 @@ import com.dukeacademy.model.QuestionBank;
  */
 public class ClearCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "clear";
+    /**
+     * The constant MESSAGE_SUCCESS.
+     */
     public static final String MESSAGE_SUCCESS = "Difficulty book has been cleared!";
 
 

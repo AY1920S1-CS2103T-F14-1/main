@@ -12,8 +12,14 @@ import com.dukeacademy.model.question.TitleContainsKeywordsPredicate;
  */
 public class FindCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "find";
 
+    /**
+     * The constant MESSAGE_USAGE.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
@@ -21,6 +27,11 @@ public class FindCommand extends Command {
 
     private final TitleContainsKeywordsPredicate predicate;
 
+    /**
+     * Instantiates a new Find command.
+     *
+     * @param predicate the predicate
+     */
     public FindCommand(TitleContainsKeywordsPredicate predicate) {
         this.predicate = predicate;
     }

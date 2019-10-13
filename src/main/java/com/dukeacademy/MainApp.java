@@ -37,14 +37,32 @@ import javafx.stage.Stage;
  */
 public class MainApp extends Application {
 
+    /**
+     * The constant VERSION.
+     */
     public static final Version VERSION = new Version(0, 6, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
+    /**
+     * The Ui.
+     */
     protected Ui ui;
+    /**
+     * The Logic.
+     */
     protected Logic logic;
+    /**
+     * The Storage.
+     */
     protected Storage storage;
+    /**
+     * The Model.
+     */
     protected Model model;
+    /**
+     * The Config.
+     */
     protected Config config;
 
     @Override
@@ -104,6 +122,9 @@ public class MainApp extends Application {
      * Returns a {@code Config} using the file at {@code configFilePath}. <br>
      * The default file path {@code Config#DEFAULT_CONFIG_FILE} will be used instead
      * if {@code configFilePath} is null.
+     *
+     * @param configFilePath the config file path
+     * @return the config
      */
     protected Config initConfig(Path configFilePath) {
         Config initializedConfig;
@@ -140,6 +161,9 @@ public class MainApp extends Application {
      * Returns a {@code UserPrefs} using the file at {@code storage}'s user prefs file path,
      * or a new {@code UserPrefs} with default configuration if errors occur when
      * reading from the file.
+     *
+     * @param storage the storage
+     * @return the user prefs
      */
     protected UserPrefs initPrefs(UserPrefsStorage storage) {
         Path prefsFilePath = storage.getUserPrefsFilePath();

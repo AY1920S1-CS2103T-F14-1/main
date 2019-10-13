@@ -23,6 +23,9 @@ import javafx.collections.ObservableList;
  * The main LogicManager of the app.
  */
 public class LogicManager implements Logic {
+    /**
+     * The constant FILE_OPS_ERROR_MESSAGE.
+     */
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
@@ -30,6 +33,12 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final QuestionBankParser questionBankParser;
 
+    /**
+     * Instantiates a new Logic manager.
+     *
+     * @param model   the model
+     * @param storage the storage
+     */
     public LogicManager(Model model, Storage storage) {
         this.model = model;
         this.storage = storage;
@@ -64,18 +73,13 @@ public class LogicManager implements Logic {
     }
 
     @Override
-<<<<<<< HEAD:src/main/java/seedu/address/logic/LogicManager.java
     public ArrayList<String> getProfile() {
         logger.info( "logic is getting profile " + model.getProfile().get(0));
         return model.getProfile();
     }
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
-=======
     public Path getQuestionBankFilePath() {
         return model.getQuestionBankFilePath();
->>>>>>> zj_refactor:src/main/java/com/dukeacademy/logic/LogicManager.java
     }
 
     @Override

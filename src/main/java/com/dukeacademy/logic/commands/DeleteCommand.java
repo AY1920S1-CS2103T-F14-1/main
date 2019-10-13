@@ -15,17 +15,31 @@ import com.dukeacademy.model.question.Question;
  */
 public class DeleteCommand extends Command {
 
+    /**
+     * The constant COMMAND_WORD.
+     */
     public static final String COMMAND_WORD = "delete";
 
+    /**
+     * The constant MESSAGE_USAGE.
+     */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the question identified by the index number used in the displayed question list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
+    /**
+     * The constant MESSAGE_DELETE_QUESTION_SUCCESS.
+     */
     public static final String MESSAGE_DELETE_QUESTION_SUCCESS = "Deleted Question: %1$s";
 
     private final Index targetIndex;
 
+    /**
+     * Instantiates a new Delete command.
+     *
+     * @param targetIndex the target index
+     */
     public DeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

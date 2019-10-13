@@ -16,10 +16,18 @@ public class ResultDisplay extends UiPart<Region> {
     @FXML
     private TextArea resultDisplay;
 
+    /**
+     * Instantiates a new Result display.
+     */
     public ResultDisplay() {
         super(FXML);
     }
 
+    /**
+     * Sets feedback to user.
+     *
+     * @param feedbackToUser the feedback to user
+     */
     public void setFeedbackToUser(String feedbackToUser) {
         requireNonNull(feedbackToUser);
         resultDisplay.setText(feedbackToUser);

@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import static java.util.Objects.requireNonNull;
 import static com.dukeacademy.commons.util.AppUtil.checkArgument;
 
+/**
+ * The type Profile.
+ */
 public class Profile {
+    /**
+     * The Profile.
+     */
     public final String profile;
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -17,10 +23,20 @@ public class Profile {
     {
     }
 
+    /**
+     * Instantiates a new Profile.
+     *
+     * @param s the s
+     */
     public Profile(String s) {
         profile = s;
     }
 
+    /**
+     * Gets text.
+     *
+     * @return the text
+     */
     public String getText() {
         return profile;
     }

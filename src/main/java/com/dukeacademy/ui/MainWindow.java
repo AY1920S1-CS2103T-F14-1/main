@@ -66,6 +66,12 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private AnchorPane editorPlaceholder;
 
+    /**
+     * Instantiates a new Main window.
+     *
+     * @param primaryStage the primary stage
+     * @param logic        the logic
+     */
     public MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
@@ -81,6 +87,11 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
     }
 
+    /**
+     * Gets primary stage.
+     *
+     * @return the primary stage
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -182,6 +193,8 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Opens an existing text file from editor.
+     *
+     * @throws IOException the io exception
      */
     @FXML
     public void handleOpen() throws IOException {
@@ -220,6 +233,9 @@ public class MainWindow extends UiPart<Stage> {
     }
 
 
+    /**
+     * Show.
+     */
     void show() {
         primaryStage.show();
     }
@@ -236,6 +252,11 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Gets person list panel.
+     *
+     * @return the person list panel
+     */
     public QuestionListPanel getPersonListPanel() {
         return questionListPanel;
     }

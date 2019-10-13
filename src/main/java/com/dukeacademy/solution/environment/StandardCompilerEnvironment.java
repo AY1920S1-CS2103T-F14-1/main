@@ -46,6 +46,12 @@ public class StandardCompilerEnvironment implements CompilerEnvironment {
     // List of previous created Java files
     private final List<JavaFile> createdFiles;
 
+    /**
+     * Instantiates a new Standard compiler environment.
+     *
+     * @param locationPath the location path
+     * @throws CompilerEnvironmentException the compiler environment exception
+     */
     public StandardCompilerEnvironment(String locationPath) throws CompilerEnvironmentException {
         this.locationPath = Path.of(locationPath);
         this.createdFiles = new ArrayList<>();
@@ -124,6 +130,8 @@ public class StandardCompilerEnvironment implements CompilerEnvironment {
 
     /**
      * Returns the root path of the environment as a String
+     *
+     * @return the location path
      */
     public String getLocationPath() {
         return this.locationPath.toUri().getPath();

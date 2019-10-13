@@ -19,6 +19,9 @@ import javafx.stage.Stage;
  */
 public class UiManager implements Ui {
 
+    /**
+     * The constant ALERT_DIALOG_PANE_FIELD_ID.
+     */
     public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
@@ -27,6 +30,11 @@ public class UiManager implements Ui {
     private Logic logic;
     private MainWindow mainWindow;
 
+    /**
+     * Instantiates a new Ui manager.
+     *
+     * @param logic the logic
+     */
     public UiManager(Logic logic) {
         super();
         this.logic = logic;
@@ -54,6 +62,14 @@ public class UiManager implements Ui {
         return new Image(MainApp.class.getResourceAsStream(imagePath));
     }
 
+    /**
+     * Show alert dialog and wait.
+     *
+     * @param type        the type
+     * @param title       the title
+     * @param headerText  the header text
+     * @param contentText the content text
+     */
     void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
         showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
     }
