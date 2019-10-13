@@ -14,14 +14,7 @@ public class Tag {
      * The constant MESSAGE_CONSTRAINTS.
      */
     public static final String MESSAGE_CONSTRAINTS = "Tags names should be alphanumeric";
-<<<<<<< HEAD
-    /**
-     * The constant VALIDATION_REGEX.
-     */
-    public static final String VALIDATION_REGEX = "\\p{Alnum}+";
-=======
     public static final String VALIDATION_REGEX = "[^\\s].*";
->>>>>>> zj_refactor
 
     /**
      * The Tag name.

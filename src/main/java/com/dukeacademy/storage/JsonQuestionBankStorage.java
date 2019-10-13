@@ -52,14 +52,14 @@ public class JsonQuestionBankStorage implements QuestionBankStorage {
     public Optional<ReadOnlyQuestionBank> readQuestionBank(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableQuestionBank> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableQuestionBank> jsonQuestionBank = JsonUtil.readJsonFile(
                 filePath, JsonSerializableQuestionBank.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonQuestionBank.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonQuestionBank.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

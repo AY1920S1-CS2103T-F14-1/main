@@ -15,16 +15,6 @@ public class Topic {
      * The constant MESSAGE_CONSTRAINTS.
      */
     public static final String MESSAGE_CONSTRAINTS =
-<<<<<<< HEAD
-            "Topic numbers should only contain numbers, and it should be at least 3 digits long";
-    /**
-     * The constant VALIDATION_REGEX.
-     */
-    public static final String VALIDATION_REGEX = "\\d{3,}";
-    /**
-     * The Value.
-     */
-=======
             "Phone numbers should only contain numbers, and it should be at "
                 + "least 3 digits long";
     /*
@@ -32,7 +22,6 @@ public class Topic {
      * otherwise " " (a blank string) becomes a valid input.
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
->>>>>>> zj_refactor
     public final String value;
 
     /**

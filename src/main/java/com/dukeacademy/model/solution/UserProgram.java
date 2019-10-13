@@ -1,5 +1,9 @@
 package com.dukeacademy.model.solution;
 
+import com.dukeacademy.model.question.Description;
+
+import java.util.Objects;
+
 /**
  * Represents a user's submission for a question.
  */
@@ -51,5 +55,28 @@ public class UserProgram {
 
         // Convert the package to an actual path
         return packageStatement.replace("package", "").trim() + "." + className;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(" Class Name: ")
+               .append(getCanonicalName())
+               .append(" Source code: ")
+               .append(getSourceCodeAsString());
+        return builder.toString();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof UserProgram // instanceof handles nulls
+            && className.equals(((UserProgram) other).className)
+            && sourceCode.equals(((UserProgram) other).sourceCode)); // state check
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(className, sourceCode);
     }
 }
