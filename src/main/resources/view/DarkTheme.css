@@ -344,7 +344,7 @@
     -fx-text-fill: white;
 }
 
-#filterField, #personListPanel, #personWebpage {
+#filterField, #questionListPanel, #questionWebpage {
     -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
 }
 
