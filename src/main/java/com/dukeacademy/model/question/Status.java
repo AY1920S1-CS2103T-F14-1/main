@@ -6,10 +6,11 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Question's status in the question bank.
- * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidStatus(String)}
  */
 public class Status {
 
+<<<<<<< HEAD
     private static final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
     /**
      * The constant MESSAGE_CONSTRAINTS.
@@ -33,6 +34,15 @@ public class Status {
      */
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@"
             + DOMAIN_FIRST_CHARACTER_REGEX + DOMAIN_MIDDLE_REGEX + DOMAIN_LAST_CHARACTER_REGEX;
+=======
+    public static final String MESSAGE_CONSTRAINTS = "Status is either"
+        + "New, Attempted or Passed.";
+    /*
+     * The first character of the difficulty must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[^\\s].*";
+>>>>>>> zj_refactor
 
     /**
      * The Value.
@@ -46,7 +56,7 @@ public class Status {
      */
     public Status(String status) {
         requireNonNull(status);
-        checkArgument(isValidEmail(status), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidStatus(status), MESSAGE_CONSTRAINTS);
         value = status;
     }
 
@@ -56,7 +66,7 @@ public class Status {
      * @param test the test
      * @return the boolean
      */
-    public static boolean isValidEmail(String test) {
+    public static boolean isValidStatus(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 

@@ -6,7 +6,7 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Represents a Question's topic number in the question bank.
- * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
+ * Guarantees: immutable; is valid as declared in {@link #isValidTopic(String)}
  */
 public class Topic {
 
@@ -15,6 +15,7 @@ public class Topic {
      * The constant MESSAGE_CONSTRAINTS.
      */
     public static final String MESSAGE_CONSTRAINTS =
+<<<<<<< HEAD
             "Topic numbers should only contain numbers, and it should be at least 3 digits long";
     /**
      * The constant VALIDATION_REGEX.
@@ -23,6 +24,15 @@ public class Topic {
     /**
      * The Value.
      */
+=======
+            "Phone numbers should only contain numbers, and it should be at "
+                + "least 3 digits long";
+    /*
+     * The first and last character of the difficulty must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[^\\s].*";
+>>>>>>> zj_refactor
     public final String value;
 
     /**
@@ -32,7 +42,7 @@ public class Topic {
      */
     public Topic(String topic) {
         requireNonNull(topic);
-        checkArgument(isValidPhone(topic), MESSAGE_CONSTRAINTS);
+        checkArgument(isValidTopic(topic), MESSAGE_CONSTRAINTS);
         value = topic;
     }
 
@@ -42,7 +52,7 @@ public class Topic {
      * @param test the test
      * @return the boolean
      */
-    public static boolean isValidPhone(String test) {
+    public static boolean isValidTopic(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
