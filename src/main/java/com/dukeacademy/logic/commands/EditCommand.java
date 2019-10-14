@@ -2,6 +2,7 @@ package com.dukeacademy.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -14,11 +15,13 @@ import com.dukeacademy.commons.util.CollectionUtil;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.parser.CliSyntax;
 import com.dukeacademy.model.Model;
+import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
+import com.dukeacademy.model.solution.TestCase;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -117,9 +120,14 @@ public class EditCommand extends Command {
             questionToEdit.getDifficulty());
         Set<Tag> updatedTags = editQuestionDescriptor.getTags().orElse(
             questionToEdit.getTags());
+        Description updatedDescription = new Description("updated description "
+            + "placeholder");
+        List<TestCase> updatedTestCases = new ArrayList<TestCase>();
+        updatedTestCases.add(new TestCase("updated input", "updated "
+            + "output"));
 
         return new Question(updatedTitle, updatedTopic, updatedStatus,
-            updatedDifficulty, updatedTags);
+            updatedDifficulty, updatedTags, updatedDescription, updatedTestCases);
     }
 
     @Override

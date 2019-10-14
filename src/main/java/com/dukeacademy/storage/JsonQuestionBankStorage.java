@@ -34,7 +34,7 @@ public class JsonQuestionBankStorage implements QuestionBankStorage {
         this.filePath = filePath;
     }
 
-    public Path getAddressBookFilePath() {
+    public Path getQuestionBankFilePath() {
         return filePath;
     }
 

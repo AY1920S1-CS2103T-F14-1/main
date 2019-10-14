@@ -1,16 +1,20 @@
 package com.dukeacademy.model.util;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.dukeacademy.model.QuestionBank;
 import com.dukeacademy.model.ReadOnlyQuestionBank;
+import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
+import com.dukeacademy.model.solution.TestCase;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -27,22 +31,36 @@ public class SampleDataUtil {
             new Question(new Title("Two Sum"), new Topic("Arrays"),
                 new Status("New"),
                 new Difficulty("Easy"),
-                getTagSet("java")),
+                getTagSet("java"), new Description("description 1"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2"))),
             new Question(new Title("Search Insert Position"), new Topic("Binary Search"), new Status("New"),
                 new Difficulty("Easy"),
-                getTagSet("java", "Google2019")),
+                getTagSet("java", "Google2019"), new Description("description"
+                + " 2"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2"))),
             new Question(new Title("Linked List Cycle"), new Topic("Linked List"), new Status("Passed"),
                 new Difficulty("Easy"),
-                getTagSet("java", "CS2040")),
+                getTagSet("java", "CS2040"), new Description("description 3"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2"))),
             new Question(new Title("Happy Number"), new Topic("Hash Table"), new Status("Passed"),
                 new Difficulty("Easy"),
-                getTagSet("java")),
+                getTagSet("java"), new Description("description 4"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2"))),
             new Question(new Title("Triangle"), new Topic("Dynamic Programming"), new Status("Attempted"),
                 new Difficulty("Medium"),
-                getTagSet("java", "100 days of Java")),
+                getTagSet("java", "100 days of Java"), new Description(
+                    "description 5"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2"))),
             new Question(new Title("Freedom Trial"), new Topic("Divide and Conquer"), new Status("New"),
                 new Difficulty("Hard"),
-                getTagSet("C++", "Java"))
+                getTagSet("C++", "Java"), new Description("description 1"),
+                getTestCaseSet(new TestCase("input1", "result1"),
+                    new TestCase("input2", "result2")))
         };
     }
 
@@ -69,6 +87,17 @@ public class SampleDataUtil {
         return Arrays.stream(strings)
                 .map(Tag::new)
                 .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a testcase list containing the list of testcases given.
+     *
+     * @param testcases the testcases
+     * @return the testcase list
+     */
+    public static ArrayList<TestCase> getTestCaseSet(TestCase... testcases) {
+        return new ArrayList<>(Arrays.stream(testcases)
+                     .collect(Collectors.toList()));
     }
 
 }

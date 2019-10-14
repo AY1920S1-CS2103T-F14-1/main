@@ -7,16 +7,20 @@ import static com.dukeacademy.logic.parser.CliSyntax.PREFIX_TAG;
 import static com.dukeacademy.logic.parser.CliSyntax.PREFIX_TITLE;
 import static com.dukeacademy.logic.parser.CliSyntax.PREFIX_TOPIC;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
 import com.dukeacademy.logic.commands.AddCommand;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
+import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
+import com.dukeacademy.model.solution.TestCase;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -45,8 +49,14 @@ public class AddCommandParser implements Parser<AddCommand> {
             status = ParserUtil.parseStatus(argMultimap.getValue(PREFIX_STATUS).get());
         Difficulty difficulty = ParserUtil.parseDifficulty(argMultimap.getValue(PREFIX_DIFFICULTY).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Description description = new Description("description "
+            + "placeholder");
+        List<TestCase> testCaseList = new ArrayList<TestCase>();
+        testCaseList.add(new TestCase("input placeholder",
+            "output placeholder"));
 
-        Question question = new Question(title, topic, status, difficulty, tagList);
+        Question question = new Question(title, topic, status, difficulty,
+            tagList, description, testCaseList);
 
         return new AddCommand(question);
     }

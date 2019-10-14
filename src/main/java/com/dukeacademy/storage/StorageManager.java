@@ -55,13 +55,13 @@ public class StorageManager implements Storage {
     // ================ QuestionBank methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return questionBankStorage.getAddressBookFilePath();
+    public Path getQuestionBankFilePath() {
+        return questionBankStorage.getQuestionBankFilePath();
     }
 
     @Override
     public Optional<ReadOnlyQuestionBank> readQuestionBank() throws DataConversionException, IOException {
-        return readQuestionBank(questionBankStorage.getAddressBookFilePath());
+        return readQuestionBank(questionBankStorage.getQuestionBankFilePath());
     }
 
     @Override
@@ -72,7 +72,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveQuestionBank(ReadOnlyQuestionBank questionBank) throws IOException {
-        saveQuestionBank(questionBank, questionBankStorage.getAddressBookFilePath());
+        saveQuestionBank(questionBank, questionBankStorage.getQuestionBankFilePath());
     }
 
     @Override

@@ -7,11 +7,14 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.dukeacademy.commons.exceptions.IllegalValueException;
+import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
+import com.dukeacademy.model.solution.TestCase;
+import com.dukeacademy.model.solution.UserProgram;
 import com.dukeacademy.model.tag.Tag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -32,6 +35,8 @@ class JsonAdaptedQuestion {
     private final String status;
     private final String difficulty;
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    private final String description;
+    private final List<TestCase> testCases;
 
     /**
      * Constructs a {@code JsonAdaptedQuestion} with the given question details.
@@ -41,11 +46,15 @@ class JsonAdaptedQuestion {
      * @param status     the status
      * @param difficulty the difficulty
      * @param tagged     the tagged
+     * @param description the description
+     * @param testCases the test cases
      */
     @JsonCreator
     public JsonAdaptedQuestion(@JsonProperty("title") String title, @JsonProperty("topic") String topic,
                                @JsonProperty("status") String status, @JsonProperty("difficulty") String difficulty,
-                               @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+                               @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
+                               @JsonProperty("description") String description,
+                               @JsonProperty("testcases") List<TestCase> testCases) {
         this.title = title;
         this.topic = topic;
         this.status = status;
@@ -53,6 +62,8 @@ class JsonAdaptedQuestion {
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
+        this.description = description;
+        this.testCases = testCases;
     }
 
     /**
@@ -68,6 +79,8 @@ class JsonAdaptedQuestion {
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
+        description = source.getDescription().description;
+        testCases = source.getTestCases();
     }
 
     /**
@@ -77,9 +90,9 @@ class JsonAdaptedQuestion {
      * @throws IllegalValueException if there were any data constraints violated in the adapted question.
      */
     public Question toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
+        final List<Tag> questionTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            personTags.add(tag.toModelType());
+            questionTags.add(tag.toModelType());
         }
 
         if (title == null) {
@@ -115,8 +128,13 @@ class JsonAdaptedQuestion {
         }
         final Difficulty modelDifficulty = new Difficulty(difficulty);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-        return new Question(modelTitle, modelTopic, modelStatus, modelDifficulty, modelTags);
+        final Description modelDescription = new Description(description);
+
+        final List<TestCase> modelTestCases = testCases;
+
+        final Set<Tag> modelTags = new HashSet<>(questionTags);
+        return new Question(modelTitle, modelTopic, modelStatus,
+            modelDifficulty, modelTags, modelDescription, modelTestCases);
     }
 
 }

@@ -129,7 +129,7 @@ public class QuestionBank implements ReadOnlyQuestionBank {
     public void updateProfile(String s) {
         profile.clear();
         profile.add(s);
-        logger.info("profile updated in addressbook " + profile.get(0));
+        logger.info("profile updated in questionbank " + profile.get(0));
     }
 
     /**

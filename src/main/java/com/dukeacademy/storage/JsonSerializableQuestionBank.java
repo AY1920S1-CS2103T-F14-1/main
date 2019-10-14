@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 /**
  * An Immutable QuestionBank that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "questionbank")
 class JsonSerializableQuestionBank {
 
     /**
