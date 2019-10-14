@@ -88,7 +88,7 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/Main.java"><code>Main</code></a> and <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -175,13 +175,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -207,7 +207,7 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -259,7 +259,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -270,10 +270,10 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Address Book data.</p>
+<p>stores the Duke Academy data.</p>
 </li>
 <li>
-<p>exposes an unmodifiable <code>ObservableList&lt;Person&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
+<p>exposes an unmodifiable <code>ObservableList&lt;Question&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
 </li>
 <li>
 <p>does not depend on any of the other three components.</p>
@@ -287,7 +287,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book</code>, which <code>Person</code> can reference. This would allow <code>Address Book</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Person</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
+As a more OOP model, we can store a <code>Tag</code> list in <code>Duke Academy</code>, which <code>Question</code> can reference. This would allow <code>Duke Academy</code> to only require one <code>Tag</code> object per unique <code>Tag</code>, instead of each <code>Question</code> needing their own <code>Tag</code> object. An example of how such a model may look like is given below.<br>
 <br>
 <span class="image"><img src="images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram"></span>
 </td>
@@ -304,7 +304,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -315,7 +315,7 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the Duke Academy data in json format and read it back.</p>
 </li>
 </ul>
 </div>
@@ -340,19 +340,19 @@ As a more OOP model, we can store a <code>Tag</code> list in <code>Address Book<
 <h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">3.1.1. Proposed Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>AddressBook</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
+It extends <code>QuestionBank</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current address book state in its history.</p>
+<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current question bank state in its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous address book state from its history.</p>
+<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous question bank state from its history.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone address book state from its history.</p>
+<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone question bank state from its history.</p>
 </li>
 </ul>
 </div>
@@ -363,7 +363,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial address book state, and the <code>currentStatePointer</code> pointing to that single address book state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial question bank state, and the <code>currentStatePointer</code> pointing to that single question bank state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -371,7 +371,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the address book. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the address book after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the question bank. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the question bank after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted question bank state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -379,7 +379,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code>addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified question bank state to be saved into the <code>addressBookStateList</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -393,13 +393,13 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the address book state will not be saved into the <code>addressBookStateList</code>.
+If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the question bank state will not be saved into the <code>addressBookStateList</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous question bank state, and restores the question bank to that state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -413,7 +413,7 @@ If a command fails its execution, it will not call <code>Model#commitAddressBook
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial address book state, then there are no previous address book states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
+If the <code>currentStatePointer</code> is at index 0, pointing to the initial question bank state, then there are no previous question bank states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
 </td>
 </tr>
 </table>
@@ -439,7 +439,7 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 </table>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the question bank to that state.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -448,13 +448,13 @@ The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) b
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone address book states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest question bank state, then there are no undone question bank states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the address book, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the question bank, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -462,7 +462,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all address book states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all question bank states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -485,7 +485,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire address book.</p>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire question bank.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -518,7 +518,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of address book states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of question bank states.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1292,4 +1292,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-12 11:05:36 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-14 06:33:35 UTC</div></div></div></body></html>
