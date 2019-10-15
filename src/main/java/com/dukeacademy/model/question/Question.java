@@ -130,6 +130,7 @@ public class Question {
      * @return the testcases
      */
     public List<TestCase> getTestCases() {
+        // zj - can make it not modifiable
         return testCases;
     }
 

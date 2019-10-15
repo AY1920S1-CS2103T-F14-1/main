@@ -1,13 +1,16 @@
 package com.dukeacademy.model.solution;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import java.util.Objects;
 
 /**
  * Represents a test case for a question.
  */
 public class TestCase {
-    private final String input;
-    private final String expectedResult;
+    public final String input;
+    public final String expectedResult;
 
     /**
      * Instantiates a new Test case.
@@ -15,6 +18,7 @@ public class TestCase {
      * @param input          the input
      * @param expectedResult the expected result
      */
+    @JsonCreator
     public TestCase(String input, String expectedResult) {
         this.input = input;
         this.expectedResult = expectedResult;
@@ -25,6 +29,7 @@ public class TestCase {
      *
      * @return the input
      */
+    @JsonValue
     public String getInput() {
         return input;
     }
@@ -34,6 +39,7 @@ public class TestCase {
      *
      * @return the expected result
      */
+    @JsonValue
     public String getExpectedResult() {
         return expectedResult;
     }

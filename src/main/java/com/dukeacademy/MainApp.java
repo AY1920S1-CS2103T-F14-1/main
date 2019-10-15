@@ -200,7 +200,7 @@ public class MainApp extends Application {
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Difficulty Book ] =============================");
+        logger.info("============================ [ Stopping Duke Academy ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

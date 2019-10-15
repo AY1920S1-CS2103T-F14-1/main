@@ -1,5 +1,6 @@
 package com.dukeacademy.storage;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +13,13 @@ import com.dukeacademy.model.question.Question;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * An Immutable QuestionBank that is serializable to JSON format.
  */
-@JsonRootName(value = "questionbank")
-class JsonSerializableQuestionBank {
+@JsonDeserialize(using = JsonSerializableQuestionBankDeserializer.class)
+class JsonSerializableQuestionBank implements Serializable {
 
     /**
      * The constant MESSAGE_DUPLICATE_QUESTION.
@@ -25,6 +27,7 @@ class JsonSerializableQuestionBank {
     public static final String MESSAGE_DUPLICATE_QUESTION = "Questions list "
         + "contains duplicate question(s).";
 
+    @JsonProperty("questions")
     private final List<JsonAdaptedQuestion> questions = new ArrayList<>();
 
     /**

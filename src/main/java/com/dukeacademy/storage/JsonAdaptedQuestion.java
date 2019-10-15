@@ -19,10 +19,12 @@ import com.dukeacademy.model.tag.Tag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * Jackson-friendly version of {@link Question}.
  */
+@JsonDeserialize(using = JsonSerializableQuestionBankDeserializer.class)
 class JsonAdaptedQuestion {
 
     /**
@@ -30,13 +32,20 @@ class JsonAdaptedQuestion {
      */
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Question's %s field is missing!";
 
+    @JsonProperty("title")
     private final String title;
+    @JsonProperty("topic")
     private final String topic;
+    @JsonProperty("status")
     private final String status;
+    @JsonProperty("difficulty")
     private final String difficulty;
+    @JsonProperty("tagged")
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    @JsonProperty("description")
     private final String description;
-    private final List<TestCase> testCases;
+    @JsonProperty("testCases")
+    private final List<JsonAdaptedTestCase> testCases = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedQuestion} with the given question details.
@@ -54,7 +63,7 @@ class JsonAdaptedQuestion {
                                @JsonProperty("status") String status, @JsonProperty("difficulty") String difficulty,
                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
                                @JsonProperty("description") String description,
-                               @JsonProperty("testcases") List<TestCase> testCases) {
+                               @JsonProperty("testcases") List<JsonAdaptedTestCase> testCases) {
         this.title = title;
         this.topic = topic;
         this.status = status;
@@ -63,7 +72,7 @@ class JsonAdaptedQuestion {
             this.tagged.addAll(tagged);
         }
         this.description = description;
-        this.testCases = testCases;
+        this.testCases.addAll(testCases);
     }
 
     /**
@@ -80,7 +89,9 @@ class JsonAdaptedQuestion {
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
         description = source.getDescription().description;
-        testCases = source.getTestCases();
+        testCases.addAll(source.getTestCases().stream()
+                     .map(t -> new JsonAdaptedTestCase(t.getInput(), t.getExpectedResult()))
+                     .collect(Collectors.toList()));
     }
 
     /**
@@ -130,7 +141,13 @@ class JsonAdaptedQuestion {
 
         final Description modelDescription = new Description(description);
 
-        final List<TestCase> modelTestCases = testCases;
+        final List<TestCase> questionTestCases = new ArrayList<>();
+        for (JsonAdaptedTestCase testCase : testCases) {
+            questionTestCases.add(testCase.toModelType());
+        }
+
+        final List<TestCase> modelTestCases =
+            new ArrayList<>(questionTestCases);
 
         final Set<Tag> modelTags = new HashSet<>(questionTags);
         return new Question(modelTitle, modelTopic, modelStatus,
