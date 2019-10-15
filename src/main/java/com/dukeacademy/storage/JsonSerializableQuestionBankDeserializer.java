@@ -30,7 +30,6 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
                                                      DeserializationContext ctxt)
         throws IOException, JsonProcessingException {
         JsonNode jsonQuestionBankNode = p.getCodec().readTree(p);
-        logger.info(jsonQuestionBankNode.toString());
         ArrayNode rawJsonAdaptedQuestionList =
             (ArrayNode) jsonQuestionBankNode.get("questions");
 
