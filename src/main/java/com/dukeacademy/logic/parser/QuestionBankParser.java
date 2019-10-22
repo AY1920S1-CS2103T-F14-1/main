@@ -16,6 +16,7 @@ import com.dukeacademy.logic.commands.FindCommand;
 import com.dukeacademy.logic.commands.HelpCommand;
 import com.dukeacademy.logic.commands.HomeCommand;
 import com.dukeacademy.logic.commands.ListCommand;
+import com.dukeacademy.logic.commands.ViewCommand;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
 
 /**
@@ -71,6 +72,9 @@ public class QuestionBankParser {
 
         case HomeCommand.COMMAND_WORD:
             return new HomeCommand();
+
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

@@ -51,6 +51,9 @@ public class MainWindow extends UiPart<Stage> {
 
 
     @FXML
+    private StackPane problemStatementPlaceholder;
+
+    @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
@@ -160,6 +163,13 @@ public class MainWindow extends UiPart<Stage> {
         runCodeResultPanel = new RunCodeResult(new TestCase("1 1", "2"),
                 TestCaseResult.getFailedTestCaseResult("1 1", "2", "3"));
         runCodeResultPlaceholder.getChildren().add(runCodeResultPanel.getRoot());
+
+        //problemStatementPanel =
+        //    new ProblemStatementPanel(questionsLogic.getProblemStatement());
+        problemStatementPanel = new ProblemStatementPanel("test problem "
+            + "statement field");
+        problemStatementPlaceholder.getChildren().add(problemStatementPanel.getRoot());
+
 
     }
 
@@ -277,7 +287,7 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see QuestionsLogic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private CommandResult executeCommand(String commandText) throws Exception {
         try {
             CommandResult commandResult = questionsLogic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
@@ -291,9 +301,9 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            if (commandResult.isView()) {
+            /*if (commandResult.isView()) {
                 displayProblemStatement();
-            }
+            }*/
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
@@ -302,6 +312,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    @FXML
     private void displayProblemStatement() throws Exception{
         try {
             problemStatementPanel = new ProblemStatementPanel();

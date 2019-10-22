@@ -26,6 +26,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Question> filteredQuestions;
     private final ArrayList<String> profile;
+    private final ArrayList<Question> questionToView;
 
     /**
      * Initializes a ModelManager with the given questionBank and userPrefs.
@@ -44,6 +45,7 @@ public class ModelManager implements Model {
         filteredQuestions = new FilteredList<>(this.questionBank.getQuestionList());
         profile = new ArrayList<>();
         profile.add("initialised profile placeholder");
+        questionToView = new ArrayList<>();
     }
 
     /**
@@ -163,8 +165,17 @@ public class ModelManager implements Model {
     }
 
     //============= View a Question ===========================================
-    @Override public void viewQuestion(Question questionToView) {
+    @Override
+    public void setQuestionToView(Question questionToView) {
+        this.questionToView.set(0, questionToView);
+    }
 
+    @Override
+    public String getProblemStatement() {
+        if (this.questionToView.isEmpty()) {
+            return "problem view page is empty.";
+        }
+        return this.questionToView.get(0).getDescription().description;
     }
 
     @Override

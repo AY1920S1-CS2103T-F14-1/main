@@ -68,4 +68,5 @@ public interface QuestionsLogic {
      * @return the profile
      */
     ArrayList<String> getProfile();
+    public String getProblemStatement();
 }

@@ -141,5 +141,7 @@ public interface Model {
      *
      * @param questionToView         the question to be viewed.
      */
-    void viewQuestion(Question questionToView);
+    void setQuestionToView(Question questionToView);
+
+    String getProblemStatement();
 }

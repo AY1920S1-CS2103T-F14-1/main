@@ -90,4 +90,9 @@ public class QuestionsLogicManager implements QuestionsLogic {
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
+
+    @Override
+    public String getProblemStatement() {
+        return model.getProblemStatement();
+    }
 }

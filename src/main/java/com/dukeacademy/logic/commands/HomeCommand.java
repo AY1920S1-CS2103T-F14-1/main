@@ -40,6 +40,6 @@ public class HomeCommand extends Command{
         requireNonNull(model);
         model.updateProfile("This is the updated profile " + counter);
         counter +=1;
-        return new CommandResult(HOMEPAGE_MESSAGE, false, false, true);
+        return new CommandResult(HOMEPAGE_MESSAGE, false, false, true,false);
     }
 }

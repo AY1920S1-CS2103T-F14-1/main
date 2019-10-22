@@ -19,6 +19,8 @@ public class CommandResult {
 
     private final boolean home;
 
+    private final boolean view;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      *
@@ -27,11 +29,13 @@ public class CommandResult {
      * @param exit           the exit
      * @param home           the home
      */
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean home) {
+    public CommandResult(String feedbackToUser, boolean showHelp,
+                         boolean exit, boolean home, boolean view) {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
         this.home = home;
+        this.view = view;
     }
 
     /**
@@ -41,7 +45,7 @@ public class CommandResult {
      * @param feedbackToUser the feedback to user
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false,false);
+        this(feedbackToUser, false, false,false, false);
     }
 
     /**
@@ -78,6 +82,15 @@ public class CommandResult {
      */
     public boolean isHome() {
         return home;
+    }
+
+    /**
+     * Is home boolean.
+     *
+     * @return the boolean
+     */
+    public boolean isView() {
+        return view;
     }
 
     @Override

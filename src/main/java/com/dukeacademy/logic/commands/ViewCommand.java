@@ -57,9 +57,11 @@ public class ViewCommand extends Command {
         }
 
         Question questionToView = lastShownList.get(targetIndex.getZeroBased());
-        model.viewQuestion(questionToView);
+        System.out.println("!!!View Command passing the question to model: " + questionToView.getTitle());
+        model.setQuestionToView(questionToView);
+        System.out.println("!!!View Command passed the question to model: " + questionToView.getTitle());
         return new CommandResult(String.format(MESSAGE_VIEW_QUESTION_SUCCESS,
-            questionToView));
+            questionToView), false, false, false, true);
     }
 
     @Override
