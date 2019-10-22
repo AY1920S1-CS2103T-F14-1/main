@@ -3,10 +3,12 @@ package com.dukeacademy.storage;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.dukeacademy.commons.exceptions.IllegalValueException;
+import com.dukeacademy.model.question.UserProgramFilePath;
 import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
@@ -14,7 +16,6 @@ import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
 import com.dukeacademy.model.solution.TestCase;
-import com.dukeacademy.model.solution.UserProgram;
 import com.dukeacademy.model.tag.Tag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -46,28 +47,35 @@ class JsonAdaptedQuestion {
     private final String description;
     @JsonProperty("testCases")
     private final List<JsonAdaptedTestCase> testCases = new ArrayList<>();
+    @JsonProperty("userProgramFilePath")
+    private final String userProgramFilePath;
 
     /**
      * Constructs a {@code JsonAdaptedQuestion} with the given question details.
-     *
-     * @param title      the title
+     *  @param title      the title
      * @param topic      the topic
      * @param status     the status
      * @param difficulty the difficulty
      * @param tagged     the tagged
      * @param description the description
      * @param testCases the test cases
+     * @param userProgramFilePath
      */
     @JsonCreator
-    public JsonAdaptedQuestion(@JsonProperty("title") String title, @JsonProperty("topic") String topic,
-                               @JsonProperty("status") String status, @JsonProperty("difficulty") String difficulty,
+    public JsonAdaptedQuestion(@JsonProperty("title") String title,
+                               @JsonProperty("topic") String topic,
+                               @JsonProperty("status") String status,
+                               @JsonProperty("difficulty") String difficulty,
                                @JsonProperty("tagged") List<JsonAdaptedTag> tagged,
                                @JsonProperty("description") String description,
-                               @JsonProperty("testcases") List<JsonAdaptedTestCase> testCases) {
+                               @JsonProperty("testcases")
+                                   List<JsonAdaptedTestCase> testCases,
+                               @JsonProperty("userProgramFilePath") String userProgramFilePath) {
         this.title = title;
         this.topic = topic;
         this.status = status;
         this.difficulty = difficulty;
+        this.userProgramFilePath = userProgramFilePath;
         if (tagged != null) {
             this.tagged.addAll(tagged);
         }
@@ -92,6 +100,8 @@ class JsonAdaptedQuestion {
         testCases.addAll(source.getTestCases().stream()
                      .map(t -> new JsonAdaptedTestCase(t.getInput(), t.getExpectedResult()))
                      .collect(Collectors.toList()));
+        if (source.getUserProgramFilePath().get().)
+        userProgramFilePath = source.getUserProgramFilePath().;
     }
 
     /**
@@ -139,6 +149,14 @@ class JsonAdaptedQuestion {
         }
         final Difficulty modelDifficulty = new Difficulty(difficulty);
 
+        if (description == null) {
+            throw new IllegalValueException(String
+                .format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Description.class.getSimpleName()));
+        }
+        if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
+        }
         final Description modelDescription = new Description(description);
 
         final List<TestCase> questionTestCases = new ArrayList<>();
@@ -150,8 +168,19 @@ class JsonAdaptedQuestion {
             new ArrayList<>(questionTestCases);
 
         final Set<Tag> modelTags = new HashSet<>(questionTags);
-        return new Question(modelTitle, modelTopic, modelStatus,
+        Question question = new Question(modelTitle, modelTopic, modelStatus,
             modelDifficulty, modelTags, modelDescription, modelTestCases);
+
+        if (userProgramFilePath == null) {
+            question.setUserProgramFilePath(Optional.empty());
+        } else {
+            if (!UserProgramFilePath.isValidUserProgramFilePath(userProgramFilePath)) {
+                throw new IllegalValueException(UserProgramFilePath.MESSAGE_CONSTRAINTS);
+            }
+            question.setUserProgramFilePath(Optional.of(new UserProgramFilePath(userProgramFilePath)));
+        }
+
+        return question;
     }
 
 }

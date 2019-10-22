@@ -29,6 +29,7 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
     @Override public JsonSerializableQuestionBank deserialize(JsonParser p,
                                                      DeserializationContext ctxt)
         throws IOException, JsonProcessingException {
+        // zj - use SLAP to abstract out the deserialization process.
         JsonNode jsonQuestionBankNode = p.getCodec().readTree(p);
         ArrayNode rawJsonAdaptedQuestionList =
             (ArrayNode) jsonQuestionBankNode.get("questions");
@@ -60,7 +61,7 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
             }
             JsonAdaptedQuestion jsonAdaptedQuestion =
                 new JsonAdaptedQuestion(title, topic, status, difficulty,
-                    tagList, description, testCaseList);
+                    tagList, description, testCaseList, userProgramFilePath);
             jsonAdaptedQuestionList.add(jsonAdaptedQuestion);
         }
         JsonSerializableQuestionBank jsonSerializableQuestionBank =

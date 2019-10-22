@@ -31,7 +31,7 @@ public class Question {
 
     // Data fields
     private final Status status;
-    private UserProgram userProgram = null;
+    private Optional<UserProgramFilePath> userProgramFilePath;
     private final List<TestCase> testCases;
 
 
@@ -115,13 +115,14 @@ public class Question {
     }
 
     /**
-     * Returns the user program currently attempted by the user.
-     * If not attempted, the userProgram is null.
+     * Returns the file path which stores the user program currently attempted
+     * by the user.
+     * If not attempted, the file path is an empty string.
      *
      * @return the userProgram
      */
-    public Optional<UserProgram> getUserProgram() {
-        return Optional.of(userProgram);
+    public Optional<UserProgramFilePath> getUserProgramFilePath() {
+        return userProgramFilePath;
     }
 
     /**
@@ -132,6 +133,10 @@ public class Question {
     public List<TestCase> getTestCases() {
         // zj - can make it not modifiable
         return testCases;
+    }
+
+    public void setUserProgramFilePath(Optional<UserProgramFilePath> filePath) {
+        this.userProgramFilePath = filePath;
     }
 
     /**
@@ -172,7 +177,7 @@ public class Question {
                 && otherQuestion.getDifficulty().equals(getDifficulty())
                 && otherQuestion.getTags().equals(getTags())
                 && otherQuestion.getDescription().equals(getDescription())
-                && otherQuestion.getUserProgram().equals(getUserProgram())
+                && otherQuestion.getUserProgramFilePath().equals(getUserProgramFilePath())
                 && otherQuestion.getTestCases().equals(getTestCases());
     }
 

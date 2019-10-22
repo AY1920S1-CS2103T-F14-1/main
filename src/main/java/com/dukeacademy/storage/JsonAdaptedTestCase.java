@@ -66,6 +66,8 @@ public class JsonAdaptedTestCase {
      * violated in the adapted test case.
      */
     public TestCase toModelType() throws IllegalValueException {
+        // zj - add validity check for test cases: both input and output
+        // cannot be null.
         return new TestCase(input, expectedResult);
     }
 }

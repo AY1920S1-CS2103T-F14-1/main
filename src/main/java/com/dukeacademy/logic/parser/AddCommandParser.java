@@ -57,6 +57,7 @@ public class AddCommandParser implements Parser<AddCommand> {
 
         Question question = new Question(title, topic, status, difficulty,
             tagList, description, testCaseList);
+        question.setUserProgramFilePath("");
 
         return new AddCommand(question);
     }
