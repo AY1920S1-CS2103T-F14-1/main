@@ -11,8 +11,8 @@ import com.dukeacademy.commons.core.Version;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 import com.dukeacademy.commons.util.ConfigUtil;
 import com.dukeacademy.commons.util.StringUtil;
-import com.dukeacademy.logic.Logic;
-import com.dukeacademy.logic.LogicManager;
+import com.dukeacademy.logic.question.QuestionsLogic;
+import com.dukeacademy.logic.question.QuestionsLogicManager;
 import com.dukeacademy.model.Model;
 import com.dukeacademy.model.ModelManager;
 import com.dukeacademy.model.QuestionBank;
@@ -51,7 +51,7 @@ public class MainApp extends Application {
     /**
      * The Logic.
      */
-    protected Logic logic;
+    protected QuestionsLogic questionsLogic;
     /**
      * The Storage.
      */
@@ -84,9 +84,9 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        logic = new LogicManager(model, storage);
+        questionsLogic = new QuestionsLogicManager(model, storage);
 
-        ui = new UiManager(logic);
+        ui = new UiManager(questionsLogic);
     }
 
     /**

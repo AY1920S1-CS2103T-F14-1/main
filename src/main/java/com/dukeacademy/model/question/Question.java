@@ -34,7 +34,6 @@ public class Question {
     private Optional<UserProgramFilePath> userProgramFilePath;
     private final List<TestCase> testCases;
 
-
     /**
      * Every field must be present and not null.
      *
@@ -131,8 +130,8 @@ public class Question {
      * @return the testcases
      */
     public List<TestCase> getTestCases() {
-        // zj - can make it not modifiable
-        return testCases;
+        List<TestCase> copy = new ArrayList<>(this.testCases);
+        return copy;
     }
 
     public void setUserProgramFilePath(Optional<UserProgramFilePath> filePath) {
@@ -203,5 +202,6 @@ public class Question {
                .append(getDescription());
         return builder.toString();
     }
+
 
 }
