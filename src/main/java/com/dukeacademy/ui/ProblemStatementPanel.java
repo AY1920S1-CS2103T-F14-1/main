@@ -29,6 +29,7 @@ public class ProblemStatementPanel extends UiPart<Region> {
     public ProblemStatementPanel(String problemStatement) {
         super(FXML);
         problemStatementDisplay.setText(problemStatement);
+        problemStatementDisplay.setWrapText(true);
     }
 
     /**

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.StackPane?>
-
 <?import javafx.scene.layout.AnchorPane?>
-<AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-<StackPane fx:id="problemStatementPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" >
-   <children>
-      <TextArea fx:id="problemStatementDisplay" promptText="Test" />
-   </children>
+
+<?import javafx.scene.layout.StackPane?>
+<StackPane fx:id="problemStatementPanel" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<TextArea fx:id="problemStatementDisplay" editable="false" prefHeight="400.0" style="-fx-background-color: transparent;" wrapText="true" />
 </StackPane>
-</AnchorPane>
