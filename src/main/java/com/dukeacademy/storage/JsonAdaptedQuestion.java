@@ -8,6 +8,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.dukeacademy.commons.exceptions.IllegalValueException;
+import com.dukeacademy.model.program.UserProgram;
+import com.dukeacademy.model.question.TestCase;
 import com.dukeacademy.model.question.UserProgramFilePath;
 import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
@@ -15,17 +17,20 @@ import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
-import com.dukeacademy.model.solution.TestCase;
 import com.dukeacademy.model.tag.Tag;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * Jackson-friendly version of {@link Question}.
  */
 @JsonDeserialize(using = JsonSerializableQuestionBankDeserializer.class)
+//@JsonSerialize(using = JsonAdaptedQuestionSerializer.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 class JsonAdaptedQuestion {
 
     /**
@@ -34,21 +39,21 @@ class JsonAdaptedQuestion {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Question's %s field is missing!";
 
     @JsonProperty("title")
-    private final String title;
+    public final String title;
     @JsonProperty("topic")
-    private final String topic;
+    public final String topic;
     @JsonProperty("status")
-    private final String status;
+    public final String status;
     @JsonProperty("difficulty")
-    private final String difficulty;
+    public final String difficulty;
     @JsonProperty("tagged")
-    private final List<JsonAdaptedTag> tagged = new ArrayList<>();
+    public final List<JsonAdaptedTag> tagged = new ArrayList<>();
     @JsonProperty("description")
-    private final String description;
+    public final String description;
     @JsonProperty("testCases")
-    private final List<JsonAdaptedTestCase> testCases = new ArrayList<>();
+    public final List<JsonAdaptedTestCase> testCases = new ArrayList<>();
     @JsonProperty("userProgramFilePath")
-    private final String userProgramFilePath;
+    public final String userProgramFilePath;
 
     /**
      * Constructs a {@code JsonAdaptedQuestion} with the given question details.
@@ -100,8 +105,9 @@ class JsonAdaptedQuestion {
         testCases.addAll(source.getTestCases().stream()
                      .map(t -> new JsonAdaptedTestCase(t.getInput(), t.getExpectedResult()))
                      .collect(Collectors.toList()));
-        if (source.getUserProgramFilePath().get().)
-        userProgramFilePath = source.getUserProgramFilePath().;
+        userProgramFilePath = source.getUserProgramFilePath().toString();
+        System.out.print("detected user program" + source.getUserProgramFilePath().toString());
+
     }
 
     /**
@@ -168,17 +174,18 @@ class JsonAdaptedQuestion {
             new ArrayList<>(questionTestCases);
 
         final Set<Tag> modelTags = new HashSet<>(questionTags);
-        Question question = new Question(modelTitle, modelTopic, modelStatus,
-            modelDifficulty, modelTags, modelDescription, modelTestCases);
 
         if (userProgramFilePath == null) {
-            question.setUserProgramFilePath(Optional.empty());
-        } else {
-            if (!UserProgramFilePath.isValidUserProgramFilePath(userProgramFilePath)) {
-                throw new IllegalValueException(UserProgramFilePath.MESSAGE_CONSTRAINTS);
-            }
-            question.setUserProgramFilePath(Optional.of(new UserProgramFilePath(userProgramFilePath)));
+            throw new IllegalValueException(String
+                .format(MISSING_FIELD_MESSAGE_FORMAT,
+                    UserProgramFilePath.class.getSimpleName()));
         }
+
+        final UserProgramFilePath userProgramFilePath =
+            new UserProgramFilePath(this.userProgramFilePath);
+
+        Question question = new Question(modelTitle, modelTopic, modelStatus,
+            modelDifficulty, modelTags, modelDescription, modelTestCases, userProgramFilePath);
 
         return question;
     }

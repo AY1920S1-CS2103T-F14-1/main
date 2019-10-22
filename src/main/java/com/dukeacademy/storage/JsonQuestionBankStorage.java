@@ -1,14 +1,5 @@
 package com.dukeacademy.storage;
 
-import static java.util.Objects.requireNonNull;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.logging.Logger;
-
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 import com.dukeacademy.commons.exceptions.IllegalValueException;
@@ -16,22 +7,12 @@ import com.dukeacademy.commons.util.FileUtil;
 import com.dukeacademy.commons.util.JsonUtil;
 import com.dukeacademy.model.ReadOnlyQuestionBank;
 
-import com.dukeacademy.model.solution.TestCase;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.PropertyAccessor;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.deser.std.FromStringDeserializer;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import static java.util.Objects.requireNonNull;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.logging.Logger;
 
 /**
  * A class to access QuestionBank data stored as a json file on the hard disk.

@@ -9,18 +9,23 @@ import static com.dukeacademy.logic.parser.CliSyntax.PREFIX_TOPIC;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
+import com.dukeacademy.MainApp;
+import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.logic.commands.AddCommand;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
 import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
+import com.dukeacademy.model.question.TestCase;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
-import com.dukeacademy.model.solution.TestCase;
+import com.dukeacademy.model.question.UserProgramFilePath;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -54,10 +59,12 @@ public class AddCommandParser implements Parser<AddCommand> {
         List<TestCase> testCaseList = new ArrayList<TestCase>();
         testCaseList.add(new TestCase("input placeholder",
             "output placeholder"));
+        UserProgramFilePath userProgramFilePath = new UserProgramFilePath("");
 
         Question question = new Question(title, topic, status, difficulty,
-            tagList, description, testCaseList);
-        question.setUserProgramFilePath("");
+            tagList, description, testCaseList, userProgramFilePath);
+        Logger logger = LogsCenter.getLogger(MainApp.class);
+        logger.info("created user program file?" + question.getUserProgramFilePath());
 
         return new AddCommand(question);
     }

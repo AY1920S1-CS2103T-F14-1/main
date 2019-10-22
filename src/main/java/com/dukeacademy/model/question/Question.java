@@ -10,8 +10,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
-import com.dukeacademy.model.solution.TestCase;
-import com.dukeacademy.model.solution.UserProgram;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -31,7 +29,7 @@ public class Question {
 
     // Data fields
     private final Status status;
-    private Optional<UserProgramFilePath> userProgramFilePath;
+    private final UserProgramFilePath userProgramFilePath;
     private final List<TestCase> testCases;
 
     /**
@@ -46,7 +44,8 @@ public class Question {
      */
     public Question(Title title, Topic topic, Status status,
                     Difficulty difficulty, Set<Tag> tags,
-                    Description description, List<TestCase> testCases) {
+                    Description description, List<TestCase> testCases,
+                    UserProgramFilePath userProgramFilePath) {
         requireAllNonNull(title, topic, status, difficulty, tags, description
             , testCases);
         this.title = title;
@@ -56,6 +55,7 @@ public class Question {
         this.tags.addAll(tags);
         this.description = description;
         this.testCases = testCases;
+        this.userProgramFilePath = userProgramFilePath;
     }
 
     /**
@@ -120,7 +120,7 @@ public class Question {
      *
      * @return the userProgram
      */
-    public Optional<UserProgramFilePath> getUserProgramFilePath() {
+    public UserProgramFilePath getUserProgramFilePath() {
         return userProgramFilePath;
     }
 
@@ -132,10 +132,6 @@ public class Question {
     public List<TestCase> getTestCases() {
         List<TestCase> copy = new ArrayList<>(this.testCases);
         return copy;
-    }
-
-    public void setUserProgramFilePath(Optional<UserProgramFilePath> filePath) {
-        this.userProgramFilePath = filePath;
     }
 
     /**

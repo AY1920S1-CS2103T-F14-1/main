@@ -1,10 +1,9 @@
 package com.dukeacademy.storage;
 
 import com.dukeacademy.commons.exceptions.IllegalValueException;
-import com.dukeacademy.model.solution.TestCase;
+import com.dukeacademy.model.question.TestCase;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * Jackson-friendly version of {@link TestCase}.

@@ -212,7 +212,6 @@ public class MainWindow extends UiPart<Stage> {
         while ((myText = BF.readLine()) != null) {
             sb.append(myText + "\n");
         }
-        editorPanel.setTextOutput(sb.toString());
     }
 
     /**
@@ -285,10 +284,6 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
-            }
-
-            if (commandResult.isHome()) {
-                profilePanel.setProfileDisplay(logic.getProfile().get(0));
             }
 
             return commandResult;

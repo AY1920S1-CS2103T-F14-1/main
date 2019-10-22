@@ -50,6 +50,8 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
             }
             String description = jsonAdaptedQuestionNode.get("description").textValue();
             ArrayNode rawTestCaseList = (ArrayNode) jsonAdaptedQuestionNode.get("testCases");
+            String userProgramFilePath =
+                jsonAdaptedQuestionNode.get("userProgramFilePath").textValue();
             List<JsonAdaptedTestCase> testCaseList = new ArrayList<>();
             for (int k = 0; k < rawTestCaseList.size(); k++) {
                 String input = rawTestCaseList.get(k).get("input").textValue();

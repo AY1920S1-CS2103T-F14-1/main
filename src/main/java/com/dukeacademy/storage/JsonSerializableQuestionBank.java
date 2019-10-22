@@ -11,6 +11,7 @@ import com.dukeacademy.model.ReadOnlyQuestionBank;
 import com.dukeacademy.model.question.Question;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -19,6 +20,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  * An Immutable QuestionBank that is serializable to JSON format.
  */
 @JsonDeserialize(using = JsonSerializableQuestionBankDeserializer.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 class JsonSerializableQuestionBank implements Serializable {
 
     /**

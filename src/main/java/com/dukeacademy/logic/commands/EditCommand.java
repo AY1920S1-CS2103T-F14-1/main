@@ -19,9 +19,10 @@ import com.dukeacademy.model.question.Description;
 import com.dukeacademy.model.question.Difficulty;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.Status;
+import com.dukeacademy.model.question.TestCase;
 import com.dukeacademy.model.question.Title;
 import com.dukeacademy.model.question.Topic;
-import com.dukeacademy.model.solution.TestCase;
+import com.dukeacademy.model.question.UserProgramFilePath;
 import com.dukeacademy.model.tag.Tag;
 
 /**
@@ -125,9 +126,13 @@ public class EditCommand extends Command {
         List<TestCase> updatedTestCases = new ArrayList<TestCase>();
         updatedTestCases.add(new TestCase("updated input", "updated "
             + "output"));
+        UserProgramFilePath updatedUserProgramFilePath =
+            new UserProgramFilePath(
+            "updated program path");
 
         return new Question(updatedTitle, updatedTopic, updatedStatus,
-            updatedDifficulty, updatedTags, updatedDescription, updatedTestCases);
+            updatedDifficulty, updatedTags, updatedDescription,
+            updatedTestCases, updatedUserProgramFilePath);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package com.dukeacademy.model.question;
 
-import com.dukeacademy.model.solution.UserProgram;
-
 import static com.dukeacademy.commons.util.AppUtil.checkArgument;
 import static java.util.Objects.requireNonNull;
 
@@ -37,7 +35,7 @@ public class UserProgramFilePath {
     }
 
     public static boolean isValidUserProgramFilePath(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return true; //test.matches(VALIDATION_REGEX);
     }
 
     @Override
