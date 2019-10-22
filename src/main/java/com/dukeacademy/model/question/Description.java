@@ -50,7 +50,7 @@ public class Description {
      * @return the boolean
      */
     public static boolean isValidDescription(String test) {
-        return test.matches(VALIDATION_REGEX);
+        return true;//test.matches(VALIDATION_REGEX);
     }
 
     @Override

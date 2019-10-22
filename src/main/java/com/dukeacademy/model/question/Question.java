@@ -194,8 +194,6 @@ public class Question {
                 .append(getDifficulty())
                 .append(" Tags: ");
         getTags().forEach(builder::append);
-        builder.append(" Description: ")
-               .append(getDescription());
         return builder.toString();
     }
 
