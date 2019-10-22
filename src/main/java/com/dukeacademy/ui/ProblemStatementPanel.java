@@ -30,4 +30,14 @@ public class ProblemStatementPanel extends UiPart<Region> {
         super(FXML);
         problemStatementDisplay.setText(problemStatement);
     }
+
+    /**
+     * Displays problem statement for a particular question.
+     *
+     * @param problemStatement the feedback to user
+     */
+    public void setProblemStatement(String problemStatement) {
+        requireNonNull(problemStatement);
+        problemStatementDisplay.setText(problemStatement);
+    }
 }

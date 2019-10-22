@@ -167,7 +167,8 @@ public class ModelManager implements Model {
     //============= View a Question ===========================================
     @Override
     public void setQuestionToView(Question questionToView) {
-        this.questionToView.set(0, questionToView);
+        this.questionToView.clear();
+        this.questionToView.add(questionToView);
     }
 
     @Override
@@ -194,7 +195,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return questionBank.equals(other.questionBank)
                 && userPrefs.equals(other.userPrefs)
-                && filteredQuestions.equals(other.filteredQuestions);
+                && filteredQuestions.equals(other.filteredQuestions)
+                && questionToView.equals(other.questionToView);
     }
 
 }

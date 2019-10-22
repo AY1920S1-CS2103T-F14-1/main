@@ -35,6 +35,8 @@ public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
 
+
+
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -92,6 +94,9 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+
+        //set controller
+        //fxmlLoader.setController(new MainWindowController)
     }
 
     /**
@@ -301,9 +306,10 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
-            /*if (commandResult.isView()) {
-                displayProblemStatement();
-            }*/
+            if (commandResult.isView()) {
+                problemStatementPanel.setProblemStatement(questionsLogic.getProblemStatement());
+            }
+
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
