@@ -22,6 +22,7 @@ import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -46,6 +47,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private Editor editorPanel;
     private RunCodeResult runCodeResultPanel;
+    private ProblemStatementPanel problemStatementPanel;
 
 
     @FXML
@@ -69,6 +71,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private AnchorPane runCodeResultPlaceholder;
+
+    @FXML
+    private HBox activityWindowPlaceholder;
 
     public MainWindow(Stage primaryStage, QuestionsLogic questionsLogic) {
 
@@ -286,10 +291,22 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            if (commandResult.isView()) {
+                displayProblemStatement();
+            }
             return commandResult;
         } catch (CommandException | ParseException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
+            throw e;
+        }
+    }
+
+    private void displayProblemStatement() throws Exception{
+        try {
+            problemStatementPanel = new ProblemStatementPanel();
+            activityWindowPlaceholder.getChildren().add(problemStatementPanel.getRoot());
+        } catch (Exception e) {
             throw e;
         }
     }

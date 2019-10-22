@@ -133,4 +133,13 @@ public interface Model {
      * @return the profile
      */
     ArrayList<String> getProfile();
+
+    /**
+     * Displays the given question {@code questionToView} on a question
+     * description panel.
+     * {@code questionToView} must exist in the question bank.
+     *
+     * @param questionToView         the question to be viewed.
+     */
+    void viewQuestion(Question questionToView);
 }

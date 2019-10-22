@@ -50,7 +50,7 @@
                     <padding>
                         <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
-                    <HBox prefHeight="225.0" prefWidth="722.0" spacing="30.0" VBox.vgrow="ALWAYS">
+                    <HBox fx:id="activityWindowPlaceholder" prefHeight="225.0" prefWidth="722.0" spacing="30.0" VBox.vgrow="ALWAYS">
                         <children>
                             <StackPane fx:id="questionListPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="209.0">
                                 <HBox.margin>

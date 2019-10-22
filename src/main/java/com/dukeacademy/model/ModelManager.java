@@ -162,6 +162,11 @@ public class ModelManager implements Model {
         return profile;
     }
 
+    //============= View a Question ===========================================
+    @Override public void viewQuestion(Question questionToView) {
+
+    }
+
     @Override
     public boolean equals(Object obj) {
         // short circuit if same object
