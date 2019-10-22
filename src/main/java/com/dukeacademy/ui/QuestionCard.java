@@ -52,9 +52,9 @@ public class QuestionCard extends UiPart<Region> {
         this.question = question;
         id.setText(displayedIndex + ". ");
         title.setText(question.getTitle().fullTitle);
-        topic.setText(question.getTopic().value);
-        difficulty.setText(question.getDifficulty().value);
-        status.setText(question.getStatus().value);
+        topic.setText("Topic: " + question.getTopic().value);
+        difficulty.setText("Difficulty: "+ question.getDifficulty().value);
+        status.setText("Status: " + question.getStatus().value);
         question.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

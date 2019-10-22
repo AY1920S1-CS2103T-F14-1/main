@@ -41,7 +41,12 @@ public class Status {
      * @return the boolean
      */
     public static boolean isValidStatus(String test) {
-        return test.matches(VALIDATION_REGEX);
+        for (EnumStatus validStatus : EnumStatus.values()) {
+            if (validStatus.toString().equals(test)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
