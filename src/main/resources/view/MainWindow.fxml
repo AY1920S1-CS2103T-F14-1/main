@@ -24,7 +24,7 @@
         <URL value="@Extensions.css" />
       </stylesheets>
 
-      <VBox minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
@@ -46,18 +46,18 @@
           </padding>
         </StackPane>
 
-        <VBox fx:id="personList" minWidth="400"  styleClass="pane-with-border"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox fx:id="personList" minWidth="400"  styleClass="pane-with-border"  AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <padding>
             <Insets bottom="10" left="10" right="10" top="10" />
           </padding>
                <HBox spacing="30.0" >
                   <children>
-                <StackPane fx:id="questionListPanelPlaceholder" minWidth="200.0"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <StackPane fx:id="questionListPanelPlaceholder" minWidth="200.0"  AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <HBox.margin>
                            <Insets left="10.0" />
                         </HBox.margin>
                      </StackPane>
-                     <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
                         <children>
                            <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" styleClass="f" />
