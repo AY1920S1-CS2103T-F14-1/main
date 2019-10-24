@@ -24,8 +24,9 @@
 <ul class="sectlevel2">
 <li><a href="#proposed-undo-redo-feature">3.1. [Proposed] Undo/Redo feature</a></li>
 <li><a href="#proposed-data-encryption">3.2. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.3. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.4. Configuration</a></li>
+<li><a href="#evaluation-of-user-program-submissions">3.3. Evaluation of user program submissions</a></li>
+<li><a href="#logging">3.4. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -555,14 +556,226 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
+<h3 id="evaluation-of-user-program-submissions"><a class="link" href="#evaluation-of-user-program-submissions">3.3. Evaluation of user program submissions</a></h3>
+<div class="paragraph">
+<p>The evaluation of the user&#8217;s programs is facilitated by the <code>solutions</code> package.</p>
+</div>
+<div class="sect3">
+<h4 id="entry-point"><a class="link" href="#entry-point">3.3.1. Entry point</a></h4>
+<div class="paragraph">
+<p>It contains the class <code>TestExecutor</code>
+which contains a single method <code>runTestCases(testCases, program)</code>. This method is used to run a user&#8217;s program against
+a series of test cases.</p>
+</div>
+<div class="paragraph">
+<p>The method utilizes the classes <code>TestCase</code> and <code>UserProgram</code> to model the data needed for evaluation.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>TestCase</strong> - stores an input and an expected value</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/TestCaseClassDiagram.png" alt="TestCaseClassDiagram" width="240"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>UserProgram</strong> - stores the main class name and the program&#8217;s source code a String (note that the specified class name
+must match the source code for it to be successfully evaluated)</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/UserProgramClassDiagram.png" alt="UserProgramClassDiagram" width="240"></span></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The result of the evaluation is returned as a <code>TestResult</code> object.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>TestResult</strong> - encapsulates all the possible outcomes of evaluating the user&#8217;s program. It is composed of other model
+classes&#8201;&#8212;&#8201;<code>TestCaseResult</code>, <code>CompileError</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/TestResultDiagram.png" alt="TestResultDiagram">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-overview"><a class="link" href="#implementation-overview">3.3.2. Implementation overview</a></h4>
+<div class="paragraph">
+<p>The evaluation of a user&#8217;s program is done in 3 main steps, each handled by a specialized interface. The 3 steps include:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a Java file inside a temporary directory in the user&#8217;s file system and writing the user&#8217;s program to it.</p>
+</li>
+<li>
+<p>Compile that Java file into an executable Java Class file. Catch and store compile errors if any.</p>
+</li>
+<li>
+<p>Execute the main Class file and provide the inputs of the specified test cases. Collect and store any output from the program.</p>
+</li>
+<li>
+<p>Encapsulate the output, errors and results in a model class</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is done by <code>TestExecutor</code> with the help of three interfaces that are made available through dependency injection&#8201;&#8212;&#8201;<code>CompilerEnvironment</code>, <code>Compiler</code>, <code>ProgramExecutor</code>.</p>
+</div>
+<div class="paragraph">
+<p>Each interface has its specialized role in the evaluation process.
+<code>TestExecutor</code> acts as an orchestrator to tie all their functionalities together.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>CompilerEnvironment</strong> - in charge of creating a temporary folder in the user&#8217;s file system to create and write Java files.
+This temporary folder is deleted after <code>closed()</code>. Utilizes the model class <code>JavaFile</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/CompilerEnvironment.png" alt="CompilerEnvironment">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Compiler</strong> - in charge of compiling the Java files into Class files at a given file path. Utilizes the model class <code>ClassFile</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/Compiler.png" alt="Compiler">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>ProgramExecutor</strong> - in charge of executing the compiled Class files. Utilizes the model class <code>ProgramOutput</code>.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="images/ProgramExecutor.png" alt="ProgramExecutor">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Models:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JavaFile</strong> - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an <code>FileNotFoundException</code> is thrown during instantiation.</p>
+</li>
+<li>
+<p><strong>ClassFile</strong> - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an <code>FileNotFoundException</code> is thrown during instantiation.</p>
+</li>
+<li>
+<p><strong>ProgramInput</strong> - contains the String input to be fed into the user&#8217;s program.</p>
+</li>
+<li>
+<p><strong>ProgramOutput</strong> - contains the String output produced by the user&#8217;s program. It also contains convenience methods for producing different outputs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Sequence diagram:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/TestExecutorSequenceDiagram.png" alt="align:center">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-details"><a class="link" href="#implementation-details">3.3.3. Implementation details</a></h4>
+<div class="paragraph">
+<p>The implementations of <code>CompilerEnvironment</code>, <code>Compiler</code> and <code>ProgramExecutor</code> used in the application are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>StandardCompilerEnvironment</strong> - this implementation utilizes Java11&#8217;s native Files library to handle creation, deletion and writing of files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Creates a temporary folder when instantiated at the file path injected through its constructor.</p>
+</li>
+<li>
+<p>All files are created in this temporary folder.</p>
+</li>
+<li>
+<p>The temporary folder is deleted in the <code>close()</code> method.</p>
+</li>
+<li>
+<p>When tasked to create a new file, it first creates an empty file in the temporary folder before writing the contents of the user&#8217;s program to the file</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>StandardCompiler</strong> - this implementation utilizes Java11&#8217;s native JavaCompiler library to programmatically compile Java files.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Compile errors recorded by the <code>DiagnosticsListener</code> class from the compilation task is parsed and rethrown as <code>CompilerException</code> and <code>CompileContentException</code>.</p>
+</li>
+<li>
+<p><code>CompilerException</code> represents compile errors caused by the JavaCompiler library while <code>CompileContentException</code> represents errors caused by the user&#8217;s program.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>StandardProgramExecutor</strong> - this implementation utilizes Java11&#8217;s native Runtime class to execute programs programatically.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To execute a program, <code>exec(String command)</code> of the Runtime instance is called.</p>
+</li>
+<li>
+<p>A command to compile the specified <code>ClassFile</code> is generated using its class path and canonical name attributes.</p>
+</li>
+<li>
+<p>The method returns a <code>Process</code> instance that executes the program on a separate thread.</p>
+</li>
+<li>
+<p><code>StandardProgramExecutor</code> accesses the input stream of the process and feeds the program the necessary inputs.</p>
+</li>
+<li>
+<p><code>StandardProgramExecutor</code> access the output and error stream of the process and collects any produced output or errors.</p>
+</li>
+<li>
+<p>The process is destroyed and the collected output and errors and packaged as a <code>ProgramOutput</code> instance.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.4, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.5, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -593,7 +806,7 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.4. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1292,4 +1505,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 14:48:48 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 15:47:18 UTC</div></div></div></body></html>
