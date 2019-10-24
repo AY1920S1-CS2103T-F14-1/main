@@ -756,6 +756,31 @@ an <code>FileNotFoundException</code> is thrown during instantiation.</p>
 <div class="paragraph">
 <p><strong>Sequence diagram:</strong></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>TestExecutor</code> calls <code>clearEnvironment()</code> of <code>CompilerEnvironment</code> to remove any redundant files from previous program
+evaluations.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> calls <code>createJavaFile()</code> of <code>CompilerEnvironment</code> to create the Java file with the class name and source code specified
+in the <code>UserProgram</code> argument.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> calls <code>compileJavaFile()</code> of <code>Compiler</code> to compile the newly created Java file.</p>
+</li>
+<li>
+<p>For each test case passed in the argument, <code>TestExecutor</code> calls <code>executeProgram</code> of <code>StandardProgramExecutor</code> with the input from the
+test case.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> maps each <code>ProgramOutput</code> received into a <code>TestCaseResult</code> model instance.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> packs all the data collected from the execution of the test cases into a single <code>TestResult</code> instance.</p>
+</li>
+</ol>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/TestExecutorSequenceDiagram.png" alt="align:center">
@@ -1613,4 +1638,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 15:59:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-24 18:48:25 UTC</div></div></div></body></html>
