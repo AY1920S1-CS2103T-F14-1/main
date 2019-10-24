@@ -1,13 +1,10 @@
 package com.dukeacademy.ui;
 
 import com.dukeacademy.model.question.Question;
-import com.dukeacademy.model.question.entities.Status;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
@@ -52,30 +49,6 @@ public class ProfilePage extends UiPart<Region> {
         numDone.setText("71");
         numTotal.setText("80");
         fillSkillLevel(progress);
-        fillAttempting(attempting, questions);
-        fillBookmarked(bookmarked, questions);
-    }
-
-    public void fillAttempting(AnchorPane attempting, ObservableList<Question> questions) {
-        ListView<Label> listView = new ListView<>();
-        for (Question q : questions) {
-            if (q.getStatus() == Status.ATTEMPTED) {
-                Label qTitle = new Label(q.getTitle());
-                listView.getItems().add(qTitle);
-            }
-        }
-        attempting.getChildren().add(listView);
-    }
-
-    public void fillBookmarked(AnchorPane bookmarked, ObservableList<Question> questions) {
-        ListView<Label> listView = new ListView<>();
-        for (Question q : questions) {
-            if (q.isBookmarked() == true) {
-                Label qTitle = new Label(q.getTitle());
-                listView.getItems().add(qTitle);
-            }
-        }
-        bookmarked.getChildren().add(listView);
     }
 
     /**
@@ -107,7 +80,5 @@ public class ProfilePage extends UiPart<Region> {
         if (progress > 0.8) {
             skillLevel.setText("Grandmaster");
         }
-
-
     }
 }

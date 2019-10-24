@@ -238,8 +238,10 @@ class ProgramSubmissionLogicManagerTest {
         Status status = Status.ATTEMPTED;
         Difficulty difficulty = Difficulty.HARD;
         Set<Topic> topics = new HashSet<>();
+        boolean isBookmarked = true;
 
-        return new Question(title, status, difficulty, topics, testCases, new UserProgram("Main", ""));
+        return new Question(title, status, difficulty, topics, testCases,
+                new UserProgram("Main", ""), true);
     }
 
     @Test

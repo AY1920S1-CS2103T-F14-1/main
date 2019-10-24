@@ -83,7 +83,8 @@ public class Question {
                 .append(getStatus())
                 .append(" Difficulty: ")
                 .append(getDifficulty())
-                .append(" Topics: ");
+                .append(" Topics: ")
+                .append(isBookmarked());
         this.getTopics().forEach(builder::append);
         return builder.toString();
     }

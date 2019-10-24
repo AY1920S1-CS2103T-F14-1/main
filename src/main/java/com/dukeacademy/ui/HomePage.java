@@ -1,12 +1,10 @@
 package com.dukeacademy.ui;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.entities.Status;
-import com.dukeacademy.observable.Observable;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +16,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 
+/**
+ * Controller class for home page. The home page not only provides greetings and introductory messages to the users,
+ * but also functions as a personal dashboard. This personal dashboard displays useful information pertaining to the
+ * user's personal progress he/she made so far in Duke Academy.
+ */
 public class HomePage extends UiPart<Region> {
     private static final String FXML = "HomePage.fxml";
     private static final String[] skillTiers = {"Novice", "Apprentice", "Master", "Grandmaster", "Duke"};
@@ -62,7 +65,10 @@ public class HomePage extends UiPart<Region> {
     @FXML
     private Button contactUsButton;
 
-
+    /**
+     * Constructor for Home Page controller class.
+     * @param questions observable list of questions
+     */
     public HomePage(ObservableList<Question> questions) {
         super(FXML);
         int done = computeNumDone(questions);
@@ -88,6 +94,11 @@ public class HomePage extends UiPart<Region> {
         updateBookmarked(questions);
     }
 
+    /**
+     * Computes the number of questions successfully completed by the user.
+     * @param questions observable list of questions
+     * @return number of questions successfully completed by the user
+     */
     private int computeNumDone(ObservableList<Question> questions) {
         int numDone = 0;
         for (Question q : questions) {
@@ -98,16 +109,31 @@ public class HomePage extends UiPart<Region> {
         return numDone;
     }
 
+    /**
+     * Computes the total number of questions in the question bank.
+     * @param questions observable list of questions
+     * @return total number of questions in the question bank
+     */
     private int computeNumTotal(ObservableList<Question> questions) {
         return questions.size();
     }
 
+    /**
+     * Computes the progress made by the user, in decimal form, by dividing number of questions successfully
+     * completed by the user over total number of questions in the question bank.
+     * @param numDone number of questions successfully completed by the user
+     * @param numTotal total number of questions in the question bank
+     * @return the progress made by the user, in decimal form
+     */
     private double computeProgress(int numDone, int numTotal) {
-        double numDoneDouble = (double) numDone;
-        double numTotalDouble = (double) numTotal;
-        return numDoneDouble / numTotalDouble;
+        return (double) numDone / numTotal;
     }
 
+    /**
+     * Computes the current skill tier of the user.
+     * @param progress the progress made by the user, in decimal form
+     * @return current skill tier of the user
+     */
     private String computeCurrentTier(double progress) {
         double progressInPercent = progress * 100;
         int roundedProgress = (int) Math.round(progressInPercent);
@@ -137,7 +163,12 @@ public class HomePage extends UiPart<Region> {
         return currentTier;
     }
 
-    // This method will only be called if current tier is not already the highest tier.
+    /**
+     * Computes the next skill tier of the user. This method will only be called if current tier is not already
+     * the highest tier.
+     * @param progress the progress made by the user, in decimal form
+     * @return next skill tier of the user
+     */
     private String computeNextTier(double progress) {
         double progressInPercent = progress * 100;
         int roundedProgress = (int) Math.round(progressInPercent);
@@ -164,7 +195,13 @@ public class HomePage extends UiPart<Region> {
         return nextTier;
     }
 
-    // This method will only be called if current tier is not already the highest tier.
+    /**
+     * Computes the number of completed questions required in order to reach the next tier.
+     * @param progress the progress made by the user, in decimal form
+     * @param currentTier current skill tier of the user
+     * @param numTotal total number of questions in the question bank
+     * @return the number of completed questions required in order to reach the next tier
+     */
     private int computeNumToNextTier(double progress, String currentTier, int numTotal) {
         List<String> skillTiersList = Arrays.asList(skillTiers);
         int currentTierIndex = skillTiersList.indexOf(currentTier);
@@ -182,24 +219,44 @@ public class HomePage extends UiPart<Region> {
         return numToNextTier;
     }
 
+    /**
+     * Updates the progress indicator on Home Page UI
+     * @param progress the progress made by the user, in decimal form
+     */
     private void updateIndicator(double progress) {
         indicator.setProgress(progress);
     }
 
+    /**
+     * Updates the number of questions successfully completed by the user, on the Home Page UI
+     * @param inputNumDone number of questions successfully completed by the user
+     */
     private void updateNumDone(int inputNumDone) {
         String numDoneString = inputNumDone + "";
         numDone.setText(numDoneString);
     }
 
+    /**
+     * Updates total number of questions in the question bank, on the Home Page UI
+     * @param inputNumTotal total number of questions in the question bank
+     */
     private void updateNumTotal(int inputNumTotal) {
         String numTotalString = inputNumTotal + "";
         numTotal.setText(numTotalString);
     }
 
+    /**
+     * Updates the current skill tier of the user on the Home Page UI
+     * @param tier current skill tier of the user
+     */
     private void updateCurrentTier(String tier) {
         currentTier.setText(tier);
     }
 
+    /**
+     * Updates the next skill tier of the user on the Home Page UI
+     * @param tier next skill tier of the user
+     */
     private void updateNextTier(String tier) {
         nextTier.setText(tier);
     }
@@ -209,6 +266,10 @@ public class HomePage extends UiPart<Region> {
         numToNextTier.setText(numToNextTierString);
     }
 
+    /**
+     * Updates the list of questions the user is still attempting, on the Home Page UI
+     * @param questions observable list of questions
+     */
     private void updateAttempting(ObservableList<Question> questions) {
         ListView<Label> attemptingListView = new ListView<>();
         for (Question q : questions) {
@@ -221,6 +282,10 @@ public class HomePage extends UiPart<Region> {
         attempting.getChildren().add(attemptingListView);
     }
 
+    /**
+     * Updates the list of questions the user bookmarked for personal reference, on the Home Page UI
+     * @param questions observable list of questions
+     */
     private void updateBookmarked(ObservableList<Question> questions) {
         ListView<Label> bookmarkedListView = new ListView<>();
         for (Question q : questions) {
@@ -233,6 +298,9 @@ public class HomePage extends UiPart<Region> {
         bookmarked.getChildren().add(bookmarkedListView);
     }
 
+    /**
+     * Removes the progress description on the Home Page UI
+     */
     private void removeProgressDescription() {
         numToNextTier.setText("");
         progressDescription.setText("");
