@@ -60,8 +60,13 @@
                      <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: transparent;">
                         <children>
-                           <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" styleClass="f" />
-                           <AnchorPane fx:id="runCodeResultPlaceholder" minHeight="-Infinity" minWidth="-Infinity" />
+                           <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
+                           <AnchorPane fx:id="codeResultPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
+                        </children>
+                     </VBox>
+                     <VBox prefHeight="200.0" prefWidth="100.0">
+                        <children>
+                           <AnchorPane fx:id="profilePlaceholder" prefHeight="200.0" prefWidth="200.0" />
                         </children>
                      </VBox>
                   </children>

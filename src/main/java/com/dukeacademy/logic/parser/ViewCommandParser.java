@@ -1,6 +1,5 @@
 package com.dukeacademy.logic.parser;
 
-import com.dukeacademy.commons.core.index.Index;
 import com.dukeacademy.logic.commands.ViewCommand;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
 

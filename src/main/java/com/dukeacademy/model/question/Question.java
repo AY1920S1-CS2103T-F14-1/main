@@ -7,31 +7,27 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
-import com.dukeacademy.model.tag.Tag;
+import com.dukeacademy.model.question.entities.Difficulty;
+import com.dukeacademy.model.question.entities.Status;
+import com.dukeacademy.model.question.entities.TestCase;
+import com.dukeacademy.model.question.entities.Topic;
 
 /**
  * Represents a Question in the question bank.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Question {
+    public static final String TITLE_VALIDATION_REGEX = "[^\\s].*";
 
-    // Identity fields
-    private final Title title;
-
-    // Description fields
-    private final Topic topic;
-    private final Set<Tag> tags = new HashSet<>();
-    private final Difficulty difficulty;
-    private final Description description;
-
-    // Data fields
+    private final String title;
     private final Status status;
-    private final UserProgramFilePath userProgramFilePath;
-    private final List<TestCase> testCases;
-
+    private final Difficulty difficulty;
+    private final Set<Topic> topics = new HashSet<>();
+    private final List<TestCase> testCases = new ArrayList<>();
+    private final UserProgram userProgram;
+    private final String description;
     /**
      * Every field must be present and not null.
      *
@@ -39,23 +35,24 @@ public class Question {
      * @param topic      the topic
      * @param status     the status
      * @param difficulty the difficulty
-     * @param tags       the tags
+     *
      * @param description the description
      */
-    public Question(Title title, Topic topic, Status status,
-                    Difficulty difficulty, Set<Tag> tags,
-                    Description description, List<TestCase> testCases,
-                    UserProgramFilePath userProgramFilePath) {
-        requireAllNonNull(title, topic, status, difficulty, tags, description
-            , testCases);
+    public Question(String title, Status status, Difficulty difficulty, Set<Topic> topics,
+                    List<TestCase> testCases, UserProgram userProgram,
+                    String description) {
+        requireAllNonNull(title, status, difficulty, topics, testCases, userProgram);
+        if (!Question.checkValidTitle(title)) {
+            throw new IllegalArgumentException();
+        }
+
         this.title = title;
-        this.topic = topic;
         this.status = status;
         this.difficulty = difficulty;
-        this.tags.addAll(tags);
+        this.topics.addAll(topics);
+        this.testCases.addAll(testCases);
+        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCodeAsString());
         this.description = description;
-        this.testCases = testCases;
-        this.userProgramFilePath = userProgramFilePath;
     }
 
     /**
@@ -63,19 +60,9 @@ public class Question {
      *
      * @return the title
      */
-    public Title getTitle() {
-        return title;
+    public String getTitle() {
+        return this.title;
     }
-
-    /**
-     * Gets topic.
-     *
-     * @return the topic
-     */
-    public Topic getTopic() {
-        return topic;
-    }
-
     /**
      * Gets status.
      *
@@ -91,7 +78,16 @@ public class Question {
      * @return the difficulty
      */
     public Difficulty getDifficulty() {
-        return difficulty;
+        return this.difficulty;
+    }
+
+    /**
+     * Gets topic.
+     *
+     * @return the topic
+     */
+    public Set<Topic> getTopics() {
+        return Collections.unmodifiableSet(this.topics);
     }
 
     /**
@@ -99,19 +95,10 @@ public class Question {
      *
      * @return the description
      */
-    public Description getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     *
-     * @return the tags
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
-    }
 
     /**
      * Returns the file path which stores the user program currently attempted
@@ -120,8 +107,8 @@ public class Question {
      *
      * @return the userProgram
      */
-    public UserProgramFilePath getUserProgramFilePath() {
-        return userProgramFilePath;
+    public UserProgram getUserProgram() {
+        return new UserProgram(this.userProgram.getClassName(), this.userProgram.getSourceCodeAsString());
     }
 
     /**
@@ -130,72 +117,51 @@ public class Question {
      * @return the testcases
      */
     public List<TestCase> getTestCases() {
-        List<TestCase> copy = new ArrayList<>(this.testCases);
-        return copy;
-    }
-
-    /**
-     * Returns true if both questions of the same title have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two questions.
-     *
-     * @param otherQuestion the other question
-     * @return the boolean
-     */
-    public boolean isSameQuestion(Question otherQuestion) {
-        if (otherQuestion == this) {
-            return true;
-        }
-
-        return otherQuestion != null
-                && otherQuestion.getTitle().equals(getTitle())
-                && otherQuestion.getDescription().equals(getDescription());
-    }
-
-    /**
-     * Returns true if both questions have the same identity and data fields.
-     * This defines a stronger notion of equality between two questions.
-     */
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        if (!(other instanceof Question)) {
-            return false;
-        }
-
-        Question otherQuestion = (Question) other;
-        return otherQuestion.getTitle().equals(getTitle())
-                && otherQuestion.getTopic().equals(getTopic())
-                && otherQuestion.getStatus().equals(getStatus())
-                && otherQuestion.getDifficulty().equals(getDifficulty())
-                && otherQuestion.getTags().equals(getTags())
-                && otherQuestion.getDescription().equals(getDescription())
-                && otherQuestion.getUserProgramFilePath().equals(getUserProgramFilePath())
-                && otherQuestion.getTestCases().equals(getTestCases());
-    }
-
-    @Override
-    public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(title, topic, status, difficulty, tags, description);
+        return new ArrayList<>(this.testCases);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Topic: ")
-                .append(getTopic())
                 .append(" Status: ")
                 .append(getStatus())
                 .append(" Difficulty: ")
                 .append(getDifficulty())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+                .append(" Topics: ");
+        this.getTopics().forEach(builder::append);
         return builder.toString();
     }
 
+    /**
+     * Checks if the given string is a valid title for a question. Titles must be alphanumeric.
+     * @param title the string to be checked.
+     * @return true if the string is a valid title.
+     */
+    public static boolean checkValidTitle(String title) {
+        return title.matches(TITLE_VALIDATION_REGEX);
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Question) {
+            Question other = (Question) o;
+            return other.getTitle().equals(this.title)
+                    && other.getStatus().equals(this.status)
+                    && other.getDifficulty().equals(this.difficulty)
+                    && other.getTopics().equals(this.topics)
+                    && other.getTestCases().equals(this.testCases)
+                    && other.getUserProgram().equals(this.userProgram);
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        // use this method for custom fields hashing instead of implementing your own
+        return Objects.hash(title, topics, status, difficulty, description);
+    }
 }
+
+

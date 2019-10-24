@@ -17,6 +17,7 @@ public class Config {
 
     // Config values customizable through config file
     private Level logLevel = Level.INFO;
+    private Mode mode = Mode.PRODUCTION;
     private Path userPrefsFilePath = Paths.get("preferences.json");
 
     /**
@@ -42,6 +43,14 @@ public class Config {
      *
      * @return the user prefs file path
      */
+    public Mode getMode() {
+        return this.mode;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
+    }
+
     public Path getUserPrefsFilePath() {
         return userPrefsFilePath;
     }
@@ -79,6 +88,7 @@ public class Config {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Current log level : " + logLevel);
+        sb.append("\nApp mode: + " + mode.toString());
         sb.append("\nPreference file Location : " + userPrefsFilePath);
         return sb.toString();
     }

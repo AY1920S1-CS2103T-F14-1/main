@@ -1,72 +1,70 @@
 package com.dukeacademy.logic.question;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Predicate;
 
-import com.dukeacademy.commons.core.GuiSettings;
-import com.dukeacademy.logic.commands.CommandResult;
-import com.dukeacademy.logic.commands.exceptions.CommandException;
-import com.dukeacademy.logic.parser.exceptions.ParseException;
-import com.dukeacademy.model.Model;
-import com.dukeacademy.model.ReadOnlyQuestionBank;
 import com.dukeacademy.model.question.Question;
-import com.dukeacademy.model.profile.Profile;
 
 import javafx.collections.ObservableList;
 
 /**
- * API of the Logic component
+ * Interface to handle all CRUD operations related to questions.
  */
 public interface QuestionsLogic {
     /**
-     * Executes the command and returns the result.
-     *
-     * @param commandText The command as entered by the user.
-     * @return the result of the command execution.
-     * @throws CommandException If an error occurs during command execution.
-     * @throws ParseException   If an error occurs during parsing.
+     * Returns an observable list that represents all the questions in the application. The default list contains
+     * all the questions unless a filter was previously set. Note that this index of this list is 0-based.
+     * @return an observable list of questions
      */
-    CommandResult execute(String commandText) throws CommandException, ParseException;
+    ObservableList<Question> getFilteredQuestionsList();
+
+    /**
+     * Filters the visible questions in the application according to the predicate given.
+     * @param predicate the predicate to be applied as a filter.
+     */
+    void filterQuestionsList(Predicate<Question> predicate);
 
     /**
      * Returns the QuestionBank.
-     *
-     * @return the question bank
-     * @see Model#getQuestionBank() Model#getQuestionBank()
      */
-    ReadOnlyQuestionBank getQuestionBank();
+    void addQuestion(Question question);
 
     /**
-     * Returns an unmodifiable view of the filtered list of persons  @return the filtered person list
+     * Adds a collection of questions to the model.
+     * @param questions the collection of questions to be added.
      */
-    ObservableList<Question> getFilteredPersonList();
+    void addQuestions(Collection<Question> questions);
 
     /**
-     * Returns the user prefs' question bank file path.
-     *
-     * @return the question bank file path
+     * Loads questions from a specified file type, depending on the implementation.
+     * @param questionsFilePath the path of the file to be loaded.
      */
-    Path getQuestionBankFilePath();
+    void addQuestionsFromPath(Path questionsFilePath);
 
     /**
-     * Returns the user prefs' GUI settings.
-     *
-     * @return the gui settings
+     * Returns the question corresponding to the index in the list returned by getFilteredQuestionsList.
+     * @param index the index of the question to be returned.
+     * @return the corresponding question.
      */
-    GuiSettings getGuiSettings();
+    Question getQuestion(int index);
 
     /**
-     * Set the user prefs' GUI settings.
-     *
-     * @param guiSettings the gui settings
+     * Sets the question corresponding to the index in the list returned by getFilteredQUestionsList to a new question.
+     * @param index the index of the question to be replaced.
+     * @param newQuestion the new question.
      */
-    void setGuiSettings(GuiSettings guiSettings);
+    void setQuestion(int index, Question newQuestion);
 
     /**
-     * Gets user profile.
-     *
-     * @return the profile
+     * Deletes the question corresponding to the index in the list returned by getFilteredQuestionsList.
+     * @param index the index of the question to be deleted.
      */
-    ArrayList<String> getProfile();
+    void deleteQuestion(int index);
+
+    /**
+     * Deletes all the stored questions in the application.
+     */
+    void deleteAllQuestions();
     public String getProblemStatement();
 }

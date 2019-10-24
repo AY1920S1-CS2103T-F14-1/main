@@ -5,6 +5,9 @@ import java.util.logging.Logger;
 import com.dukeacademy.MainApp;
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.util.StringUtil;
+
+import com.dukeacademy.logic.commands.CommandLogic;
+import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
 import javafx.application.Platform;
@@ -27,7 +30,9 @@ public class UiManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/dukeacademy-icon.png";
 
-    private QuestionsLogic questionsLogic;
+    private final CommandLogic commandLogic;
+    private final QuestionsLogic questionsLogic;
+    private final ProgramSubmissionLogic programSubmissionLogic;
     private MainWindow mainWindow;
 
     /**
@@ -35,9 +40,12 @@ public class UiManager implements Ui {
      *
      * @param logic the logic
      */
-    public UiManager(QuestionsLogic questionsLogic) {
+    public UiManager(CommandLogic commandLogic, QuestionsLogic questionsLogic,
+                     ProgramSubmissionLogic programSubmissionLogic) {
         super();
+        this.commandLogic = commandLogic;
         this.questionsLogic = questionsLogic;
+        this.programSubmissionLogic = programSubmissionLogic;
     }
 
     @Override
@@ -48,7 +56,8 @@ public class UiManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, questionsLogic);
+            mainWindow = new MainWindow(primaryStage, commandLogic, questionsLogic,
+                    programSubmissionLogic);
             mainWindow.show(); //This should be called before creating other UI parts
             mainWindow.fillInnerParts();
 
