@@ -47,7 +47,7 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
     private Editor editorPanel;
     private CodeResultPanel codeResultPanel;
-    private ProfilePage profilePage;
+    private HomePage homePage;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -71,7 +71,7 @@ public class MainWindow extends UiPart<Stage> {
     private AnchorPane codeResultPanelPlaceholder;
 
     @FXML
-    private AnchorPane profilePlaceholder;
+    private AnchorPane homePagePlaceholder;
 
     public MainWindow(Stage primaryStage, CommandLogic commandLogic, QuestionsLogic questionsLogic,
                       ProgramSubmissionLogic programSubmissionLogic) {
@@ -163,8 +163,8 @@ public class MainWindow extends UiPart<Stage> {
         codeResultPanel = new CodeResultPanel(sampleTestCaseResults);
         codeResultPanelPlaceholder.getChildren().add(codeResultPanel.getRoot());
 
-        profilePage = new ProfilePage(questionsLogic.getFilteredQuestionsList());
-        profilePlaceholder.getChildren().add(profilePage.getRoot());
+        homePage = new HomePage(questionsLogic.getFilteredQuestionsList());
+        homePagePlaceholder.getChildren().add(homePage.getRoot());
     }
 
     /**
@@ -211,8 +211,8 @@ public class MainWindow extends UiPart<Stage> {
         return codeResultPanel;
     }
 
-    public ProfilePage getProfilePage() {
-        return profilePage;
+    public HomePage getHomePage() {
+        return homePage;
     }
 
     /**

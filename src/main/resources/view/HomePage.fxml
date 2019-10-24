@@ -8,21 +8,21 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="29.0" layoutY="6.0" prefHeight="188.0" prefWidth="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane layoutX="29.0" layoutY="6.0" prefHeight="188.0" prefWidth="652.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#63075d" layoutX="12.0" layoutY="22.10546875" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Duke Academy!" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="4.0">
+            <Text fill="#63075d" layoutX="12.0" layoutY="29.140625" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Duke Academy!" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="5.0">
                <font>
-                  <Font name="Century Gothic" size="24.0" />
+                  <Font name="Century Gothic" size="26.0" />
                </font>
             </Text>
-            <Text fontSmoothingType="LCD" layoutX="12.0" layoutY="60.09375" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you will embark on a learning journey to discover about the fascinating world of Data Structures and Algorithms." textAlignment="JUSTIFY" wrappingWidth="509.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="44.0">
+            <Text fontSmoothingType="LCD" layoutX="12.0" layoutY="60.09375" strokeType="OUTSIDE" strokeWidth="0.0" text="Here, you will embark on a learning journey to discover about the fascinating world of Data Structures and Algorithms." textAlignment="JUSTIFY" wrappingWidth="556.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="44.0">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Text fontSmoothingType="LCD" layoutX="12.0" layoutY="105.09375" strokeType="OUTSIDE" strokeWidth="0.0" text="As you go on to hone your programming and problem solving skills, you will move up the skill tiers, from Novice all the way up to Duke, the hallmark of an elite programmer." textAlignment="JUSTIFY" wrappingWidth="509.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="89.0">
+            <Text fontSmoothingType="LCD" layoutX="12.0" layoutY="105.09375" strokeType="OUTSIDE" strokeWidth="0.0" text="As you go on to hone your programming and problem solving skills, you will move up the skill tiers, from Novice all the way up to Duke, the hallmark of an elite programmer." textAlignment="JUSTIFY" wrappingWidth="556.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="89.0">
                <font>
                   <Font name="Century Gothic" size="16.0" />
                </font>
@@ -32,7 +32,7 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="userGuideButton" alignment="CENTER" layoutX="365.0" layoutY="8.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="96.0" text="User Guide" AnchorPane.leftAnchor="365.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="8.0" />
+            <Button fx:id="userGuideButton" alignment="CENTER" layoutX="407.0" layoutY="8.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="156.0" text="User Guide" textAlignment="CENTER" />
          </children>
       </AnchorPane>
       <ProgressIndicator fx:id="indicator" layoutX="46.0" layoutY="200.0" minHeight="180.0" minWidth="180.0" prefHeight="75.0" prefWidth="52.0" progress="0.22" />
@@ -59,7 +59,7 @@
          <children>
             <Text fx:id="currentTier" fill="#63075d" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Novice" wrappingWidth="106.66796875">
                <font>
-                  <Font name="Century Gothic" size="29.0" />
+                  <Font name="Century Gothic" size="30.0" />
                </font>
             </Text>
          </children>
@@ -108,24 +108,24 @@
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font></Text>
-            <Text fontSmoothingType="LCD" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" more completed questions to reach ">
+            <Text fx:id="progressDescription" fontSmoothingType="LCD" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" more completed questions to reach ">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
             </Text>
             <Text fx:id="nextTier" layoutX="16.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apprentice">
                <font>
-                  <Font name="Century Gothic" size="14.0" />
+                  <Font name="Century Gothic Italic" size="14.0" />
                </font>
             </Text>
          </children>
       </TextFlow>
-      <Button fx:id="devGuideButton" layoutX="862.0" layoutY="42.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="105.0" text="Developer Guide" textAlignment="CENTER" AnchorPane.leftAnchor="863.0" AnchorPane.topAnchor="42.0" />
-      <Button fx:id="aboutUsButton" alignment="CENTER" layoutX="862.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="About Us" textAlignment="CENTER" AnchorPane.leftAnchor="863.0" AnchorPane.topAnchor="79.0" />
-      <Button fx:id="contactUsButton" alignment="CENTER" layoutX="862.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Contact Us" textAlignment="CENTER" AnchorPane.leftAnchor="863.0" AnchorPane.topAnchor="117.0" />
-      <Text fontSmoothingType="LCD" layoutX="863.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For developers:" AnchorPane.leftAnchor="863.0" AnchorPane.topAnchor="14.0">
+      <Button fx:id="devGuideButton" layoutX="777.0" layoutY="42.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="179.0" text="Developer Guide" textAlignment="CENTER" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="42.0" />
+      <Button fx:id="aboutUsButton" alignment="CENTER" layoutX="777.0" layoutY="79.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="About Us" textAlignment="CENTER" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="79.0" />
+      <Button fx:id="contactUsButton" alignment="CENTER" layoutX="777.0" layoutY="117.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="Contact Us" textAlignment="CENTER" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="117.0" />
+      <Text fontSmoothingType="LCD" layoutX="777.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For developers:" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="13.91796875">
          <font>
-            <Font name="Century Gothic" size="14.0" />
+            <Font name="Century Gothic" size="16.0" />
          </font>
       </Text>
       <Text fontSmoothingType="LCD" layoutX="505.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="23.0">
