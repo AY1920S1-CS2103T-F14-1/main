@@ -163,7 +163,7 @@ public class MainWindow extends UiPart<Stage> {
         codeResultPanel = new CodeResultPanel(sampleTestCaseResults);
         codeResultPanelPlaceholder.getChildren().add(codeResultPanel.getRoot());
 
-        profilePage = new ProfilePage();
+        profilePage = new ProfilePage(questionsLogic.getFilteredQuestionsList());
         profilePlaceholder.getChildren().add(profilePage.getRoot());
     }
 

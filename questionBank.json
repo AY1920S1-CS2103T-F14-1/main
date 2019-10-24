@@ -3,6 +3,7 @@
     "title" : "Two Number Adder",
     "status" : "PASSED",
     "difficulty" : "EASY",
+    "isBookmarked" : true,
     "topics" : ["OTHERS"],
     "testCases" : [ {
       "input": "1 2",
@@ -20,6 +21,7 @@
     "title" : "Valid Sudoku",
     "status" : "PASSED",
     "difficulty" : "MEDIUM",
+    "isBookmarked" : true,
     "topics" : ["OTHERS", "ARRAY", "DYNAMIC_PROGRAMMING"],
     "testCases" : [ {
       "input": "1 2 3 4 5 6 7 8 9",
@@ -37,6 +39,7 @@
     "title" : "Palindrome Number",
     "status" : "PASSED",
     "difficulty" : "EASY",
+    "isBookmarked" : true,
     "topics" : ["OTHERS", "RECURSION"],
     "testCases" : [ {
       "input": "12321",
@@ -54,6 +57,7 @@
     "title" : "Swap nodes in pairs",
     "status" : "NEW",
     "difficulty" : "MEDIUM",
+    "isBookmarked" : true,
     "topics" : ["GRAPH", "DYNAMIC_PROGRAMMING"],
     "testCases" : [ {
       "input": "5 12 33 23",
@@ -71,6 +75,7 @@
     "title" : "Merge k Sorted Lists",
     "status" : "ATTEMPTED",
     "difficulty" : "HARD",
+    "isBookmarked" : true,
     "topics" : ["SORTING", "LINKED_LIST"],
     "testCases" : [ {
       "input": "3 5 3 4 1 99 0 21 34 123 3 21 3 1",

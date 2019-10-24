@@ -26,12 +26,13 @@ public class Question {
     private final Set<Topic> topics = new HashSet<>();
     private final List<TestCase> testCases = new ArrayList<>();
     private final UserProgram userProgram;
+    private final boolean isBookmarked;
 
     /**
      * Every field must be present and not null.
      */
     public Question(String title, Status status, Difficulty difficulty, Set<Topic> topics,
-                    List<TestCase> testCases, UserProgram userProgram) {
+                    List<TestCase> testCases, UserProgram userProgram, boolean isBookmarked) {
         requireAllNonNull(title, status, difficulty, topics, testCases, userProgram);
         if (!Question.checkValidTitle(title)) {
             throw new IllegalArgumentException();
@@ -43,6 +44,7 @@ public class Question {
         this.topics.addAll(topics);
         this.testCases.addAll(testCases);
         this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCodeAsString());
+        this.isBookmarked = isBookmarked;
     }
 
     public String getTitle() {
@@ -67,6 +69,10 @@ public class Question {
 
     public List<TestCase> getTestCases() {
         return new ArrayList<>(this.testCases);
+    }
+
+    public boolean isBookmarked() {
+        return isBookmarked;
     }
 
     @Override
@@ -100,7 +106,8 @@ public class Question {
                     && other.getDifficulty().equals(this.difficulty)
                     && other.getTopics().equals(this.topics)
                     && other.getTestCases().equals(this.testCases)
-                    && other.getUserProgram().equals(this.userProgram);
+                    && other.getUserProgram().equals(this.userProgram)
+                    && other.isBookmarked() == this.isBookmarked();
         }
 
         return false;
