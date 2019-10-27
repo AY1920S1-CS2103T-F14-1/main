@@ -51,6 +51,8 @@ class JsonSerializableStandardQuestionBankDeserializer extends StdDeserializer<J
             String title = jsonAdaptedQuestionNode.get("title").textValue();
             String status = jsonAdaptedQuestionNode.get("status").textValue();
             String difficulty = jsonAdaptedQuestionNode.get("difficulty").textValue();
+            Boolean isBookmarked =
+                jsonAdaptedQuestionNode.get("isBookmarked").textValue().equals("true");
             ArrayNode rawTopicList = (ArrayNode) jsonAdaptedQuestionNode.get(
                 "topic");
             List<String> topicList = new ArrayList<>();
@@ -79,7 +81,7 @@ class JsonSerializableStandardQuestionBankDeserializer extends StdDeserializer<J
                 testCaseList.add(testCase);
             }
             JsonAdaptedQuestion jsonAdaptedQuestion =
-                new JsonAdaptedQuestion(title, status, difficulty, topicList,
+                new JsonAdaptedQuestion(title, status, difficulty, isBookmarked, topicList,
                     testCaseList, userProgram, description);
             jsonAdaptedQuestionList.add(jsonAdaptedQuestion);
         }

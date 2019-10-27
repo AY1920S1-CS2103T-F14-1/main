@@ -33,6 +33,7 @@ public class Question {
     private final String description;
     private final boolean isBookmarked;
 
+
     /**
      * Every field must be present and not null.
      *
@@ -236,4 +237,5 @@ public class Question {
         // use this method for custom fields hashing instead of implementing your own
         return Objects.hash(title, topics, status, difficulty, description);
     }
+
 }

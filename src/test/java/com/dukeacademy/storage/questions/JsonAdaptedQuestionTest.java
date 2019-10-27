@@ -44,9 +44,9 @@ public class JsonAdaptedQuestionTest {
     }
 
     @Test void toModel() throws Exception {
-        JsonAdaptedQuestion jsonQuestion = new JsonAdaptedQuestion(validTitle
-            , validStatus, validDifficulty, validIsBookmarked,
-                validTopics, validTestCases, validUserProgram, validDescription);
+        JsonAdaptedQuestion jsonQuestion = new JsonAdaptedQuestion(validTitle,
+            validStatus, validDifficulty, validIsBookmarked,
+            validTopics, validTestCases, validUserProgram, validDescription);
         Question question = jsonQuestion.toModel();
 
         assertEquals(this.validTitle, question.getTitle());
