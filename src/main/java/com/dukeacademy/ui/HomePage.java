@@ -84,7 +84,7 @@ public class HomePage extends UiPart<Region> {
         String current = computeCurrentTier(progress);
         updateCurrentTier(current);
 
-        if (current.equals("Duke")) {
+        if ("Duke".equals(current)) {
             removeProgressDescription();
         } else {
             String next = computeNextTier(progress);
@@ -187,7 +187,7 @@ public class HomePage extends UiPart<Region> {
         // Else, when it comes to non-trivial cases
         for (int i = 0; i < skillTierCeilings.length; i++) {
             if (roundedProgress > skillTierCeilings[i]) {
-                // continue traversing the array
+                assert true;    // continue traversing the array
             } else {
                 nextTierIndex = i + 1;
                 break;
@@ -296,7 +296,7 @@ public class HomePage extends UiPart<Region> {
     private void updateBookmarked(ObservableList<Question> questions) {
         ListView<Label> bookmarkedListView = new ListView<>();
         for (Question q : questions) {
-            if (q.isBookmarked() == true) {
+            if (q.isBookmarked()) {
                 Label qTitle = new Label(q.getTitle());
                 bookmarkedListView.getItems().add(qTitle);
             }
@@ -317,16 +317,14 @@ public class HomePage extends UiPart<Region> {
     /**
      * On click handler for user guide button
      */
-    @FXML
-    private void handleUserGuideButtonClick() {
+    public void handleUserGuideButtonClick() {
         userGuidePane.setVisible(true);
     }
 
     /**
      * On click handler for close button on user guide popup pane
      */
-    @FXML
-    private void handleCloseUserGuideButtonClick() {
+    public void handleCloseUserGuideButtonClick() {
         userGuidePane.setVisible(false);
     }
 }
