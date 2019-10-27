@@ -12,7 +12,8 @@ import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.UserProgram;
 
 /**
- * Exit command used to exit the application. Any unsaved work is automatically saved before the application is exited.
+ * Home command used to exit the application. Any unsaved work is automatically
+ * saved before the application is exited.
  */
 public class HomeCommand implements Command {
     private final Logger logger;
