@@ -170,7 +170,7 @@
 }
 
 .profile-display .label {
-    -fx-text-fill: black !important;
+    -fx-text-fill: black;
 }
 
 .status-bar .label {
