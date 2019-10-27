@@ -1,7 +1,7 @@
 {
   "questions" : [ {
     "title" : "Two Number Adder",
-    "status" : "PASSED",
+    "status" : "NEW",
     "difficulty" : "EASY",
     "isBookmarked" : true,
     "topics" : ["OTHERS"],
@@ -14,12 +14,12 @@
         "expectedResult": "102"
       }],
     "userProgram" : {
-      "className": "Adder",
-      "sourceCode": "public class Adder { public static void main(String[] args) { } }"
+      "canonicalName": "Main",
+      "sourceCode": "public class Main {\n\tpublic static void main(String[] args) {\n\t}\n}"
     }
   }, {
     "title" : "Valid Sudoku",
-    "status" : "PASSED",
+    "status" : "NEW",
     "difficulty" : "MEDIUM",
     "isBookmarked" : true,
     "topics" : ["OTHERS", "ARRAY", "DYNAMIC_PROGRAMMING"],
@@ -32,12 +32,12 @@
         "expectedResult": "False"
       }],
     "userProgram" : {
-      "className": "Sudoku",
-      "sourceCode": "public class Sudoku { public static void main(String[] args) { } }"
+      "canonicalName": "Main",
+      "sourceCode": "public class Main {\n\tpublic static void main(String[] args) {\n\t}\n}"
     }
   }, {
     "title" : "Palindrome Number",
-    "status" : "PASSED",
+    "status" : "NEW",
     "difficulty" : "EASY",
     "isBookmarked" : true,
     "topics" : ["OTHERS", "RECURSION"],
@@ -50,8 +50,8 @@
         "expectedResult": "False"
       }],
     "userProgram" : {
-      "className": "Palindrome",
-      "sourceCode": "public class Palindrome { public static void main(String[] args) { } }"
+      "canonicalName": "Main",
+      "sourceCode": "public class Main {\n\tpublic static void main(String[] args) {\n\t}\n}"
     }
   }, {
     "title" : "Swap nodes in pairs",
@@ -68,12 +68,12 @@
         "expectedResult": "1232"
       }],
     "userProgram" : {
-      "className": "NodePairs",
-      "sourceCode": ""
+      "canonicalName": "Main",
+      "sourceCode": "public class Main {\n\tpublic static void main(String[] args) {\n\t}\n}"
     }
   }, {
     "title" : "Merge k Sorted Lists",
-    "status" : "ATTEMPTED",
+    "status" : "NEW",
     "difficulty" : "HARD",
     "isBookmarked" : true,
     "topics" : ["SORTING", "LINKED_LIST"],
@@ -86,8 +86,8 @@
         "expectedResult": "1 2 3 4"
       }],
     "userProgram" : {
-      "className": "Merge",
-      "sourceCode": "public class Merge { public static void main(String[] args) { } }"
+      "canonicalName": "Main",
+      "sourceCode": "public class Main {\n\tpublic static void main(String[] args) {\n\t}\n}"
     }
   }]
 }

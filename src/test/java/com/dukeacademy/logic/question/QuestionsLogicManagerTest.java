@@ -40,6 +40,9 @@ class QuestionsLogicManagerTest {
     private Path emptyQuestionBankPath;
 
 
+    /**
+     * Creates a typical question bank Json file and an empty question bank Json file for testing.
+     */
     @BeforeEach
     void initializeTest() throws IOException {
         typicalQuestionBankPath = tempFolder.resolve("typical.json");
@@ -54,6 +57,9 @@ class QuestionsLogicManagerTest {
         Files.writeString(emptyQuestionBankPath, "{ \"questions\" : []}");
     }
 
+    /**
+     * Deletes the created files.
+     */
     @AfterEach
     void closeTest() throws IOException {
         Files.delete(typicalQuestionBankPath);
@@ -117,8 +123,8 @@ class QuestionsLogicManagerTest {
         Question question0 = questionsObservableList.get(0);
         Question question2 = questionsObservableList.get(2);
 
-        assertEquals(typicalQuestions.get(0), question0);
-        assertEquals(typicalQuestions.get(2), question2);
+        assertTrue(typicalQuestions.get(0).checkContentsEqual(question0));
+        assertTrue(typicalQuestions.get(2).checkContentsEqual(question2));
     }
 
     @Test
@@ -205,7 +211,7 @@ class QuestionsLogicManagerTest {
     }
 
     @Test
-    void deleteQuestion() throws IOException, DataConversionException {
+    void deleteQuestionByIndex() throws IOException, DataConversionException {
         // Load typical questions
         QuestionBankStorage storage = new JsonQuestionBankStorage(typicalQuestionBankPath);
         QuestionsLogicManager questionsLogicManager = new QuestionsLogicManager(storage);
@@ -243,6 +249,25 @@ class QuestionsLogicManagerTest {
         assertEquals(0, storageQuestions.size());
     }
 
+
+    @Test
+    void replaceQuestion() {
+        // Load typical questions
+        QuestionBankStorage storage = new JsonQuestionBankStorage(typicalQuestionBankPath);
+        QuestionsLogicManager questionsLogicManager = new QuestionsLogicManager(storage);
+        ObservableList<Question> questionsObservableList = questionsLogicManager.getFilteredQuestionsList();
+        List<Question> typicalQuestions = TypicalQuestions.getTypicalQuestions();
+        assertTrue(this.matchListData(questionsObservableList, typicalQuestions));
+
+        // Check that question replaced in both the logic manager and in the question bank
+        Question oldQuestion = questionsLogicManager.getQuestion(1);
+        Question newQuestion = this.getMockQuestion("abc");
+        questionsLogicManager.replaceQuestion(oldQuestion, newQuestion);
+        typicalQuestions.remove(1);
+        typicalQuestions.add(1, newQuestion);
+        assertTrue(this.matchListData(questionsObservableList, typicalQuestions));
+    }
+
     /**
      * Helper method to compare an observable list to a list for equality.
      * @param observableList the observable list to be compared.
@@ -259,7 +284,7 @@ class QuestionsLogicManagerTest {
         }
 
         return IntStream.range(0, observableList.size())
-                .mapToObj(i -> observableList.get(i).equals(questionList.get(i)))
+                .mapToObj(i -> observableList.get(i).checkContentsEqual(questionList.get(i)))
                 .reduce((x, y) -> x && y).get();
     }
 
@@ -295,5 +320,4 @@ class QuestionsLogicManagerTest {
             return new Question(name, Status.ATTEMPTED, Difficulty.EASY, topics, testCases, userProgram, false);
         }
     }
-
 }

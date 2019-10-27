@@ -43,10 +43,23 @@ public interface QuestionBank {
     void replaceQuestion(int id, Question question);
 
     /**
+     * Replaces an old question with new question.
+     * @param oldQuestion the old question to be replaced.
+     * @param newQuestion the new question.
+     */
+    void replaceQuestion(Question oldQuestion, Question newQuestion);
+
+    /**
      * Removes the question corresponding to the id provided.
      * @param id the id of the question to be deleted.
      */
     void removeQuestion(int id);
+
+    /**
+     * Removes the question given.
+     * @param oldQuestion the question to be removed
+     */
+    void removeQuestion(Question oldQuestion);
 
     /**
      * Deletes all the questions in the question bank.

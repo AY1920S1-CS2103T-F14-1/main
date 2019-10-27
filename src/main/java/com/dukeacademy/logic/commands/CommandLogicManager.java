@@ -1,7 +1,8 @@
 package com.dukeacademy.logic.commands;
 
 import com.dukeacademy.logic.commands.exceptions.CommandException;
-import com.dukeacademy.logic.parser.exceptions.ParseException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandKeywordException;
 
 /**
  * Implementation of the CommandLogic interface. This implementation uses a helper class, CommandParser to help
@@ -24,8 +25,17 @@ public class CommandLogicManager implements CommandLogic {
         this.commandParser.registerCommand(commandWord, commandSupplier);
     }
 
+    /**
+     * Registers a command through its factory.
+     * @param commandFactory the factory used to generate the command.
+     */
+    public void registerCommand(CommandFactory commandFactory) {
+        this.commandParser.registerCommand(commandFactory.getCommandWord(), commandFactory::getCommand);
+    }
+
     @Override
-    public CommandResult executeCommand(String commandText) throws ParseException, CommandException {
+    public CommandResult executeCommand(String commandText) throws CommandException, InvalidCommandArgumentsException,
+            InvalidCommandKeywordException {
         Command command = this.commandParser.parseCommandText(commandText);
         return command.execute();
     }

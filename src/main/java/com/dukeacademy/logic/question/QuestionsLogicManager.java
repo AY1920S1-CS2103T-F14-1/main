@@ -87,13 +87,20 @@ public class QuestionsLogicManager implements QuestionsLogic {
 
     @Override
     public void setQuestion(int index, Question newQuestion) {
-        this.questionBank.replaceQuestion(index, newQuestion);
+        Question oldQuestion = filteredList.get(index);
+        this.replaceQuestion(oldQuestion, newQuestion);
+    }
+
+    @Override
+    public void replaceQuestion(Question oldQuestion, Question newQuestion) {
+        this.questionBank.replaceQuestion(oldQuestion, newQuestion);
         this.saveQuestionBankToStorage(this.questionBank);
     }
 
     @Override
     public void deleteQuestion(int index) {
-        this.questionBank.removeQuestion(index);
+        Question questionToDelete = filteredList.get(index);
+        this.questionBank.removeQuestion(questionToDelete);
         this.saveQuestionBankToStorage(this.questionBank);
     }
 

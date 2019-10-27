@@ -24,8 +24,8 @@ public class TestCaseResult {
         this.runtimeError = runtimeError;
     }
 
-    public static TestCaseResult getSuccessfulTestCaseResult(String input, String expectedOutput, String actualOutput) {
-        return new TestCaseResult(true, input, expectedOutput, actualOutput, null);
+    public static TestCaseResult getSuccessfulTestCaseResult(String input, String actualOutput) {
+        return new TestCaseResult(true, input, actualOutput, actualOutput, null);
     }
 
     public static TestCaseResult getFailedTestCaseResult(String input, String expectedOutput, String actualOutput) {
@@ -63,5 +63,19 @@ public class TestCaseResult {
                 + "Expected: " + this.expectedOutput
                 + "Actual: " + this.actualOutput
                 + "Error: " + this.getRuntimeError().isPresent() + "\n";
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof TestCaseResult) {
+            TestCaseResult other = (TestCaseResult) object;
+            return other.isSuccessful == this.isSuccessful
+                    && other.input.equals(this.input)
+                    && other.expectedOutput.equals(this.expectedOutput)
+                    && other.getActualOutput().equals(this.getActualOutput())
+                    && other.getRuntimeError().equals(this.getRuntimeError());
+        } else {
+            return false;
+        }
     }
 }
