@@ -51,9 +51,8 @@ class MainWindow extends UiPart<Stage> {
     private final HelpWindow helpWindow;
     private Editor editorPanel;
     private CodeResultPanel codeResultPanel;
-    private ProfilePage profilePage;
     private ProblemStatementPanel problemStatementPanel;
-
+    private HomePage homePage;
 
     @FXML
     private StackPane problemStatementPlaceholder;
@@ -83,7 +82,7 @@ class MainWindow extends UiPart<Stage> {
     private HBox activityWindowPlaceholder;
 
     @FXML
-    private AnchorPane profilePlaceholder;
+    private AnchorPane homePagePlaceholder;
 
     /**
      * Instantiates a new Main window.
@@ -195,8 +194,8 @@ class MainWindow extends UiPart<Stage> {
             problemStatementLogic.getProblemStatementObservable());
         problemStatementPlaceholder.getChildren().add(problemStatementPanel.getRoot());
 
-        profilePage = new ProfilePage();
-        profilePlaceholder.getChildren().add(profilePage.getRoot());
+        homePage = new HomePage(questionsLogic.getFilteredQuestionsList());
+        homePagePlaceholder.getChildren().add(homePage.getRoot());
     }
 
     /**
@@ -261,12 +260,12 @@ class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Gets profile page.
+     * Gets home page.
      *
-     * @return the profile page
+     * @return the home page
      */
-    public ProfilePage getProfilePage() {
-        return profilePage;
+    public HomePage getHomePage() {
+        return homePage;
     }
 
     /**

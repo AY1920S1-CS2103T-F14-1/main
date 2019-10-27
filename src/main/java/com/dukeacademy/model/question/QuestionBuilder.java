@@ -20,6 +20,7 @@ public class QuestionBuilder {
     private Difficulty difficulty;
     private final Set<Topic> topics = new HashSet<>();
     private final List<TestCase> testCases = new ArrayList<>();
+    private boolean isBookmarked;
     private UserProgram userProgram = new UserProgram("Main", "");
     private String description;
 
@@ -53,6 +54,16 @@ public class QuestionBuilder {
      */
     public QuestionBuilder withDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+        return this;
+    }
+
+    /**
+     * Returns a new builder with the isBookmarked boolean added.
+     * @param isBookmarked the isBookmarked boolean to be added.
+     * @return a new builder.
+     */
+    public QuestionBuilder withIsBookmarked(boolean isBookmarked) {
+        this.isBookmarked = isBookmarked;
         return this;
     }
 
@@ -108,7 +119,7 @@ public class QuestionBuilder {
         }
 
         return new Question(title, status, difficulty, topics, testCases,
-            userProgram, description);
+            userProgram, isBookmarked, description);
     }
 
     /**

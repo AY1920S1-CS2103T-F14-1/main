@@ -18,7 +18,7 @@ import com.dukeacademy.model.question.entities.Status;
 import com.dukeacademy.model.question.entities.TestCase;
 import com.dukeacademy.model.question.entities.Topic;
 
-class QuestionTest {
+public class QuestionTest {
     private final String validTitle = "Test question";
     private final Status validStatus = Status.ATTEMPTED;
     private final Difficulty validDifficulty = Difficulty.EASY;
@@ -26,6 +26,8 @@ class QuestionTest {
     private final List<TestCase> validTestCases = new ArrayList<>();
     private final UserProgram validUserProgram = new UserProgram("Test", "");
     private final String validDescription = "Test Description";
+    private final boolean validIsBookmarked = false;
+
     @BeforeEach
     void populateTopicsAndTestCases() {
         this.validTopics.add(Topic.TREE);
@@ -39,20 +41,21 @@ class QuestionTest {
     @Test
     void constructor() {
         assertThrows(NullPointerException.class, () -> new Question(null, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram, validDescription));
+                validTopics, validTestCases, validUserProgram,
+            validIsBookmarked, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, null, validDifficulty,
-                validTopics, validTestCases, validUserProgram, validDescription));
+                validTopics, validTestCases, validUserProgram, validIsBookmarked, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, null,
-                validTopics, validTestCases, validUserProgram, validDescription));
+                validTopics, validTestCases, validUserProgram, validIsBookmarked, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                null, validTestCases, validUserProgram, validDescription));
+                null, validTestCases, validUserProgram, validIsBookmarked, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                validTopics, null, validUserProgram, validDescription));
+                validTopics, null, validUserProgram, validIsBookmarked, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, null, validDescription));
+                validTopics, validTestCases, null, validIsBookmarked, validDescription));
 
         Question validQuestion = new Question(validTitle, validStatus, validDifficulty, validTopics,
-                validTestCases, validUserProgram, validDescription);
+                validTestCases, validUserProgram, validIsBookmarked, validDescription);
         assertEquals(validTitle, validQuestion.getTitle());
         assertEquals(validStatus, validQuestion.getStatus());
         assertEquals(validDifficulty, validQuestion.getDifficulty());
@@ -73,7 +76,7 @@ class QuestionTest {
     @Test
     void withNewStatus() {
         Question question = new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram, validDescription);
+                validTopics, validTestCases, validUserProgram, validIsBookmarked, validDescription);
         Question newQuestion = question.withNewStatus(Status.PASSED);
         assertEquals(newQuestion.getStatus(), Status.PASSED);
         assertEquals(question, newQuestion);
@@ -83,7 +86,7 @@ class QuestionTest {
     @Test
     void withNewUserProgram() {
         Question question = new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram, validDescription);
+                validTopics, validTestCases, validUserProgram, validIsBookmarked, validDescription);
         UserProgram program = new UserProgram("Test", "Test test test test test");
         Question newQuestion = question.withNewUserProgram(program);
         assertEquals(newQuestion.getUserProgram(), program);

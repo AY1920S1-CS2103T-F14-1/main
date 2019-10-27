@@ -33,7 +33,8 @@ import com.dukeacademy.testutil.TypicalQuestions;
 import javafx.collections.ObservableList;
 
 class QuestionsLogicManagerTest {
-    @TempDir public Path tempFolder;
+    @TempDir
+    public Path tempFolder;
 
     private Path typicalQuestionBankPath;
     private Path emptyQuestionBankPath;
@@ -178,8 +179,7 @@ class QuestionsLogicManagerTest {
         // Verify added questions are reflected in the logic manager and the storage
         questionsLogicManager.addQuestionsFromPath(typicalQuestionBankPath);
         List<Question> expectedQuestions = TypicalQuestions.getTypicalQuestions();
-        assertTrue(this.matchListData(questionsObservableList,
-            expectedQuestions)); // here failed
+        assertTrue(this.matchListData(questionsObservableList, expectedQuestions));
         ObservableList<Question> storageQuestions1 = storage.readQuestionBank().get()
                 .getReadOnlyQuestionListObservable();
         assertTrue(this.matchListData(storageQuestions1, expectedQuestions));
@@ -312,14 +312,14 @@ class QuestionsLogicManagerTest {
             topics.add(Topic.DYNAMIC_PROGRAMMING);
 
             return new Question(name, Status.NEW, Difficulty.HARD, topics,
-                testCases, userProgram, description);
+                testCases, userProgram, true, description);
         } else {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.LINKED_LIST);
             topics.add(Topic.RECURSION);
 
             return new Question(name, Status.ATTEMPTED, Difficulty.EASY,
-                topics, testCases, userProgram, description);
+                topics, testCases, userProgram, true, description);
         }
     }
 }

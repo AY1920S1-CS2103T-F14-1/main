@@ -22,11 +22,12 @@ import com.dukeacademy.testutil.TypicalQuestions;
 
 import javafx.collections.ObservableList;
 
-class StandardQuestionBankTest {
+public class StandardQuestionBankTest {
 
     private final StandardQuestionBank standardQuestionBank = new StandardQuestionBank();
 
-    @Test void constructor() {
+    @Test
+    public void constructor() {
         assertEquals(Collections.emptyList(), standardQuestionBank.getReadOnlyQuestionListObservable());
 
         List<Question> mockQuestions = this.getMockQuestionData();
@@ -205,14 +206,14 @@ class StandardQuestionBankTest {
             topics.add(Topic.DYNAMIC_PROGRAMMING);
 
             return new Question(name, Status.NEW, Difficulty.HARD, topics,
-                testCases, userProgram, description);
+                testCases, userProgram, true, description);
         } else {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.LINKED_LIST);
             topics.add(Topic.RECURSION);
 
             return new Question(name, Status.ATTEMPTED, Difficulty.EASY,
-                topics, testCases, userProgram, description);
+                topics, testCases, userProgram, false, description);
         }
     }
 }

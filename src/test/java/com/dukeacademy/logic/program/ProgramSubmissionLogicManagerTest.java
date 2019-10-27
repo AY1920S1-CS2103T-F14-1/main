@@ -43,7 +43,8 @@ import com.dukeacademy.testutil.TestListener;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ProgramSubmissionLogicManagerTest {
-    @TempDir public static Path tempPath;
+    @TempDir
+    public static Path tempPath;
 
 
     private ProgramSubmissionLogicManager programSubmissionLogicManager;
@@ -257,9 +258,10 @@ class ProgramSubmissionLogicManagerTest {
         Status status = Status.ATTEMPTED;
         Difficulty difficulty = Difficulty.HARD;
         Set<Topic> topics = new HashSet<>();
+        boolean isBookmarked = true;
         String description = "description";
         return new Question(title, status, difficulty, topics, testCases,
-                new UserProgram("Main", ""), description);
+                new UserProgram("Main", ""), true, description);
     }
 
     @Test

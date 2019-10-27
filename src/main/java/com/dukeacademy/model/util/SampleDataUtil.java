@@ -18,6 +18,7 @@ public class SampleDataUtil {
             .withTitle("Two Number Adder")
             .withStatus(Status.PASSED)
             .withDifficulty(Difficulty.EASY)
+            .withIsBookmarked(false)
             .withTopics(Topic.OTHERS)
             .withTestCases(new TestCase("1 2", "3"), new TestCase("100 2", "102"))
             .withUserProgram(new UserProgram("Adder",
@@ -34,6 +35,7 @@ public class SampleDataUtil {
             .withTitle("Valid Sudoku")
             .withStatus(Status.PASSED)
             .withDifficulty(Difficulty.MEDIUM)
+            .withIsBookmarked(true)
             .withTopics(Topic.OTHERS, Topic.ARRAY, Topic.DYNAMIC_PROGRAMMING)
             .withTestCases(new TestCase("1 2 3 4 5 6 7 8 9", "True"),
                     new TestCase("-1 -1 -1 -1", "False"))
@@ -52,6 +54,7 @@ public class SampleDataUtil {
             .withTitle("Palindrome Number")
             .withStatus(Status.PASSED)
             .withDifficulty(Difficulty.EASY)
+            .withIsBookmarked(true)
             .withTopics(Topic.OTHERS, Topic.RECURSION)
             .withTestCases(new TestCase("12321", "True"),
                     new TestCase("10111", "False"))
@@ -75,6 +78,7 @@ public class SampleDataUtil {
             .withTitle("Swap nodes in pairs")
             .withStatus(Status.NEW)
             .withDifficulty(Difficulty.MEDIUM)
+            .withIsBookmarked(false)
             .withTopics(Topic.GRAPH, Topic.DYNAMIC_PROGRAMMING)
             .withTestCases(new TestCase("5 12 33 23", "4132"),
                     new TestCase("2 31 01", "1232"))
@@ -94,6 +98,7 @@ public class SampleDataUtil {
             .withTitle("Merge k Sorted Lists")
             .withStatus(Status.ATTEMPTED)
             .withDifficulty(Difficulty.HARD)
+            .withIsBookmarked(false)
             .withTopics(Topic.SORTING, Topic.LINKED_LIST)
             .withTestCases(new TestCase("3 5 3 4 1 99 0 21 34 123 3 21 3 1", "0 1 3 4 21 34 99 123"),
                     new TestCase("1 4 1 2 3 4", "1 2 3 4"))
