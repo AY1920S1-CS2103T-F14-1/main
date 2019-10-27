@@ -154,9 +154,7 @@ public class HomePage extends UiPart<Region> {
 
         // Else, when it comes to non-trivial cases
         for (int i = 0; i < skillTierCeilings.length; i++) {
-            if (roundedProgress > skillTierCeilings[i]) {
-                // continue traversing the array
-            } else {
+            if (roundedProgress <= skillTierCeilings[i]) {
                 currentTierIndex = i;
                 break;
             }
@@ -186,9 +184,7 @@ public class HomePage extends UiPart<Region> {
 
         // Else, when it comes to non-trivial cases
         for (int i = 0; i < skillTierCeilings.length; i++) {
-            if (roundedProgress > skillTierCeilings[i]) {
-                assert true;    // continue traversing the array
-            } else {
+            if (roundedProgress <= skillTierCeilings[i]) {
                 nextTierIndex = i + 1;
                 break;
             }
