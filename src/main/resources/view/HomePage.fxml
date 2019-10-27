@@ -3,12 +3,14 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="29.0" layoutY="6.0" prefHeight="188.0" prefWidth="652.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +34,22 @@
                   <Font name="Century Gothic" size="16.0" />
                </font>
             </Text>
-            <Button fx:id="userGuideButton" alignment="CENTER" layoutX="407.0" layoutY="8.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="156.0" text="User Guide" textAlignment="CENTER" />
+            <Button fx:id="userGuideButton" alignment="CENTER" layoutX="407.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleUserGuideButtonClick" prefHeight="27.0" prefWidth="156.0" text="User Guide" textAlignment="CENTER" />
+            <AnchorPane fx:id="userGuidePane" layoutX="334.0" layoutY="18.0" prefHeight="188.0" prefWidth="278.0" style="-fx-background-color: white; -fx-border-color: #63065d; -fx-border-width: 2;" visible="false">
+               <children>
+                  <HBox layoutX="2.0" layoutY="2.0" prefHeight="39.0" prefWidth="276.0" style="-fx-background-color: lightgrey;" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                     <children>
+                        <Button fx:id="closeUserGuideButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleCloseUserGuideButtonClick" text="Close" translateX="180.0" translateY="2.5" />
+                     </children>
+                  </HBox>
+                  <TextArea editable="false" layoutX="12.0" layoutY="113.0" prefHeight="52.0" prefWidth="254.0" style="-fx-border-color: silver;" text="https://github.com/AY1920S1-CS2103T-F14-1/main/blob/master/docs/UserGuide.adoc" wrapText="true" />
+                  <Text layoutX="12.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please copy the link below and paste it in your preferred web browser." wrappingWidth="254.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <ProgressIndicator fx:id="indicator" layoutX="46.0" layoutY="200.0" minHeight="180.0" minWidth="180.0" prefHeight="75.0" prefWidth="52.0" progress="0.22" />
@@ -66,7 +83,7 @@
       </TextFlow>
       <TextFlow layoutX="74.0" layoutY="413.0" prefHeight="27.0" prefWidth="146.0">
          <children>
-            <Text fx:id="numDone1" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed" wrappingWidth="124.681640625">
+            <Text fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Completed" wrappingWidth="124.681640625">
                <font>
                   <Font name="Century Gothic Italic" size="22.0" />
                </font>
@@ -126,11 +143,6 @@
       <Text fontSmoothingType="LCD" layoutX="777.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="For developers:" AnchorPane.leftAnchor="777.0" AnchorPane.topAnchor="13.91796875">
          <font>
             <Font name="Century Gothic" size="16.0" />
-         </font>
-      </Text>
-      <Text fontSmoothingType="LCD" layoutX="505.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="23.0">
-         <font>
-            <Font name="Century Gothic" size="14.0" />
          </font>
       </Text>
    </children>

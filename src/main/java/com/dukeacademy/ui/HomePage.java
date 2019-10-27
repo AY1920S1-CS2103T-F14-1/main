@@ -1,5 +1,7 @@
 package com.dukeacademy.ui;
 
+import static javafx.geometry.Pos.CENTER;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -8,10 +10,12 @@ import com.dukeacademy.model.question.entities.Status;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
@@ -64,6 +68,9 @@ public class HomePage extends UiPart<Region> {
 
     @FXML
     private Button contactUsButton;
+
+    @FXML
+    private AnchorPane userGuidePane;
 
     /**
      * Constructor for Home Page controller class.
@@ -305,5 +312,15 @@ public class HomePage extends UiPart<Region> {
         numToNextTier.setText("");
         progressDescription.setText("");
         nextTier.setText("");
+    }
+
+    @FXML
+    private void handleUserGuideButtonClick() {
+        userGuidePane.setVisible(true);
+    }
+
+    @FXML
+    private void handleCloseUserGuideButtonClick() {
+        userGuidePane.setVisible(false);
     }
 }
