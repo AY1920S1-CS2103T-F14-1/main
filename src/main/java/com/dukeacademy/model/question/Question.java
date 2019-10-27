@@ -41,7 +41,7 @@ public class Question {
             throw new IllegalArgumentException();
         }
 
-        this.uuid = UUID.randomUUID();
+        this.uuid = uuid;
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
