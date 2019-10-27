@@ -182,7 +182,7 @@ public class HomePage extends UiPart<Region> {
             nextTierIndex = 1;
         }
 
-        // Else, when it comes to non-trivial cases
+        // Else when it comes to non-trivial cases,
         for (int i = 0; i < skillTierCeilings.length; i++) {
             if (roundedProgress <= skillTierCeilings[i]) {
                 nextTierIndex = i + 1;
