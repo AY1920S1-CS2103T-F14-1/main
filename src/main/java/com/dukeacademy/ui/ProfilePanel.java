@@ -1,9 +1,6 @@
 package com.dukeacademy.ui;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
-
-import com.dukeacademy.commons.core.LogsCenter;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -15,7 +12,6 @@ import javafx.scene.layout.Region;
  */
 class ProfilePanel extends UiPart<Region> {
     private static final String FXML = "ProfilePanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(getClass());
 
     @FXML
     private TextArea profileDisplay;

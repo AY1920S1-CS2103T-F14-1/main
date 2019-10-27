@@ -84,7 +84,7 @@ public class MainApp extends Application {
 
         questionsLogic = this.initQuestionsLogic(userPrefs);
         programSubmissionLogic = this.initProgramSubmissionLogic(userPrefs);
-        problemStatementLogic = this.initProblemStatementLogic(userPrefs);
+        problemStatementLogic = this.initProblemStatementLogic();
 
         CommandLogicManager commandLogic = this.initCommandLogic();
 
@@ -308,7 +308,7 @@ public class MainApp extends Application {
         }
     }
 
-    private ProblemStatementLogic initProblemStatementLogic(ReadOnlyUserPrefs userPrefs) {
+    private ProblemStatementLogic initProblemStatementLogic() {
         logger.info("============================ [ Initializing problem "
             + "statement " + "logic ] =============================");
         return new ProblemStatementLogicManager();
