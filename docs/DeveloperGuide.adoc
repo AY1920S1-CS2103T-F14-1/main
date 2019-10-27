@@ -258,12 +258,26 @@ image::CommitActivityDiagram.png[]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
-// tag::dataencryption[]
-=== [Proposed] Data Encryption
+// tag::submit[]
+=== [Proposed] Submit feature
 
-_{Explain here how the data encryption feature will be implemented}_
+The submit mechanism is facilitated by `UserInterface`.
 
-// end::dataencryption[]
+The Sequence Diagram given below is an example of a scenario in which the submit command is executed when the user enters "submit" into the `CommandBox` terminal.
+
+image::submitSequenceDiagram.png[]
+
+Step 1. The user enters "submit" into the `CommandBox`.
+
+Step 2. The will call the `executeCommand()` method of the `CommandLogicManager` which will then call the `parseCommandText()` method of the `CommandParser`.
+
+Step 3. The CommandParser then calls the constructor of the Command class to create a new Command object, which is then returned to the `CommandLogicManager`.
+
+Step 4. CommandLogicManager then calls the `execute()` method of the newly created Command object.
+The UI will then retrieve the user-written code from within the `Editor` as a String to be passed onto the `ProgramSubmissionLogicManager` to be compiled as a .class file for execution.
+
+Step 5: After running the .class file, the output is then displayed to the user through the UI.
+// end::submit[]
 
 === Evaluation of user program submissions
 The evaluation of the user's programs is facilitated by the `solutions` package.
@@ -345,6 +359,21 @@ an `FileNotFoundException` is thrown during instantiation.
 ====
 *Sequence diagram:*
 
+1. `TestExecutor` calls `clearEnvironment()` of `CompilerEnvironment` to remove any redundant files from previous program
+evaluations.
+
+2. `TestExecutor` calls `createJavaFile()` of `CompilerEnvironment` to create the Java file with the class name and source code specified
+in the `UserProgram` argument.
+
+3. `TestExecutor` calls `compileJavaFile()` of `Compiler` to compile the newly created Java file.
+
+4. For each test case passed in the argument, `TestExecutor` calls `executeProgram` of `StandardProgramExecutor` with the input from the
+test case.
+
+5. `TestExecutor` maps each `ProgramOutput` received into a `TestCaseResult` model instance.
+
+6. `TestExecutor` packs all the data collected from the execution of the test cases into a single `TestResult` instance.
+
 image::TestExecutorSequenceDiagram.png[align:center]
 ====
 
@@ -394,6 +423,38 @@ We are using `java.util.logging` package for logging. The `LogsCenter` class is 
 === Configuration
 
 Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: `config.json`).
+
+=== Home Page
+
+The home page of Duke Academy is the main page that the user sees upon app initialization. Not only does it provide an
+introduction and greeting to the user, it also functions as a personal dashboard.
+
+As a personal dashboard, it presents the user with essential information about his personal progress and learning
+journey.
+
+Here are three main pieces of information presented to the user:
+1. Number of questions completed`
+2. Questions that user is still working on
+3. Questions that user chose to bookmark for personal reference
+
+To obtain these three pieces of information, we first obtain the `ObservableList` that represents all questions in the
+storage. We can obtain this `ObservableList`, from `QuestionLogic`, through a method named `getFilteredQuestionsList()`.
+
+The controller class for Home Page, `HomePage.java` has a constructor that takes in this `ObservableList`. Through
+helper methods within the controller class, we can do some processing to the `ObservableList` and easily generate the
+three pieces of data.
+
+These pieces of information will then be displayed on the Home Page through standard JavaFX controls.
+
+=== Code Result Panel
+
+The code result panel is a panel below the editor that shows the evaluation of the user's program against the specified
+test cases in the question.
+
+It takes in a `List` of `TestCaseResults` which contains useful information about how the user's program fared against
+the various test cases.
+
+These information are then displayed on the Code Result Panel through standard JavaFX controls.
 
 == Documentation
 

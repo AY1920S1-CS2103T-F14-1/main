@@ -1,23 +1,31 @@
 package com.dukeacademy.storage;
 
-import com.dukeacademy.storage.question.JsonAdaptedQuestion;
-import com.dukeacademy.storage.question.JsonAdaptedTestCase;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JsonAdaptedQuestionSerializer extends StdSerializer<JsonAdaptedQuestion> {
-   public JsonAdaptedQuestionSerializer() {
-       this(null);
-   }
+import com.dukeacademy.storage.question.JsonAdaptedQuestion;
+import com.dukeacademy.storage.question.JsonAdaptedTestCase;
 
-   public JsonAdaptedQuestionSerializer(Class<JsonAdaptedQuestion> question) {
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+
+
+/**
+ * The type Json adapted question serializer.
+ */
+class JsonAdaptedQuestionSerializer extends StdSerializer<JsonAdaptedQuestion> {
+    /**
+     * Instantiates a new Json adapted question serializer.
+     */
+    public JsonAdaptedQuestionSerializer() {
+        this(null);
+    }
+
+    private JsonAdaptedQuestionSerializer(Class<JsonAdaptedQuestion> question) {
        super(question);
-   }
+    }
 
     @Override
     public void serialize(JsonAdaptedQuestion value, JsonGenerator gen,

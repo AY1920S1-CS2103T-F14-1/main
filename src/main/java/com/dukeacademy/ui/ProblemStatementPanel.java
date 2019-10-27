@@ -1,16 +1,23 @@
 package com.dukeacademy.ui;
 
-import com.dukeacademy.model.question.Question;
+import static java.util.Objects.requireNonNull;
+
 import com.dukeacademy.observable.Observable;
-import javafx.collections.ObservableList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
 
-import static java.util.Objects.requireNonNull;
 
-public class ProblemStatementPanel extends UiPart<Region> {
+
+/**
+ * The type Problem statement panel.
+ */
+class ProblemStatementPanel extends UiPart<Region> {
     private static final String FXML = "ProblemStatement.fxml";
+
+    @FXML
+    private TextArea problemStatementDisplay;
 
     /**
      * Instantiates a new Problem Statement Display.
@@ -18,9 +25,6 @@ public class ProblemStatementPanel extends UiPart<Region> {
     public ProblemStatementPanel() {
         super(FXML);
     }
-
-    @FXML
-    private TextArea problemStatementDisplay;
 
     /**
      * Instantiates a new problem statement panel.

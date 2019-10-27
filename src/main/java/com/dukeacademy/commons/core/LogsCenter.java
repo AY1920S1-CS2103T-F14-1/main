@@ -43,7 +43,7 @@ public class LogsCenter {
      * @param name the name
      * @return the logger
      */
-    public static Logger getLogger(String name) {
+    private static Logger getLogger(String name) {
         Logger logger = Logger.getLogger(name);
         logger.setUseParentHandlers(false);
 

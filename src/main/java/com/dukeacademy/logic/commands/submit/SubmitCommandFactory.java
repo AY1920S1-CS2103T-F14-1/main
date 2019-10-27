@@ -10,9 +10,15 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  * Class to represent the necessary components for the creation of a Submit command.
  */
 public class SubmitCommandFactory implements CommandFactory {
-    private QuestionsLogic questionsLogic;
-    private ProgramSubmissionLogic programSubmissionLogic;
+    private final QuestionsLogic questionsLogic;
+    private final ProgramSubmissionLogic programSubmissionLogic;
 
+    /**
+     * Instantiates a new Submit command factory.
+     *
+     * @param questionsLogic         the questions logic
+     * @param programSubmissionLogic the program submission logic
+     */
     public SubmitCommandFactory(QuestionsLogic questionsLogic, ProgramSubmissionLogic programSubmissionLogic) {
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;
@@ -26,7 +32,7 @@ public class SubmitCommandFactory implements CommandFactory {
 
     @Override
     public Command getCommand(String commandArguments) throws InvalidCommandArgumentsException {
-        if (!"".equals(commandArguments)) {
+        if (!commandArguments.matches("\\s*")) {
             throw new InvalidCommandArgumentsException("Exit command does not take any arguments");
         }
 

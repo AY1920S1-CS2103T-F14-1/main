@@ -19,7 +19,7 @@ public class FileUtil {
      * @param file the file
      * @return the boolean
      */
-    public static boolean isFileExists(Path file) {
+    private static boolean isFileExists(Path file) {
         return Files.exists(file) && Files.isRegularFile(file);
     }
 
@@ -57,7 +57,7 @@ public class FileUtil {
      * @param file the file
      * @throws IOException the io exception
      */
-    public static void createFile(Path file) throws IOException {
+    private static void createFile(Path file) throws IOException {
         if (Files.exists(file)) {
             return;
         }
@@ -73,7 +73,7 @@ public class FileUtil {
      * @param file the file
      * @throws IOException the io exception
      */
-    public static void createParentDirsOfFile(Path file) throws IOException {
+    private static void createParentDirsOfFile(Path file) throws IOException {
         Path parentDir = file.getParent();
 
         if (parentDir != null) {

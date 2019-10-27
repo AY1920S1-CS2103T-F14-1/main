@@ -9,14 +9,17 @@ import com.dukeacademy.model.question.entities.TestCase;
 
 
 class TestCaseTest {
-    @Test
-    public void constructor() {
-        assertThrows(NullPointerException.class, () -> new TestCase(null, null));
-
+    @Test void testConstructorAndGetters() {
         String input = "1";
         String expectedResult = "2";
         TestCase testCase = new TestCase(input, expectedResult);
         assertEquals(input, testCase.getInput());
         assertEquals(expectedResult, testCase.getExpectedResult());
+    }
+
+    @Test void testConstructorNullArguments() {
+        assertThrows(NullPointerException.class, () -> new TestCase(null, null));
+        assertThrows(NullPointerException.class, () -> new TestCase("1", null));
+        assertThrows(NullPointerException.class, () -> new TestCase(null, "1"));
     }
 }

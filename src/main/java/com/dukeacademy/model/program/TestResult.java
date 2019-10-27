@@ -1,5 +1,7 @@
 package com.dukeacademy.model.program;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,9 @@ public class TestResult {
      * @param results the results
      */
     public TestResult(List<TestCaseResult> results) {
-        this.results = results;
+        requireNonNull(results);
+
+        this.results = new ArrayList<>(results);
         this.numPassed = results.parallelStream().filter(TestCaseResult::isSuccessful).count();
         this.compileError = Optional.empty();
     }
@@ -29,7 +33,6 @@ public class TestResult {
     /**
      * Instantiates a new Test executor result.
      *
-     * @param results      the results
      * @param compileError the compile error
      */
     public TestResult(CompileError compileError) {
@@ -38,7 +41,16 @@ public class TestResult {
         this.compileError = Optional.of(compileError);
     }
 
+    /**
+     * Returns if the test result was successful.
+     *
+     * @return true if the test was successful
+     */
     public boolean isSuccessful() {
+        if (this.compileError.isPresent()) {
+            return false;
+        }
+
         return this.numPassed == results.size();
     }
 
@@ -70,13 +82,22 @@ public class TestResult {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (o instanceof TestResult) {
-            return ((TestResult) o).results.equals(this.results)
-                    && ((TestResult) o).numPassed == this.numPassed
-                    && ((TestResult) o).compileError.equals(this.compileError);
+    public boolean equals(Object object) {
+        if (object instanceof TestResult) {
+            TestResult other = (TestResult) object;
+            return other.numPassed == this.numPassed
+                    && other.results.equals(this.results)
+                    && other.getCompileError().equals(this.getCompileError());
         } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Test result:\n"
+                + "Successful : " + this.isSuccessful() + "\n"
+                + "Compile error : " + this.getCompileError().isPresent() + "\n"
+                + "Test cases run : " + this.getResults().size();
     }
 }

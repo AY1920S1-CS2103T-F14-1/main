@@ -29,6 +29,9 @@ public class ProfilePage extends UiPart<Region> {
     @FXML
     private Text skillLevel;
 
+    /**
+     * Instantiates a new Profile page.
+     */
     public ProfilePage() {
         super(FXML);
         indicator.setMinWidth(130);
@@ -42,6 +45,7 @@ public class ProfilePage extends UiPart<Region> {
 
     /**
      * Closes the profile page on click of the button.
+     *
      * @param event the ActionEvent
      */
     @FXML

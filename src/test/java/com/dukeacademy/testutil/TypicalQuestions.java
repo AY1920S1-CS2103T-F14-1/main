@@ -22,9 +22,11 @@ public class TypicalQuestions {
             .withStatus(Status.PASSED)
             .withDifficulty(Difficulty.EASY)
             .withTopics(Topic.OTHERS)
-            .withTestCases(new TestCase("1 2", "3"), new TestCase("100 2", "102"))
+            .withTestCases(new TestCase("1 2", "3\n"),
+                    new TestCase("100 2", "102\n"))
             .withUserProgram(new UserProgram("Adder",
                     "public class Adder { public static void main(String[] args) { } }"))
+            .withDescription("description")
             .build();
 
     private static final Question VALID_SUDOKU = new QuestionBuilder()
@@ -36,6 +38,7 @@ public class TypicalQuestions {
                     new TestCase("-1 -1 -1 -1", "False"))
             .withUserProgram(new UserProgram("Sudoku",
                     "public class Sudoku { public static void main(String[] args) { } }"))
+            .withDescription("description")
             .build();
 
     private static final Question PALINDROME_NUMBER = new QuestionBuilder()
@@ -47,6 +50,7 @@ public class TypicalQuestions {
                     new TestCase("10111", "False"))
             .withUserProgram(new UserProgram("Palindrome",
                     "public class Palindrome { public static void main(String[] args) { } }"))
+            .withDescription("description")
             .build();
 
     private static final Question SWAP_NODES_IN_PAIRS = new QuestionBuilder()
@@ -57,6 +61,7 @@ public class TypicalQuestions {
             .withTestCases(new TestCase("5 12 33 23", "4132"),
                     new TestCase("2 31 01", "1232"))
             .withUserProgram(new UserProgram("NodePairs", ""))
+            .withDescription("description")
             .build();
 
     private static final Question MERGE_K_SORTED_LISTS = new QuestionBuilder()
@@ -64,10 +69,11 @@ public class TypicalQuestions {
             .withStatus(Status.ATTEMPTED)
             .withDifficulty(Difficulty.HARD)
             .withTopics(Topic.SORTING, Topic.LINKED_LIST)
-            .withTestCases(new TestCase("3 5 3 4 1 99 0 21 34 123 3 21 3 1",
-                    "0 1 3 4 21 34 99 123"), new TestCase("1 4 1 2 3 4", "1 2 3 4"))
+            .withTestCases(new TestCase("3 5 3 4 1 99 0 21 34 123 3 21 3 1", "0 1 3 4 21 34 99 123"),
+                    new TestCase("1 4 1 2 3 4", "1 2 3 4"))
             .withUserProgram(new UserProgram("Merge",
                     "public class Merge { public static void main(String[] args) { } }"))
+            .withDescription("description")
             .build();
 
     private TypicalQuestions() {} // prevents instantiation

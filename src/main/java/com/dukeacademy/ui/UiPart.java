@@ -15,14 +15,14 @@ import javafx.fxml.FXMLLoader;
  *
  * @param <T> the type parameter
  */
-public abstract class UiPart<T> {
+abstract class UiPart<T> {
 
     /**
      * Resource folder where FXML files are stored.
      */
-    public static final String FXML_FILE_FOLDER = "/view/";
+    private static final String FXML_FILE_FOLDER = "/view/";
 
-    public FXMLLoader fxmlLoader = new FXMLLoader();
+    private final FXMLLoader fxmlLoader = new FXMLLoader();
 
     /**
      * Constructs a UiPart with the specified FXML file URL.
@@ -30,7 +30,7 @@ public abstract class UiPart<T> {
      *
      * @param fxmlFileUrl the fxml file url
      */
-    public UiPart(URL fxmlFileUrl) {
+    UiPart(URL fxmlFileUrl) {
         loadFxmlFile(fxmlFileUrl, null);
     }
 
@@ -38,9 +38,9 @@ public abstract class UiPart<T> {
      * Constructs a UiPart using the specified FXML file within {@link #FXML_FILE_FOLDER}.
      *
      * @param fxmlFileName the fxml file name
-     * @see #UiPart(URL) #UiPart(URL)
+     * @see #UiPart(URL) #UiPart(URL)#UiPart(URL)
      */
-    public UiPart(String fxmlFileName) {
+    UiPart(String fxmlFileName) {
         this(getFxmlFileUrl(fxmlFileName));
     }
 
@@ -51,7 +51,7 @@ public abstract class UiPart<T> {
      * @param fxmlFileUrl the fxml file url
      * @param root        the root
      */
-    public UiPart(URL fxmlFileUrl, T root) {
+    UiPart(URL fxmlFileUrl, T root) {
         loadFxmlFile(fxmlFileUrl, root);
     }
 
@@ -60,9 +60,9 @@ public abstract class UiPart<T> {
      *
      * @param fxmlFileName the fxml file name
      * @param root         the root
-     * @see #UiPart(URL, T) #UiPart(URL, T)
+     * @see #UiPart(URL, T) #UiPart(URL, T)#UiPart(URL, T)
      */
-    public UiPart(String fxmlFileName, T root) {
+    UiPart(String fxmlFileName, T root) {
         this(getFxmlFileUrl(fxmlFileName), root);
     }
 

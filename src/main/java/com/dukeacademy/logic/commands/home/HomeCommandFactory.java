@@ -10,9 +10,15 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  * Factory class encapsulating the necessary components for the creation of a Exit command instance.
  */
 public class HomeCommandFactory implements CommandFactory {
-    private QuestionsLogic questionsLogic;
-    private ProgramSubmissionLogic programSubmissionLogic;
+    private final QuestionsLogic questionsLogic;
+    private final ProgramSubmissionLogic programSubmissionLogic;
 
+    /**
+     * Instantiates a new Home command factory.
+     *
+     * @param questionsLogic         the questions logic
+     * @param programSubmissionLogic the program submission logic
+     */
     public HomeCommandFactory(QuestionsLogic questionsLogic, ProgramSubmissionLogic programSubmissionLogic) {
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;

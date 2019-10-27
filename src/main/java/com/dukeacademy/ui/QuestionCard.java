@@ -13,7 +13,7 @@ import javafx.scene.layout.Region;
 /**
  * An UI component that displays information of a {@code Question}.
  */
-public class QuestionCard extends UiPart<Region> {
+class QuestionCard extends UiPart<Region> {
 
     private static final String FXML = "QuestionListCard.fxml";
 
@@ -25,7 +25,7 @@ public class QuestionCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on QuestionBank level 4</a>
      */
 
-    public final Question question;
+    private final Question question;
 
     @FXML
     private HBox cardPane;

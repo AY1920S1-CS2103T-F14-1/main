@@ -13,7 +13,7 @@ import com.dukeacademy.model.prefs.UserPrefs;
  */
 public class JsonUserPrefsStorage implements UserPrefsStorage {
 
-    private Path filePath;
+    private final Path filePath;
 
     /**
      * Instantiates a new Json user prefs storage.

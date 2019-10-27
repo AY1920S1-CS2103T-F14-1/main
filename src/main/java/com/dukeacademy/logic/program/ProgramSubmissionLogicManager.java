@@ -1,6 +1,7 @@
 package com.dukeacademy.logic.program;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +22,9 @@ import com.dukeacademy.testexecutor.TestExecutor;
 import com.dukeacademy.testexecutor.compiler.StandardCompiler;
 import com.dukeacademy.testexecutor.environment.CompilerEnvironment;
 import com.dukeacademy.testexecutor.environment.StandardCompilerEnvironment;
-import com.dukeacademy.testexecutor.exceptions.CompilerEnvironmentException;
+import com.dukeacademy.testexecutor.environment.exceptions.CreateEnvironmentException;
 import com.dukeacademy.testexecutor.exceptions.EmptyUserProgramException;
-import com.dukeacademy.testexecutor.exceptions.IncorrectClassNameException;
+import com.dukeacademy.testexecutor.exceptions.IncorrectCanonicalNameException;
 import com.dukeacademy.testexecutor.exceptions.TestExecutorException;
 import com.dukeacademy.testexecutor.executor.StandardProgramExecutor;
 
@@ -46,9 +47,10 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
 
     /**
      * Constructor.
-     * @param outputDirectoryPath The path to the directory in which all generated Java and Class files are to be saved.
-     * @throws LogicCreationException if the directory is invalid or the components of the Logic instance fails to be
-     * created.
+     *
+     * @param outputDirectoryPath The path to the directory in which all generated Java and Class files are to be saved
+     * @throws LogicCreationException if the directory is invalid or the components
+     * of the Logic instance fails to be created
      */
     public ProgramSubmissionLogicManager(String outputDirectoryPath) throws LogicCreationException {
         if (!new File(outputDirectoryPath).isDirectory()) {
@@ -56,7 +58,7 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
         }
 
         try {
-            String compilerEnvironmentPath = Paths.get(outputDirectoryPath).resolve("temp").toString();
+            Path compilerEnvironmentPath = Paths.get(outputDirectoryPath).resolve("temp");
             this.compilerEnvironment = new StandardCompilerEnvironment(compilerEnvironmentPath);
             this.testExecutor = new TestExecutor(this.compilerEnvironment, new StandardCompiler(),
                     new StandardProgramExecutor());
@@ -65,25 +67,19 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
             this.currentQuestionObservable = new StandardObservable<>();
 
             this.isClosed = false;
-        } catch (CompilerEnvironmentException e) {
+        } catch (CreateEnvironmentException e) {
             throw new LogicCreationException(messageCreationError, e);
         }
     }
 
     /**
-     * Clears any files created by the Logic instance in the output directory.
+     * Clears any files created by the Logic instance in the output directory
      */
     public void closeProgramSubmissionLogicManager() {
         this.verifyNotClosed();
-
-        try {
-            this.compilerEnvironment.close();
-        } catch (CompilerEnvironmentException e) {
-            logger.info(messageCouldNotClearEnvironmentWarning);
-        } finally {
-            this.resultObservable.clearListeners();
-            this.isClosed = true;
-        }
+        this.compilerEnvironment.close();
+        this.resultObservable.clearListeners();
+        this.isClosed = true;
     }
 
     @Override
@@ -111,11 +107,13 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
     }
 
     @Override
-    public Optional<TestResult> submitUserProgram(UserProgram userProgram) throws IncorrectClassNameException,
+    public Optional<TestResult> submitUserProgram(UserProgram userProgram) throws IncorrectCanonicalNameException,
             EmptyUserProgramException {
         this.verifyNotClosed();
 
-        if (userProgram.getSourceCode().equals("")) {
+        logger.info("Submitting user program : " + userProgram);
+
+        if (userProgram.getSourceCode().matches("\\s*")) {
             throw new EmptyUserProgramException();
         }
 
@@ -125,8 +123,10 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
                     .orElseThrow(NoQuestionSetException::new);
             TestResult results = this.testExecutor.runTestCases(testCases, userProgram);
             this.resultObservable.setValue(results);
+            logger.info("Test execution succeeded : " + results);
             return Optional.of(results);
         } catch (TestExecutorException e) {
+            logger.warning("Test execution failed unexpectedly");
             return Optional.empty();
         }
 
@@ -134,13 +134,16 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
 
     @Override
     public void setUserProgramSubmissionChannel(UserProgramChannel channel) {
+        logger.info("UserProgramChannel set : " + channel);
         this.submissionChannel = channel;
     }
 
     @Override
-    public Optional<TestResult> submitUserProgramFromSubmissionChannel() throws IncorrectClassNameException,
+    public Optional<TestResult> submitUserProgramFromSubmissionChannel() throws IncorrectCanonicalNameException,
             EmptyUserProgramException {
+        logger.info("Submitting user program from registered channel : " + this.submissionChannel);
         if (this.submissionChannel == null) {
+            logger.warning("Submission channel not set up, unable to submit user programs");
             throw new SubmissionChannelNotSetException();
         }
 
@@ -151,14 +154,20 @@ public class ProgramSubmissionLogicManager implements ProgramSubmissionLogic {
     @Override
     public UserProgram getUserProgramFromSubmissionChannel() {
         if (this.submissionChannel == null) {
+            logger.warning("Submission channel not set up, unable to get user program");
             throw new SubmissionChannelNotSetException();
         }
 
+        logger.info("Returning user program from registered channel : " + this.submissionChannel);
         return this.submissionChannel.getProgram();
     }
 
+    /**
+     * Verifies that the logic instance is not closed before each method is done.
+     */
     private void verifyNotClosed() {
         if (this.isClosed) {
+            logger.warning("ProgramSubmissionLogicManager closed, any method calls will throw exception");
             throw new SubmissionLogicManagerClosedException();
         }
     }

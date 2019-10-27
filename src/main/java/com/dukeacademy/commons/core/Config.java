@@ -47,10 +47,20 @@ public class Config {
         return this.mode;
     }
 
+    /**
+     * Sets mode.
+     *
+     * @param mode the mode
+     */
     public void setMode(Mode mode) {
         this.mode = mode;
     }
 
+    /**
+     * Gets user prefs file path.
+     *
+     * @return the user prefs file path
+     */
     public Path getUserPrefsFilePath() {
         return userPrefsFilePath;
     }

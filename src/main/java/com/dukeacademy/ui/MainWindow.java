@@ -11,7 +11,8 @@ import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
-import com.dukeacademy.logic.parser.exceptions.ParseException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandKeywordException;
 import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
@@ -26,29 +27,28 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
  * The Main Window. Provides the basic application layout containing
  * a menu bar and space where other JavaFX elements can be placed.
  */
-public class MainWindow extends UiPart<Stage> {
+class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
-    private CommandLogic commandLogic;
-    private QuestionsLogic questionsLogic;
-    private ProgramSubmissionLogic programSubmissionLogic;
-    private ProblemStatementLogic problemStatementLogic;
+    private final Stage primaryStage;
+    private final CommandLogic commandLogic;
+    private final QuestionsLogic questionsLogic;
+    private final ProgramSubmissionLogic programSubmissionLogic;
+    private final ProblemStatementLogic problemStatementLogic;
 
     // Independent Ui parts residing in this Ui container
     private QuestionListPanel questionListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
+    private final HelpWindow helpWindow;
     private Editor editorPanel;
     private CodeResultPanel codeResultPanel;
     private ProfilePage profilePage;
@@ -85,6 +85,15 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private AnchorPane profilePlaceholder;
 
+    /**
+     * Instantiates a new Main window.
+     *
+     * @param primaryStage           the primary stage
+     * @param commandLogic           the command logic
+     * @param questionsLogic         the questions logic
+     * @param programSubmissionLogic the program submission logic
+     * @param problemStatementLogic  the problem statement logic
+     */
     public MainWindow(Stage primaryStage, CommandLogic commandLogic, QuestionsLogic questionsLogic,
                       ProgramSubmissionLogic programSubmissionLogic,
                       ProblemStatementLogic problemStatementLogic) {
@@ -105,6 +114,11 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow = new HelpWindow();
     }
 
+    /**
+     * Gets primary stage.
+     *
+     * @return the primary stage
+     */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
@@ -158,7 +172,8 @@ public class MainWindow extends UiPart<Stage> {
                 new StatusBarFooter(Path.of("hello"));
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(
+            commandText -> executeCommand(commandText));
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
         editorPanel = new Editor(programSubmissionLogic.getCurrentQuestionObservable());
@@ -167,11 +182,11 @@ public class MainWindow extends UiPart<Stage> {
 
         List<TestCaseResult> sampleTestCaseResults = new ArrayList<>();
         sampleTestCaseResults.add(
-                TestCaseResult.getSuccessfulTestCaseResult("3", "Fizz", "Fizz"));
+                TestCaseResult.getSuccessfulTestCaseResult("3", "Fizz"));
         sampleTestCaseResults.add(
                 TestCaseResult.getFailedTestCaseResult("25", "Buzz", "FizzBuzz"));
         sampleTestCaseResults.add(
-                TestCaseResult.getSuccessfulTestCaseResult("15", "FizzBuzz", "FizzBuzz"));
+                TestCaseResult.getSuccessfulTestCaseResult("15", "FizzBuzz"));
 
         codeResultPanel = new CodeResultPanel(programSubmissionLogic.getTestResultObservable());
         codeResultPanelPlaceholder.getChildren().add(codeResultPanel.getRoot());
@@ -194,8 +209,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Opens the help window or focuses on it if it's already opened.
      */
-    @FXML
-    public void handleHelp() {
+    @FXML private void handleHelp() {
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
@@ -203,6 +217,9 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Show.
+     */
     void show() {
         primaryStage.show();
     }
@@ -216,18 +233,38 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
+    /**
+     * Gets person list panel.
+     *
+     * @return the person list panel
+     */
     public QuestionListPanel getPersonListPanel() {
         return questionListPanel;
     }
 
+    /**
+     * Gets editor panel.
+     *
+     * @return the editor panel
+     */
     public Editor getEditorPanel() {
         return editorPanel;
     }
 
+    /**
+     * Gets run code result panel.
+     *
+     * @return the run code result panel
+     */
     public CodeResultPanel getRunCodeResultPanel() {
         return codeResultPanel;
     }
 
+    /**
+     * Gets profile page.
+     *
+     * @return the profile page
+     */
     public ProfilePage getProfilePage() {
         return profilePage;
     }
@@ -235,7 +272,8 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Executes the command and returns the result.
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private CommandResult executeCommand(String commandText) throws CommandException, InvalidCommandKeywordException,
+            InvalidCommandArgumentsException {
         try {
             CommandResult commandResult = commandLogic.executeCommand(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
@@ -255,7 +293,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             return commandResult;
-        } catch (CommandException | ParseException e) {
+        } catch (CommandException | InvalidCommandArgumentsException | InvalidCommandKeywordException e) {
             logger.info("Invalid command: " + commandText);
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;

@@ -3,7 +3,7 @@ package com.dukeacademy.commons.core;
 /**
  * Container for user visible messages.
  */
-public class Messages {
+class Messages {
 
     /**
      * The constant MESSAGE_UNKNOWN_COMMAND.

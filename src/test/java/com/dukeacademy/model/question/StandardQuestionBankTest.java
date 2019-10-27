@@ -22,12 +22,11 @@ import com.dukeacademy.testutil.TypicalQuestions;
 
 import javafx.collections.ObservableList;
 
-public class StandardQuestionBankTest {
+class StandardQuestionBankTest {
 
     private final StandardQuestionBank standardQuestionBank = new StandardQuestionBank();
 
-    @Test
-    public void constructor() {
+    @Test void constructor() {
         assertEquals(Collections.emptyList(), standardQuestionBank.getReadOnlyQuestionListObservable());
 
         List<Question> mockQuestions = this.getMockQuestionData();
@@ -133,6 +132,19 @@ public class StandardQuestionBankTest {
         this.standardQuestionBank.setQuestions(mockQuestions);
 
         List<Question> originalBankList = new ArrayList<>(questionObservableList);
+        Question questionToRemove = originalBankList.get(1);
+        originalBankList.remove(questionToRemove);
+        this.standardQuestionBank.removeQuestion(questionToRemove);
+        assertTrue(this.matchListData(questionObservableList, originalBankList));
+    }
+
+    @Test
+    void removeQuestionByIndex() {
+        ObservableList<Question> questionObservableList = standardQuestionBank.getReadOnlyQuestionListObservable();
+        List<Question> mockQuestions = this.getMockQuestionData();
+        this.standardQuestionBank.setQuestions(mockQuestions);
+
+        List<Question> originalBankList = new ArrayList<>(questionObservableList);
         this.standardQuestionBank.removeQuestion(1);
         originalBankList.remove(1);
         assertTrue(this.matchListData(questionObservableList, originalBankList));
@@ -185,19 +197,22 @@ public class StandardQuestionBankTest {
         testCases.add(new TestCase("2", "2"));
         testCases.add(new TestCase("3", "3"));
         UserProgram userProgram = new UserProgram("Test", "public class Test { }");
+        String description = "description";
 
         if (random == 0) {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.TREE);
             topics.add(Topic.DYNAMIC_PROGRAMMING);
 
-            return new Question(name, Status.NEW, Difficulty.HARD, topics, testCases, userProgram);
+            return new Question(name, Status.NEW, Difficulty.HARD, topics,
+                testCases, userProgram, description);
         } else {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.LINKED_LIST);
             topics.add(Topic.RECURSION);
 
-            return new Question(name, Status.ATTEMPTED, Difficulty.EASY, topics, testCases, userProgram);
+            return new Question(name, Status.ATTEMPTED, Difficulty.EASY,
+                topics, testCases, userProgram, description);
         }
     }
 }

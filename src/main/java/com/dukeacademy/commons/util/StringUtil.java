@@ -13,7 +13,7 @@ import com.dukeacademy.commons.exceptions.IllegalValueException;
  * Helper functions for handling strings.
  */
 public class StringUtil {
-    public static final String VALID_WORD_REGEX = "[^\\s].*";
+    private static final String VALID_WORD_REGEX = "[^\\s].*";
 
     /**
      * Returns true if the {@code sentence} contains the {@code word}.
@@ -79,6 +79,7 @@ public class StringUtil {
 
     /**
      * Returns the first word of a string.
+     *
      * @param s the string to be processed.
      * @return the first word of the string.
      * @throws IllegalValueException if the string does not contain a valid word.
@@ -94,6 +95,7 @@ public class StringUtil {
 
     /**
      * Returns the a new string with the first word removed.
+     *
      * @param s the string to be processed.
      * @return the remainder of the string after the first word is removed.
      * @throws IllegalValueException if the string does not contain a valid word.

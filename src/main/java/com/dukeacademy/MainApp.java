@@ -31,8 +31,8 @@ import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.logic.question.QuestionsLogicManager;
 import com.dukeacademy.model.prefs.ReadOnlyUserPrefs;
 import com.dukeacademy.model.prefs.UserPrefs;
-import com.dukeacademy.storage.prefs.UserPrefsStorage;
 import com.dukeacademy.storage.prefs.JsonUserPrefsStorage;
+import com.dukeacademy.storage.prefs.UserPrefsStorage;
 import com.dukeacademy.storage.question.JsonQuestionBankStorage;
 import com.dukeacademy.storage.question.QuestionBankStorage;
 import com.dukeacademy.ui.Ui;
@@ -49,14 +49,14 @@ public class MainApp extends Application {
     /**
      * The constant VERSION.
      */
-    public static final Version VERSION = new Version(0, 6, 0, true);
+    private static final Version VERSION = new Version(0, 6, 0, true);
 
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
 
     /**
      * The Ui.
      */
-    protected Ui ui;
+    private Ui ui;
     private QuestionsLogic questionsLogic;
     private ProgramSubmissionLogic programSubmissionLogic;
     private ProblemStatementLogic problemStatementLogic;
@@ -94,8 +94,8 @@ public class MainApp extends Application {
             return;
         }
 
-        ui = this.initUi(commandLogic, questionsLogic, programSubmissionLogic
-            , problemStatementLogic);
+        ui = this.initUi(commandLogic, questionsLogic, programSubmissionLogic,
+            problemStatementLogic);
     }
 
     /**
@@ -268,7 +268,7 @@ public class MainApp extends Application {
         commandLogicManager.registerCommand(submitCommandFactory);
         // Registering view command
         ViewCommandFactory viewCommandFactory =
-            new ViewCommandFactory(this.questionsLogic);
+            new ViewCommandFactory(this.questionsLogic, problemStatementLogic);
         commandLogicManager.registerCommand(viewCommandFactory);
         // Registering home command
         HomeCommandFactory homeCommandFactory =
@@ -288,6 +288,7 @@ public class MainApp extends Application {
     private QuestionsLogicManager initQuestionsLogic(ReadOnlyUserPrefs userPrefs) {
         logger.info("============================ [ Initializing question logic ] =============================");
         QuestionBankStorage storage = new JsonQuestionBankStorage(userPrefs.getQuestionBankFilePath());
+
         return new QuestionsLogicManager(storage);
     }
 

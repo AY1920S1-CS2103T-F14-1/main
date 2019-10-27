@@ -3,8 +3,11 @@ package com.dukeacademy.logic.problemstatement;
 import com.dukeacademy.observable.Observable;
 import com.dukeacademy.observable.StandardObservable;
 
-public class ProblemStatementLogicManager implements ProblemStatementLogic{
-    private StandardObservable<String> problemStatement;
+/**
+ * The type Problem statement logic manager.
+ */
+public class ProblemStatementLogicManager implements ProblemStatementLogic {
+    private final StandardObservable<String> problemStatement;
 
     /**
      * Constructor.

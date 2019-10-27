@@ -7,16 +7,17 @@
     "topics" : ["OTHERS"],
     "testCases" : [ {
         "input": "1 2",
-        "expectedResult": "3"
+        "expectedResult": "3\n"
       },
       {
         "input": "100 2",
-        "expectedResult": "102"
+        "expectedResult": "102\n"
       }],
     "userProgram" : {
-      "className": "Adder",
+      "canonicalName": "Adder",
       "sourceCode": "public class Adder { public static void main(String[] args) { } }"
-    }
+    },
+    "description" : "description"
   }, {
     "title" : "Valid Sudoku",
     "status" : "PASSED",
@@ -31,9 +32,10 @@
         "expectedResult": "False"
       }],
     "userProgram" : {
-      "className": "Sudoku",
+      "canonicalName": "Sudoku",
       "sourceCode": "public class Sudoku { public static void main(String[] args) { } }"
-    }
+    },
+    "description" : "description"
   }, {
     "title" : "Palindrome Number",
     "status" : "PASSED",
@@ -48,9 +50,10 @@
         "expectedResult": "False"
       }],
     "userProgram" : {
-      "className": "Palindrome",
+      "canonicalName": "Palindrome",
       "sourceCode": "public class Palindrome { public static void main(String[] args) { } }"
-    }
+    },
+    "description" : "description"
   }, {
     "title" : "Swap nodes in pairs",
     "status" : "NEW",
@@ -65,9 +68,10 @@
         "expectedResult": "1232"
       }],
     "userProgram" : {
-      "className": "NodePairs",
+      "canonicalName": "NodePairs",
       "sourceCode": ""
-    }
+    },
+    "description" : "description"
   }, {
     "title" : "Merge k Sorted Lists",
     "status" : "ATTEMPTED",
@@ -82,8 +86,9 @@
         "expectedResult": "1 2 3 4"
       }],
     "userProgram" : {
-      "className": "Merge",
+      "canonicalName": "Merge",
       "sourceCode": "public class Merge { public static void main(String[] args) { } }"
-    }
+    },
+    "description" : "description"
   }]
 }

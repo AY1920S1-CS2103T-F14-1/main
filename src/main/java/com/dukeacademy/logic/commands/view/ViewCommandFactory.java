@@ -3,7 +3,7 @@ package com.dukeacademy.logic.commands.view;
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
-import com.dukeacademy.logic.program.ProgramSubmissionLogic;
+import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
 /**
@@ -11,10 +11,19 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  * ViewCommand instance.
  */
 public class ViewCommandFactory implements CommandFactory {
-    private QuestionsLogic questionsLogic;
+    private final QuestionsLogic questionsLogic;
+    private ProblemStatementLogic problemStatementLogic;
 
-    public ViewCommandFactory(QuestionsLogic questionsLogic) {
+    /**
+     * Instantiates a new View command factory.
+     *
+     * @param questionsLogic        the questions logic
+     * @param problemStatementLogic the problem statement logic
+     */
+    public ViewCommandFactory(QuestionsLogic questionsLogic,
+                              ProblemStatementLogic problemStatementLogic) {
         this.questionsLogic = questionsLogic;
+        this.problemStatementLogic = problemStatementLogic;
     }
 
     @Override
@@ -26,7 +35,7 @@ public class ViewCommandFactory implements CommandFactory {
     public Command getCommand(String commandArguments) throws InvalidCommandArgumentsException {
         try {
             int index = Integer.parseInt(commandArguments.strip());
-            return new ViewCommand(index, questionsLogic);
+            return new ViewCommand(index, questionsLogic, problemStatementLogic);
         } catch (NumberFormatException e) {
             throw new InvalidCommandArgumentsException("Invalid index entered.");
         }

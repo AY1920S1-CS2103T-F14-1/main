@@ -26,7 +26,7 @@ public class UiManager implements Ui {
     /**
      * The constant ALERT_DIALOG_PANE_FIELD_ID.
      */
-    public static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
+    private static final String ALERT_DIALOG_PANE_FIELD_ID = "alertDialogPane";
 
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/dukeacademy-icon.png";
@@ -40,7 +40,10 @@ public class UiManager implements Ui {
     /**
      * Instantiates a new Ui manager.
      *
-     * @param logic the logic
+     * @param commandLogic           the command logic
+     * @param questionsLogic         the questions logic
+     * @param programSubmissionLogic the program submission logic
+     * @param problemStatementLogic  the problem statement logic
      */
     public UiManager(CommandLogic commandLogic, QuestionsLogic questionsLogic,
                      ProgramSubmissionLogic programSubmissionLogic,
@@ -57,7 +60,7 @@ public class UiManager implements Ui {
         logger.info("Starting UI...");
 
         //Set the application icon.
-        primaryStage.getIcons().add(getImage(ICON_APPLICATION));
+        primaryStage.getIcons().add(getImage());
 
         try {
             mainWindow = new MainWindow(primaryStage, commandLogic, questionsLogic,
@@ -67,24 +70,24 @@ public class UiManager implements Ui {
 
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
-            showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
+            showFatalErrorDialogAndShutdown(e);
         }
     }
 
-    private Image getImage(String imagePath) {
-        return new Image(MainApp.class.getResourceAsStream(imagePath));
+    private Image getImage() {
+        return new Image(MainApp.class.getResourceAsStream(
+            UiManager.ICON_APPLICATION));
     }
 
     /**
      * Show alert dialog and wait.
-     *
-     * @param type        the type
-     * @param title       the title
+     *  @param title       the title
      * @param headerText  the header text
      * @param contentText the content text
      */
-    void showAlertDialogAndWait(Alert.AlertType type, String title, String headerText, String contentText) {
-        showAlertDialogAndWait(mainWindow.getPrimaryStage(), type, title, headerText, contentText);
+    private void showAlertDialogAndWait(String title, String headerText,
+                                        String contentText) {
+        showAlertDialogAndWait(mainWindow.getPrimaryStage(), AlertType.ERROR, title, headerText, contentText);
     }
 
     /**
@@ -107,9 +110,10 @@ public class UiManager implements Ui {
      * Shows an error alert dialog with {@code title} and error message, {@code e},
      * and exits the application after the user has closed the alert dialog.
      */
-    private void showFatalErrorDialogAndShutdown(String title, Throwable e) {
-        logger.severe(title + " " + e.getMessage() + StringUtil.getDetails(e));
-        showAlertDialogAndWait(Alert.AlertType.ERROR, title, e.getMessage(), e.toString());
+    private void showFatalErrorDialogAndShutdown(Throwable e) {
+        logger.severe("Fatal error during initializing"
+            + " " + e.getMessage() + StringUtil.getDetails(e));
+        showAlertDialogAndWait("Fatal error during initializing", e.getMessage(), e.toString());
         Platform.exit();
         System.exit(1);
     }

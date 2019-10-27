@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="editorPane" minHeight="-Infinity" minWidth="-Infinity"  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="editorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="405.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <VBox prefHeight="352.8" prefWidth="404.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-              <TextArea fx:id="textOutput"  promptText="hello" styleClass="pane-with-border" text="public class Main {&#10;    public static void main(String[] args) {&#10;        // Your code here!&#10;    }&#10;}" VBox.vgrow="ALWAYS">
+              <TextArea fx:id="textOutput" prefHeight="310.0" prefWidth="404.0" promptText="hello" styleClass="pane-with-border" text="public class Main {&#10;    public static void main(String[] args) {&#10;        // Your code here!&#10;    }&#10;}" VBox.vgrow="ALWAYS">
                   <font>
                       <Font name="Consolas Bold" size="12.0" />
                   </font>

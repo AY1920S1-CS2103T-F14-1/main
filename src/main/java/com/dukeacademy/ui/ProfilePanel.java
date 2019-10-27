@@ -1,31 +1,24 @@
 package com.dukeacademy.ui;
 
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
-import static java.util.Objects.requireNonNull;
+import java.util.ArrayList;
+import java.util.logging.Logger;
+
+import com.dukeacademy.commons.core.LogsCenter;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
-import com.dukeacademy.commons.core.LogsCenter;
-import com.dukeacademy.model.profile.Profile;
-
-import java.util.ArrayList;
-import java.util.logging.Logger;
+import javafx.scene.layout.Region;
 
 
 /**
  * The type Profile panel.
  */
-public class ProfilePanel extends UiPart<Region> {
-    private final Logger logger = LogsCenter.getLogger(getClass());
-
+class ProfilePanel extends UiPart<Region> {
     private static final String FXML = "ProfilePanel.fxml";
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     @FXML
     private TextArea profileDisplay;
-
 
     /**
      * Instantiates a new Profile panel.

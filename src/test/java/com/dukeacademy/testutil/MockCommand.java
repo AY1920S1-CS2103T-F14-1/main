@@ -1,5 +1,7 @@
-package com.dukeacademy.logic.commands;
+package com.dukeacademy.testutil;
 
+import com.dukeacademy.logic.commands.Command;
+import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
 
@@ -14,7 +16,7 @@ public class MockCommand implements Command {
     }
 
     public static CommandResult getExpectedCommandResult() {
-        return new CommandResult("AbCdEfG1315r!", false, false);
+        return new CommandResult("AbCdEfG1315r!", false, false, false, false);
     }
 
     @Override

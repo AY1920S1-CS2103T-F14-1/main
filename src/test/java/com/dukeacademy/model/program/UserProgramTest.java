@@ -8,23 +8,13 @@ import org.junit.jupiter.api.Test;
 import com.dukeacademy.model.question.UserProgram;
 
 class UserProgramTest {
-    private String className = "Test";
-    private String content = "package foo.bar;\n"
-            + "public class Test {\n}";
-    @Test
-    public void getCanonicalName() {
-        UserProgram program = new UserProgram(className, content);
-        String canonicalName = program.getCanonicalName();
 
-        assertEquals("foo.bar.Test", canonicalName);
-    }
-
-    @Test
-    public void constructor() {
-        assertThrows(IllegalArgumentException.class, () -> new UserProgram("  ", ""));
+    @Test void testConstructorAndGetters() {
         assertThrows(NullPointerException.class, () -> new UserProgram(null, null));
-        UserProgram userProgram = new UserProgram(className, content);
-        assertEquals(className, userProgram.getClassName());
+        String content = "package foo.bar;\n" + "public class Test {\n}";
+        String canonicalName = "foo.bar.Test";
+        UserProgram userProgram = new UserProgram(canonicalName, content);
+        assertEquals(canonicalName, userProgram.getCanonicalName());
         assertEquals(content, userProgram.getSourceCode());
     }
 }

@@ -19,6 +19,12 @@ public class HomeCommand implements Command {
     private final ProgramSubmissionLogic programSubmissionLogic;
     private final QuestionsLogic questionsLogic;
 
+    /**
+     * Instantiates a new Home command.
+     *
+     * @param questionsLogic         the questions logic
+     * @param programSubmissionLogic the program submission logic
+     */
     public HomeCommand(QuestionsLogic questionsLogic, ProgramSubmissionLogic programSubmissionLogic) {
         this.logger = LogsCenter.getLogger(HomeCommand.class);
         this.programSubmissionLogic = programSubmissionLogic;
@@ -43,8 +49,8 @@ public class HomeCommand implements Command {
             logger.info("No question attempt found. Skipping program save.");
         }
 
-        return new CommandResult("Returning to home page...", false, false, true
-            , false);
+        return new CommandResult("Returning to home page...", false,
+            false, true, false);
     }
 
     private void saveQuestion(Question oldQuestion, Question newQuestion) {

@@ -1,8 +1,8 @@
 package com.dukeacademy.ui;
 
-import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
-import com.dukeacademy.logic.parser.exceptions.ParseException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandKeywordException;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,12 +12,9 @@ import javafx.scene.layout.Region;
 /**
  * The UI component that is responsible for receiving user command inputs.
  */
-public class CommandBox extends UiPart<Region> {
+class CommandBox extends UiPart<Region> {
 
-    /**
-     * The constant ERROR_STYLE_CLASS.
-     */
-    public static final String ERROR_STYLE_CLASS = "error";
+    private static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
 
     private final CommandExecutor commandExecutor;
@@ -45,7 +42,7 @@ public class CommandBox extends UiPart<Region> {
         try {
             commandExecutor.execute(commandTextField.getText());
             commandTextField.setText("");
-        } catch (Exception e) {
+        } catch (CommandException | InvalidCommandArgumentsException | InvalidCommandKeywordException e) {
             setStyleToIndicateCommandFailure();
         }
     }
@@ -78,8 +75,13 @@ public class CommandBox extends UiPart<Region> {
         /**
          * Executes the command and returns the result.
          *
+         * @param commandText the command text
+         * @throws CommandException                 the command exception
+         * @throws InvalidCommandArgumentsException the invalid command arguments exception
+         * @throws InvalidCommandKeywordException   the invalid command keyword exception
          */
-        CommandResult execute(String commandText) throws Exception;
+        void execute(String commandText) throws CommandException, InvalidCommandArgumentsException,
+                InvalidCommandKeywordException;
     }
 
 }

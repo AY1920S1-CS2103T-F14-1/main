@@ -33,13 +33,15 @@ import com.dukeacademy.testutil.TypicalQuestions;
 import javafx.collections.ObservableList;
 
 class QuestionsLogicManagerTest {
-    @TempDir
-    public Path tempFolder;
+    @TempDir public Path tempFolder;
 
     private Path typicalQuestionBankPath;
     private Path emptyQuestionBankPath;
 
 
+    /**
+     * Creates a typical question bank Json file and an empty question bank Json file for testing.
+     */
     @BeforeEach
     void initializeTest() throws IOException {
         typicalQuestionBankPath = tempFolder.resolve("typical.json");
@@ -54,6 +56,9 @@ class QuestionsLogicManagerTest {
         Files.writeString(emptyQuestionBankPath, "{ \"questions\" : []}");
     }
 
+    /**
+     * Deletes the created files.
+     */
     @AfterEach
     void closeTest() throws IOException {
         Files.delete(typicalQuestionBankPath);
@@ -173,7 +178,8 @@ class QuestionsLogicManagerTest {
         // Verify added questions are reflected in the logic manager and the storage
         questionsLogicManager.addQuestionsFromPath(typicalQuestionBankPath);
         List<Question> expectedQuestions = TypicalQuestions.getTypicalQuestions();
-        assertTrue(this.matchListData(questionsObservableList, expectedQuestions));
+        assertTrue(this.matchListData(questionsObservableList,
+            expectedQuestions)); // here failed
         ObservableList<Question> storageQuestions1 = storage.readQuestionBank().get()
                 .getReadOnlyQuestionListObservable();
         assertTrue(this.matchListData(storageQuestions1, expectedQuestions));
@@ -205,7 +211,7 @@ class QuestionsLogicManagerTest {
     }
 
     @Test
-    void deleteQuestion() throws IOException, DataConversionException {
+    void deleteQuestionByIndex() throws IOException, DataConversionException {
         // Load typical questions
         QuestionBankStorage storage = new JsonQuestionBankStorage(typicalQuestionBankPath);
         QuestionsLogicManager questionsLogicManager = new QuestionsLogicManager(storage);
@@ -299,19 +305,21 @@ class QuestionsLogicManagerTest {
         testCases.add(new TestCase("2", "2"));
         testCases.add(new TestCase("3", "3"));
         UserProgram userProgram = new UserProgram("Test", "public class Test { }");
-
+        String description = "description";
         if (random == 0) {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.TREE);
             topics.add(Topic.DYNAMIC_PROGRAMMING);
 
-            return new Question(name, Status.NEW, Difficulty.HARD, topics, testCases, userProgram);
+            return new Question(name, Status.NEW, Difficulty.HARD, topics,
+                testCases, userProgram, description);
         } else {
             Set<Topic> topics = new HashSet<>();
             topics.add(Topic.LINKED_LIST);
             topics.add(Topic.RECURSION);
 
-            return new Question(name, Status.ATTEMPTED, Difficulty.EASY, topics, testCases, userProgram);
+            return new Question(name, Status.ATTEMPTED, Difficulty.EASY,
+                topics, testCases, userProgram, description);
         }
     }
 }

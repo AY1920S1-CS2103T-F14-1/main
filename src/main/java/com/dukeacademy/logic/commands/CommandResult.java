@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
+
 /**
  * Represents the result of a command execution.
  */
@@ -28,6 +29,7 @@ public class CommandResult {
      * @param showHelp       the show help
      * @param exit           the exit
      * @param home           the home
+     * @param view           the view
      */
     public CommandResult(String feedbackToUser, boolean showHelp,
                          boolean exit, boolean home, boolean view) {
@@ -45,7 +47,7 @@ public class CommandResult {
      * @param feedbackToUser the feedback to user
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false,false, false);
+        this(feedbackToUser, false, false, false, false);
     }
 
     /**

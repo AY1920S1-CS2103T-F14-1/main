@@ -18,14 +18,14 @@ import com.dukeacademy.model.question.entities.Status;
 import com.dukeacademy.model.question.entities.TestCase;
 import com.dukeacademy.model.question.entities.Topic;
 
-public class QuestionTest {
+class QuestionTest {
     private final String validTitle = "Test question";
     private final Status validStatus = Status.ATTEMPTED;
     private final Difficulty validDifficulty = Difficulty.EASY;
     private final Set<Topic> validTopics = new HashSet<>();
     private final List<TestCase> validTestCases = new ArrayList<>();
     private final UserProgram validUserProgram = new UserProgram("Test", "");
-
+    private final String validDescription = "Test Description";
     @BeforeEach
     void populateTopicsAndTestCases() {
         this.validTopics.add(Topic.TREE);
@@ -39,26 +39,27 @@ public class QuestionTest {
     @Test
     void constructor() {
         assertThrows(NullPointerException.class, () -> new Question(null, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram));
+                validTopics, validTestCases, validUserProgram, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, null, validDifficulty,
-                validTopics, validTestCases, validUserProgram));
+                validTopics, validTestCases, validUserProgram, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, null,
-                validTopics, validTestCases, validUserProgram));
+                validTopics, validTestCases, validUserProgram, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                null, validTestCases, validUserProgram));
+                null, validTestCases, validUserProgram, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                validTopics, null, validUserProgram));
+                validTopics, null, validUserProgram, validDescription));
         assertThrows(NullPointerException.class, () -> new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, null));
+                validTopics, validTestCases, null, validDescription));
 
         Question validQuestion = new Question(validTitle, validStatus, validDifficulty, validTopics,
-                validTestCases, validUserProgram);
+                validTestCases, validUserProgram, validDescription);
         assertEquals(validTitle, validQuestion.getTitle());
         assertEquals(validStatus, validQuestion.getStatus());
         assertEquals(validDifficulty, validQuestion.getDifficulty());
         assertEquals(validTopics, validQuestion.getTopics());
         assertEquals(validTestCases, validQuestion.getTestCases());
         assertEquals(validUserProgram, validQuestion.getUserProgram());
+        assertEquals(validDescription, validQuestion.getDescription());
     }
 
     @Test
@@ -72,7 +73,7 @@ public class QuestionTest {
     @Test
     void withNewStatus() {
         Question question = new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram);
+                validTopics, validTestCases, validUserProgram, validDescription);
         Question newQuestion = question.withNewStatus(Status.PASSED);
         assertEquals(newQuestion.getStatus(), Status.PASSED);
         assertEquals(question, newQuestion);
@@ -82,7 +83,7 @@ public class QuestionTest {
     @Test
     void withNewUserProgram() {
         Question question = new Question(validTitle, validStatus, validDifficulty,
-                validTopics, validTestCases, validUserProgram);
+                validTopics, validTestCases, validUserProgram, validDescription);
         UserProgram program = new UserProgram("Test", "Test test test test test");
         Question newQuestion = question.withNewUserProgram(program);
         assertEquals(newQuestion.getUserProgram(), program);

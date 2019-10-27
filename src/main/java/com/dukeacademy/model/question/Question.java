@@ -16,11 +16,12 @@ import com.dukeacademy.model.question.entities.TestCase;
 import com.dukeacademy.model.question.entities.Topic;
 
 /**
- * Represents a Question in the question bank.
+ * Represents a Question in the question bank. Each newly created question is tagged with a UUID. This UUID is not
+ * saved to storage and is not exposed to external classes. However, it is used to determine the equality of questions.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Question {
-    public static final String TITLE_VALIDATION_REGEX = "[^\\s].*";
+    private static final String TITLE_VALIDATION_REGEX = "[^\\s].*";
 
     private final UUID uuid;
     private final String title;
@@ -30,14 +31,16 @@ public class Question {
     private final List<TestCase> testCases = new ArrayList<>();
     private final UserProgram userProgram;
     private final String description;
+
     /**
      * Every field must be present and not null.
      *
-     * @param title      the title
+     * @param title       the title
+     * @param status      the status
+     * @param difficulty  the difficulty
      * @param topics      the topics
-     * @param status     the status
-     * @param difficulty the difficulty
-     *
+     * @param testCases   the test cases
+     * @param userProgram the user program
      * @param description the description
      */
     public Question(String title, Status status, Difficulty difficulty, Set<Topic> topics,
@@ -54,13 +57,14 @@ public class Question {
         this.difficulty = difficulty;
         this.topics.addAll(topics);
         this.testCases.addAll(testCases);
-        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCode());
         this.description = description;
+        this.userProgram = new UserProgram(userProgram.getCanonicalName(), userProgram.getSourceCode());
     }
 
-    public Question(UUID uuid, String title, Status status, Difficulty difficulty, Set<Topic> topics,
-                    List<TestCase> testCases, UserProgram userProgram,
-                    String description) {
+    private Question(UUID uuid, String title, Status status,
+                     Difficulty difficulty, Set<Topic> topics,
+                     List<TestCase> testCases, UserProgram userProgram,
+                     String description) {
         requireAllNonNull(uuid, title, status, difficulty, topics, testCases,
             userProgram, description);
         if (!Question.checkValidTitle(title)) {
@@ -73,8 +77,8 @@ public class Question {
         this.difficulty = difficulty;
         this.topics.addAll(topics);
         this.testCases.addAll(testCases);
-        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCode());
         this.description = description;
+        this.userProgram = new UserProgram(userProgram.getCanonicalName(), userProgram.getSourceCode());
     }
 
     /**
@@ -85,6 +89,7 @@ public class Question {
     public String getTitle() {
         return this.title;
     }
+
     /**
      * Gets status.
      *
@@ -130,7 +135,7 @@ public class Question {
      * @return the userProgram
      */
     public UserProgram getUserProgram() {
-        return new UserProgram(this.userProgram.getClassName(), this.userProgram.getSourceCode());
+        return new UserProgram(this.userProgram.getCanonicalName(), this.userProgram.getSourceCode());
     }
 
     /**
@@ -191,6 +196,7 @@ public class Question {
 
     /**
      * Checks if the contents of the questions are equal. The UUID of each question is disregarded.
+     *
      * @param other the other question to be checked against.
      * @return true if the contents are equal.
      */

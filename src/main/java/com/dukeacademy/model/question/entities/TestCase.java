@@ -1,11 +1,12 @@
 package com.dukeacademy.model.question.entities;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-
 import static com.dukeacademy.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 
 /**
  * Represents a test case for a question.

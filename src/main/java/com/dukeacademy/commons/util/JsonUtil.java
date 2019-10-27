@@ -12,9 +12,7 @@ import java.util.logging.Logger;
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 
-import com.dukeacademy.storage.JsonSerializableStandardQuestionBankDeserializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -32,7 +30,7 @@ public class JsonUtil {
 
     private static final Logger logger = LogsCenter.getLogger(JsonUtil.class);
 
-    private static ObjectMapper objectMapper = new ObjectMapper()
+    private static final ObjectMapper objectMapper = new ObjectMapper()
         .findAndRegisterModules()
         .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
@@ -41,7 +39,7 @@ public class JsonUtil {
         .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
         .registerModule(new SimpleModule("SimpleModule")
             .addSerializer(Level.class, new ToStringSerializer())
-            .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
+            .addDeserializer(Level.class, new LevelDeserializer()));
 
 
     /**
@@ -127,7 +125,7 @@ public class JsonUtil {
      * @return The instance of T with the specified values in the JSON string
      * @throws IOException the io exception
      */
-    public static <T> T fromJsonString(String json, Class<T> instanceClass) throws IOException {
+    private static <T> T fromJsonString(String json, Class<T> instanceClass) throws IOException {
         // return JsonSerializableQuestionBank
         return objectMapper.readValue(json, instanceClass);
     }
@@ -140,7 +138,7 @@ public class JsonUtil {
      * @return JSON data representation of the given class instance, in string
      * @throws JsonProcessingException the json processing exception
      */
-    public static <T> String toJsonString(T instance) throws JsonProcessingException {
+    private static <T> String toJsonString(T instance) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(instance);
     }
 
@@ -151,11 +149,9 @@ public class JsonUtil {
 
         /**
          * Instantiates a new Level deserializer.
-         *
-         * @param vc the vc
          */
-        protected LevelDeserializer(Class<?> vc) {
-            super(vc);
+        LevelDeserializer() {
+            super(Level.class);
         }
 
         @Override
