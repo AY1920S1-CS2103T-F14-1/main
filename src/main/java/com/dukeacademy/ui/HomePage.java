@@ -1,7 +1,5 @@
 package com.dukeacademy.ui;
 
-import static javafx.geometry.Pos.CENTER;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,12 +8,10 @@ import com.dukeacademy.model.question.entities.Status;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressIndicator;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
@@ -268,6 +264,10 @@ public class HomePage extends UiPart<Region> {
         nextTier.setText(tier);
     }
 
+    /**
+     * Updates the number of completed questions required in order to reach the next tier
+     * @param num number of completed questions required in order to reach the next tier
+     */
     private void updateNumToNextTier(int num) {
         String numToNextTierString = num + "";
         numToNextTier.setText(numToNextTierString);
@@ -314,11 +314,17 @@ public class HomePage extends UiPart<Region> {
         nextTier.setText("");
     }
 
+    /**
+     * On click handler for user guide button
+     */
     @FXML
     private void handleUserGuideButtonClick() {
         userGuidePane.setVisible(true);
     }
 
+    /**
+     * On click handler for close button on user guide popup pane
+     */
     @FXML
     private void handleCloseUserGuideButtonClick() {
         userGuidePane.setVisible(false);
