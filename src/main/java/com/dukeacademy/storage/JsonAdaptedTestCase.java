@@ -1,7 +1,7 @@
 package com.dukeacademy.storage;
 
 import com.dukeacademy.commons.exceptions.IllegalValueException;
-import com.dukeacademy.model.question.TestCase;
+import com.dukeacademy.model.question.entities.TestCase;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -34,8 +34,8 @@ public class JsonAdaptedTestCase {
      * @param source the source
      */
     public JsonAdaptedTestCase(TestCase source) {
-        input = source.input;
-        expectedResult = source.expectedResult;
+        input = source.getInput();
+        expectedResult = source.getExpectedResult();
     }
 
     /**

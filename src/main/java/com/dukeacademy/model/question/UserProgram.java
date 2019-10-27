@@ -43,7 +43,7 @@ public class UserProgram {
      *
      * @return the source code as string
      */
-    public String getSourceCodeAsString() {
+    public String getSourceCode() {
         return this.sourceCode;
     }
 
@@ -81,7 +81,7 @@ public class UserProgram {
         builder.append(" Class Name: ")
                .append(getCanonicalName())
                .append(" Source code: ")
-               .append(getSourceCodeAsString());
+               .append(getSourceCode());
         return builder.toString();
     }
 

@@ -27,12 +27,8 @@ public class QuestionsLogicManager implements QuestionsLogic {
     private final QuestionBankStorage storage;
     private final QuestionBank questionBank;
     private final FilteredList<Question> filteredList;
+    private String problemStatement = "";
 
-    /**
-     * Instantiates a new Logic manager.
-     *
-     * @param storage the storage
-     */
     public QuestionsLogicManager(QuestionBankStorage storage) {
         this.logger = LogsCenter.getLogger(QuestionsLogicManager.class);
         this.storage = storage;
@@ -92,12 +88,19 @@ public class QuestionsLogicManager implements QuestionsLogic {
 
     @Override
     public void setQuestion(int index, Question newQuestion) {
-        this.questionBank.replaceQuestion(index, newQuestion);
+        Question oldQuestion = filteredList.get(index);
+        this.replaceQuestion(oldQuestion, newQuestion);
+    }
+
+    @Override
+    public void replaceQuestion(Question oldQuestion, Question newQuestion) {
+        this.questionBank.replaceQuestion(oldQuestion, newQuestion);
         this.saveQuestionBankToStorage(this.questionBank);
     }
 
     @Override
     public void deleteQuestion(int index) {
+        Question questionToDelete = filteredList.get(index);
         this.questionBank.removeQuestion(index);
         this.saveQuestionBankToStorage(this.questionBank);
     }
@@ -116,12 +119,12 @@ public class QuestionsLogicManager implements QuestionsLogic {
         try {
             return this.storage.readQuestionBank().orElseGet(() -> {
                 logger.info("Unable to find json file: " + storage.getQuestionBankFilePath()
-                        + ".\n Loading sample data instead...");
+                    + ".\n Loading sample data instead...");
                 return SampleDataUtil.getSampleQuestionBank();
             });
         } catch (IOException | DataConversionException e) {
             logger.info("Unable to load question bank from: " + storage.getQuestionBankFilePath()
-                    + ".\n Loading sample data instead...");
+                + ".\n Loading sample data instead...");
             return SampleDataUtil.getSampleQuestionBank();
         }
     }
@@ -138,8 +141,11 @@ public class QuestionsLogicManager implements QuestionsLogic {
         }
     }
 
-    @Override
     public String getProblemStatement() {
-        return model.getProblemStatement();
+        return problemStatement;
+    }
+
+    public void setProblemStatement(String problemStatement) {
+        this.problemStatement = problemStatement;
     }
 }

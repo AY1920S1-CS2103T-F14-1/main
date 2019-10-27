@@ -1,4 +1,4 @@
-package com.dukeacademy.storage;
+package com.dukeacademy.storage.prefs;
 
 import java.io.IOException;
 import java.nio.file.Path;

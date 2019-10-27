@@ -106,5 +106,6 @@ public class QuestionBuilder {
 
     public QuestionBuilder withDescription(String description) {
         this.description = description;
+        return this;
     }
 }

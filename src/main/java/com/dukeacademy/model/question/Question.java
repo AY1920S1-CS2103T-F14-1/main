@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 import com.dukeacademy.model.question.entities.Difficulty;
 import com.dukeacademy.model.question.entities.Status;
@@ -21,6 +22,7 @@ import com.dukeacademy.model.question.entities.Topic;
 public class Question {
     public static final String TITLE_VALIDATION_REGEX = "[^\\s].*";
 
+    private final UUID uuid;
     private final String title;
     private final Status status;
     private final Difficulty difficulty;
@@ -32,7 +34,7 @@ public class Question {
      * Every field must be present and not null.
      *
      * @param title      the title
-     * @param topic      the topic
+     * @param topics      the topics
      * @param status     the status
      * @param difficulty the difficulty
      *
@@ -46,12 +48,32 @@ public class Question {
             throw new IllegalArgumentException();
         }
 
+        this.uuid = UUID.randomUUID();
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
         this.topics.addAll(topics);
         this.testCases.addAll(testCases);
-        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCodeAsString());
+        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCode());
+        this.description = description;
+    }
+
+    public Question(UUID uuid, String title, Status status, Difficulty difficulty, Set<Topic> topics,
+                    List<TestCase> testCases, UserProgram userProgram,
+                    String description) {
+        requireAllNonNull(uuid, title, status, difficulty, topics, testCases,
+            userProgram, description);
+        if (!Question.checkValidTitle(title)) {
+            throw new IllegalArgumentException();
+        }
+
+        this.uuid = uuid;
+        this.title = title;
+        this.status = status;
+        this.difficulty = difficulty;
+        this.topics.addAll(topics);
+        this.testCases.addAll(testCases);
+        this.userProgram = new UserProgram(userProgram.getClassName(), userProgram.getSourceCode());
         this.description = description;
     }
 
@@ -108,7 +130,7 @@ public class Question {
      * @return the userProgram
      */
     public UserProgram getUserProgram() {
-        return new UserProgram(this.userProgram.getClassName(), this.userProgram.getSourceCodeAsString());
+        return new UserProgram(this.userProgram.getClassName(), this.userProgram.getSourceCode());
     }
 
     /**
@@ -118,6 +140,30 @@ public class Question {
      */
     public List<TestCase> getTestCases() {
         return new ArrayList<>(this.testCases);
+    }
+
+    /**
+     * Creates a new instance of the same question with a new status. This new instance has the same uuid as the
+     * previous instance.
+     *
+     * @param status the status to be updated to.
+     * @return a new instance of the question.
+     */
+    public Question withNewStatus(Status status) {
+        return new Question(this.uuid, this.title, status, this.difficulty, this.topics,
+                this.testCases, this.userProgram, this.description);
+    }
+
+    /**
+     * Creates a new instance of the same question with a new user program. This new instance has the same uuid as the
+     * previous instance.
+     *
+     * @param userProgram the user program to be updated to.
+     * @return a new instance of the question.
+     */
+    public Question withNewUserProgram(UserProgram userProgram) {
+        return new Question(this.uuid, this.title, this.status, this.difficulty, this.topics,
+                this.testCases, userProgram, this.description);
     }
 
     @Override
@@ -135,6 +181,7 @@ public class Question {
 
     /**
      * Checks if the given string is a valid title for a question. Titles must be alphanumeric.
+     *
      * @param title the string to be checked.
      * @return true if the string is a valid title.
      */
@@ -142,16 +189,24 @@ public class Question {
         return title.matches(TITLE_VALIDATION_REGEX);
     }
 
+    /**
+     * Checks if the contents of the questions are equal. The UUID of each question is disregarded.
+     * @param other the other question to be checked against.
+     * @return true if the contents are equal.
+     */
+    public boolean checkContentsEqual(Question other) {
+        return other.getTitle().equals(this.title)
+                && other.getStatus().equals(this.status)
+                && other.getDifficulty().equals(this.difficulty)
+                && other.getTopics().equals(this.topics)
+                && other.getTestCases().equals(this.testCases)
+                && other.getUserProgram().equals(this.userProgram);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Question) {
-            Question other = (Question) o;
-            return other.getTitle().equals(this.title)
-                    && other.getStatus().equals(this.status)
-                    && other.getDifficulty().equals(this.difficulty)
-                    && other.getTopics().equals(this.topics)
-                    && other.getTestCases().equals(this.testCases)
-                    && other.getUserProgram().equals(this.userProgram);
+            return this.uuid.equals(((Question) o).uuid);
         }
 
         return false;
@@ -163,5 +218,3 @@ public class Question {
         return Objects.hash(title, topics, status, difficulty, description);
     }
 }
-
-

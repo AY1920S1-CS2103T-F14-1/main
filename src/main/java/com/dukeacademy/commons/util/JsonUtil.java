@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 
-import com.dukeacademy.storage.JsonSerializableQuestionBankDeserializer;
+import com.dukeacademy.storage.JsonSerializableStandardQuestionBankDeserializer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

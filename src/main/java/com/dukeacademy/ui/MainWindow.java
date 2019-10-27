@@ -1,9 +1,5 @@
 package com.dukeacademy.ui;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
 import java.nio.file.Path;
 
 import java.util.ArrayList;
@@ -16,6 +12,7 @@ import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.parser.exceptions.ParseException;
+import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.model.program.TestCaseResult;
@@ -46,6 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private CommandLogic commandLogic;
     private QuestionsLogic questionsLogic;
     private ProgramSubmissionLogic programSubmissionLogic;
+    private ProblemStatementLogic problemStatementLogic;
 
     // Independent Ui parts residing in this Ui container
     private QuestionListPanel questionListPanel;
@@ -88,7 +86,8 @@ public class MainWindow extends UiPart<Stage> {
     private AnchorPane profilePlaceholder;
 
     public MainWindow(Stage primaryStage, CommandLogic commandLogic, QuestionsLogic questionsLogic,
-                      ProgramSubmissionLogic programSubmissionLogic) {
+                      ProgramSubmissionLogic programSubmissionLogic,
+                      ProblemStatementLogic problemStatementLogic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -96,6 +95,7 @@ public class MainWindow extends UiPart<Stage> {
         this.commandLogic = commandLogic;
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;
+        this.problemStatementLogic = problemStatementLogic;
 
         // Configure the UI
         setWindowDefaultSize();
@@ -161,7 +161,7 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        editorPanel = new Editor();
+        editorPanel = new Editor(programSubmissionLogic.getCurrentQuestionObservable());
         editorPlaceholder.getChildren().add(editorPanel.getRoot());
         programSubmissionLogic.setUserProgramSubmissionChannel(editorPanel::getUserProgram);
 
@@ -173,15 +173,12 @@ public class MainWindow extends UiPart<Stage> {
         sampleTestCaseResults.add(
                 TestCaseResult.getSuccessfulTestCaseResult("15", "FizzBuzz", "FizzBuzz"));
 
-        //problemStatementPanel =
-        //    new ProblemStatementPanel(questionsLogic.getProblemStatement());
-        problemStatementPanel = new ProblemStatementPanel("test problem "
-            + "statement field");
-        problemStatementPlaceholder.getChildren().add(problemStatementPanel.getRoot());
-
-
-        codeResultPanel = new CodeResultPanel(sampleTestCaseResults);
+        codeResultPanel = new CodeResultPanel(programSubmissionLogic.getTestResultObservable());
         codeResultPanelPlaceholder.getChildren().add(codeResultPanel.getRoot());
+
+        problemStatementPanel = new ProblemStatementPanel(
+            problemStatementLogic.getProblemStatementObservable());
+        problemStatementPlaceholder.getChildren().add(problemStatementPanel.getRoot());
 
         profilePage = new ProfilePage();
         profilePlaceholder.getChildren().add(profilePage.getRoot());
@@ -253,7 +250,8 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (commandResult.isView()) {
-                problemStatementPanel.setProblemStatement(questionsLogic.getProblemStatement());
+                problemStatementPanel.setProblemStatement(questionsLogic
+                    .getProblemStatement());
             }
 
             return commandResult;

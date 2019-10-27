@@ -1,6 +1,7 @@
 package com.dukeacademy.ui;
 
 import com.dukeacademy.model.question.Question;
+import com.dukeacademy.observable.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -26,9 +27,11 @@ public class ProblemStatementPanel extends UiPart<Region> {
      *
      * @param problemStatement the problem statement
      */
-    public ProblemStatementPanel(String problemStatement) {
+    public ProblemStatementPanel(Observable<String> problemStatement) {
         super(FXML);
-        problemStatementDisplay.setText(problemStatement);
+        problemStatement.addListener(description -> {
+            problemStatementDisplay.setText(description);
+        });
         problemStatementDisplay.setWrapText(true);
     }
 

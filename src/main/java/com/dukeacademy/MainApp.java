@@ -17,6 +17,13 @@ import com.dukeacademy.commons.util.ConfigUtil;
 import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandLogicManager;
+import com.dukeacademy.logic.commands.attempt.AttemptCommandFactory;
+import com.dukeacademy.logic.commands.exit.ExitCommandFactory;
+import com.dukeacademy.logic.commands.home.HomeCommandFactory;
+import com.dukeacademy.logic.commands.submit.SubmitCommandFactory;
+import com.dukeacademy.logic.commands.view.ViewCommandFactory;
+import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
+import com.dukeacademy.logic.problemstatement.ProblemStatementLogicManager;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.program.ProgramSubmissionLogicManager;
 import com.dukeacademy.logic.program.exceptions.LogicCreationException;
@@ -24,8 +31,8 @@ import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.logic.question.QuestionsLogicManager;
 import com.dukeacademy.model.prefs.ReadOnlyUserPrefs;
 import com.dukeacademy.model.prefs.UserPrefs;
-import com.dukeacademy.storage.prefs.JsonUserPrefsStorage;
 import com.dukeacademy.storage.prefs.UserPrefsStorage;
+import com.dukeacademy.storage.prefs.JsonUserPrefsStorage;
 import com.dukeacademy.storage.question.JsonQuestionBankStorage;
 import com.dukeacademy.storage.question.QuestionBankStorage;
 import com.dukeacademy.ui.Ui;
@@ -50,7 +57,9 @@ public class MainApp extends Application {
      * The Ui.
      */
     protected Ui ui;
-    private ProgramSubmissionLogicManager programSubmissionLogic;
+    private QuestionsLogic questionsLogic;
+    private ProgramSubmissionLogic programSubmissionLogic;
+    private ProblemStatementLogic problemStatementLogic;
 
     @Override
     public void init() throws Exception {
@@ -73,9 +82,11 @@ public class MainApp extends Application {
             return;
         }
 
-        CommandLogicManager commandLogic = this.initCommandLogic();
-        QuestionsLogicManager questionsLogic = this.initQuestionsLogic(userPrefs);
+        questionsLogic = this.initQuestionsLogic(userPrefs);
         programSubmissionLogic = this.initProgramSubmissionLogic(userPrefs);
+        problemStatementLogic = this.initProblemStatementLogic(userPrefs);
+
+        CommandLogicManager commandLogic = this.initCommandLogic();
 
         if (this.programSubmissionLogic == null) {
             logger.info("Fatal: Failed to create program submission logic.");
@@ -83,7 +94,8 @@ public class MainApp extends Application {
             return;
         }
 
-        ui = this.initUi(commandLogic, questionsLogic, programSubmissionLogic);
+        ui = this.initUi(commandLogic, questionsLogic, programSubmissionLogic
+            , problemStatementLogic);
     }
 
     /**
@@ -235,8 +247,35 @@ public class MainApp extends Application {
      */
     private CommandLogicManager initCommandLogic() {
         logger.info("============================ [ Initializing command logic ] =============================");
+
+        if (this.questionsLogic == null || this.programSubmissionLogic == null) {
+            logger.warning("Command logic should be initialized after Question and Program Submission logic.");
+            this.stop();
+        }
+
         CommandLogicManager commandLogicManager = new CommandLogicManager();
-        // TODO: create and register commands
+        // Registering exit command
+        ExitCommandFactory exitCommandFactory = new ExitCommandFactory(this.questionsLogic,
+                this.programSubmissionLogic);
+        commandLogicManager.registerCommand(exitCommandFactory);
+        // Registering attempt command
+        AttemptCommandFactory attemptCommandFactory = new AttemptCommandFactory(this.questionsLogic,
+                this.programSubmissionLogic);
+        commandLogicManager.registerCommand(attemptCommandFactory);
+        // Registering submit command
+        SubmitCommandFactory submitCommandFactory = new SubmitCommandFactory(this.questionsLogic,
+                this.programSubmissionLogic);
+        commandLogicManager.registerCommand(submitCommandFactory);
+        // Registering view command
+        ViewCommandFactory viewCommandFactory =
+            new ViewCommandFactory(this.questionsLogic);
+        commandLogicManager.registerCommand(viewCommandFactory);
+        // Registering home command
+        HomeCommandFactory homeCommandFactory =
+            new HomeCommandFactory(this.questionsLogic,
+                this.programSubmissionLogic);
+        commandLogicManager.registerCommand(homeCommandFactory);
+
         return commandLogicManager;
     }
 
@@ -257,7 +296,7 @@ public class MainApp extends Application {
      *
      * @return a ProgramSubmissionLogicManager instance.
      */
-    private ProgramSubmissionLogicManager initProgramSubmissionLogic(ReadOnlyUserPrefs userPrefs) {
+    private ProgramSubmissionLogic initProgramSubmissionLogic(ReadOnlyUserPrefs userPrefs) {
         logger.info("============================ [ Initializing program submission logic ] "
                 + "=============================");
         try {
@@ -268,10 +307,18 @@ public class MainApp extends Application {
         }
     }
 
+    private ProblemStatementLogic initProblemStatementLogic(ReadOnlyUserPrefs userPrefs) {
+        logger.info("============================ [ Initializing problem "
+            + "statement " + "logic ] =============================");
+        return new ProblemStatementLogicManager();
+    }
+
     private Ui initUi(CommandLogic commandLogic, QuestionsLogic questionsLogic,
-                      ProgramSubmissionLogic programSubmissionLogic) {
+                      ProgramSubmissionLogic programSubmissionLogic,
+                      ProblemStatementLogic problemStatementLogic) {
         logger.info("============================ [ Initializing UI ] =============================");
-        return new UiManager(commandLogic, questionsLogic, programSubmissionLogic);
+        return new UiManager(commandLogic, questionsLogic,
+            programSubmissionLogic, problemStatementLogic);
     }
 
     @Override

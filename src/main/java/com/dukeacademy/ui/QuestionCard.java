@@ -34,8 +34,6 @@ public class QuestionCard extends UiPart<Region> {
     @FXML
     private Label id;
     @FXML
-    private Label topic;
-    @FXML
     private Label difficulty;
     @FXML
     private Label status;

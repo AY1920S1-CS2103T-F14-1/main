@@ -1,6 +1,10 @@
 package com.dukeacademy.storage;
 
 import com.dukeacademy.commons.core.LogsCenter;
+import com.dukeacademy.storage.question.JsonAdaptedTestCase;
+import com.dukeacademy.storage.question.JsonAdaptedQuestion;
+import com.dukeacademy.storage.question.JsonAdaptedUserProgram;
+import com.dukeacademy.storage.question.JsonSerializableStandardQuestionBank;
 import com.dukeacademy.ui.QuestionListPanel;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,19 +18,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<JsonSerializableQuestionBank> {
+public class JsonSerializableStandardQuestionBankDeserializer extends StdDeserializer<JsonSerializableStandardQuestionBank> {
 
     private final Logger logger = LogsCenter.getLogger(QuestionListPanel.class);
-    public JsonSerializableQuestionBankDeserializer() {
+    public JsonSerializableStandardQuestionBankDeserializer() {
         this(null);
     }
 
-    public JsonSerializableQuestionBankDeserializer(Class<?> vc) {
+    public JsonSerializableStandardQuestionBankDeserializer(Class<?> vc) {
         super(vc);
     }
 
-    // return JsonSerializableQuestionBank
-    @Override public JsonSerializableQuestionBank deserialize(JsonParser p,
+    // return JsonSerializableStandardQuestionBank
+    @Override public JsonSerializableStandardQuestionBank deserialize(JsonParser p,
                                                      DeserializationContext ctxt)
         throws IOException, JsonProcessingException {
         // zj - use SLAP to abstract out the deserialization process.
@@ -38,20 +42,25 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
         for (int i = 0; i < rawJsonAdaptedQuestionList.size(); i++) {
             JsonNode jsonAdaptedQuestionNode = rawJsonAdaptedQuestionList.get(i);
             String title = jsonAdaptedQuestionNode.get("title").textValue();
-            String topic = jsonAdaptedQuestionNode.get("topic").textValue();
             String status = jsonAdaptedQuestionNode.get("status").textValue();
             String difficulty = jsonAdaptedQuestionNode.get("difficulty").textValue();
-            ArrayNode rawTagList = (ArrayNode) jsonAdaptedQuestionNode.get("tagged");
-            List<JsonAdaptedTag> tagList = new ArrayList<>();
-            for (int j = 0; j < rawTagList.size(); j++) {
-                String tagName = rawTagList.get(j).textValue();
-                JsonAdaptedTag tag = new JsonAdaptedTag(tagName);
-                tagList.add(tag);
+            ArrayNode rawTopicList = (ArrayNode) jsonAdaptedQuestionNode.get(
+                "topic");
+            List<String> topicList = new ArrayList<>();
+            for (int j = 0; j < rawTopicList.size(); j++) {
+                String topic = rawTopicList.get(j).textValue();
+                topicList.add(topic);
             }
             String description = jsonAdaptedQuestionNode.get("description").textValue();
             ArrayNode rawTestCaseList = (ArrayNode) jsonAdaptedQuestionNode.get("testCases");
-            String userProgramFilePath =
-                jsonAdaptedQuestionNode.get("userProgramFilePath").textValue();
+            ArrayNode rawUserProgram = (ArrayNode) jsonAdaptedQuestionNode.get(
+                "userProgram");
+            String className = rawUserProgram.get("className").textValue();
+            String sourceCode = rawUserProgram.get("sourceCode").textValue();
+            JsonAdaptedUserProgram userProgram =
+                new JsonAdaptedUserProgram(className,
+                sourceCode);
+
             List<JsonAdaptedTestCase> testCaseList = new ArrayList<>();
             for (int k = 0; k < rawTestCaseList.size(); k++) {
                 String input = rawTestCaseList.get(k).get("input").textValue();
@@ -62,12 +71,12 @@ public class JsonSerializableQuestionBankDeserializer extends StdDeserializer<Js
                 testCaseList.add(testCase);
             }
             JsonAdaptedQuestion jsonAdaptedQuestion =
-                new JsonAdaptedQuestion(title, topic, status, difficulty,
-                    tagList, description, testCaseList, userProgramFilePath);
+                new JsonAdaptedQuestion(title, status, difficulty, topicList,
+                    testCaseList, userProgram, description);
             jsonAdaptedQuestionList.add(jsonAdaptedQuestion);
         }
-        JsonSerializableQuestionBank jsonSerializableQuestionBank =
-            new JsonSerializableQuestionBank(jsonAdaptedQuestionList);
-        return jsonSerializableQuestionBank;
+        JsonSerializableStandardQuestionBank JsonSerializableStandardQuestionBank =
+            new JsonSerializableStandardQuestionBank(jsonAdaptedQuestionList);
+        return JsonSerializableStandardQuestionBank;
     }
 }

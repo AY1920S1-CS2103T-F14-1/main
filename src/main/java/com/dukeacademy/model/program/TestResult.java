@@ -1,5 +1,6 @@
 package com.dukeacademy.model.program;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +21,6 @@ public class TestResult {
      * @param results the results
      */
     public TestResult(List<TestCaseResult> results) {
-
         this.results = results;
         this.numPassed = results.parallelStream().filter(TestCaseResult::isSuccessful).count();
         this.compileError = Optional.empty();
@@ -32,10 +32,14 @@ public class TestResult {
      * @param results      the results
      * @param compileError the compile error
      */
-    public TestResult(List<TestCaseResult> results, CompileError compileError) {
-        this.results = results;
-        this.numPassed = results.parallelStream().filter(TestCaseResult::isSuccessful).count();
+    public TestResult(CompileError compileError) {
+        this.results = new ArrayList<>();
+        this.numPassed = 0;
         this.compileError = Optional.of(compileError);
+    }
+
+    public boolean isSuccessful() {
+        return this.numPassed == results.size();
     }
 
     /**
@@ -63,5 +67,16 @@ public class TestResult {
      */
     public Optional<CompileError> getCompileError() {
         return compileError;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof TestResult) {
+            return ((TestResult) o).results.equals(this.results)
+                    && ((TestResult) o).numPassed == this.numPassed
+                    && ((TestResult) o).compileError.equals(this.compileError);
+        } else {
+            return false;
+        }
     }
 }

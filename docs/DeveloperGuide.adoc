@@ -40,23 +40,26 @@ Refer to the <<UsingPlantUml#, Using PlantUML guide>> to learn how to create and
 * At shut down: Shuts down the components and invokes cleanup method where necessary.
 
 <<Design-Commons,*`Commons`*>> represents a collection of classes used by multiple other components.
+
 The following class plays an important role at the architecture level:
 
 * `LogsCenter` : Used by many classes to write log messages to the App's log file.
 
-The rest of the App consists of four components.
+The rest of the App consists of six components.
 
 * <<Design-Ui,*`UI`*>>: The UI of the App.
-* <<Design-Logic,*`Logic`*>>: The command executor.
+* <<Design-Logic,*`Logic`*>>: Includes 3 types of executors: the Command Executor, the Program Submission Executor, and the Question Builder Executor,.
 * <<Design-Model,*`Model`*>>: Holds the data of the App in-memory.
 * <<Design-Storage,*`Storage`*>>: Reads data from, and writes data to, the hard disk.
+* <<Design-Observable, *`Observable`*>>:
+* <<Design-TextExecutor, *`TextExecutor`*>>: Compile the user program and run it against test cases. Output result.
 
-Each of the four components
+Each of the six components:
 
 * Defines its _API_ in an `interface` with the same name as the Component.
 * Exposes its functionality using a `{Component Name}Manager` class.
 
-For example, the `Logic` component (see the class diagram given below) defines it's API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class.
+For example, the `QuestionLogic` component (see the class diagram given below) defines it's API in the `QuestionLogic.java` interface and exposes its functionality using the `QuestionLogicManager.java` class.
 
 .Class Diagram of the Logic Component
 image::LogicClassDiagram.png[]
@@ -66,7 +69,7 @@ image::LogicClassDiagram.png[]
 
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
 
-.Component interactions for `delete 1` command
+.Component interactions for `view 1` command
 image::ArchitectureSequenceDiagram.png[]
 
 The sections below give more details of each component.
@@ -137,17 +140,37 @@ image:BetterModelClassDiagram.png[]
 .Structure of the Storage Component
 image::StorageClassDiagram.png[]
 
-*API* : link:{repoURL}/src/main/java/seedu/difficulty/storage/Storage.java[`Storage.java`]
+*API* :
+
+For Questions, link:{repoURL}/src/main/java/com/dukeacademy/storage/question/QuestionBankStorage.java[`QuestionBankStorage.java`]
+
+For Profile, link: {repoURL}/src/main/java/com/dukeacademy/storage/profile/ProfileStorage.java[`ProfileStorage.java`]
 
 The `Storage` component,
 
 * can save `UserPref` objects in json format and read it back.
-* can save the Duke Academy data in json format and read it back.
+* can save the Duke Academy question bank in json format and read it back.
+* can save the user information in json format and read it back.
 
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `com.dukeacademybook.commons` package.
+Classes used by multiple components are in the `com.dukeacademy.commons` package.
+
+**Core**:
+
+**Exceptions**:
+
+`DataConversionException`: occurs when loading files with incorrect data format.
+
+`IllegalValueException`: occurs when user inputs a invalid command.
+
+**Util**:
+
+`FileUtil`: for loading and saving of files.
+`JsonUtil`: for serializing and deserializing json files.
+
+...TBA
 
 == Implementation
 
@@ -241,6 +264,116 @@ image::CommitActivityDiagram.png[]
 _{Explain here how the data encryption feature will be implemented}_
 
 // end::dataencryption[]
+
+=== Evaluation of user program submissions
+The evaluation of the user's programs is facilitated by the `solutions` package.
+
+==== Entry point
+
+It contains the class `TestExecutor`
+which contains a single method `runTestCases(testCases, program)`. This method is used to run a user's program against
+a series of test cases.
+
+The method utilizes the classes `TestCase` and `UserProgram` to model the data needed for evaluation.
+
+====
+*TestCase* - stores an input and an expected value
+
+image:TestCaseClassDiagram.png[width=240]
+
+*UserProgram* - stores the main class name and the program's source code a String (note that the specified class name
+must match the source code for it to be successfully evaluated)
+
+image:UserProgramClassDiagram.png[width=240]
+
+====
+
+The result of the evaluation is returned as a `TestResult` object.
+
+====
+*TestResult* - encapsulates all the possible outcomes of evaluating the user's program. It is composed of other model
+classes -- `TestCaseResult`, `CompileError`.
+
+image::TestResultDiagram.png[align=center]
+
+====
+
+==== Implementation overview
+
+The evaluation of a user's program is done in 3 main steps, each handled by a specialized interface. The 3 steps include:
+
+====
+1. Create a Java file inside a temporary directory in the user's file system and writing the user's program to it.
+
+2. Compile that Java file into an executable Java Class file. Catch and store compile errors if any.
+
+3. Execute the main Class file and provide the inputs of the specified test cases. Collect and store any output from the program.
+
+4. Encapsulate the output, errors and results in a model class
+====
+
+This is done by `TestExecutor` with the help of three interfaces that are made available through dependency injection --
+`CompilerEnvironment`, `Compiler`, `ProgramExecutor`.
+
+Each interface has its specialized role in the evaluation process.
+`TestExecutor` acts as an orchestrator to tie all their functionalities together.
+
+====
+*CompilerEnvironment* - in charge of creating a temporary folder in the user's file system to create and write Java files.
+This temporary folder is deleted after `closed()`. Utilizes the model class `JavaFile`.
+
+image::CompilerEnvironment.png[align=center]
+
+*Compiler* - in charge of compiling the Java files into Class files at a given file path. Utilizes the model class `ClassFile`.
+
+image::Compiler.png[align=center]
+
+*ProgramExecutor* - in charge of executing the compiled Class files. Utilizes the model class `ProgramOutput`.
+
+image::ProgramExecutor.png[align=center]
+
+*Models:*
+
+* *JavaFile* - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an `FileNotFoundException` is thrown during instantiation.
+* *ClassFile* - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an `FileNotFoundException` is thrown during instantiation.
+* *ProgramInput* - contains the String input to be fed into the user's program.
+* *ProgramOutput* - contains the String output produced by the user's program. It also contains convenience methods for producing different outputs.
+====
+
+====
+*Sequence diagram:*
+
+image::TestExecutorSequenceDiagram.png[align:center]
+====
+
+==== Implementation details
+The implementations of `CompilerEnvironment`, `Compiler` and `ProgramExecutor` used in the application are as follows:
+
+* *StandardCompilerEnvironment* - this implementation utilizes Java11's native Files library to handle creation, deletion and writing of files.
+
+    - Creates a temporary folder when instantiated at the file path injected through its constructor.
+
+    - All files are created in this temporary folder.
+
+    - The temporary folder is deleted in the `close()` method.
+
+    - When tasked to create a new file, it first creates an empty file in the temporary folder before writing the contents of the user's program to the file
+
+* *StandardCompiler* - this implementation utilizes Java11's native JavaCompiler library to programmatically compile Java files.
+
+    - Compile errors recorded by the `DiagnosticsListener` class from the compilation task is parsed and rethrown as `CompilerException` and `CompileContentException`.
+    - `CompilerException` represents compile errors caused by the JavaCompiler library while `CompileContentException` represents errors caused by the user's program.
+
+* *StandardProgramExecutor* - this implementation utilizes Java11's native Runtime class to execute programs programatically.
+
+    - To execute a program, `exec(String command)` of the Runtime instance is called.
+    - A command to compile the specified `ClassFile` is generated using its class path and canonical name attributes.
+    - The method returns a `Process` instance that executes the program on a separate thread.
+    - `StandardProgramExecutor` accesses the input stream of the process and feeds the program the necessary inputs.
+    - `StandardProgramExecutor` access the output and error stream of the process and collects any produced output or errors.
+    - The process is destroyed and the collected output and errors and packaged as a `ProgramOutput` instance.
 
 === Logging
 

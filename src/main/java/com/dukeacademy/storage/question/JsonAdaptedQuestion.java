@@ -27,6 +27,7 @@ public class JsonAdaptedQuestion {
     private final List<String> topics = new ArrayList<>();
     private final List<JsonAdaptedTestCase> testCases = new ArrayList<>();
     private JsonAdaptedUserProgram userProgram;
+    private final String description;
 
 
     /**
@@ -37,7 +38,8 @@ public class JsonAdaptedQuestion {
                                @JsonProperty("difficulty") String difficulty,
                                @JsonProperty("topics") List<String> topics,
                                @JsonProperty("testCases") List<JsonAdaptedTestCase> testCases,
-                               @JsonProperty("userProgram") JsonAdaptedUserProgram userProgram) {
+                               @JsonProperty("userProgram") JsonAdaptedUserProgram userProgram,
+                               @JsonProperty("description") String description) {
         this.title = title;
         this.status = status;
         this.difficulty = difficulty;
@@ -48,6 +50,7 @@ public class JsonAdaptedQuestion {
             this.testCases.addAll(testCases);
         }
         this.userProgram = userProgram;
+        this.description = description;
     }
 
     /**
@@ -62,6 +65,7 @@ public class JsonAdaptedQuestion {
                 .map(JsonAdaptedTestCase::new)
                 .collect(Collectors.toList()));
         this.userProgram = new JsonAdaptedUserProgram(source.getUserProgram());
+        this.description = source.getDescription();
     }
 
     /**
@@ -85,6 +89,10 @@ public class JsonAdaptedQuestion {
             throw new IllegalValueException("Difficulty cannot be null.");
         }
 
+        if (description == null) {
+            throw new IllegalValueException("Description cannot be null.");
+        }
+
         final Status status = Status.valueOf(this.status);
         final Difficulty difficulty = Difficulty.valueOf(this.difficulty);
         final Set<Topic> newTopicsSet = this.topics.stream().map(Topic::valueOf).collect(Collectors.toSet());
@@ -93,7 +101,36 @@ public class JsonAdaptedQuestion {
                 .collect(Collectors.toList());
         final UserProgram newUserProgram = this.userProgram.toModel();
 
-        return new Question(title, status, difficulty, newTopicsSet, newTestCaseList, newUserProgram);
+        return new Question(title, status, difficulty, newTopicsSet,
+            newTestCaseList, newUserProgram, description);
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public String getDifficulty() {
+        return this.difficulty;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public List<String> getTopics() {
+        return this.topics;
+    }
+
+    public List<JsonAdaptedTestCase> getTestCases() {
+        return this.testCases;
+    }
+
+    public JsonAdaptedUserProgram getUserProgram() {
+        return this.userProgram;
     }
 
 }

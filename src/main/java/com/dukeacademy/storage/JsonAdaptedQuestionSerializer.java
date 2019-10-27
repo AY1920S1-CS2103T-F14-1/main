@@ -1,5 +1,7 @@
 package com.dukeacademy.storage;
 
+import com.dukeacademy.storage.question.JsonAdaptedQuestion;
+import com.dukeacademy.storage.question.JsonAdaptedTestCase;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
@@ -20,17 +22,16 @@ public class JsonAdaptedQuestionSerializer extends StdSerializer<JsonAdaptedQues
     @Override
     public void serialize(JsonAdaptedQuestion value, JsonGenerator gen,
                           SerializerProvider provider) throws IOException {
-       gen.writeStartObject();
-       gen.writeStringField("title", value.title);
-       gen.writeStringField("topic", value.topic);
-       gen.writeStringField("status", value.status);
-       gen.writeStringField("difficulty", value.difficulty);
-       gen.writeStringField("description", value.description);
-       gen.writeStringField("userProgramFilePath", value.userProgramFilePath);
-       List<JsonAdaptedTag> tagged = new ArrayList<>(value.tagged);
-       gen.writeObjectField("tagged", tagged);
-       List<JsonAdaptedTestCase> testCases = new ArrayList<>(value.testCases);
-       gen.writeObjectField("testCases", testCases);
-       gen.writeEndObject();
+        gen.writeStartObject();
+        gen.writeStringField("title", value.getTitle());
+        List<String> topics = new ArrayList<>(value.getTopics());
+        gen.writeObjectField("topic", topics);
+        gen.writeStringField("status", value.getStatus());
+        gen.writeStringField("difficulty", value.getDifficulty());
+        gen.writeStringField("description", value.getDescription());
+        gen.writeObjectField("userProgram", value.getUserProgram());
+        List<JsonAdaptedTestCase> testCases = new ArrayList<>(value.getTestCases());
+        gen.writeObjectField("testCases", testCases);
+        gen.writeEndObject();
     }
 }
