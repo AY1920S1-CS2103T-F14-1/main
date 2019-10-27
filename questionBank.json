@@ -1,9 +1,9 @@
 {
   "questions" : [ {
     "title" : "Two Number Adder",
-    "status" : "NEW",
+    "status" : "ATTEMPTED",
     "difficulty" : "EASY",
-    "isBookmarked" : true,
+    "isBookmarked" : false,
     "topics" : ["OTHERS"],
     "testCases" : [ {
       "input": "1 2",
@@ -19,9 +19,9 @@
     }
   }, {
     "title" : "Valid Sudoku",
-    "status" : "NEW",
+    "status" : "ATTEMPTED",
     "difficulty" : "MEDIUM",
-    "isBookmarked" : true,
+    "isBookmarked" : false,
     "topics" : ["OTHERS", "ARRAY", "DYNAMIC_PROGRAMMING"],
     "testCases" : [ {
       "input": "1 2 3 4 5 6 7 8 9",
@@ -37,7 +37,7 @@
     }
   }, {
     "title" : "Palindrome Number",
-    "status" : "NEW",
+    "status" : "PASSED",
     "difficulty" : "EASY",
     "isBookmarked" : true,
     "topics" : ["OTHERS", "RECURSION"],
@@ -57,7 +57,7 @@
     "title" : "Swap nodes in pairs",
     "status" : "NEW",
     "difficulty" : "MEDIUM",
-    "isBookmarked" : true,
+    "isBookmarked" : false,
     "topics" : ["GRAPH", "DYNAMIC_PROGRAMMING"],
     "testCases" : [ {
       "input": "5 12 33 23",
