@@ -23,11 +23,11 @@ import javafx.stage.Stage;
 public class Editor extends UiPart<Region> {
     private static final String FXML = "Editor.fxml";
 
-//    @FXML
-//    private Button btnSave;
-//
-//    @FXML
-//    private Button btnSubmit;
+    //    @FXML
+    //    private Button btnSave;
+    //
+    //    @FXML
+    //    private Button btnSubmit;
 
     @FXML
     private TextArea textOutput;
