@@ -160,9 +160,8 @@ public class Question {
     }
 
     /**
-     * Creates a new instance of the same question with a new isBookmarked attribute. This new instance has the same uuid as the
-     * previous instance.
-     *
+     * Creates a new instance of the same question with a new isBookmarked attribute.
+     * This new instance has the same uuid as the previous instance.
      * @param isBookmarked the isBookmarked to be updated to.
      * @return a new instance of the question.
      */

@@ -19,7 +19,6 @@ public class BookmarkCommand implements Command {
 
     /**
      * Instantiates a new Bookmark command.
-     *
      * @param index                  the index
      * @param questionsLogic         the questions logic
      */
@@ -46,8 +45,8 @@ public class BookmarkCommand implements Command {
 
             if (userSelectionIsBookmarked) {
                 // Simply notify user that question is already bookmarked
-                String feedback = "Question " + (index + 1) + " : " + userSelection.getTitle() +
-                        " - is already bookmarked.";
+                String feedback = "Question " + (index + 1) + " : " + userSelection.getTitle()
+                        + " - is already bookmarked.";
                 return new CommandResult(feedback, false, false, false, false);
             } else {
                 // Update isBookmarked of question
