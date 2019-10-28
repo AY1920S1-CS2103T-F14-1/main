@@ -59,6 +59,7 @@
                   <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #ff1e00;">
                      <children>
                         <AnchorPane fx:id="homePagePlaceholder" prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane fx:id="evaluationPlaceholder" layoutX="11.0" layoutY="11.0" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                </children>

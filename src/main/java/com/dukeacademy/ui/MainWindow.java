@@ -53,6 +53,7 @@ class MainWindow extends UiPart<Stage> {
     private CodeResultPanel codeResultPanel;
     private ProblemStatementPanel problemStatementPanel;
     private HomePage homePage;
+    private CodeResultPanel evaluation;
 
     @FXML
     private StackPane problemStatementPlaceholder;
@@ -83,6 +84,9 @@ class MainWindow extends UiPart<Stage> {
 
     @FXML
     private AnchorPane homePagePlaceholder;
+
+    @FXML
+    private AnchorPane evaluationPlaceholder;
 
     /**
      * Instantiates a new Main window.
@@ -179,14 +183,6 @@ class MainWindow extends UiPart<Stage> {
         editorPlaceholder.getChildren().add(editorPanel.getRoot());
         programSubmissionLogic.setUserProgramSubmissionChannel(editorPanel::getUserProgram);
 
-        List<TestCaseResult> sampleTestCaseResults = new ArrayList<>();
-        sampleTestCaseResults.add(
-                TestCaseResult.getSuccessfulTestCaseResult("3", "Fizz"));
-        sampleTestCaseResults.add(
-                TestCaseResult.getFailedTestCaseResult("25", "Buzz", "FizzBuzz"));
-        sampleTestCaseResults.add(
-                TestCaseResult.getSuccessfulTestCaseResult("15", "FizzBuzz"));
-
         codeResultPanel = new CodeResultPanel(programSubmissionLogic.getTestResultObservable());
         codeResultPanelPlaceholder.getChildren().add(codeResultPanel.getRoot());
 
@@ -196,6 +192,9 @@ class MainWindow extends UiPart<Stage> {
 
         homePage = new HomePage(questionsLogic.getFilteredQuestionsList());
         homePagePlaceholder.getChildren().add(homePage.getRoot());
+
+        evaluation = new CodeResultPanel(programSubmissionLogic.getTestResultObservable());
+        evaluationPlaceholder.getChildren().add(evaluation.getRoot());
     }
 
     /**
