@@ -2,6 +2,7 @@ package com.dukeacademy.logic.commands.list;
 
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
+import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
 /**
@@ -24,7 +25,11 @@ public class ListCommandFactory implements CommandFactory {
         return "showall";
     }
 
-    @Override public Command getCommand(String commandArguments) {
+    @Override public Command getCommand(String commandArguments) throws InvalidCommandArgumentsException {
+        if (!commandArguments.matches("\\s*")) {
+            throw new InvalidCommandArgumentsException("Showall command does "
+                + "not take any arguments");
+        }
         return new ListCommand(questionsLogic);
     }
 

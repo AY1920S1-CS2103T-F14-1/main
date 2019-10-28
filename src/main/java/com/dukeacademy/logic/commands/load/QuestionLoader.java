@@ -31,7 +31,7 @@ public class QuestionLoader {
      */
     public static List<Question> buildFromString (String questions)
         throws IllegalValueException {
-        if (questions.equals("")) {
+        if (questions.isEmpty()) {
             throw new IllegalValueException("The questions cannot be loaded");
         }
         String[] questionsString =
@@ -79,7 +79,6 @@ public class QuestionLoader {
         String[] testCases = matcher.group().trim().split("TestCase::");
         logger.info("the testcase is: " + matcher.group().trim());
 
-        ArrayList<TestCase> newTestCases = new ArrayList<>();
         for (String testCase: testCases) {
             if (testCase.isEmpty()) {
                 continue;
@@ -126,7 +125,6 @@ public class QuestionLoader {
                 + " be before TestCases.");
         }
         String[] topics = matcher.group(1).split("\\s*,\\s*");
-        ArrayList<Topic> topicsEnum = new ArrayList<>();
         for (String topic : topics) {
             topic = topic.trim();
             if (!Topic.contains(topic)) {

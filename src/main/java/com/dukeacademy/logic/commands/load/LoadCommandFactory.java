@@ -2,10 +2,7 @@ package com.dukeacademy.logic.commands.load;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Logger;
 
-import com.dukeacademy.MainApp;
-import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
@@ -15,7 +12,6 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  * Class to represent the necessary components for the creation of a Load command.
  */
 public class LoadCommandFactory implements CommandFactory {
-    private static final Logger logger = LogsCenter.getLogger(MainApp.class);
     private final QuestionsLogic questionsLogic;
 
     /**

@@ -19,7 +19,7 @@ import com.dukeacademy.model.question.Question;
  * The type Load command.
  */
 public class LoadCommand implements Command {
-    private final Logger logger;
+
     private final QuestionsLogic questionsLogic;
     private final List<Question> questionList = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class LoadCommand implements Command {
      * @param sampleQuestionPath the path whereby questions are stored
      */
     public LoadCommand(QuestionsLogic questionsLogic, Path sampleQuestionPath) {
-        this.logger = LogsCenter.getLogger(LoadCommand.class);
+        final Logger logger = LogsCenter.getLogger(LoadCommand.class);
         this.questionsLogic = questionsLogic;
         String questions = "";
         try {
