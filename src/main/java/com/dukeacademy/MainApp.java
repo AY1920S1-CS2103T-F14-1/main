@@ -14,6 +14,7 @@ import com.dukeacademy.commons.core.Mode;
 import com.dukeacademy.commons.core.Version;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 import com.dukeacademy.commons.util.ConfigUtil;
+import com.dukeacademy.commons.util.FileUtil;
 import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandLogicManager;
@@ -21,6 +22,7 @@ import com.dukeacademy.logic.commands.attempt.AttemptCommandFactory;
 import com.dukeacademy.logic.commands.exit.ExitCommandFactory;
 import com.dukeacademy.logic.commands.home.HomeCommandFactory;
 import com.dukeacademy.logic.commands.list.ListCommandFactory;
+import com.dukeacademy.logic.commands.load.LoadCommandFactory;
 import com.dukeacademy.logic.commands.submit.SubmitCommandFactory;
 import com.dukeacademy.logic.commands.view.ViewCommandFactory;
 import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
@@ -32,13 +34,14 @@ import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.logic.question.QuestionsLogicManager;
 import com.dukeacademy.model.prefs.ReadOnlyUserPrefs;
 import com.dukeacademy.model.prefs.UserPrefs;
+import com.dukeacademy.model.question.QuestionBank;
+import com.dukeacademy.model.util.SampleDataUtil;
 import com.dukeacademy.storage.prefs.JsonUserPrefsStorage;
 import com.dukeacademy.storage.prefs.UserPrefsStorage;
 import com.dukeacademy.storage.question.JsonQuestionBankStorage;
 import com.dukeacademy.storage.question.QuestionBankStorage;
 import com.dukeacademy.ui.Ui;
 import com.dukeacademy.ui.UiManager;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -233,7 +236,10 @@ public class MainApp extends Application {
         try {
             logger.info("Creating new question bank.");
             // Copy default questions
+            QuestionBank qb = SampleDataUtil.getSampleQuestionBank();
             Path defaultQuestions = Paths.get("questionBank.json");
+            QuestionBankStorage.saveQuestionBank(qb, defaultQuestions);
+            FileUtil.createIfMissing(questionBankFilePath);
             Files.copy(defaultQuestions, questionBankFilePath, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             logger.warning("Unable to create default question bank data file.");
@@ -280,6 +286,11 @@ public class MainApp extends Application {
         ListCommandFactory listCommandFactory =
             new ListCommandFactory(this.questionsLogic);
         commandLogicManager.registerCommand(listCommandFactory);
+        // Registering Load command
+        LoadCommandFactory loadCommandFactory =
+            new LoadCommandFactory(this.questionsLogic);
+        commandLogicManager.registerCommand(loadCommandFactory);
+
 
         return commandLogicManager;
     }

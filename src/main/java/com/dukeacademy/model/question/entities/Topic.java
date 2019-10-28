@@ -43,5 +43,12 @@ public enum Topic {
     /**
      * Others topic.
      */
-    OTHERS
+    OTHERS;
+
+    public static boolean contains(String s) {
+        for(Topic topic:values())
+            if (topic.name().equals(s))
+                return true;
+        return false;
+    }
 }

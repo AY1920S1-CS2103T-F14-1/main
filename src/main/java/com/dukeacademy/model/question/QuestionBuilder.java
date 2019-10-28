@@ -132,4 +132,8 @@ public class QuestionBuilder {
         this.description = description;
         return this;
     }
+
+    public String getTitle() {
+        return this.title;
+    }
 }
