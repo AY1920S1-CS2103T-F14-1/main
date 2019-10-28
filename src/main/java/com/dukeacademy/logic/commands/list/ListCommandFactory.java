@@ -22,7 +22,7 @@ public class ListCommandFactory implements CommandFactory {
 
     @Override
     public String getCommandWord() {
-        return "list";
+        return "showall";
     }
 
     @Override public Command getCommand(String commandArguments) {

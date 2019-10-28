@@ -36,13 +36,12 @@ public class LoadCommandFactory implements CommandFactory {
     @Override
     public Command getCommand(String commandArguments)
         throws InvalidCommandArgumentsException{
-        Path appRootDirectory = Paths.get(System.getProperty("user.home")).resolve("DukeAcademy");
         Path sampleQuestionsFilePath =
             Paths.get(System.getProperty("user.home")).resolve("Desktop").resolve(commandArguments);
-        // If app is opened for the first time...
         if (!sampleQuestionsFilePath.toFile().exists()) {
-            throw new InvalidCommandArgumentsException("Load command must "
-                + "followed by a filename located at the Desktop :D");
+            throw new InvalidCommandArgumentsException("We cannot find the "
+                + "specified text file on your desktop.\n"
+                + "Is it you type the file name wrongly?");
         }
         return new LoadCommand(this.questionsLogic, sampleQuestionsFilePath);
     }
