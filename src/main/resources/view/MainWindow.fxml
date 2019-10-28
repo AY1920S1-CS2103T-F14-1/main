@@ -17,7 +17,7 @@
     <Image url="@/images/dukeacademy-icon.png" />
   </icons>
   <scene>
-    <Scene>
+    <Scene stylesheets="@DukeAcademyStyle.css">
 
       <VBox>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">

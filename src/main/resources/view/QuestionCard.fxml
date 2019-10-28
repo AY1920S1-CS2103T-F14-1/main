@@ -27,7 +27,7 @@
                   </Label>
                </children>
             </HBox>
-            <FlowPane fx:id="tags" hgap="3.0" prefHeight="15.0" prefWidth="203.0" />
+            <FlowPane fx:id="tags" hgap="5.0" prefHeight="15.0" prefWidth="203.0" />
             <VBox prefWidth="203.0" spacing="2.0">
                <children>
                   <HBox spacing="3.0">
