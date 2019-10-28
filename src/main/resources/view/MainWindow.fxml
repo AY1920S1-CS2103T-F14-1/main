@@ -28,40 +28,37 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-            <HBox spacing="15.0" VBox.vgrow="NEVER">
+            <HBox spacing="15.0" style="-fx-border-color: #ff1e00;" VBox.vgrow="NEVER">
                <children>
       
-              <StackPane fx:id="commandBoxPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="258.0" HBox.hgrow="NEVER">
+              <StackPane fx:id="commandBoxPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="258.0" style="-fx-border-color: #000000;" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" top="15.0" />
                      </HBox.margin>
               </StackPane>
       
-              <StackPane fx:id="resultDisplayPlaceholder" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.6" prefWidth="550.0" HBox.hgrow="ALWAYS">
-                <padding>
-                  <Insets bottom="5" left="10" right="10" top="5" />
-                </padding>
+              <StackPane fx:id="resultDisplayPlaceholder" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.6" prefWidth="550.0" style="-fx-border-color: #000000;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
                         <Insets bottom="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
               </StackPane>
                </children>
             </HBox>
-            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="879.0" VBox.vgrow="ALWAYS">
+            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="879.0" style="-fx-border-color: #ff1e00;" VBox.vgrow="ALWAYS">
                <children>
-                  <StackPane fx:id="questionListPanelPlaceholder" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="252.0" HBox.hgrow="NEVER">
+                  <StackPane fx:id="questionListPanelPlaceholder" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="252.0" style="-fx-border-color: #000000;" HBox.hgrow="NEVER">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="300.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="300.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS" />
+                  <VBox style="-fx-border-color: #ff1e00;">
                      <children>
-                        <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
-                        <AnchorPane fx:id="codeResultPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
+                        <AnchorPane fx:id="editorPlaceholder" prefHeight="452.0" prefWidth="343.0" style="-fx-border-color: #000000;" />
+                        <AnchorPane fx:id="codeResultPanelPlaceholder" prefHeight="278.0" prefWidth="327.0" style="-fx-border-color: #000000;" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: #ff1e00;">
                      <children>
                         <AnchorPane fx:id="homePagePlaceholder" prefHeight="200.0" prefWidth="200.0" />
                      </children>
@@ -69,7 +66,7 @@
                </children>
             </HBox>
 
-        <StackPane fx:id="statusbarPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="688.0" VBox.vgrow="NEVER" />
+        <StackPane fx:id="statusbarPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="688.0" style="-fx-border-color: #ff1e00;" VBox.vgrow="NEVER" />
       </VBox>
     </Scene>
   </scene>
