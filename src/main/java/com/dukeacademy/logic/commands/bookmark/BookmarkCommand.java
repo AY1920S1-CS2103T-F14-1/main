@@ -19,7 +19,6 @@ import com.dukeacademy.model.question.entities.Status;
 public class BookmarkCommand implements Command {
     private final Logger logger;
     private final QuestionsLogic questionsLogic;
-    private final ProgramSubmissionLogic programSubmissionLogic;
     private final int index;
 
     /**
@@ -27,13 +26,11 @@ public class BookmarkCommand implements Command {
      *
      * @param index                  the index
      * @param questionsLogic         the questions logic
-     * @param programSubmissionLogic the program submission logic
      */
-    public BookmarkCommand(int index, QuestionsLogic questionsLogic, ProgramSubmissionLogic programSubmissionLogic) {
+    public BookmarkCommand(int index, QuestionsLogic questionsLogic) {
         this.logger = LogsCenter.getLogger(BookmarkCommand.class);
         this.index = index - 1;
         this.questionsLogic = questionsLogic;
-        this.programSubmissionLogic = programSubmissionLogic;
     }
 
     @Override
@@ -43,6 +40,7 @@ public class BookmarkCommand implements Command {
             Question bookmarkedQuestion = this.questionsLogic.getQuestion(index).withNewIsBookmarked(true);
             this.questionsLogic.setQuestion(index, bookmarkedQuestion);
             logger.info("Bookmarked question at index " + index + " : " + bookmarkedQuestion);
+
             String feedback = "Bookmarked question " + (index + 1) + " : " + bookmarkedQuestion.getTitle();
             return new CommandResult(feedback, false, false, false, false);
         } catch (IndexOutOfBoundsException e) {

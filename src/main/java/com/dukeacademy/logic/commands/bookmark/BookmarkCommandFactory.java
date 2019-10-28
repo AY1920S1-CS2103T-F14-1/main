@@ -13,18 +13,14 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  */
 public class BookmarkCommandFactory implements CommandFactory {
     private final QuestionsLogic questionsLogic;
-    private ProblemStatementLogic problemStatementLogic;
 
     /**
      * Instantiates a new Bookmark command factory.
      *
      * @param questionsLogic        the questions logic
-     * @param problemStatementLogic the problem statement logic
      */
-    public BookmarkCommandFactory(QuestionsLogic questionsLogic,
-                              ProblemStatementLogic problemStatementLogic) {
+    public BookmarkCommandFactory(QuestionsLogic questionsLogic) {
         this.questionsLogic = questionsLogic;
-        this.problemStatementLogic = problemStatementLogic;
     }
 
     @Override
@@ -36,7 +32,7 @@ public class BookmarkCommandFactory implements CommandFactory {
     public Command getCommand(String commandArguments) throws InvalidCommandArgumentsException {
         try {
             int index = Integer.parseInt(commandArguments.strip());
-            return new ViewCommand(index, questionsLogic, problemStatementLogic);
+            return new BookmarkCommand(index, questionsLogic);
         } catch (NumberFormatException e) {
             throw new InvalidCommandArgumentsException("Invalid index entered.");
         }

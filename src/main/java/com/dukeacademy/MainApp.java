@@ -18,6 +18,7 @@ import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandLogicManager;
 import com.dukeacademy.logic.commands.attempt.AttemptCommandFactory;
+import com.dukeacademy.logic.commands.bookmark.BookmarkCommandFactory;
 import com.dukeacademy.logic.commands.exit.ExitCommandFactory;
 import com.dukeacademy.logic.commands.home.HomeCommandFactory;
 import com.dukeacademy.logic.commands.list.ListCommandFactory;
@@ -277,9 +278,11 @@ public class MainApp extends Application {
                 this.programSubmissionLogic);
         commandLogicManager.registerCommand(homeCommandFactory);
         // Registering list command
-        ListCommandFactory listCommandFactory =
-            new ListCommandFactory(this.questionsLogic);
+        ListCommandFactory listCommandFactory = new ListCommandFactory(this.questionsLogic);
         commandLogicManager.registerCommand(listCommandFactory);
+        // Registering bookmark command
+        BookmarkCommandFactory bookmarkCommandFactory = new BookmarkCommandFactory(this.questionsLogic);
+        commandLogicManager.registerCommand(bookmarkCommandFactory);
 
         return commandLogicManager;
     }
