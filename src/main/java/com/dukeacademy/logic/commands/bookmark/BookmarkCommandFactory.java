@@ -3,13 +3,11 @@ package com.dukeacademy.logic.commands.bookmark;
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
-import com.dukeacademy.logic.commands.view.ViewCommand;
-import com.dukeacademy.logic.problemstatement.ProblemStatementLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
 /**
  * Factory class to represent all the necessary components for creating an
- * ViewCommand instance.
+ * BookmarkCommand instance.
  */
 public class BookmarkCommandFactory implements CommandFactory {
     private final QuestionsLogic questionsLogic;
