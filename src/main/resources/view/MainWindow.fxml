@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Scene?>
 <?import javafx.scene.control.Menu?>
@@ -19,12 +18,8 @@
   </icons>
   <scene>
     <Scene>
-      <stylesheets>
-        <URL value="@DarkTheme.css" />
-        <URL value="@Extensions.css" />
-      </stylesheets>
 
-      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="792.0">
+      <VBox>
         <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
           <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
@@ -33,18 +28,25 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-
-        <StackPane fx:id="commandBoxPlaceholder" prefHeight="35.0" prefWidth="688.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
-
-        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="93.0" prefHeight="93.0" prefWidth="688.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
+            <HBox spacing="15.0" VBox.vgrow="NEVER">
+               <children>
+      
+              <StackPane fx:id="commandBoxPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="258.0" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets bottom="15.0" left="15.0" top="15.0" />
+                     </HBox.margin>
+              </StackPane>
+      
+              <StackPane fx:id="resultDisplayPlaceholder" maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.6" prefWidth="550.0" HBox.hgrow="ALWAYS">
+                <padding>
+                  <Insets bottom="5" left="10" right="10" top="5" />
+                </padding>
+                     <HBox.margin>
+                        <Insets bottom="15.0" right="15.0" top="15.0" />
+                     </HBox.margin>
+              </StackPane>
+               </children>
+            </HBox>
 
         <VBox fx:id="personList" minWidth="340" prefWidth="662.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
           <padding>
