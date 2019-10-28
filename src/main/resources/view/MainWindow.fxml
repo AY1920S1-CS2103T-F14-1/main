@@ -54,7 +54,7 @@
                         <Insets />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" prefWidth="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="300.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" HBox.hgrow="ALWAYS" />
                   <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
