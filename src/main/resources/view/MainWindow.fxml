@@ -47,36 +47,27 @@
               </StackPane>
                </children>
             </HBox>
-
-        <VBox fx:id="personList" minWidth="340" prefWidth="662.0" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-          </padding>
-               <HBox prefHeight="225.0" prefWidth="722.0" spacing="30.0" VBox.vgrow="ALWAYS">
-                  <children>
-                <StackPane fx:id="questionListPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="209.0">
-                        <HBox.margin>
-                           <Insets left="10.0" />
-                        </HBox.margin>
-                     </StackPane>
-                      <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" prefWidth="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     <VBox prefHeight="200.0" prefWidth="100.0">
-                        <children>
-                           <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
-                           <AnchorPane fx:id="codeResultPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
-                        </children>
-                     </VBox>
-                     <VBox prefHeight="200.0" prefWidth="100.0">
-                        <children>
-                           <AnchorPane fx:id="homePagePlaceholder" prefHeight="200.0" prefWidth="200.0" />
-                        </children>
-                     </VBox>
-                  </children>
-                  <VBox.margin>
-                     <Insets left="5.0" />
-                  </VBox.margin>
-               </HBox>
-        </VBox>
+            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="879.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane fx:id="questionListPanelPlaceholder" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="252.0" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </StackPane>
+                  <StackPane fx:id="problemStatementPlaceholder" alignment="CENTER_LEFT" prefWidth="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <AnchorPane fx:id="editorPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
+                        <AnchorPane fx:id="codeResultPanelPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="410.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <AnchorPane fx:id="homePagePlaceholder" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
 
         <StackPane fx:id="statusbarPlaceholder" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="688.0" VBox.vgrow="NEVER" />
       </VBox>
