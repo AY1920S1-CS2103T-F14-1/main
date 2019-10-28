@@ -15,10 +15,20 @@ import com.dukeacademy.model.question.entities.Status;
 import com.dukeacademy.model.question.entities.TestCase;
 import com.dukeacademy.model.question.entities.Topic;
 
+/**
+ * The type Question loader.
+ */
 public class QuestionLoader {
     private static final Logger logger =
         LogsCenter.getLogger(LoadCommand.class);
 
+    /**
+     * Build from string list.
+     *
+     * @param questions the questions
+     * @return the list
+     * @throws IllegalValueException the illegal value exception
+     */
     public static List<Question> buildFromString (String questions)
         throws IllegalValueException {
         if (questions.equals("")) {
@@ -29,30 +39,36 @@ public class QuestionLoader {
         logger.info("the list size is: _" + questionsString[0] + "_");
         ArrayList<Question> sampleQuestions = new ArrayList<>();
         for (String questionString : questionsString) {
-            if(questionString.isEmpty()) {
+            if (questionString.isEmpty()) {
                 logger.info("the string is empty~");
                 continue;
             }
             QuestionBuilder questionBuilder = new QuestionBuilder();
             try {
-                addTitle(questionString,questionBuilder);
+                addTitle(questionString, questionBuilder);
                 addDescription(questionString, questionBuilder);
                 addDifficulty(questionString, questionBuilder);
                 addTopics(questionString, questionBuilder);
                 addTestCases(questionString, questionBuilder);
-            } catch(IllegalValueException e) {
+            } catch (IllegalValueException e) {
                 throw e;
             }
-        Question q = questionBuilder.withStatus(Status.NEW).build();
-        sampleQuestions.add(q);
-        logger.info("====a new qn created!====");
+            Question q = questionBuilder.withStatus(Status.NEW).build();
+            sampleQuestions.add(q);
+            logger.info("====a new qn created!====");
         }
         return sampleQuestions;
     }
 
+    /**
+     * Registers Test Cases specified by text file into question.
+     * @param source
+     * @param question
+     * @throws IllegalValueException
+     */
     private static void addTestCases(String source,
-                                     QuestionBuilder question) throws IllegalValueException{
-        Pattern testCasesPattern = Pattern.compile("TestCase::"+"(.|\\n)*",
+                                     QuestionBuilder question) throws IllegalValueException {
+        Pattern testCasesPattern = Pattern.compile("TestCase::" + "(.|\\n)*",
             Pattern.DOTALL);
         Matcher matcher = testCasesPattern.matcher(source);
         if (!matcher.find()) {
@@ -65,12 +81,12 @@ public class QuestionLoader {
 
         ArrayList<TestCase> newTestCases = new ArrayList<>();
         for (String testCase: testCases) {
-            if(testCase.isEmpty()) {
+            if (testCase.isEmpty()) {
                 continue;
             }
             logger.info("the testcase is: " + testCase);
             Pattern inputPattern =
-                Pattern.compile("Input::"+"((.|\\n)*)"+"Output::");
+                Pattern.compile("Input::" + "((.|\\n)*)" + "Output::");
             Pattern outputPattern = Pattern.compile("Output::((.|\\n)*)");
             Matcher inputMatcher = inputPattern.matcher(testCase);
             Matcher outputMatcher = outputPattern.matcher(testCase);
@@ -93,8 +109,14 @@ public class QuestionLoader {
 
     }
 
+    /**
+     * Registers Topics specified by text file into question.
+     * @param source
+     * @param question
+     * @throws IllegalValueException
+     */
     private static void addTopics(String source,
-                               QuestionBuilder question) throws IllegalValueException{
+                               QuestionBuilder question) throws IllegalValueException {
         Pattern topicsPattern = Pattern.compile("Topics::(.*?)"
             + "TestCase::", Pattern.DOTALL);
         Matcher matcher = topicsPattern.matcher(source);
@@ -118,8 +140,14 @@ public class QuestionLoader {
         }
     }
 
+    /**
+     * Registers a Difficulty specified by text file into question.
+     * @param source
+     * @param question
+     * @throws IllegalValueException
+     */
     private static void addDifficulty(String source,
-                                                 QuestionBuilder question) throws IllegalValueException{
+                                                 QuestionBuilder question) throws IllegalValueException {
         Pattern difficultyPattern = Pattern.compile("Difficulty::(.*?)"
             + "Topics::", Pattern.DOTALL);
         Matcher matcher = difficultyPattern.matcher(source);
@@ -138,8 +166,14 @@ public class QuestionLoader {
         }
     }
 
+    /**
+     * Registers a Description specified by text file into question.
+     * @param source
+     * @param question
+     * @throws IllegalValueException
+     */
     private static void addDescription(String source,
-                                       QuestionBuilder question) throws IllegalValueException{
+                                       QuestionBuilder question) throws IllegalValueException {
         Pattern descriptionPattern = Pattern.compile("Description::(.*?)"
             + "Difficulty::", Pattern.DOTALL);
         Matcher matcher = descriptionPattern.matcher(source);
@@ -152,6 +186,12 @@ public class QuestionLoader {
         question.withDescription(description);
     }
 
+    /**
+     * Registers a Title specified by text file into question.
+     * @param source
+     * @param question
+     * @throws IllegalValueException
+     */
     private static void addTitle(String source,
                                             QuestionBuilder question)
         throws IllegalValueException {

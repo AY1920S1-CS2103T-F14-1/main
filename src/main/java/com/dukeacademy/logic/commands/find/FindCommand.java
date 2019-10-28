@@ -9,6 +9,9 @@ import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
+/**
+ * The type Find command.
+ */
 public class FindCommand implements Command {
     private final Logger logger;
     private final QuestionsLogic questionsLogic;
@@ -17,7 +20,8 @@ public class FindCommand implements Command {
     /**
      * Instantiates a new Find command.
      *
-     * @param questionsLogic         the questions logic
+     * @param questionsLogic the questions logic
+     * @param keywords       the keywords
      */
     public FindCommand(QuestionsLogic questionsLogic, String keywords) {
         this.logger = LogsCenter.getLogger(FindCommand.class);

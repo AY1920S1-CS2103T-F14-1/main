@@ -4,14 +4,16 @@ import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
+/**
+ * The type Find command factory.
+ */
 public class FindCommandFactory implements CommandFactory {
     private final QuestionsLogic questionsLogic;
 
     /**
      * Instantiates a new Attempt command factory.
      *
-     * @param questionsLogic         the questions logic
-     *
+     * @param questionsLogic the questions logic
      */
     public FindCommandFactory(QuestionsLogic questionsLogic) {
         this.questionsLogic = questionsLogic;

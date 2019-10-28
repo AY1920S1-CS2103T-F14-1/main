@@ -15,6 +15,9 @@ import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.model.question.Question;
 
+/**
+ * The type Load command.
+ */
 public class LoadCommand implements Command {
     private final Logger logger;
     private final QuestionsLogic questionsLogic;
@@ -23,7 +26,7 @@ public class LoadCommand implements Command {
     /**
      * Instantiates a new Load command.
      *
-     * @param questionsLogic         the questions logic
+     * @param questionsLogic     the questions logic
      * @param sampleQuestionPath the path whereby questions are stored
      */
     public LoadCommand(QuestionsLogic questionsLogic, Path sampleQuestionPath) {

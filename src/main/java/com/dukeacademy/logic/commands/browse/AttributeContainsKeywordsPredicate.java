@@ -7,12 +7,17 @@ import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.model.question.Question;
 
 /**
- * Tests that a {@code Question}'s {@code Attribute} matches any of the keywords 
+ * Tests that a {@code Question}'s {@code Attribute} matches any of the keywords
  * given.
  */
-public class AttributeContainsKeywordsPredicate implements Predicate<Question>{
+public class AttributeContainsKeywordsPredicate implements Predicate<Question> {
     private final List<String> keywords;
 
+    /**
+     * Instantiates a new Attribute contains keywords predicate.
+     *
+     * @param keywords the keywords
+     */
     public AttributeContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
@@ -29,7 +34,8 @@ public class AttributeContainsKeywordsPredicate implements Predicate<Question>{
                            boolean matchDifficulty =
                                StringUtil.containsWordIgnoreCase(question.getDifficulty().toString(), keyword);
                            boolean matchTopic =
-                               question.getTopics().stream().anyMatch(topic-> StringUtil.containsWordIgnoreCase(topic.toString(), keyword));
+                               question.getTopics().stream().anyMatch(topic->
+                                   StringUtil.containsWordIgnoreCase(topic.toString(), keyword));
                            return matchTitle || matchDescription || matchStatus || matchDifficulty || matchTopic;
                        });
     }

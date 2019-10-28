@@ -22,7 +22,7 @@ public class ListCommand implements Command {
     /**
      * Instantiates a new Attempt command.
      *
-     * @param questionsLogic         the questions logic
+     * @param questionsLogic the questions logic
      */
     public ListCommand(QuestionsLogic questionsLogic) {
         this.logger = LogsCenter.getLogger(ListCommand.class);

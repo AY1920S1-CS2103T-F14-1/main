@@ -191,6 +191,11 @@ image::attempt.png[width="920"]
 * `view 2` +
 Opens the question page displaying the question with the id "2".
 
+=== List all questions: `showall`
+
+List all questions available in the whole database.
+
+*Format:* `showall`
 
 === Saving your work : `save` [_coming in v1.2_]
 

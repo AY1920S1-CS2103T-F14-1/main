@@ -9,6 +9,9 @@ import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
+/**
+ * The type Browse command.
+ */
 public class BrowseCommand implements Command {
     private final Logger logger;
     private final QuestionsLogic questionsLogic;
@@ -17,7 +20,8 @@ public class BrowseCommand implements Command {
     /**
      * Instantiates a new Browse command.
      *
-     * @param questionsLogic         the questions logic
+     * @param questionsLogic the questions logic
+     * @param keywords       the keywords
      */
     public BrowseCommand(QuestionsLogic questionsLogic, String keywords) {
         this.logger = LogsCenter.getLogger(BrowseCommand.class);

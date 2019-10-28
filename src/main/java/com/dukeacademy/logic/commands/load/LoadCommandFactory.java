@@ -15,13 +15,13 @@ import com.dukeacademy.logic.question.QuestionsLogic;
  * Class to represent the necessary components for the creation of a Load command.
  */
 public class LoadCommandFactory implements CommandFactory {
-    private final QuestionsLogic questionsLogic;
     private static final Logger logger = LogsCenter.getLogger(MainApp.class);
+    private final QuestionsLogic questionsLogic;
 
     /**
      * Instantiates a new Load command factory.
      *
-     * @param questionsLogic         the questions logic
+     * @param questionsLogic the questions logic
      */
     public LoadCommandFactory(QuestionsLogic questionsLogic) {
         this.questionsLogic = questionsLogic;
@@ -35,7 +35,7 @@ public class LoadCommandFactory implements CommandFactory {
 
     @Override
     public Command getCommand(String commandArguments)
-        throws InvalidCommandArgumentsException{
+        throws InvalidCommandArgumentsException {
         Path sampleQuestionsFilePath =
             Paths.get(System.getProperty("user.home")).resolve("Desktop").resolve(commandArguments);
         if (!sampleQuestionsFilePath.toFile().exists()) {

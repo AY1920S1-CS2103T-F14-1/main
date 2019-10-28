@@ -7,12 +7,17 @@ import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.model.question.Question;
 
 /**
- * Tests that a {@code Question}'s {@code Title} matches any of the keywords 
+ * Tests that a {@code Question}'s {@code Title} matches any of the keywords
  * given.
  */
-public class TitleContainsKeywordsPredicate implements Predicate<Question>{
+public class TitleContainsKeywordsPredicate implements Predicate<Question> {
     private final List<String> keywords;
 
+    /**
+     * Instantiates a new Title contains keywords predicate.
+     *
+     * @param keywords the keywords
+     */
     public TitleContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }

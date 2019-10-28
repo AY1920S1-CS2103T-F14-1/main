@@ -13,8 +13,7 @@ public class ListCommandFactory implements CommandFactory {
     /**
      * Instantiates a new Attempt command factory.
      *
-     * @param questionsLogic         the questions logic
-     *
+     * @param questionsLogic the questions logic
      */
     public ListCommandFactory(QuestionsLogic questionsLogic) {
         this.questionsLogic = questionsLogic;

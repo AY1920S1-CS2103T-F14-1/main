@@ -17,11 +17,18 @@ public enum Difficulty {
      */
     HARD;
 
-    public static boolean contains(String s)
-    {
-        for(Difficulty difficulty:values())
-            if (difficulty.name().equals(s))
+    /**
+     * Contains boolean.
+     *
+     * @param s the s
+     * @return the boolean
+     */
+    public static boolean contains(String s) {
+        for (Difficulty difficulty:values()) {
+            if (difficulty.name().equals(s)) {
                 return true;
+            }
+        }
         return false;
     }
 }
