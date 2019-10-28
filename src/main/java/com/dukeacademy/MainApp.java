@@ -19,7 +19,9 @@ import com.dukeacademy.commons.util.StringUtil;
 import com.dukeacademy.logic.commands.CommandLogic;
 import com.dukeacademy.logic.commands.CommandLogicManager;
 import com.dukeacademy.logic.commands.attempt.AttemptCommandFactory;
+import com.dukeacademy.logic.commands.browse.BrowseCommandFactory;
 import com.dukeacademy.logic.commands.exit.ExitCommandFactory;
+import com.dukeacademy.logic.commands.find.FindCommandFactory;
 import com.dukeacademy.logic.commands.home.HomeCommandFactory;
 import com.dukeacademy.logic.commands.list.ListCommandFactory;
 import com.dukeacademy.logic.commands.load.LoadCommandFactory;
@@ -290,7 +292,14 @@ public class MainApp extends Application {
         LoadCommandFactory loadCommandFactory =
             new LoadCommandFactory(this.questionsLogic);
         commandLogicManager.registerCommand(loadCommandFactory);
-
+        // Registering Find command
+        FindCommandFactory findCommandFactory =
+            new FindCommandFactory(this.questionsLogic);
+        commandLogicManager.registerCommand(findCommandFactory);
+        // Registering browse command
+        BrowseCommandFactory browseCommandFactory =
+            new BrowseCommandFactory(this.questionsLogic);
+        commandLogicManager.registerCommand(browseCommandFactory);
 
         return commandLogicManager;
     }

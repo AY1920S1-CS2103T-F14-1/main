@@ -1,10 +1,10 @@
-package com.dukeacademy.logic.commands.find;
+package com.dukeacademy.logic.commands.browse;
 
 import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.question.QuestionsLogic;
 
-public class FindCommandFactory implements CommandFactory {
+public class BrowseCommandFactory implements CommandFactory {
     private final QuestionsLogic questionsLogic;
 
     /**
@@ -13,16 +13,16 @@ public class FindCommandFactory implements CommandFactory {
      * @param questionsLogic         the questions logic
      *
      */
-    public FindCommandFactory(QuestionsLogic questionsLogic) {
+    public BrowseCommandFactory(QuestionsLogic questionsLogic) {
         this.questionsLogic = questionsLogic;
     }
 
     @Override
     public String getCommandWord() {
-        return "find";
+        return "browse";
     }
 
     @Override public Command getCommand(String commandArguments) {
-        return new FindCommand(questionsLogic, commandArguments);
+        return new BrowseCommand(questionsLogic, commandArguments);
     }
 }
