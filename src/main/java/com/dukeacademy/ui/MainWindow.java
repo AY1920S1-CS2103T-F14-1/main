@@ -160,7 +160,7 @@ class MainWindow extends UiPart<Stage> {
     /**
      * Updates the homepage placeholder residing in this main window.
      */
-    void updateHomePage() {
+    private void updateHomePage() {
         homePage = new HomePage(questionsLogic.getFilteredQuestionsList());
         homePagePlaceholder.getChildren().add(homePage.getRoot());
     }
