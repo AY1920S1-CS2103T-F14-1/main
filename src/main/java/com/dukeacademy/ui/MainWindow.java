@@ -302,6 +302,10 @@ class MainWindow extends UiPart<Stage> {
                 updateHomePage();
             }
 
+            if (commandResult.isAttempt()) {
+                updateHomePage();
+            }
+
             return commandResult;
         } catch (CommandException | InvalidCommandArgumentsException | InvalidCommandKeywordException e) {
             logger.info("Invalid command: " + commandText);
