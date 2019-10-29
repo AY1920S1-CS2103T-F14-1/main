@@ -90,6 +90,6 @@ public class SubmitCommand implements Command {
         } else {
             feedback = feedback + "failed";
         }
-        return new CommandResult(feedback, false, false, false, false);
+        return new CommandResult(feedback, false, false, false, false, false);
     }
 }

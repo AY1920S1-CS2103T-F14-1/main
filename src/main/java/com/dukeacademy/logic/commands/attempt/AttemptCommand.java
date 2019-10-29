@@ -47,7 +47,7 @@ public class AttemptCommand implements Command {
             this.programSubmissionLogic.setCurrentQuestion(questionToAttempt);
 
             String feedback = "Attempting question " + (index + 1) + " : " + questionToAttempt.getTitle();
-            return new CommandResult(feedback, false, false, false, false);
+            return new CommandResult(feedback, false, false, false, false, false);
         } catch (IndexOutOfBoundsException e) {
             throw new CommandException("Index " + (index + 1) + " entered out of range for current list of questions.");
         }

@@ -6,6 +6,8 @@ import java.util.List;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.model.question.entities.Status;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
