@@ -20,21 +20,15 @@
 </li>
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code-em-coming-in-v1-2-em">4.1. Viewing help : <code>help</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#access-homepage-code-home-code-em-coming-in-v1-2-em">4.2. Access Homepage: <code>home</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#find-question-by-title-code-find-code-em-coming-in-v1-2-em">4.3. Find question by title : <code>find</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#browse-by-categories-code-browse-code-em-coming-in-v1-2-em">4.4. Browse by categories: <code>browse</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#viewing-a-question-code-view-code-em-coming-in-v1-2-em">4.5. Viewing a question : <code>view</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#attempting-a-question-code-attempt-code-em-coming-in-v1-2-em">4.6. Attempting a question : <code>attempt</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#list-all-questions-code-showall-code">4.7. List all questions: <code>showall</code></a></li>
-<li><a href="#saving-your-work-code-save-code-em-coming-in-v1-2-em">4.8. Saving your work : <code>save</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#submitting-your-answer-code-submit-code-em-coming-in-v1-2-em">4.9. Submitting your answer: <code>submit</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em">4.10. Hiding the results window: <code>hideresults</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#reset-your-answer-code-reset-code-em-coming-in-v1-2-em">4.11. Reset your answer: <code>reset</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#view-answers-code-answer-code-em-coming-in-v1-2-em">4.12. View answers: <code>answer</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#exit-the-application-code-exit-code-em-coming-in-v1-2-em">4.13. Exit the application: <code>exit</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#timer-code-timer-code-em-coming-in-v1-2-em">4.14. Timer: <code>timer</code> [<em>coming in v1.2</em>]</a></li>
-<li><a href="#loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em">4.15. Loading new questions: <code>loadquestions</code> [<em>coming in v1.2</em>]</a></li>
+<li><a href="#access-homepage-code-home-code">4.1. Access Homepage: <code>home</code></a></li>
+<li><a href="#find-question-by-title-code-find-code">4.2. Find question by title : <code>find</code></a></li>
+<li><a href="#browse-by-keywords-code-browse-code">4.3. Browse by keywords: <code>browse</code></a></li>
+<li><a href="#viewing-the-problem-statement-code-view-code">4.4. Viewing the problem statement : <code>view</code></a></li>
+<li><a href="#attempting-a-question-code-attempt-code">4.5. Attempting a question : <code>attempt</code></a></li>
+<li><a href="#list-all-questions-code-showall-code">4.6. List all questions: <code>showall</code></a></li>
+<li><a href="#submitting-your-answer-code-submit-code">4.7. Submitting your answer: <code>submit</code></a></li>
+<li><a href="#loading-new-questions-code-loadquestions-code">4.8. Loading new questions: <code>loadquestions</code></a></li>
+<li><a href="#exit-the-application-code-exit-code">4.9. Exit the application: <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -54,13 +48,22 @@ it, DukeAcademy gives you access to a wide range of programming problems from va
 that suits your needs and interests and start honing your skills today!</p>
 </div>
 <div class="paragraph">
-<p>For educators, you can use DukeAcademy as a platform to administer your assignments or practice questions by loading
-your own questions!</p>
+<p>DukeAcademy features a built-in list of problem sets and its very own text editor. Simply choose a problem statement
+that catches your eye, load it up in the problem display panel and start coding away! DukeAcademy also features your
+very own profile page for you to immediately view all of your accomplishments at a glance. Your profile page also helps
+you keep track of the problems that you have attempted and those you have bookmarked, so that you can get back to them
+easily at a later time.</p>
+</div>
+<div class="paragraph">
+<p>For educators, you can use DukeAcademy as a platform to administer your assignments or practice questions. If you have
+questions of your own you would like to test your students, you can use the built-in question loader in DukeAcademy to
+set your own questions and then distribute the updated <em>questionBank.json</em> file to your students through your favourite
+communication channels.</p>
 </div>
 <div class="paragraph">
 <p>DukeAcademy is optimized for those who prefer to work with a CLI (Command Line Interface) while still enjoying the
-benefits of a GUI (Graphical User Interface). If you are still unfamiliar with using a CLI (an important skill for all
-programmers), you can get used to it while working on your coding skills!</p>
+benefits of a GUI (Graphical User Interface). If you are unfamiliar with using a CLI (which is an important skill for all
+programmers), you can get used to it while working on your coding skills here in DukeAcademy!</p>
 </div>
 </div>
 </div>
@@ -70,37 +73,97 @@ programmers), you can get used to it while working on your coding skills!</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java 11 or above installed in your Computer.</p>
+<p>Ensure you have <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html">Java 11</a> or above installed in your Computer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Refer to the following links for the complete walk-through (<a href="https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-macos.htm#JSJIG-GUID-5F4A0659-BFC5-4CB9-9920-D2DEABF29894">macOS</a> / <a href="https://docs.oracle.com/javase/10/install/installation-jdk-and-jre-microsoft-windows-platforms.htm#JSJIG-GUID-BCE568C9-93D3-49F4-9B0C-9DD4A3419792">windows</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Download the latest DukeAcademy.jar <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//releases">here</a>.</p>
+<p>Download the latest DukeAcademy.jar <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Double-click the .jar file to start the app. The GUI should appear in a few seconds. If the app cannot be launched by double-clicking:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Launch Notepad (or any text editor), then copy and paste the following line into the text editor.</p>
+<div class="literalblock">
+<div class="content">
+<pre>java -jar [name_of_file].jar</pre>
+</div>
+</div>
 </li>
 <li>
-<p>When loading the app for the first time, it will create a folder in your User home directory</p>
+<p>Replace "[name_of_file]" with whatever name you have saved the .jar file as.</p>
 </li>
 <li>
-<p>This folder will contain all of your app&#8217;s data. To fix any errors related to corrupt data, delete this folder and the app will be reinstalled.</p>
+<p>Save the text file as a .bat file in the same location as the .jar file.</p>
+</li>
+<li>
+<p>Then double-click on the newly created .bat file to run the app.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>When launching the app for the first time, it will create a folder in your User home directory.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This folder will contain all of your app&#8217;s data. To fix any errors related to corrupted data, delete this folder and the app will be reinstalled.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>image::quickstart1.png[width="790"]</p>
+</div>
+</li>
+<li>
+<p>Once the app is launched, you will immediately be greeted with the main User Interface of the app.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/quickstart1.png" alt="quickstart1" width="790">
+<img src="images/userguide/mainUi.png" alt="mainUi" width="790">
 </div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>CommandBox</strong></p>
+<div class="paragraph">
+<p>This will be the field where you input all your commands. After you press the <kbd>Enter</kbd> button, your command will be executed.</p>
+</div>
+<div class="paragraph">
+<p>e.g. typing <strong><code>showall</code></strong> and pressing <kbd>Enter</kbd> will display all the questions in the app.</p>
 </div>
 </li>
 <li>
-<p>Type a command in the command box and press <kbd>Enter</kbd> to execute it. e.g. typing <strong><code>showall</code></strong> and pressing
-<kbd>Enter</kbd> will display all the questions  in the app.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/commandbox.png" alt="commandbox" width="790">
+<p><strong>ResultDisplayBox</strong></p>
+<div class="paragraph">
+<p>Once you have executed a command, a feedback will be displayed in this field.</p>
 </div>
+<div class="paragraph">
+<p>e.g. after executing <strong><code>showall</code></strong> command, "List all questions&#8230;&#8203;" will be displayed.</p>
 </div>
 </li>
 <li>
-<p>Find a question that interests you and type <code>attempt &lt;Qn Index&gt;</code> into the command box to start your
-DukeAcademy experience. Note: the index of a question is the number displayed next to its title.</p>
+<p><strong>TabView</strong></p>
+<div class="paragraph">
+<p>Consists of 3 different tabs: <em>Home</em>, <em>Questions</em> and <em>Workspace</em></p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>After executing <strong><code>showall</code></strong> in the <strong>CommandBox</strong>, find a question that interests you and type <code>attempt &lt;Qn Index&gt;</code>
+into the <strong>CommandBox</strong> to start your DukeAcademy experience.</p>
+<div class="paragraph">
+<p><em>Note: the index of a question is the number displayed next to its title.</em></p>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/userguide/questionindex.png" alt="questionindex" width="790">
@@ -119,12 +182,20 @@ DukeAcademy experience. Note: the index of a question is the number displayed ne
 <div class="sectionbody">
 <div class="paragraph">
 <p>The application is divided into 3 separate tabs, each one of them serving a specific purpose. You can toggle between the
-different tabs by entering <code>tab</code> into the command box.</p>
+different tabs by entering <code>tab</code> into the <strong>CommandBox</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="home"><a class="link" href="#home">3.1. Home</a></h3>
 <div class="paragraph">
-<p>The <strong>Home</strong> tab contains a brief introduction of the application along with a brief overview of your user profile.</p>
+<p>The <strong>Home</strong> tab contains an introduction of the application along with a brief overview of your user profile.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/homepage.png" alt="homepage" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>On the "Home" page, you can:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -136,11 +207,6 @@ different tabs by entering <code>tab</code> into the command box.</p>
 </li>
 <li>
 <p>View your bookmarked questions.</p>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/homepage.png" alt="homepage" width="790">
-</div>
-</div>
 </li>
 </ol>
 </div>
@@ -148,19 +214,20 @@ different tabs by entering <code>tab</code> into the command box.</p>
 <div class="sect2">
 <h3 id="questions"><a class="link" href="#questions">3.2. Questions</a></h3>
 <div class="paragraph">
-<p>The <strong>Questions</strong> tab contains a list of all the available questions and also a window to view their problem statements.</p>
+<p>The <strong>Questions</strong> tab contains a list of all the available questions and also a window to view your problem statements.</p>
 </div>
 <div class="paragraph">
-<p>This list of questions can be filtered using various commands such as <code>browse</code> and <code>search</code> to narrow down your search.
-View <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details.</p>
+<p>You can use commands such as <code>browse</code> and <code>search</code> to filter through the list of questions in order to find what you
+are looking for. <em>(View <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details.)</em></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>To quickly see all questions, enter <code>showall</code> into the command box.</p>
+<p>To quickly see all questions, enter <code>showall</code> into the <strong>CommandBox</strong>.</p>
 </li>
 <li>
-<p>To view the problem statement for a question, enter <code>view &lt;Qn Index&gt;</code>.</p>
+<p>To view the problem statement for a question, enter <code>view &lt;Qn Index&gt;</code>. The problem statement will then be displayed
+on the right.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/userguide/questionspage.png" alt="questionspage" width="790">
@@ -175,28 +242,38 @@ View <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details.
 <div class="paragraph">
 <p>The workspace is where you will work on the various questions.</p>
 </div>
-<div class="paragraph">
-<p>On the left of the workspace, you will find a display to show the question that you are currently attempting. You will
-also see another window that displays the results of evaluating your program.</p>
-</div>
-<div class="paragraph">
-<p>On the right of the workspace, you will find a built in editor for you to write your programs in. If you do not wish to
-write your programs in our editor, simply paste your code into our editor before submission.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>To attempt a question, enter <code>attempt &lt;Qn Index&gt;</code> into the command box.</p>
-</li>
-<li>
-<p>To submit your question, enter <code>submit</code> into the command box.</p>
 <div class="imageblock">
 <div class="content">
 <img src="images/userguide/workspace.png" alt="workspace" width="790">
 </div>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>ProblemStatementDisplay</strong></p>
+<div class="paragraph">
+<p>Displays the question that you are currently attempting.</p>
+</div>
+</li>
+<li>
+<p><strong>ProgramEvaluationDisplay</strong></p>
+<div class="paragraph">
+<p>This window displays the results after DukeAcademy has finished evaluating the correctness of your program.</p>
+</div>
+</li>
+<li>
+<p><strong>Editor</strong></p>
+<div class="paragraph">
+<p>A built-in editor for you to write your code.</p>
+</div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>To begin your attempt on a question, enter <code>attempt &lt;Qn Index&gt;</code> into the <strong>CommandBox</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To submit your attempt, enter <code>submit</code> into the <strong>CommandBox</strong>.</p>
 </div>
 </div>
 </div>
@@ -212,54 +289,39 @@ write your programs in our editor, simply paste your code into our editor before
 <div class="ulist">
 <ul>
 <li>
-<p>Words within square braces <code>[]</code> are the parameters to be supplied by the user e.g. in <code>attempt[id]</code>,
+<p>Words within square braces <code>[]</code> are the parameters to be supplied by you, the user.</p>
+<div class="paragraph">
+<p>e.g. in <code>attempt[id]</code>,
 <code>id</code> is a parameter which can be used as <code>attempt 1</code>.</p>
+</div>
 </li>
 <li>
-<p>Parameters are compulsory.</p>
+<p>Parameters are <strong>compulsory</strong>.</p>
 </li>
 <li>
-<p>Parameters with <code>…</code>​ after them can be entered multiple times. e.g. <code>browse [category]&#8230;&#8203;</code> can be used as
-<code>browse easy linkedlist hashtable recursion</code> (i.e. 4 times), etc.</p>
+<p>Parameters with <code>…</code>​ after them can accept multiple entries.</p>
+<div class="paragraph">
+<p>e.g. <code>browse [category]&#8230;&#8203;</code> can be used as
+<code>browse easy linkedlist hashtable recursion</code> (i.e. 4 entries), etc.</p>
+</div>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code-em-coming-in-v1-2-em"><a class="link" href="#viewing-help-code-help-code-em-coming-in-v1-2-em">4.1. Viewing help : <code>help</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="access-homepage-code-home-code"><a class="link" href="#access-homepage-code-home-code">4.1. Access Homepage: <code>home</code></a></h3>
 <div class="paragraph">
-<p>Opens a window displaying the user guide within the GUI. In the user guide, all available functions within DukeAcademy
-will be listed in alphabetical order.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format</strong>: <code>help</code></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/quickstart1.png" alt="quickstart1" width="920">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="access-homepage-code-home-code-em-coming-in-v1-2-em"><a class="link" href="#access-homepage-code-home-code-em-coming-in-v1-2-em">4.2. Access Homepage: <code>home</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Navigates back to the ​ homepage​ where you can see your progress on the current problem set.</p>
+<p>Navigates back to the <strong>HomePage</strong>.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>home</code></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/home.png" alt="home" width="920">
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="find-question-by-title-code-find-code-em-coming-in-v1-2-em"><a class="link" href="#find-question-by-title-code-find-code-em-coming-in-v1-2-em">4.3. Find question by title : <code>find</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="find-question-by-title-code-find-code"><a class="link" href="#find-question-by-title-code-find-code">4.2. Find question by title : <code>find</code></a></h3>
 <div class="paragraph">
-<p>Searches for question titles​ that partially match the keywords entered. Results are displayed in
-the list window on the left of the GUI.</p>
+<p>Searches for question of which the title contains <strong>strictly</strong> the keywords entered.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>find [keyword]&#8230;&#8203;</code></p>
@@ -269,20 +331,22 @@ the list window on the left of the GUI.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><strong>NOTE</strong>: This function does not work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will <strong>NOT</strong> yield questions with titles such as <code>Sudoku</code> or <code>The Supreme Seven</code></p>
+</div>
+</li>
+<li>
 <p>The search is case insensitive. e.g <code>recursion</code> will match <code>Recursion</code>.</p>
 </li>
 <li>
 <p>The order of the keywords does not matter. e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
 </li>
 <li>
-<p>Only the title will be searched.</p>
-</li>
-<li>
-<p>Any substring in the tilte will be matched. e.g. <code>fib</code> will match <code>fibonacci</code>.</p>
-</li>
-<li>
-<p>Questions matching at least one keyword will be displayed (i.e. "OR" search). e.g. <code>integer big</code> will return
-<code>integer x</code>, <code>big decimal</code>.</p>
+<p>Questions with title matching at least one keyword will be displayed</p>
+<div class="paragraph">
+<p>e.g. searching for <code>sudoku adder</code> will yield questions with titles such as <code>Valid Sudoku</code> and <code>Two Number Adder</code>.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -295,81 +359,37 @@ the list window on the left of the GUI.</p>
 <ul>
 <li>
 <p><code>find binary search tree</code><br>
-Finds and displays all the questions containing the substrings "binary",  "search" and "tree" in its title.</p>
+Finds and displays all questions containing the substrings "binary",  "search" and "tree" in their title.</p>
 </li>
 <li>
-<p><code>find fizzbuzz</code><br>
-Finds and displays all the questions containing the substring "fizzbuzz" in its title.</p>
+<p><code>find fizz buzz</code><br>
+Finds and displays all the questions containing the substrings "fizz" and "buzz" in its title, but not questions with
+titles such as "fizzbuzz".</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="browse-by-categories-code-browse-code-em-coming-in-v1-2-em"><a class="link" href="#browse-by-categories-code-browse-code-em-coming-in-v1-2-em">4.4. Browse by categories: <code>browse</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="browse-by-keywords-code-browse-code"><a class="link" href="#browse-by-keywords-code-browse-code">4.3. Browse by keywords: <code>browse</code></a></h3>
 <div class="paragraph">
-<p>Browses the list of questions​ found in the list window on the left of the GUI
-according to the category specified. Only questions matching the categories will
-be displayed.</p>
+<p>Searches through all questions with the specified keyword(s). A question is listed as a search result as long as it
+contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
 </div>
 <div class="paragraph">
-<p><strong>Format:</strong> <code>browse [category]&#8230;&#8203;</code></p>
+<p><strong>Format:</strong> <code>browse [keywords]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The category is case insensitive. e.g <code>easy</code> will match <code>Easy</code>.</p>
-</li>
-<li>
-<p>Multiple categories can be listed.</p>
-</li>
-<li>
-<p>A question can have multiple categories. The question will be displayed as long as one category is matched.</p>
-</li>
-<li>
-<p>Questions matching at least one category will be displayed (i.e. "OR" search). e.g. <code>easy linkedlists</code> will return
-all questions in the categories "easy" and "linkedlist".</p>
-</li>
-<li>
-<p>Available categories:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>easy</p>
-</li>
-<li>
-<p>medium</p>
-</li>
-<li>
-<p>hard</p>
-</li>
-<li>
-<p>arrays</p>
-</li>
-<li>
-<p>linkedlist</p>
-</li>
-<li>
-<p>hashtable</p>
-</li>
-<li>
-<p>trees</p>
-</li>
-<li>
-<p>graphs</p>
-</li>
-<li>
-<p>recursion</p>
-</li>
-<li>
-<p>divideandconquer</p>
-</li>
-<li>
-<p>others</p>
-</li>
-</ul>
+<p><strong>NOTE</strong>: This function does <strong>NOT</strong> work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will not yield questions that do not strictly contain the word "su".</p>
 </div>
+</li>
+<li>
+<p>The category is case insensitive. e.g <code>easy</code> will match <code>Easy</code>.</p>
 </li>
 </ul>
 </div>
@@ -381,21 +401,24 @@ all questions in the categories "easy" and "linkedlist".</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>browse medium</code><br>
-Finds and displays medium difficulty questions.</p>
+<p><code>browse hashtable linkedlist</code><br>
+Finds and displays all questions that contain "hashtable" and "linkedlist".</p>
 </li>
 <li>
-<p><code>browse hashtable linkedlist</code><br>
-Finds and displays questions on hashtables and linked lists.</p>
+<p><code>browse number</code><br>
+Finds and displays questions that contain strictly the keyword "number".</p>
+<div class="paragraph">
+<p>Questions that do not and instead contain words
+with "number" as a substring of a word in their <em>title, topics, description, status</em> or <em>difficulty</em> will not be displayed.</p>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-a-question-code-view-code-em-coming-in-v1-2-em"><a class="link" href="#viewing-a-question-code-view-code-em-coming-in-v1-2-em">4.5. Viewing a question : <code>view</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="viewing-the-problem-statement-code-view-code"><a class="link" href="#viewing-the-problem-statement-code-view-code">4.4. Viewing the problem statement : <code>view</code></a></h3>
 <div class="paragraph">
-<p>Allows you to ​ preview a question​ by displaying it in the GUI. The question details will be displayed in the right
-window of the GUI.</p>
+<p>Displays the problem statement of the question.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>view [id]</code></p>
@@ -405,21 +428,16 @@ window of the GUI.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Displays the question with the corresponding id on the right side window of the GUI.</p>
+<p>Displays the problem statement with the corresponding id.</p>
 </li>
 <li>
-<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
+<p>The id of the question can be seen next to its title in square braces.</p>
 </li>
 <li>
-<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
+<p>The id of the question must be a positive integer.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/view.png" alt="view" width="920">
 </div>
 </div>
 <div class="paragraph">
@@ -435,11 +453,10 @@ Displays the question with the id "2" in the right side window of the GUI.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attempting-a-question-code-attempt-code-em-coming-in-v1-2-em"><a class="link" href="#attempting-a-question-code-attempt-code-em-coming-in-v1-2-em">4.6. Attempting a question : <code>attempt</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="attempting-a-question-code-attempt-code"><a class="link" href="#attempting-a-question-code-attempt-code">4.5. Attempting a question : <code>attempt</code></a></h3>
 <div class="paragraph">
-<p>Navigates to a question page where you can attempt to ​ solve the question​. The question with the corresponding id will
-be displayed on the left of the GUI. The GUI will now display a text editor on the right which you can use to input
-your answer.</p>
+<p>Navigates to the <strong>Questions</strong> tab where you can code your solution to solve the problem statement. The problem statement
+will be displayed on the left of the GUI. The <strong>Editor</strong> will be displayed on the right.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>attempt [id]</code></p>
@@ -485,21 +502,12 @@ Opens the question page displaying the question with the id "2".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">4.7. List all questions: <code>showall</code></a></h3>
+<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">4.6. List all questions: <code>showall</code></a></h3>
 <div class="paragraph">
 <p>List all questions available in the whole database.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>showall</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-your-work-code-save-code-em-coming-in-v1-2-em"><a class="link" href="#saving-your-work-code-save-code-em-coming-in-v1-2-em">4.8. Saving your work : <code>save</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Saves your current question attempt.​ Can only be invoked from the <strong><em>question page</em></strong>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>save</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -518,7 +526,7 @@ the <strong><em>question page</em></strong> of question 2, the next time you <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="submitting-your-answer-code-submit-code-em-coming-in-v1-2-em"><a class="link" href="#submitting-your-answer-code-submit-code-em-coming-in-v1-2-em">4.9. Submitting your answer: <code>submit</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="submitting-your-answer-code-submit-code"><a class="link" href="#submitting-your-answer-code-submit-code">4.7. Submitting your answer: <code>submit</code></a></h3>
 <div class="paragraph">
 <p>Submits your current answer.​ Your code will now be compiled and run against the specified test cases. A new window will
 appear on the right of the GUI to display your results. ​Can only be invoked from the <strong><em>question page</em></strong>.</p>
@@ -545,49 +553,12 @@ appear on the right of the GUI to display your results. ​Can only be invoked f
 <img src="images/userguide/submit.png" alt="submit" width="920">
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em"><a class="link" href="#hiding-the-results-window-code-hideresults-code-em-coming-in-v1-2-em">4.10. Hiding the results window: <code>hideresults</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Closes the results window if it is opened.​ The question and text editor will expand to fill the remaining space. ​ Can
-only be invoked from the <strong><em>question page</em></strong>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>hideresult</code></p>
-</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
 <p>You will have to submit your answer again to open the results window after closing it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="reset-your-answer-code-reset-code-em-coming-in-v1-2-em"><a class="link" href="#reset-your-answer-code-reset-code-em-coming-in-v1-2-em">4.11. Reset your answer: <code>reset</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Resets the current saved attempt for a question.​ The question being reset is the one that corresponds to the id
-specified. The editor will be empty next time you attempt​ that question.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>reset [id]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This will erase any previously saved answers for the question. The erased answer is not recoverable.</p>
-</li>
-<li>
-<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
-</li>
-<li>
-<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
 </li>
 </ul>
 </div>
@@ -606,86 +577,7 @@ Erases the previous answer for the question with the id "2".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="view-answers-code-answer-code-em-coming-in-v1-2-em"><a class="link" href="#view-answers-code-answer-code-em-coming-in-v1-2-em">4.12. View answers: <code>answer</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>View the formal answer of a problem. ​ The problem statement will be displayed on the left pane, and the sample code will
-be displayed on the right. Can only be invoked from the <strong><em>question page</em></strong>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>answer</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exit-the-application-code-exit-code-em-coming-in-v1-2-em"><a class="link" href="#exit-the-application-code-exit-code-em-coming-in-v1-2-em">4.13. Exit the application: <code>exit</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Exits the application</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>exit</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="timer-code-timer-code-em-coming-in-v1-2-em"><a class="link" href="#timer-code-timer-code-em-coming-in-v1-2-em">4.14. Timer: <code>timer</code> [<em>coming in v1.2</em>]</a></h3>
-<div class="paragraph">
-<p>Displays a timer window on the bottom right of the text editor. ​ Helps to simulate an test condition under which the
-coder is supposed to finish within speculated duration. The timer starts timing the moment a character is entered into
-the text editor.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>timer [time]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The time to is to be entered in the format <strong><em>hhmmss</em></strong>. e.g. <code>timer 013000</code> will start the timer for 1 hour, 30 minutes
-and 0 seconds.</p>
-</li>
-<li>
-<p>Accepted values:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>hour: 0 to 99</p>
-</li>
-<li>
-<p>minute: 0 to 59</p>
-</li>
-<li>
-<p>seconds: 0 to 59</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>The timer will begin only when a character is input into the text editor.</p>
-</li>
-<li>
-<p>The timer will not be able to be reset.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>timer 013000</code><br>
-Starts a timer that lasts for 1 hour, 30 minutes, 0 seconds.</p>
-</li>
-<li>
-<p><code>timer 995959</code><br>
-Starts a timer that lasts for 99 hour, 59 minutes, 59 seconds.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em"><a class="link" href="#loading-new-questions-code-loadquestions-code-em-coming-in-v1-2-em">4.15. Loading new questions: <code>loadquestions</code> [<em>coming in v1.2</em>]</a></h3>
+<h3 id="loading-new-questions-code-loadquestions-code"><a class="link" href="#loading-new-questions-code-loadquestions-code">4.8. Loading new questions: <code>loadquestions</code></a></h3>
 <div class="paragraph">
 <p>Loads new questions into the application through a text file. Your text file should be in the format specified below.
 Your questions will be loaded the next time you open DukeAcademy.</p>
@@ -728,6 +620,15 @@ Your questions will be loaded the next time you open DukeAcademy.</p>
 Loads the questions from the file "my_problem_set.txt" located in the home directory of DukeAcademy.</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exit-the-application-code-exit-code"><a class="link" href="#exit-the-application-code-exit-code">4.9. Exit the application: <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the application</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>exit</code></p>
 </div>
 </div>
 </div>
@@ -782,28 +683,13 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 <p>Attempt a question: <code>attempt​ [id]</code></p>
 </li>
 <li>
-<p>Save: ​<code>save</code></p>
-</li>
-<li>
 <p>Submit:​ <code>submit</code></p>
 </li>
 <li>
-<p>Hide results: ​<code>hideresults</code></p>
-</li>
-<li>
-<p>Reset: ​<code>reset</code></p>
-</li>
-<li>
-<p>View answer: ​<code>answer</code></p>
+<p>Load questions: ​<code>loadquestions​ [filename]</code></p>
 </li>
 <li>
 <p>Exit: `exit</p>
-</li>
-<li>
-<p>Timer: <code>timer [hhmmss]</code></p>
-</li>
-<li>
-<p>Load questions: ​<code>loadquestions​ [filename]</code></p>
 </li>
 </ul>
 </div>
@@ -919,4 +805,4 @@ Output::</code></pre>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:59:24 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 16:17:21 UTC</div></div></div></body></html>
