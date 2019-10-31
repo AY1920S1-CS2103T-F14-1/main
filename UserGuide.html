@@ -21,14 +21,16 @@
 <li><a href="#Features">4. Features</a>
 <ul class="sectlevel2">
 <li><a href="#access-homepage-code-home-code">4.1. Access Homepage: <code>home</code></a></li>
-<li><a href="#find-question-by-title-code-find-code">4.2. Find question by title : <code>find</code></a></li>
-<li><a href="#browse-by-keywords-code-browse-code">4.3. Browse by keywords: <code>browse</code></a></li>
-<li><a href="#viewing-the-problem-statement-code-view-code">4.4. Viewing the problem statement : <code>view</code></a></li>
-<li><a href="#attempting-a-question-code-attempt-code">4.5. Attempting a question : <code>attempt</code></a></li>
-<li><a href="#list-all-questions-code-showall-code">4.6. List all questions: <code>showall</code></a></li>
-<li><a href="#submitting-your-answer-code-submit-code">4.7. Submitting your answer: <code>submit</code></a></li>
-<li><a href="#loading-new-questions-code-loadquestions-code">4.8. Loading new questions: <code>loadquestions</code></a></li>
-<li><a href="#exit-the-application-code-exit-code">4.9. Exit the application: <code>exit</code></a></li>
+<li><a href="#list-all-questions-code-showall-code">4.2. List all questions: <code>showall</code></a></li>
+<li><a href="#adding-bookmark-code-bookmark-code">4.3. Adding bookmark: <code>bookmark</code></a></li>
+<li><a href="#removing-bookmark-code-deletebookmark-code">4.4. Removing bookmark: <code>deletebookmark</code></a></li>
+<li><a href="#find-question-by-title-code-find-code">4.5. Find question by title : <code>find</code></a></li>
+<li><a href="#browse-by-keywords-code-browse-code">4.6. Browse by keywords: <code>browse</code></a></li>
+<li><a href="#viewing-the-problem-statement-code-view-code">4.7. Viewing the problem statement : <code>view</code></a></li>
+<li><a href="#attempting-a-question-code-attempt-code">4.8. Attempting a question : <code>attempt</code></a></li>
+<li><a href="#submitting-your-answer-code-submit-code">4.9. Submitting your answer: <code>submit</code></a></li>
+<li><a href="#loading-new-questions-code-loadquestions-code">4.10. Loading new questions: <code>loadquestions</code></a></li>
+<li><a href="#exit-the-application-code-exit-code">4.11. Exit the application: <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -119,14 +121,14 @@ programmers), you can get used to it while working on your coding skills here in
 </ul>
 </div>
 <div class="paragraph">
-<p>image::quickstart1.png[width="790"]</p>
+<p>image::quickstart1.png[width="1000"]</p>
 </div>
 </li>
 <li>
 <p>Once the app is launched, you will immediately be greeted with the main User Interface of the app.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/mainUi.png" alt="mainUi" width="790">
+<img src="images/userguide/mainUi.png" alt="mainUi" width="1000">
 </div>
 </div>
 <div class="olist arabic">
@@ -166,7 +168,7 @@ into the <strong>CommandBox</strong> to start your DukeAcademy experience.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/questionindex.png" alt="questionindex" width="790">
+<img src="images/userguide/questionindex.png" alt="questionindex" width="1000">
 </div>
 </div>
 </li>
@@ -191,7 +193,7 @@ different tabs by entering <code>tab</code> into the <strong>CommandBox</strong>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/homepage.png" alt="homepage" width="790">
+<img src="images/userguide/homepage.png" alt="homepage" width="1000">
 </div>
 </div>
 <div class="paragraph">
@@ -230,7 +232,7 @@ are looking for. <em>(View <a href="#Features">Section 4, &#8220;Features&#8221;
 on the right.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/questionspage.png" alt="questionspage" width="790">
+<img src="images/userguide/questionspage.png" alt="questionspage" width="1000">
 </div>
 </div>
 </li>
@@ -244,7 +246,7 @@ on the right.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/workspace.png" alt="workspace" width="790">
+<img src="images/userguide/workspace.png" alt="workspace" width="1000">
 </div>
 </div>
 <div class="olist arabic">
@@ -270,6 +272,9 @@ on the right.</p>
 </ol>
 </div>
 <div class="paragraph">
+<p>To submit your attempt, enter <code>submit</code> into the <strong>CommandBox</strong>.</p>
+</div>
+<div class="paragraph">
 <p>To begin your attempt on a question, enter <code>attempt &lt;Qn Index&gt;</code> into the <strong>CommandBox</strong>.</p>
 </div>
 <div class="paragraph">
@@ -288,6 +293,9 @@ on the right.</p>
 </div>
 <div class="ulist">
 <ul>
+<li>
+<p>Commands are entered into the <strong>CommandBox</strong></p>
+</li>
 <li>
 <p>Words within square braces <code>[]</code> are the parameters to be supplied by you, the user.</p>
 <div class="paragraph">
@@ -317,9 +325,79 @@ on the right.</p>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>home</code></p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/home.png" alt="home" width="1000">
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="find-question-by-title-code-find-code"><a class="link" href="#find-question-by-title-code-find-code">4.2. Find question by title : <code>find</code></a></h3>
+<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">4.2. List all questions: <code>showall</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Questions</strong> Tab and displays all available questions.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>showall</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/listallquestions.png" alt="listallquestions" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-bookmark-code-bookmark-code"><a class="link" href="#adding-bookmark-code-bookmark-code">4.3. Adding bookmark: <code>bookmark</code></a></h3>
+<div class="paragraph">
+<p>Bookmarks a question by its id.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>bookmark [id]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The bookmarked question will appear in the list of bookmarked questions under the <strong>Home</strong> Tab.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/bookmark.png" alt="bookmark" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-bookmark-code-deletebookmark-code"><a class="link" href="#removing-bookmark-code-deletebookmark-code">4.4. Removing bookmark: <code>deletebookmark</code></a></h3>
+<div class="paragraph">
+<p>Removes a bookmark from a question by its id.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deletebookmark [id]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The question with the bookmark removed will disappear from the list of bookmarked questions under the <strong>Home</strong> Tab.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-question-by-title-code-find-code"><a class="link" href="#find-question-by-title-code-find-code">4.5. Find question by title : <code>find</code></a></h3>
 <div class="paragraph">
 <p>Searches for question of which the title contains <strong>strictly</strong> the keywords entered.</p>
 </div>
@@ -337,10 +415,16 @@ on the right.</p>
 </div>
 </li>
 <li>
-<p>The search is case insensitive. e.g <code>recursion</code> will match <code>Recursion</code>.</p>
+<p>The search is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>recursion</code> will match <code>Recursion</code>.</p>
+</div>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
+<p>The order of the keywords does not matter.</p>
+<div class="paragraph">
+<p>e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
+</div>
 </li>
 <li>
 <p>Questions with title matching at least one keyword will be displayed</p>
@@ -370,7 +454,7 @@ titles such as "fizzbuzz".</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="browse-by-keywords-code-browse-code"><a class="link" href="#browse-by-keywords-code-browse-code">4.3. Browse by keywords: <code>browse</code></a></h3>
+<h3 id="browse-by-keywords-code-browse-code"><a class="link" href="#browse-by-keywords-code-browse-code">4.6. Browse by keywords: <code>browse</code></a></h3>
 <div class="paragraph">
 <p>Searches through all questions with the specified keyword(s). A question is listed as a search result as long as it
 contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
@@ -389,7 +473,10 @@ contains one of the keyword(s) in their <em>title, topics, description, status</
 </div>
 </li>
 <li>
-<p>The category is case insensitive. e.g <code>easy</code> will match <code>Easy</code>.</p>
+<p>The category is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>easy</code> will match <code>Easy</code>.</p>
+</div>
 </li>
 </ul>
 </div>
@@ -416,7 +503,7 @@ with "number" as a substring of a word in their <em>title, topics, description, 
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-the-problem-statement-code-view-code"><a class="link" href="#viewing-the-problem-statement-code-view-code">4.4. Viewing the problem statement : <code>view</code></a></h3>
+<h3 id="viewing-the-problem-statement-code-view-code"><a class="link" href="#viewing-the-problem-statement-code-view-code">4.7. Viewing the problem statement : <code>view</code></a></h3>
 <div class="paragraph">
 <p>Displays the problem statement of the question.</p>
 </div>
@@ -431,13 +518,15 @@ with "number" as a substring of a word in their <em>title, topics, description, 
 <p>Displays the problem statement with the corresponding id.</p>
 </li>
 <li>
-<p>The id of the question can be seen next to its title in square braces.</p>
-</li>
-<li>
-<p>The id of the question must be a positive integer.</p>
+<p>The id of the question can be seen next to its title.</p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/view.png" alt="view" width="1000">
 </div>
 </div>
 <div class="paragraph">
@@ -453,10 +542,9 @@ Displays the question with the id "2" in the right side window of the GUI.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attempting-a-question-code-attempt-code"><a class="link" href="#attempting-a-question-code-attempt-code">4.5. Attempting a question : <code>attempt</code></a></h3>
+<h3 id="attempting-a-question-code-attempt-code"><a class="link" href="#attempting-a-question-code-attempt-code">4.8. Attempting a question : <code>attempt</code></a></h3>
 <div class="paragraph">
-<p>Navigates to the <strong>Questions</strong> tab where you can code your solution to solve the problem statement. The problem statement
-will be displayed on the left of the GUI. The <strong>Editor</strong> will be displayed on the right.</p>
+<p>Navigates to the <strong>Questions</strong> tab where you can code your solution to solve the problem statement.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>attempt [id]</code></p>
@@ -466,19 +554,10 @@ will be displayed on the left of the GUI. The <strong>Editor</strong> will be di
 <div class="ulist">
 <ul>
 <li>
-<p>Displays the question with the corresponding id on the left side window of the GUI.</p>
+<p>Displays the question with the corresponding id on the upper-left of the GUI.</p>
 </li>
 <li>
-<p>Opens a text editor for you to input your answers on the right side window of the GUI.</p>
-</li>
-<li>
-<p>This layout is known as the <strong><em>question page</em></strong>.</p>
-</li>
-<li>
-<p>The id of the question can be seen next to its title in square braces. e.g. <code>[1]</code></p>
-</li>
-<li>
-<p>The id of the question is always a positive integer. e.g. 1, 2, 3, 4, 5.</p>
+<p>The <strong>Editor</strong> will appear on the right side for you to code your solution.</p>
 </li>
 </ul>
 </div>
@@ -486,50 +565,15 @@ will be displayed on the left of the GUI. The <strong>Editor</strong> will be di
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/attempt.png" alt="attempt" width="920">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>view 2</code><br>
-Opens the question page displaying the question with the id "2".</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">4.6. List all questions: <code>showall</code></a></h3>
-<div class="paragraph">
-<p>List all questions available in the whole database.</p>
-</div>
-<div class="paragraph">
-<p><strong>Format:</strong> <code>showall</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Your saved answer will be loaded the next time you ​attempt the question again. e.g. after you <code>save</code> your answer on
-the <strong><em>question page</em></strong> of question 2, the next time you <code>attempt 2</code>, your saved answer will be displayed in the editor.</p>
-</li>
-<li>
-<p>Only input in the text editor will be saved.</p>
-</li>
-</ul>
-</div>
+<img src="images/userguide/attempt.png" alt="attempt" width="1000"">
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="submitting-your-answer-code-submit-code"><a class="link" href="#submitting-your-answer-code-submit-code">4.7. Submitting your answer: <code>submit</code></a></h3>
+<h3 id="submitting-your-answer-code-submit-code"><a class="link" href="#submitting-your-answer-code-submit-code">4.9. Submitting your answer: <code>submit</code></a></h3>
 <div class="paragraph">
-<p>Submits your current answer.​ Your code will now be compiled and run against the specified test cases. A new window will
-appear on the right of the GUI to display your results. ​Can only be invoked from the <strong><em>question page</em></strong>.</p>
+<p>Submits your solution.​ Your code will be compiled and run against test cases. The results will be displayed in
+the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>submit</code></p>
@@ -539,10 +583,10 @@ appear on the right of the GUI to display your results. ​Can only be invoked f
 <div class="ulist">
 <ul>
 <li>
-<p>Only code written in the text editor will be used for compilation.</p>
+<p>Make sure to check that your code compiles or you will receive an error message.</p>
 </li>
 <li>
-<p>Make sure to check that your code compiles or you will receive an error message.</p>
+<p>Remember to import the relevant packages that you have used in your code!</p>
 </li>
 </ul>
 </div>
@@ -550,37 +594,14 @@ appear on the right of the GUI to display your results. ​Can only be invoked f
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/submit.png" alt="submit" width="920">
+<img src="images/userguide/submit.png" alt="submit" width="1000">
 </div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>You will have to submit your answer again to open the results window after closing it.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Examples:</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>reset 2</code><br>
-Erases the previous answer for the question with the id "2".</p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="loading-new-questions-code-loadquestions-code"><a class="link" href="#loading-new-questions-code-loadquestions-code">4.8. Loading new questions: <code>loadquestions</code></a></h3>
+<h3 id="loading-new-questions-code-loadquestions-code"><a class="link" href="#loading-new-questions-code-loadquestions-code">4.10. Loading new questions: <code>loadquestions</code></a></h3>
 <div class="paragraph">
-<p>Loads new questions into the application through a text file. Your text file should be in the format specified below.
-Your questions will be loaded the next time you open DukeAcademy.</p>
+<p>Imports new questions into the application through a text file.</p>
 </div>
 <div class="paragraph">
 <p><strong>Format:</strong> <code>loadquestions [filename]</code></p>
@@ -601,13 +622,16 @@ Your questions will be loaded the next time you open DukeAcademy.</p>
 <li>
 <p>Your text file will have to found in the home directory of DukeAcademy for it to be loaded.</p>
 </li>
+<li>
+<p>Your questions will be loaded the next time you open DukeAcademy!</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/loadquestions.png" alt="loadquestions" width=""920">
+<img src="images/userguide/loadquestions.png" alt="loadquestions" width="1000">
 </div>
 </div>
 <div class="paragraph">
@@ -623,7 +647,7 @@ Loads the questions from the file "my_problem_set.txt" located in the home direc
 </div>
 </div>
 <div class="sect2">
-<h3 id="exit-the-application-code-exit-code"><a class="link" href="#exit-the-application-code-exit-code">4.9. Exit the application: <code>exit</code></a></h3>
+<h3 id="exit-the-application-code-exit-code"><a class="link" href="#exit-the-application-code-exit-code">4.11. Exit the application: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the application</p>
 </div>
@@ -665,16 +689,22 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 <div class="ulist">
 <ul>
 <li>
-<p>Viewing Help: ​<code>help</code></p>
-</li>
-<li>
 <p>Home: <code>home</code></p>
 </li>
 <li>
-<p>Find by question title: <code>find​ [keyword]</code></p>
+<p>List all questions: <code>showall</code></p>
 </li>
 <li>
-<p>Browse by category: ​<code>browse​ [category]</code></p>
+<p>Adding bookmark: <code>bookmark [id]</code></p>
+</li>
+<li>
+<p>Removing bookmark: <code>deletebookmark [id]</code></p>
+</li>
+<li>
+<p>Find by question title: <code>find​ [keyword]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Browse by category: ​<code>browse​ [keyword]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p>View: view: ​<code>view​ [id]</code></p>
@@ -689,7 +719,7 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 <p>Load questions: ​<code>loadquestions​ [filename]</code></p>
 </li>
 <li>
-<p>Exit: `exit</p>
+<p>Exit: <code>exit</code></p>
 </li>
 </ul>
 </div>
@@ -785,7 +815,7 @@ Output::</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>It must be in the order appeared above.</p>
+<p>All inputs must be in the order stated above.</p>
 </li>
 <li>
 <p>Title, Description can be any non-empty string.</p>
@@ -805,4 +835,4 @@ Output::</code></pre>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 16:32:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 18:07:10 UTC</div></div></div></body></html>
