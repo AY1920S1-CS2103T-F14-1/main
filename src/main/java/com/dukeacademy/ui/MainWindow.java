@@ -11,6 +11,7 @@ import com.dukeacademy.logic.commands.exceptions.InvalidCommandKeywordException;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.model.state.Activity;
+import com.dukeacademy.model.state.ApplicationState;
 import com.dukeacademy.observable.Observable;
 
 import javafx.event.ActionEvent;
@@ -37,6 +38,7 @@ class MainWindow extends UiPart<Stage> {
     private final CommandLogic commandLogic;
     private final QuestionsLogic questionsLogic;
     private final ProgramSubmissionLogic programSubmissionLogic;
+    private final ApplicationState applicationState;
 
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
@@ -77,7 +79,7 @@ class MainWindow extends UiPart<Stage> {
      * @param programSubmissionLogic the program submission logic
      */
     public MainWindow(Stage primaryStage, CommandLogic commandLogic, QuestionsLogic questionsLogic,
-                      ProgramSubmissionLogic programSubmissionLogic, Observable<Activity> currentActivity) {
+                      ProgramSubmissionLogic programSubmissionLogic, ApplicationState applicationState) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -85,7 +87,9 @@ class MainWindow extends UiPart<Stage> {
         this.commandLogic = commandLogic;
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;
-        currentActivity.addListener(this::selectTabFromActivity);
+        this.applicationState = applicationState;
+
+        applicationState.getCurrentActivityObservable().addListener(this::selectTabFromActivity);
 
         // Configure the UI
         setWindowDefaultSize();
@@ -158,8 +162,9 @@ class MainWindow extends UiPart<Stage> {
         questionsPagePlaceholder.getChildren().add(questionsPage.getRoot());
 
         Workspace workspace = new Workspace(programSubmissionLogic.getCurrentQuestionObservable(),
-                programSubmissionLogic.getTestResultObservable());
+                programSubmissionLogic.getTestResultObservable(), applicationState.getIsEvaluating());
         workspacePlaceholder.getChildren().add(workspace.getRoot());
+
         programSubmissionLogic.setUserProgramSubmissionChannel(workspace.getUserProgramChannel());
     }
 

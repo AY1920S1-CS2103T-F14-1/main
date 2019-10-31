@@ -6,6 +6,7 @@ import com.dukeacademy.model.question.Question;
 import com.dukeacademy.observable.Observable;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -25,10 +26,14 @@ public class Workspace extends UiPart<Region> {
     @FXML
     private AnchorPane editorPlaceholder;
 
+    @FXML
+    private Label evaluatingMessage;
+
     private ProblemStatementPanel problemStatementPanel;
     private Editor editor;
 
-    public Workspace(Observable<Question> attemptingQuestion, Observable<TestResult> resultObservable) {
+    public Workspace(Observable<Question> attemptingQuestion, Observable<TestResult> resultObservable,
+                     Observable<Boolean> isEvaluating) {
         super(FXML);
 
         problemStatementPanel = new ProblemStatementPanel();
@@ -44,6 +49,14 @@ public class Workspace extends UiPart<Region> {
 
         editor = new Editor(attemptingQuestion);
         editorPlaceholder.getChildren().add(editor.getRoot());
+
+        isEvaluating.addListener(evaluating -> {
+            if (evaluating) {
+                this.evaluatingMessage.setVisible(true);
+            } else {
+                this.evaluatingMessage.setVisible(false);
+            }
+        });
     }
 
     public UserProgramChannel getUserProgramChannel() {

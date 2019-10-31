@@ -45,7 +45,7 @@ class TestExecutorTest {
     @BeforeEach void initialize() throws CreateEnvironmentException {
         CompilerEnvironment environment = new StandardCompilerEnvironment(tempFolder.resolve("test"));
         Compiler compiler = new StandardCompiler();
-        ProgramExecutor executor = new StandardProgramExecutor();
+        ProgramExecutor executor = new StandardProgramExecutor(20);
 
         this.executor = new TestExecutor(environment, compiler, executor);
     }
