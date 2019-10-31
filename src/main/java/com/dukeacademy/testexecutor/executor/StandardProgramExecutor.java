@@ -8,9 +8,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -39,7 +36,8 @@ public class StandardProgramExecutor implements ProgramExecutor {
     }
 
     @Override
-    public CompletableFuture<ProgramOutput> executeProgram(ClassFile program, ProgramInput input) throws ProgramExecutorException {
+    public CompletableFuture<ProgramOutput> executeProgram(ClassFile program, ProgramInput input)
+            throws ProgramExecutorException {
         Process process = this.getExecutionProcess(program);
 
         try {
@@ -155,6 +153,10 @@ public class StandardProgramExecutor implements ProgramExecutor {
 
     }
 
+    /***
+     * Helper methods to close streams of a process.
+     * @param process the process to be closed
+     */
     private void closeStreams(Process process) {
         try {
             process.getOutputStream().close();

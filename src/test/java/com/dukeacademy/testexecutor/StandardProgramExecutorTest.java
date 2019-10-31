@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
 import org.junit.jupiter.api.Test;
 
@@ -36,7 +35,8 @@ class StandardProgramExecutorTest {
         assertEquals(expectedOutput, output.getOutput());
     }
 
-    @Test void testExecuteValidProgramWithInput() throws IOException, ProgramExecutorException, TimeoutException, ExecutionException, InterruptedException {
+    @Test void testExecuteValidProgramWithInput() throws IOException, ProgramExecutorException,
+            ExecutionException, InterruptedException {
         StandardProgramExecutor executor = new StandardProgramExecutor();
 
         ClassFile program = new ClassFile("WithInputTest", testProgramsFolder.toString());

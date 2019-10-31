@@ -6,9 +6,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.model.program.TestCaseResult;
@@ -27,7 +25,6 @@ import com.dukeacademy.testexecutor.exceptions.TestExecutorException;
 import com.dukeacademy.testexecutor.exceptions.TestExecutorExceptionWrapper;
 import com.dukeacademy.testexecutor.executor.ProgramExecutor;
 import com.dukeacademy.testexecutor.executor.exceptions.ProgramExecutorException;
-import com.dukeacademy.testexecutor.executor.exceptions.ProgramExecutorExceptionWrapper;
 import com.dukeacademy.testexecutor.models.ClassFile;
 import com.dukeacademy.testexecutor.models.CompileError;
 import com.dukeacademy.testexecutor.models.JavaFile;
@@ -99,8 +96,11 @@ public class TestExecutor {
                     String testCaseExpected = testCase.getExpectedResult();
 
                     CompletableFuture<TestCaseResult> evaluationTask = executor.executeProgram(classFile, input)
-                            .handleAsync((programOutput, throwable) -> getTestCaseResultFromProgramOutput(testCase, programOutput))
-                            .completeOnTimeout(TestCaseResult.getErroredTestCaseResult(testCaseInput, testCaseExpected, "Time limit exceeded!"), timeLimit, TimeUnit.SECONDS)
+                            .handleAsync((programOutput, throwable) ->
+                                    getTestCaseResultFromProgramOutput(testCase, programOutput))
+                            .completeOnTimeout(TestCaseResult
+                                    .getErroredTestCaseResult(testCaseInput, testCaseExpected,
+                                            "Time limit exceeded!"), timeLimit, TimeUnit.SECONDS)
                             .whenCompleteAsync((testCaseResult, throwable) -> results.add(testCaseResult));
 
                     completableFutureList.add(evaluationTask);
@@ -111,7 +111,8 @@ public class TestExecutor {
                 logger.info("Test execution completed. Test cases ran : " + results.size());
                 return new TestResult(results);
 
-            } catch (TestExecutorExceptionWrapper | ProgramExecutorException | InterruptedException | ExecutionException e) {
+            } catch (TestExecutorExceptionWrapper | ProgramExecutorException
+                    | InterruptedException | ExecutionException e) {
                 logger.warning("Test execution failed unexpectedly. Aborting operation...");
                 throw new TestExecutorException(e.getMessage());
             }

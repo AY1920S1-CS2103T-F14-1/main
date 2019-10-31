@@ -12,7 +12,6 @@ import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.model.state.Activity;
 import com.dukeacademy.model.state.ApplicationState;
-import com.dukeacademy.observable.Observable;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,7 +37,6 @@ class MainWindow extends UiPart<Stage> {
     private final CommandLogic commandLogic;
     private final QuestionsLogic questionsLogic;
     private final ProgramSubmissionLogic programSubmissionLogic;
-    private final ApplicationState applicationState;
 
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
@@ -87,7 +85,6 @@ class MainWindow extends UiPart<Stage> {
         this.commandLogic = commandLogic;
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;
-        this.applicationState = applicationState;
 
         applicationState.getCurrentActivityObservable().addListener(this::selectTabFromActivity);
 

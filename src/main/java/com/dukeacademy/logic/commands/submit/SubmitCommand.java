@@ -17,7 +17,6 @@ import com.dukeacademy.model.state.Activity;
 import com.dukeacademy.model.state.ApplicationState;
 import com.dukeacademy.testexecutor.exceptions.EmptyUserProgramException;
 import com.dukeacademy.testexecutor.exceptions.IncorrectCanonicalNameException;
-import javafx.application.Platform;
 
 /**
  * Submit command that submits the user's current work from the registered UserProgram channel of the

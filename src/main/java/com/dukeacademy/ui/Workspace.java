@@ -6,11 +6,9 @@ import com.dukeacademy.model.question.Question;
 import com.dukeacademy.observable.Observable;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 
 /**
  * Controller for the workspace page. The workspace page is where the user attempts questions and views his results.
