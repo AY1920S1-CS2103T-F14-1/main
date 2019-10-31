@@ -162,7 +162,7 @@ class MainWindow extends UiPart<Stage> {
         questionsPagePlaceholder.getChildren().add(questionsPage.getRoot());
 
         Workspace workspace = new Workspace(programSubmissionLogic.getCurrentQuestionObservable(),
-                programSubmissionLogic.getTestResultObservable(), applicationState.getIsEvaluating());
+                programSubmissionLogic.getTestResultObservable());
         workspacePlaceholder.getChildren().add(workspace.getRoot());
 
         programSubmissionLogic.setUserProgramSubmissionChannel(workspace.getUserProgramChannel());

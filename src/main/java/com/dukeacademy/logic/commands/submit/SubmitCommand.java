@@ -17,6 +17,7 @@ import com.dukeacademy.model.state.Activity;
 import com.dukeacademy.model.state.ApplicationState;
 import com.dukeacademy.testexecutor.exceptions.EmptyUserProgramException;
 import com.dukeacademy.testexecutor.exceptions.IncorrectCanonicalNameException;
+import javafx.application.Platform;
 
 /**
  * Submit command that submits the user's current work from the registered UserProgram channel of the
@@ -62,7 +63,6 @@ public class SubmitCommand implements Command {
         this.questionsLogic.replaceQuestion(question, questionWithNewProgram);
 
         // Submit the user's program
-        applicationState.setIsEvaluating(true);
         Optional<TestResult> resultsOptional;
         try {
             logger.info("Starting test execution for : " + question + "\nUser program : " + userProgram);
@@ -96,8 +96,6 @@ public class SubmitCommand implements Command {
         } else {
             feedback = feedback + "failed";
         }
-
-        applicationState.setIsEvaluating(false);
 
         return new CommandResult(feedback, false, false);
     }

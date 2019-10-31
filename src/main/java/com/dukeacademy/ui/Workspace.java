@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 /**
  * Controller for the workspace page. The workspace page is where the user attempts questions and views his results.
@@ -26,14 +27,10 @@ public class Workspace extends UiPart<Region> {
     @FXML
     private AnchorPane editorPlaceholder;
 
-    @FXML
-    private Label evaluatingMessage;
-
     private ProblemStatementPanel problemStatementPanel;
     private Editor editor;
 
-    public Workspace(Observable<Question> attemptingQuestion, Observable<TestResult> resultObservable,
-                     Observable<Boolean> isEvaluating) {
+    public Workspace(Observable<Question> attemptingQuestion, Observable<TestResult> resultObservable) {
         super(FXML);
 
         problemStatementPanel = new ProblemStatementPanel();
@@ -49,14 +46,6 @@ public class Workspace extends UiPart<Region> {
 
         editor = new Editor(attemptingQuestion);
         editorPlaceholder.getChildren().add(editor.getRoot());
-
-        isEvaluating.addListener(evaluating -> {
-            if (evaluating) {
-                this.evaluatingMessage.setVisible(true);
-            } else {
-                this.evaluatingMessage.setVisible(false);
-            }
-        });
     }
 
     public UserProgramChannel getUserProgramChannel() {
