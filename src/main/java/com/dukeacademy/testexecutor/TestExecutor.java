@@ -155,7 +155,7 @@ public class TestExecutor {
         }
 
         String input = testcase.getInput();
-        String expected = testcase.getExpectedResult();
+        String expected = testcase.getExpectedResult().replaceAll("(\n|\r\n)", System.lineSeparator());
         String actual = output.getOutput().replaceAll("\n", "\n");
         if (expected.equals(actual)) {
             return TestCaseResult.getSuccessfulTestCaseResult(input, actual);
