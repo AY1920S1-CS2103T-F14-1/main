@@ -129,6 +129,12 @@ public class StandardProgramExecutor implements ProgramExecutor {
 
         char[] output = new char[500];
         int bytesRead = reader.read(output);
+
+        // Important because bytesRead is -1 when there is no output
+        if (bytesRead == -1) {
+            bytesRead = 0;
+        }
+
         String programOutput = String.copyValueOf(output, 0, bytesRead);
 
         return ProgramOutput.getEmptyProgramOutput().append(programOutput);
