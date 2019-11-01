@@ -135,6 +135,11 @@ public class MainApp extends Application {
         LogsCenter.init(config);
     }
 
+    /**
+     * Helper method to initialize all of the folders necessary for the app according to the path files specified
+     * in the config instance.
+     * @param config a config instance.
+     */
     private void initAppPaths(Config config) {
         Path testOutputPath = config.getTestOutputPath();
         Path dataOutputPath = config.getDataPath();

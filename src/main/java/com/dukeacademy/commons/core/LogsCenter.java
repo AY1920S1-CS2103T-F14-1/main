@@ -1,7 +1,6 @@
 package com.dukeacademy.commons.core;
 
 import java.io.IOException;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.logging.ConsoleHandler;
@@ -24,9 +23,7 @@ public class LogsCenter {
     private static final Logger logger = LogsCenter.getLogger(LogsCenter.class);
     private static FileHandler fileHandler;
     private static ConsoleHandler consoleHandler;
-    private static final String LOG_FILE = "questionBank.log";
-
-    private static String LOG_PATH;
+    private static final String LOG_FILE = "Logs/DukeAcademyLogs.log";
 
     /**
      * Initializes with a custom log level (specified in the {@code config} object)
@@ -39,8 +36,6 @@ public class LogsCenter {
     public static void init(Config config) {
         currentLogLevel = config.getLogLevel();
         logger.info("currentLogLevel: " + currentLogLevel);
-
-        LOG_PATH = config.getLogsPath().resolve(LOG_FILE).toString();
     }
 
     /**
@@ -113,15 +108,12 @@ public class LogsCenter {
      * @throws IOException if there are problems opening the file.
      */
     private static FileHandler createFileHandler() throws IOException {
-        String fileHandlerPath;
-
-        if (LOG_PATH != null) {
-            fileHandlerPath = LOG_PATH;
-        } else {
-            fileHandlerPath = LOG_FILE;
+        if (!Paths.get(LOG_FILE).toFile().exists()) {
+            Paths.get(LOG_FILE).getParent().toFile().mkdirs();
+            Paths.get(LOG_FILE).toFile().createNewFile();
         }
 
-        FileHandler fileHandler = new FileHandler(fileHandlerPath, MAX_FILE_SIZE_IN_BYTES, MAX_FILE_COUNT, true);
+        FileHandler fileHandler = new FileHandler(LOG_FILE, MAX_FILE_SIZE_IN_BYTES, MAX_FILE_COUNT, true);
         fileHandler.setFormatter(new SimpleFormatter());
         fileHandler.setLevel(currentLogLevel);
         return fileHandler;

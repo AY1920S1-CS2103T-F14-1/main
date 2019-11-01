@@ -17,6 +17,8 @@ public class Config {
 
     // Config values customizable through config file
     private Level logLevel = Level.INFO;
+    private Path testOutputPath = Paths.get("DukeAcademy/tests");
+    private Path dataPath = Paths.get("DukeAcademy/data");
 
     public Level getLogLevel() {
         return logLevel;
@@ -34,14 +36,6 @@ public class Config {
         this.testOutputPath = testOutputPath;
     }
 
-    public Path getLogsPath() {
-        return logsPath;
-    }
-
-    public void setLogsPath(Path logsPath) {
-        this.logsPath = logsPath;
-    }
-
     public Path getDataPath() {
         return dataPath;
     }
@@ -49,12 +43,6 @@ public class Config {
     public void setDataPath(Path dataPath) {
         this.dataPath = dataPath;
     }
-
-    private Path testOutputPath = Paths.get("DukeAcademy/tests");
-    private Path logsPath = Paths.get("DukeAcademy/logs");
-    private Path dataPath = Paths.get("DukeAcademy/data");
-
-
 
     @Override
     public boolean equals(Object other) {
@@ -69,22 +57,20 @@ public class Config {
 
         return Objects.equals(logLevel, o.logLevel)
                 && Objects.equals(testOutputPath, o.testOutputPath)
-                && Objects.equals(logsPath, o.logsPath)
                 && Objects.equals(dataPath, o.dataPath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(logLevel, testOutputPath, logsPath, dataPath);
+        return Objects.hash(logLevel, testOutputPath, dataPath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Current log level : ").append(logLevel);
-        sb.append("Tests output path : ").append(logLevel);
-        sb.append("Logs output path : ").append(logLevel);
-        sb.append("Data path : ").append(logLevel);
+        sb.append("Tests output path : ").append(testOutputPath);
+        sb.append("Data path : ").append(dataPath);
         return sb.toString();
     }
 
