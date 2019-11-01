@@ -17,62 +17,44 @@ public class Config {
 
     // Config values customizable through config file
     private Level logLevel = Level.INFO;
-    private Mode mode = Mode.PRODUCTION;
-    private Path userPrefsFilePath = Paths.get("preferences.json");
 
-    /**
-     * Gets log level.
-     *
-     * @return the log level
-     */
     public Level getLogLevel() {
         return logLevel;
     }
 
-    /**
-     * Sets log level.
-     *
-     * @param logLevel the log level
-     */
     public void setLogLevel(Level logLevel) {
         this.logLevel = logLevel;
     }
 
-    /**
-     * Gets user prefs file path.
-     *
-     * @return the user prefs file path
-     */
-    public Mode getMode() {
-        return this.mode;
+    public Path getTestOutputPath() {
+        return testOutputPath;
     }
 
-    /**
-     * Sets mode.
-     *
-     * @param mode the mode
-     */
-    public void setMode(Mode mode) {
-        this.mode = mode;
+    public void setTestOutputPath(Path testOutputPath) {
+        this.testOutputPath = testOutputPath;
     }
 
-    /**
-     * Gets user prefs file path.
-     *
-     * @return the user prefs file path
-     */
-    public Path getUserPrefsFilePath() {
-        return userPrefsFilePath;
+    public Path getLogsPath() {
+        return logsPath;
     }
 
-    /**
-     * Sets user prefs file path.
-     *
-     * @param userPrefsFilePath the user prefs file path
-     */
-    public void setUserPrefsFilePath(Path userPrefsFilePath) {
-        this.userPrefsFilePath = userPrefsFilePath;
+    public void setLogsPath(Path logsPath) {
+        this.logsPath = logsPath;
     }
+
+    public Path getDataPath() {
+        return dataPath;
+    }
+
+    public void setDataPath(Path dataPath) {
+        this.dataPath = dataPath;
+    }
+
+    private Path testOutputPath = Paths.get("DukeAcademy/tests");
+    private Path logsPath = Paths.get("DukeAcademy/logs");
+    private Path dataPath = Paths.get("DukeAcademy/data");
+
+
 
     @Override
     public boolean equals(Object other) {
@@ -86,20 +68,23 @@ public class Config {
         Config o = (Config) other;
 
         return Objects.equals(logLevel, o.logLevel)
-                && Objects.equals(userPrefsFilePath, o.userPrefsFilePath);
+                && Objects.equals(testOutputPath, o.testOutputPath)
+                && Objects.equals(logsPath, o.logsPath)
+                && Objects.equals(dataPath, o.dataPath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(logLevel, userPrefsFilePath);
+        return Objects.hash(logLevel, testOutputPath, logsPath, dataPath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Current log level : " + logLevel);
-        sb.append("\nApp mode: + " + mode.toString());
-        sb.append("\nPreference file Location : " + userPrefsFilePath);
+        sb.append("Current log level : ").append(logLevel);
+        sb.append("Tests output path : ").append(logLevel);
+        sb.append("Logs output path : ").append(logLevel);
+        sb.append("Data path : ").append(logLevel);
         return sb.toString();
     }
 
