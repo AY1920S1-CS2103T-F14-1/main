@@ -74,8 +74,9 @@ image::mainUi.png[width="1000"]
 +
 This will be the field where you input all your commands. After you press the kbd:[Enter] button, your command will be executed.
 +
-e.g. typing *`showall`* and pressing kbd:[Enter] will display all the questions in the app.
-
+e.g. typing *`showall`*, followed by pressing kbd:[Enter] will display all the questions in the app.
++
+To find out about the commands available in Duke Academy, please visit <<Features>>.
 2. *ResultDisplayBox*
 +
 Once you have executed a command, a feedback will be displayed in this field.
@@ -94,7 +95,6 @@ _Note: the index of a question is the number displayed next to its title._
 +
 image::questionindex.png[width="1000"]
 +
-. Refer to <<Features>> to view our full list of commands.
 
 [[Overview]]
 == Overview
@@ -103,15 +103,22 @@ The application is divided into 3 separate tabs, each one of them serving a spec
 different tabs by entering `tab` into the *CommandBox*.
 
 === Home
-The *Home* tab contains an introduction of the application along with a brief overview of your user profile.
+The *Home* tab contains an introduction of the application, and more importantly, a *Personal Dashboard* for you to keep track of your progress made in Duke Academy.
 
 image::homepage.png[width="1000"]
 
-On the "Home" page, you can:
+On the *Personal Dashboard* you can:
 
-. See your completion percentage and current skill tier!
+. See the percentage of questions you completed and your current skill tier.
++
+Novice 0 - 29 % {nbsp} +
+Apprentice 30 - 49 % {nbsp} +
+Master 50 - 69 % {nbsp} +
+Grandmaster 70 - 89 % {nbsp} +
+Duke 90 - 100 %
++
 . Keep track of the questions that you are currently attempting.
-. View your bookmarked questions.
+. Keep track of the questions that you bookmarked.
 
 === Questions
 The *Questions* tab contains a list of all the available questions and also a window to view your problem statements.
@@ -169,9 +176,9 @@ e.g. `browse [category]...` can be used as
 `browse easy linkedlist hashtable recursion` (i.e. 4 entries), etc.
 ====
 
-=== Access Homepage: `home`
+=== Access Home Tab: `home`
 
-Navigates back to the *HomePage*.
+Navigates back to the *Home* Tab.
 
 *Format:* `home`
 
@@ -187,26 +194,26 @@ image::listallquestions.png[width="1000"]
 
 === Adding bookmark: `bookmark`
 
-Bookmarks a question by its id.
+Bookmarks a specific question.
 
 *Format:* `bookmark [id]`
 
 ****
 * The id of a question can be found next to its title.
-* The bookmarked question will appear in the list of bookmarked questions under the *Home* Tab.
+* The bookmarked question will appear in the list of bookmarked questions located within your *Personal Dashboard*.
 ****
 
 image::bookmark.png[width="1000"]
 
 === Removing bookmark: `deletebookmark`
 
-Removes a bookmark from a question by its id.
+Removes the bookmark from a specific question.
 
 *Format:* `deletebookmark [id]`
 
 ****
 * The id of a question can be found next to its title.
-* The question with the bookmark removed will disappear from the list of bookmarked questions under the *Home* Tab.
+* The question with the bookmark removed will disappear from the list of bookmarked questions located within your *Personal Dashboard*.
 ****
 
 === Find question by title : `find`
