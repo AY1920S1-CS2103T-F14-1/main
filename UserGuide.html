@@ -30,7 +30,6 @@
 <li><a href="#attempting-a-question-code-attempt-code">4.8. Attempting a question : <code>attempt</code></a></li>
 <li><a href="#submitting-your-answer-code-submit-code">4.9. Submitting your answer: <code>submit</code></a></li>
 <li><a href="#loading-new-questions-code-loadquestions-code">4.10. Loading new questions: <code>loadquestions</code></a></li>
-<li><a href="#exit-the-application-code-exit-code">4.11. Exit the application: <code>exit</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">5. FAQ</a></li>
@@ -128,13 +127,16 @@ programmers), you can get used to it while working on your coding skills here in
 <p>Once the app is launched, you will immediately be greeted with the main User Interface of the app.</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/userguide/mainUi.png" alt="mainUi" width="1000">
+<img src="images/userguide/homepage_annotated.png" alt="homepage annotated" width="1000">
 </div>
+</div>
+<div class="paragraph">
+<p>The User Interfaces that are important for now:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><strong>CommandBox</strong></p>
+<p><strong>Command Box</strong></p>
 <div class="paragraph">
 <p>This will be the field where you input all your commands. After you press the <kbd>Enter</kbd> button, your command will be executed.</p>
 </div>
@@ -143,7 +145,7 @@ programmers), you can get used to it while working on your coding skills here in
 </div>
 </li>
 <li>
-<p><strong>ResultDisplayBox</strong></p>
+<p><strong>Result Box</strong></p>
 <div class="paragraph">
 <p>Once you have executed a command, a feedback will be displayed in this field.</p>
 </div>
@@ -152,9 +154,9 @@ programmers), you can get used to it while working on your coding skills here in
 </div>
 </li>
 <li>
-<p><strong>TabView</strong></p>
+<p><strong>Tab Panes</strong></p>
 <div class="paragraph">
-<p>Consists of 3 different tabs: <em>Home</em>, <em>Questions</em> and <em>Workspace</em></p>
+<p>Consists of 4 different tabs: <em>Home</em>, <em>Questions</em>, <em>Workspace</em> and <em>Help</em></p>
 </div>
 </li>
 </ol>
@@ -219,8 +221,8 @@ different tabs by entering <code>tab</code> into the <strong>CommandBox</strong>
 <p>The <strong>Questions</strong> tab contains a list of all the available questions and also a window to view your problem statements.</p>
 </div>
 <div class="paragraph">
-<p>You can use commands such as <code>browse</code> and <code>search</code> to filter through the list of questions in order to find what you
-are looking for. <em>(View <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details.)</em></p>
+<p>You can use commands such as <code>browse</code> and <code>find</code> to filter through the list of questions in order to find what you
+are looking for. <code>browse</code> can lookup any keywords in titles, difficulty, description, topics, etc. <code>find</code> only finds by titles.<em>(View <a href="#Features">Section 4, &#8220;Features&#8221;</a> for more details.)</em></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -478,6 +480,10 @@ contains one of the keyword(s) in their <em>title, topics, description, status</
 <p>e.g <code>easy</code> will match <code>Easy</code>.</p>
 </div>
 </li>
+<li>
+<p>Typing <code>browse topic</code> would not list all topics. You can only browse by specific topics. The complete list of topics include: <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>,
+<code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, <code>OTHERS</code>.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -620,10 +626,7 @@ the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
 <p>The questions in the text file will only be loaded after entering this command.</p>
 </li>
 <li>
-<p>Your text file will have to found in the home directory of DukeAcademy for it to be loaded.</p>
-</li>
-<li>
-<p>Your questions will be loaded the next time you open DukeAcademy!</p>
+<p>Your questions will be loaded immediately.</p>
 </li>
 </ul>
 </div>
@@ -641,13 +644,11 @@ the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
 <ul>
 <li>
 <p><code>loadquestions my_problem_set.txt</code><br>
-Loads the questions from the file "my_problem_set.txt" located in the home directory of DukeAcademy.</p>
+Loads the questions from the file "my_problem_set.txt" located on your desktop.
+=== Exit the application: <code>exit</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="exit-the-application-code-exit-code"><a class="link" href="#exit-the-application-code-exit-code">4.11. Exit the application: <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the application</p>
 </div>
@@ -835,4 +836,4 @@ Output::</code></pre>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:45:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:34:23 UTC</div></div></div></body></html>

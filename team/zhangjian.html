@@ -12,6 +12,17 @@
 <div class="paragraph">
 <p>Duke Academy is a Java programming platform equipped with a library of programming questions related to the field of Data Structures and Algorithms, as well as an automated judging system. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 15 kLoC.</p>
 </div>
+<div class="paragraph">
+<p>This is what our project looks like:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/homepage_annotated.png" alt="homepage annotated" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Figure 1. The graphical user interface for Duke Academy.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -20,53 +31,151 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>:</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Model</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Created the <code>Question</code> object and the corresponding attributes, such as <code>title</code>, <code>description</code>, <code>topics</code>, etc.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Storage</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Changed the json serializer and the deserializer.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: Duke Academy is able to save data into json format and load questions from json files.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: prevents loss of user data.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Highlights: requires interaction between logic and storage. Requires knowledge about json serializer/deserializer&#8217;s API and its command usage.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Implemented the <code>loadquestions</code> command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Imports new questions into the application through a text file.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: User is able to load external questions into this app. As such, professors can distribute practice assignments through this platform despite the fact that the materials may change yearly.</p>
+</li>
+<li>
+<p>Highlights: Requires knowledge on reading files from a given directory, create objects based on the string parsed, interaction with the storage model, update the new changes onto the user interface.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Command</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>added <strong>the <code>browse</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to search through all questions with the specified keyword(s). A question is listed as a search result as long as it
+contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
+</li>
+<li>
+<p>Justification: This feature improves the product significantly because it would be convenient for a user who want to search questions by a specific category or certain keywords.</p>
+</li>
+<li>
+<p>Highlights: This enhancement involves all the questions in the question bank. It requires interaction between models and storage to actively filter questions by certain predicates. It also requires the UI to reflect the changes in the question list after the filtering conditions have been updated. It required a comprehensive understanding of the code base architecture.</p>
+</li>
+<li>
+<p>Credits: <em>{part of it is re-used from the <code>find</code> command in the original AB3 code base.}</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>added <strong>the <code>find</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Searches for question of which the title contains <strong>strictly</strong> the keywords entered.</p>
+</li>
+<li>
+<p>Justification: benefits the user if they only want to search by question title.</p>
+</li>
+<li>
+<p>Credits: _{part of it is re-used from the <code>find</code> command in the original AB3 code base.}</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>added <strong>the <code>showall</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Navigates to the <strong>Questions</strong> Tab and displays all available questions.</p>
+</li>
+<li>
+<p>Justification: after user searches for questions with certain keywords, they may want to restore to the original question list.</p>
+</li>
+<li>
+<p>Credits: _{part of it is re-used from the <code>list</code> command in the original AB3 code base.}</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>added <strong>the <code>view</code> command</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: Displays the problem statement of the question.</p>
+</li>
+<li>
+<p>Justification: the user need to view the problem description in order to understand the requirement of the problem context, as well as the specified input/output format.</p>
+</li>
+<li>
+<p>Highlights: requires user interface to be updated based on the data obtained from the storage.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Minor enhancement</strong>: Added a Problem Display Panel to the Questions and Workspace Tab.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=zhangj1an&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=zhangj1an&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Test code</a>] <em>{give links to collated code files}</em></p>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
+</li>
+</ul>
+</div>
+</li>
 <li>
 <p>Project management:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Assigned milestones for <code>v1.2</code>.</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Created tags for the issues, such as <code>Type.Enhancement</code>, <code>Severity.High</code>.</p>
 </li>
 </ul>
 </div>
@@ -76,7 +185,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Did cosmetic tweaks to existing contents of the User Guide&#8217;s quickstart section.</p>
+</li>
+<li>
+<p>Contributed to Developer Guide and User Guide as shown below.</p>
 </li>
 </ul>
 </div>
@@ -86,16 +198,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
+<p>PRs reviewed: <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/13">#13</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/14">#14</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/15">#15</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/13">#20</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/13">#21</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/36">#36</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/47">#47</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/50">#50</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/52">#52</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/53">#53</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/57">#57</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/63">#63</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/64">#64</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/70">#70</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/71">#71</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/87">#87</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/91">#91</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/102">#102</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/104">#104</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/133">#133</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/173">#173</a></p>
 </li>
 <li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/193">Typos in UG</a>, <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/192">Feature not present: 6 Load commands stated in UG not implemented</a>, <a href="https://github.com/AY1920S1-CS2103T-W12-4/main/issues/191">Budget command not working with only amount and description entered</a>)</p>
 </li>
 </ul>
 </div>
@@ -105,10 +211,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Integrated 2 third party library (Travis, Codacy) to the project.</p>
 </li>
 </ul>
 </div>
@@ -116,10 +219,7 @@
 </ul>
 </div>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+</ol>
 </div>
 </div>
 </div>
@@ -136,6 +236,343 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">List all questions: <code>showall</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Questions</strong> Tab and displays all available questions.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>showall</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/listallquestions.png" alt="listallquestions" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-question-by-title-code-find-code"><a class="link" href="#find-question-by-title-code-find-code">Find question by title : <code>find</code></a></h3>
+<div class="paragraph">
+<p>Searches for question of which the title contains <strong>strictly</strong> the keywords entered.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find [keyword]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does not work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will <strong>NOT</strong> yield questions with titles such as <code>Sudoku</code> or <code>The Supreme Seven</code></p>
+</div>
+</li>
+<li>
+<p>The search is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>recursion</code> will match <code>Recursion</code>.</p>
+</div>
+</li>
+<li>
+<p>The order of the keywords does not matter.</p>
+<div class="paragraph">
+<p>e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
+</div>
+</li>
+<li>
+<p>Questions with title matching at least one keyword will be displayed</p>
+<div class="paragraph">
+<p>e.g. searching for <code>sudoku adder</code> will yield questions with titles such as <code>Valid Sudoku</code> and <code>Two Number Adder</code>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find binary search tree</code><br>
+Finds and displays all questions containing the substrings "binary",  "search" and "tree" in their title.</p>
+</li>
+<li>
+<p><code>find fizz buzz</code><br>
+Finds and displays all the questions containing the substrings "fizz" and "buzz" in its title, but not questions with
+titles such as "fizzbuzz".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="browse-by-keywords-code-browse-code"><a class="link" href="#browse-by-keywords-code-browse-code">Browse by keywords: <code>browse</code></a></h3>
+<div class="paragraph">
+<p>Searches through all questions with the specified keyword(s). A question is listed as a search result as long as it
+contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>browse [keywords]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does <strong>NOT</strong> work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will not yield questions that do not strictly contain the word "su".</p>
+</div>
+</li>
+<li>
+<p>The category is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>easy</code> will match <code>Easy</code>.</p>
+</div>
+</li>
+<li>
+<p>Typing <code>browse topic</code> would not list all topics. You can only browse by specific topics. The complete list of topics include: <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>,
+<code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, <code>OTHERS</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>browse hashtable linkedlist</code><br>
+Finds and displays all questions that contain "hashtable" and "linkedlist".</p>
+</li>
+<li>
+<p><code>browse number</code><br>
+Finds and displays questions that contain strictly the keyword "number".</p>
+<div class="paragraph">
+<p>Questions that do not and instead contain words
+with "number" as a substring of a word in their <em>title, topics, description, status</em> or <em>difficulty</em> will not be displayed.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-problem-statement-code-view-code"><a class="link" href="#viewing-the-problem-statement-code-view-code">Viewing the problem statement : <code>view</code></a></h3>
+<div class="paragraph">
+<p>Displays the problem statement of the question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>view [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the problem statement with the corresponding id.</p>
+</li>
+<li>
+<p>The id of the question can be seen next to its title.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/view.png" alt="view" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 2</code><br>
+Displays the question with the id "2" in the right side window of the GUI.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-new-questions-code-loadquestions-code"><a class="link" href="#loading-new-questions-code-loadquestions-code">Loading new questions: <code>loadquestions</code></a></h3>
+<div class="paragraph">
+<p>Imports new questions into the application through a text file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>loadquestions [filename]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Your text file should be located at the Desktop.</p>
+</li>
+<li>
+<p>Your text file should follow the format specified at <a href="#Custom-Questions">Load Your Custom Questions</a>.</p>
+</li>
+<li>
+<p>The questions in the text file will only be loaded after entering this command.</p>
+</li>
+<li>
+<p>Your questions will be loaded immediately.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/loadquestions.png" alt="loadquestions" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loadquestions my_problem_set.txt</code><br>
+Loads the questions from the file "my_problem_set.txt" located on your desktop.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q:</strong> How do I transfer my own problem sets to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Copy the problem set text file into DukeAcademy’s home folder on the other computer
+and repeat the ​ loadquestions​ command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> How do I transfer data to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Install the app in the other computer and overwrite the empty data file it creates
+with the file that contains the data of your previous DukeAcademy folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> What is the format of problem setting?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> It should contain the following: problem statement, input and output files, difficulty
+level, solution, algorithm category. Check out ​ default_problem_set.txt​ for reference.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Home: <code>home</code></p>
+</li>
+<li>
+<p>List all questions: <code>showall</code></p>
+</li>
+<li>
+<p>Adding bookmark: <code>bookmark [id]</code></p>
+</li>
+<li>
+<p>Removing bookmark: <code>deletebookmark [id]</code></p>
+</li>
+<li>
+<p>Find by question title: <code>find​ [keyword]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Browse by category: ​<code>browse​ [keyword]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>View: view: ​<code>view​ [id]</code></p>
+</li>
+<li>
+<p>Attempt a question: <code>attempt​ [id]</code></p>
+</li>
+<li>
+<p>Submit:​ <code>submit</code></p>
+</li>
+<li>
+<p>Load questions: ​<code>loadquestions​ [filename]</code></p>
+</li>
+<li>
+<p>Exit: <code>exit</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Custom-Questions"><a class="link" href="#Custom-Questions">Load Your Custom Questions</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/custom_questions.png" alt="custom questions" width="920">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a .txt file.</p>
+</li>
+<li>
+<p>The format of a question goes like follows:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Question::
+
+Title::
+
+Description::
+
+Difficulty::
+
+Topics::
+
+TestCase::
+
+Input::
+
+Output::</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All inputs must be in the order stated above.</p>
+</li>
+<li>
+<p>Title, Description can be any non-empty string.</p>
+</li>
+<li>
+<p>Difficulty can only be EASY, MEDIUM or HARD.</p>
+</li>
+<li>
+<p>Topics can only be ARRAY, LINKED_LIST, HASHTABLE, TREE, GRAPH, RECURSION, DIVIDE_AND_CONQUER, DYNAMIC_PROGRAMMING, SORTING, or OTHERS.</p>
+</li>
+<li>
+<p>One question can only have one title, description and difficulty. It can have multiple topics separated by <code>,</code>. It can have multiple test cases, each begin with a <code>TestCase::</code> identifier.</p>
+</li>
+<li>
+<p>For sample questions, refer to the image above.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -152,56 +589,611 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="proposed-undo-redo-feature"><a class="link" href="#proposed-undo-redo-feature">[Proposed] Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="proposed-implementation"><a class="link" href="#proposed-implementation">Proposed Implementation</a></h4>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">Storage component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/zj_ppp/StorageClassDiagram.png" alt="StorageClassDiagram">
+</div>
+<div class="title">Figure 1. Structure of the Storage Component</div>
+</div>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedAddressBook</code>.
-It extends <code>QuestionBank</code> with an undo/redo history, stored internally as an <code>addressBookStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p><strong>API</strong> :</p>
+</div>
+<div class="paragraph">
+<p>For Questions, <a href="{repoURL}/src/main/java/com/dukeacademy/storage/question/QuestionBankStorage.java"><code>QuestionBankStorage.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>For Profile, link: {repoURL}/src/main/java/com/dukeacademy/storage/profile/ProfileStorage.java[<code>ProfileStorage.java</code>]</p>
+</div>
+<div class="paragraph">
+<p>The <code>Storage</code> component,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedAddressBook#commit()</code>&#8201;&#8212;&#8201;Saves the current question bank state in its history.</p>
+<p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#undo()</code>&#8201;&#8212;&#8201;Restores the previous question bank state from its history.</p>
+<p>can save the Duke Academy question bank in json format and read it back.</p>
 </li>
 <li>
-<p><code>VersionedAddressBook#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone question bank state from its history.</p>
+<p>can save the user information in json format and read it back.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="problem-description-panel"><a class="link" href="#problem-description-panel">Problem Description Panel</a></h2>
+<div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>has a need to practice a lot of algorithm / data structure problems with the following conditions satisfied:</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>instant assessment of answers submitted</p>
+</li>
+<li>
+<p>practices under timed conditions</p>
+</li>
+<li>
+<p>automatic progress checker</p>
+</li>
+<li>
+<p>personal tutor to recommend problems with suitable difficulties and topics</p>
+</li>
+<li>
+<p>fun in learning with achievement badges to unlock</p>
+</li>
+<li>
+<p>no WiFi needed,</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>or has a need to distribute problem sets:</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>can set the coding problems easily</p>
+</li>
+<li>
+<p>share problems via link</p>
+</li>
+<li>
+<p>view-only answers protected by passwords</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>prefer desktop apps over other types</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> and <code>Model#redoAddressBook()</code> respectively.</p>
+<p><strong>Value proposition</strong>:</p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>everyone can learn data structures - anytime, anywhere</p>
+</li>
+<li>
+<p>make coding threshold-less</p>
+</li>
+<li>
+<p>manage contacts faster than a typical mouse/GUI driven app</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student from university courses</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">search problems by partially matching keywords</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify the problem I am required to do asap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">developer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">introduce new problems to the software easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the repository of code challenges can be updated without much hassle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look back on the coding challenges I have completed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">revise the concepts used in those problems</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">job seeker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view past interview problems by a company</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">increase my chances of getting hired</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see the difficulties of each problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">choose to do problems that are more aligned to my standard</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">developer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receive detailed auto-generated error reports if any bug occurs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">correct them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set reminders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded of the problems that I need to solve before a deadline</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unorganized coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my progress on different categories</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know which area I am weak in</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">programming course student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attempt problems under timed condition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I feel more prepared in timed assessments such as labs, practical exam and final exam.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">choose to reveal the answers to the solutions through a password</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">identify the concepts required to solve a problem before attempting them</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">move on to another quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attempt the same problem in different coding languages</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">test my proficiency at those languages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding amateur</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">look at hints/tutorials for the problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">learn something new while attempting a coding challenge</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share coding challenges with my friends easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">discuss possible solutions with them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">achievement hunter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view the badges that I have earned (and those that I have not)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">feel a sense of accomplishment</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conscientious coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily identify problems that I have given up on previously</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tackle them again</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">professor teaching this course</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">assign a unique hash code for each problem I input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">students can look for the problems quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">picky coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">select different themes for the software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">the user interface looks more appealing to me</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">programming language polyglot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specifically choose problems designed in a specific language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">practice that language in focus</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coding student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view similar/related problems to the one I have just completed</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">further deepen my understanding of the concepts used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily distracted coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">switch off all external distractions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">focus better on the problem I am working on</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">busy coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">save my progress on a problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">come back to it and continue at a later time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive programming enthusiast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">set my own questions and pose them to my fellow enthusiast friends to solve</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see statistics about my attempts/success rates to track my learning progress</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">print a pdf version of the coding problem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">give them as practices to my students</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">competitive coder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see my areas for improvement after completing a coding challenge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">become a better competitive coder</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">international student</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view translation of the problem statement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aids my understanding of the problem</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>Duke Academy</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-uc01-set-questions" class="discrete">Use case: UC01 Set questions</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to input problem sets.</p>
+</li>
+<li>
+<p>Duke Academy requires a file path.</p>
+</li>
+<li>
+<p>User select file path.</p>
+</li>
+<li>
+<p>Duke Academy imports the problem sets and prompts success message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. The input format is incorrect.</p>
+<div class="paragraph">
+<p>Duke Academy reports wrong format error. Duke Academy resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc02-view-questions"><a class="link" href="#use-case-uc02-view-questions">Use case: UC02 View Questions</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User finds a question by question ID, title or category.</p>
+</li>
+<li>
+<p>Duke Academy shows a list of problems that matches the keyword.</p>
+</li>
+<li>
+<p>User views the question identified by ID.</p>
+</li>
+<li>
+<p>Duke Academy displays the problem statement of the question.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedAddressBook</code> will be initialized with the initial question bank state, and the <code>currentStatePointer</code> pointing to that single question bank state.</p>
+<p><strong>Extensions</strong></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState0.png" alt="UndoRedoState0">
-</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. User inputs wrong keywords.</p>
+<div class="paragraph">
+<p>Duke Academy reports error and prompts link to help page.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th person in the question bank. The <code>delete</code> command calls <code>Model#commitAddressBook()</code>, causing the modified state of the question bank after the <code>delete 5</code> command executes to be saved in the <code>addressBookStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted question bank state.</p>
+<p>Use case resumes at step 1.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState1.png" alt="UndoRedoState1">
+</li>
+</ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="use-case-uc03-attempt-questions"><a class="link" href="#use-case-uc03-attempt-questions">Use case: UC03 Attempt Questions</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User chooses a problem to attempt.</p>
+</li>
+<li>
+<p>Duke Academy shows up the problem statement and an editor.</p>
+</li>
+<li>
+<p>User inputs the code in editor.</p>
+</li>
+<li>
+<p>User submit the answer.</p>
+</li>
+<li>
+<p>Duke Academy compiles the problem and display whether it has passed the test cases.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add n/David &#8230;&#8203;</code> to add a new person. The <code>add</code> command also calls <code>Model#commitAddressBook()</code>, causing another modified question bank state to be saved into the <code>addressBookStateList</code>.</p>
+<p><strong>Extensions</strong></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState2.png" alt="UndoRedoState2">
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. User requests to reset the previous input in the editor for this question.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. Duke Academy clears the cached code.</p>
+</li>
+<li>
+<p>Use case resumes from step 3.</p>
+</li>
+</ul>
 </div>
+</li>
+<li>
+<p>2b. User requests to set a timer.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b1. Duke Academy requests for a time duration.</p>
+</li>
+<li>
+<p>2b2. User inputs a time duration.</p>
+</li>
+<li>
+<p>2b3. Duke Academy displays a timer.</p>
+</li>
+<li>
+<p>2b4. User starts the timer.</p>
+<div class="paragraph">
+<p>Use case resumes from step 4.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. User requests to quit the program.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c1. Duke Academy requests to save the draft.</p>
+</li>
+<li>
+<p>2c2. User confirms or denies.</p>
+</li>
+<li>
+<p>2c3. Duke Academy follows user&#8217;s preference to save or discard the draft.</p>
+</li>
+<li>
+<p>2d4. Duke Academy exists.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>*a. At any time, user chooses to attempt an question imported from external resources.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>*a1. load the questions from file.</p>
+<div class="paragraph">
+<p>*a2. Duke Academy stores the problem in local machine.</p>
+</div>
+<div class="paragraph">
+<p>*a3. User search for the problem imported.</p>
+</div>
+<div class="paragraph">
+<p>*a4. Duke Academy displays the question.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 problem sets without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+<li>
+<p>Time taken to assess the submitted programmes should not exceed 3 minutes.</p>
+</li>
+<li>
+<p><a href="#encryption">Data not intended for disclosure</a> should be encrypted with minimum needs so that it&#8217;s protected from direct access.</p>
+</li>
+<li>
+<p>Should not take more than 5 seconds to load the initial screen.</p>
+</li>
+<li>
+<p>If interrupted, the program should provide an auto-saved version and prompt for restore when the app opens next time.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+<dt class="hdlist1"><a id="encryption"></a> Data not intended for disclosure</dt>
+</dl>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>User information that is not meant to be shared with others.</p>
+</li>
+<li>
+<p>Confidential program sets for technical interviews.</p>
+</li>
+<li>
+<p>To prevent plagiarism, input code files intended for graded school assessment.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Product Name</strong></p>
+</div>
+<div class="paragraph">
+<p>Author: &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -210,159 +1202,99 @@ Additionally, it implements the following operations:</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If a command fails its execution, it will not call <code>Model#commitAddressBook()</code>, so the question bank state will not be saved into the <code>addressBookStateList</code>.
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoAddressBook()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous question bank state, and restores the question bank to that state.</p>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState3.png" alt="UndoRedoState3">
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
 </div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial question bank state, then there are no previous question bank states to restore. The <code>undo</code> command uses <code>Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lifeline for <code>UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</td>
-</tr>
-</table>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoAddressBook()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the question bank to that state.</p>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>addressBookStateList.size() - 1</code>, pointing to the latest question bank state, then there are no undone question bank states to restore. The <code>redo</code> command uses <code>Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a person while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the question bank, such as <code>list</code>, will usually not call <code>Model#commitAddressBook()</code>, <code>Model#undoAddressBook()</code> or <code>Model#redoAddressBook()</code>. Thus, the <code>addressBookStateList</code> remains unchanged.</p>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState4.png" alt="UndoRedoState4">
 </div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitAddressBook()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>addressBookStateList</code>, all question bank states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add n/David &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoState5.png" alt="UndoRedoState5">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/CommitActivityDiagram.png" alt="CommitActivityDiagram">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
-<div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire question bank.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
-</li>
-<li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
-</li>
-<li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of question bank states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedAddressBook</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 </div>
@@ -375,4 +1307,4 @@ If the <code>currentStatePointer</code> is at index <code>addressBookStateList.s
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-06 12:45:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 15:34:23 UTC</div></div></div></body></html>
