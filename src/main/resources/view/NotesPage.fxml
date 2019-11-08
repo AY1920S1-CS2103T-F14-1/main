@@ -10,6 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
 <AnchorPane style="-fx-background-color: #7d2277;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets left="45.0" right="45.0" />
@@ -31,20 +33,27 @@
             </VBox>
 
             <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <Label text="Results:" textFill="#63075d">
+                <Label text="Notes:" textFill="#63075d">
                     <font>
                         <Font name="Century Gothic" size="20.0" />
                     </font>
                 </Label>
-                <StackPane fx:id="textNotesPlaceholder" GridPane.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                <TextArea fx:id="notes" VBox.vgrow="ALWAYS" promptText="Write your ideas here">
+                    <font>
+                        <Font name="Consolas Bold" size="16.0"/>
+                    </font>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                </TextArea>
                 <padding>
                     <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
                 </padding>
             </VBox>
 
             <rowConstraints>
-                <RowConstraints percentHeight="45.0" vgrow="SOMETIMES" />
-                <RowConstraints percentHeight="55.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="70.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
@@ -52,7 +61,7 @@
         </GridPane>
 
         <VBox spacing="15.0" style="-fx-border-color: #7d2277" GridPane.columnIndex="1" GridPane.rowIndex="0">
-            <Label prefHeight="22.0" prefWidth="139.0" text="Your program:" textFill="#63075d">
+            <Label prefHeight="22.0" prefWidth="139.0" text="Doodle pad:" textFill="#63075d">
                 <font>
                     <Font name="Century Gothic" size="20.0" />
                 </font>
@@ -69,8 +78,8 @@
             <RowConstraints percentHeight="100" vgrow="ALWAYS" />
         </rowConstraints>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="30" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="70" />
         </columnConstraints>
 
     </GridPane>

@@ -58,7 +58,7 @@ class MainWindow extends UiPart<Stage> {
     private AnchorPane workspacePlaceholder;
 
     @FXML
-    private StackPane statusbarPlaceholder;
+    private AnchorPane notesPagePlaceholder;
 
     @FXML
     private AnchorPane helpPagePlaceholder;
@@ -118,6 +118,9 @@ class MainWindow extends UiPart<Stage> {
         Workspace workspace = new Workspace(programSubmissionLogic.getCurrentQuestionObservable(),
                 programSubmissionLogic.getTestResultObservable());
         workspacePlaceholder.getChildren().add(workspace.getRoot());
+
+        NotesPage notesPage = new NotesPage(programSubmissionLogic.getCurrentQuestionObservable());
+        notesPagePlaceholder.getChildren().add(notesPage.getRoot());
 
         HelpPage helpPage = new HelpPage();
         helpPagePlaceholder.getChildren().add(helpPage.getRoot());

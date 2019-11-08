@@ -43,8 +43,8 @@
             </VBox>
 
             <rowConstraints>
-                <RowConstraints percentHeight="45.0" vgrow="SOMETIMES" />
-                <RowConstraints percentHeight="55.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="70.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <columnConstraints>
                 <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
@@ -69,8 +69,8 @@
             <RowConstraints percentHeight="100" vgrow="ALWAYS" />
         </rowConstraints>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="50" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="30" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="70" />
         </columnConstraints>
 
     </GridPane>
