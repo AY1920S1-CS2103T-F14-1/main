@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import com.dukeacademy.ui.ResizableCanvas?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<AnchorPane xmlns:fx="http://javafx.com/javafx" style="-fx-border-color: #7d2277"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+            AnchorPane.topAnchor="0.0">
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <ToolBar>
+            <HBox spacing="5.0">
+                <Button fx:id="pencilButton" text="Pencil"/>
+                <Button fx:id="eraserButton" text="Eraser"/>
+                <Button fx:id="clearButton" text="Clear"/>
+            </HBox>
+        </ToolBar>
+        <ResizableCanvas fx:id="canvas" VBox.vgrow="ALWAYS"/>
+    </VBox>
+</AnchorPane>

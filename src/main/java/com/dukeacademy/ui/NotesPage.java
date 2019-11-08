@@ -33,14 +33,8 @@ public class NotesPage extends UiPart<Region> {
             if (question != null) {
                 this.problemStatementPanel.setProblemStatement(question.getDescription());
                 this.notes.setEditable(true);
-
-                this.canvasPlaceholder.setMouseTransparent(false);
-                this.canvasPlaceholder.setFocusTraversable(true);
             } else {
                 this.notes.setEditable(false);
-
-                this.canvasPlaceholder.setMouseTransparent(true);
-                this.canvasPlaceholder.setFocusTraversable(false);
             }
         });
         problemStatementPanelPlaceholder.getChildren().add(problemStatementPanel.getRoot());
