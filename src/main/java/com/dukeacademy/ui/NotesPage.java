@@ -1,12 +1,17 @@
 package com.dukeacademy.ui;
 
+import com.dukeacademy.logic.notes.NotesLogic;
+import com.dukeacademy.logic.notes.NotesLogicManager;
 import com.dukeacademy.model.question.Question;
 import com.dukeacademy.observable.Observable;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
@@ -25,7 +30,7 @@ public class NotesPage extends UiPart<Region> {
     private static final String FXML = "NotesPage.fxml";
 
     @FXML
-    private StackPane problemStatementPanelPlaceholder;
+    private StackPane notesListPanelPlaceholder;
 
     @FXML
     private AnchorPane canvasPlaceholder;
@@ -36,25 +41,17 @@ public class NotesPage extends UiPart<Region> {
     @FXML
     private Button test;
 
-    private ProblemStatementPanel problemStatementPanel;
     private NotesCanvas notesCanvas;
 
-    public NotesPage(Observable<Question> attemptingQuestion) {
+    public NotesPage(NotesLogic notesLogic) {
         super(FXML);
 
         notesCanvas = new NotesCanvas();
         canvasPlaceholder.getChildren().add(notesCanvas.getRoot());
 
-        problemStatementPanel = new ProblemStatementPanel();
-        attemptingQuestion.addListener(question -> {
-            if (question != null) {
-                this.problemStatementPanel.setProblemStatement(question.getDescription());
-                this.notes.setEditable(true);
-            } else {
-                this.notes.setEditable(false);
-            }
-        });
-        problemStatementPanelPlaceholder.getChildren().add(problemStatementPanel.getRoot());
+        NoteListPanel noteListPanel = new NoteListPanel(notesLogic.getFilteredNotesList());
+        noteListPanel.getRoot().addEventFilter(MouseEvent.MOUSE_PRESSED, Event::consume);
+        notesListPanelPlaceholder.getChildren().add(noteListPanel.getRoot());
 
         test.setOnMouseClicked(event -> this.saveCanvasDrawing());
 

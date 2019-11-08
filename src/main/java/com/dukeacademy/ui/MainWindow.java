@@ -9,6 +9,7 @@ import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandKeywordException;
 import com.dukeacademy.logic.commands.tab.TabCommand;
+import com.dukeacademy.logic.notes.NotesLogic;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.model.state.Activity;
@@ -35,6 +36,7 @@ class MainWindow extends UiPart<Stage> {
     private final CommandLogic commandLogic;
     private final QuestionsLogic questionsLogic;
     private final ProgramSubmissionLogic programSubmissionLogic;
+    private final NotesLogic notesLogic;
 
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
@@ -73,7 +75,8 @@ class MainWindow extends UiPart<Stage> {
      * @param programSubmissionLogic the program submission logic
      */
     public MainWindow(Stage primaryStage, CommandLogic commandLogic, QuestionsLogic questionsLogic,
-                      ProgramSubmissionLogic programSubmissionLogic, ApplicationState applicationState) {
+                      ProgramSubmissionLogic programSubmissionLogic, NotesLogic notesLogic,
+                      ApplicationState applicationState) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -81,6 +84,7 @@ class MainWindow extends UiPart<Stage> {
         this.commandLogic = commandLogic;
         this.questionsLogic = questionsLogic;
         this.programSubmissionLogic = programSubmissionLogic;
+        this.notesLogic = notesLogic;
 
         applicationState.getCurrentActivityObservable().addListener(this::selectTabFromActivity);
         tabPane.getSelectionModel().selectedIndexProperty().addListener(new TabChangeListener());
@@ -119,7 +123,7 @@ class MainWindow extends UiPart<Stage> {
                 programSubmissionLogic.getTestResultObservable());
         workspacePlaceholder.getChildren().add(workspace.getRoot());
 
-        NotesPage notesPage = new NotesPage(programSubmissionLogic.getCurrentQuestionObservable());
+        NotesPage notesPage = new NotesPage();
         notesPagePlaceholder.getChildren().add(notesPage.getRoot());
 
         HelpPage helpPage = new HelpPage();

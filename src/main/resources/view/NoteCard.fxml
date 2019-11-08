@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+    <Label fx:id="noteTitle" prefHeight="17.0" prefWidth="73.0">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label fx:id="noteContent" layoutX="10.0" layoutY="10.0" prefHeight="17.0" prefWidth="22.0">
+        <font>
+            <Font name="Arial Rounded MT Bold" size="14.0" />
+        </font>
+    </Label>
+</VBox>
