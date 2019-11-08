@@ -19,8 +19,8 @@ Duke Academy is an all-in-one programming practice app targeted for students tak
 2. The list of questions the user is still attempting
 3. The list of questions specially bookmarked by the user +
 The bookmark command allows the user to add a question to the list of bookmarked questions, while the deletebookmark command allows the user to remove any question from that list.
-** Justification: The Personal Dashboard improves user experience significantly. When it comes to programming practice, there are many cases where a student wants to note down a particular question for future reference. For example, a student might find a few questions particularly challenging for him, and he wants to note down these questions for future revision. The bookmark command would allow him to conveniently do that, without the traditional need for an external notepad application or pen and paper. This is because the list of bookmarked questions on the Personal Dashboard would update immediately upon the bookmark command. The student is also able to remove any of the questions from the bookmarked list using the deletebookmark command. Also, the inclusion of a gamified progress indicator can actually provide many students with an extra source of motivation and interest towards the arduous and challenging activity of programming.
-** Highlights: The implementation of bookmark command and deletebookmark command required a deep understanding of the Question class, Question objects were required to be either bookmarked or not bookmarked. Also, the Personal Dashboard was developed to be able to support other commands implemented by other developers in the team, namely _attempt_ and _submit_. Hence, it required strong understanding of the code written by other developers, and more importantly, effective communication with them to deliver fully functional dashboard that can accurately support all 4 commands, _bookmark_, _deletebookmark_, _attempt_ and _submit_.
+** Justification: The Personal Dashboard improves user experience significantly. When it comes to programming practice, there are many cases where a student wants to note down a particular question for future reference. For example, a student might find a few questions particularly challenging for him, and he wants to note down these questions for future revision. The bookmark command would allow him to conveniently do that, without the traditional need for pen and paper or an external notepad application. This is because the list of bookmarked questions on the Personal Dashboard would update immediately upon the bookmark command. The student is also able to remove any of the questions from the bookmarked list using the deletebookmark command. Also, the inclusion of a gamified progress indicator can actually provide many students with an extra source of motivation and interest towards the arduous and challenging activity of programming.
+** Highlights: The implementation of bookmark command and deletebookmark command required a deep understanding of the Question class, because Question objects were required to be either bookmarked or not bookmarked. Also, the Personal Dashboard was developed to be able to support other commands implemented by other developers in the team, namely _attempt_ and _submit_. Hence, it required strong understanding of the code written by other developers, and more importantly, effective communication with them to deliver a fully functional dashboard that can accurately support all 4 commands, _bookmark_, _deletebookmark_, _attempt_ and _submit_.
 
 * *Minor enhancement*: Added a Program Evaluation Panel that allows the user to view how well his program performed against the pre-defined test cases tied to each question.
 
@@ -29,20 +29,22 @@ The bookmark command allows the user to add a question to the list of bookmarked
 * *Other contributions*:
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+*** Managed releases `v1.2` - `v1.4` (3 releases) on GitHub, in terms of creation, assignment and tracking of GitHub issues, and also deadline scheduling of the version release.
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Modified AB3's _help_ command to launch a condensed version of the User Guide within the app(Pull requests https://github.com[#33], https://github.com[#34])
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Updated README Page to be aligned with the app's full release: https://github.com[#14]
+*** Wrote About Us Page: https://github.com[#14]
+*** Wrote Contact Us Page: https://github.com[#14]
+*** Contributed to the User Guide for _home_, _help_, _bookmark_ and _deletebookmark_ commands: https://github.com[#14]
+*** Contributed to the Developer Guide for _home_, _help_, _bookmark_ and _deletebookmark_ commands: https://github.com[#14]
 ** Community:
 *** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
 *** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
 *** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
 ** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
+*** Provided assistance with GUI development through expertise with Gluon Scene Builder (https://github.com[#42])
 
 _{you can add/remove categories in the list above}_
 
