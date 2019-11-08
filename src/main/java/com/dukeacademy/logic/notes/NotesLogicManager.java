@@ -7,7 +7,7 @@ import com.dukeacademy.model.notes.NoteBank;
 import com.dukeacademy.model.notes.StandardNoteBank;
 import com.dukeacademy.observable.Observable;
 import com.dukeacademy.observable.StandardObservable;
-import com.dukeacademy.storage.notes.NoteStorage;
+import com.dukeacademy.storage.notes.NoteBankStorage;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
@@ -17,12 +17,12 @@ import java.util.logging.Logger;
 
 public class NotesLogicManager implements NotesLogic {
     private final Logger logger;
-    private final NoteStorage storage;
+    private final NoteBankStorage storage;
     private final NoteBank noteBank;
     private final FilteredList<Note> filteredList;
     private final Observable<Note> selectedNote;
 
-    public NotesLogicManager(NoteStorage storage) {
+    public NotesLogicManager(NoteBankStorage storage) {
         this.logger = LogsCenter.getLogger(NotesLogicManager.class);
         this.storage = storage;
         this.noteBank = this.loadQuestionsFromStorage();

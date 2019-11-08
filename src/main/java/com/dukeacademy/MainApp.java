@@ -30,12 +30,16 @@ import com.dukeacademy.logic.commands.load.LoadCommandFactory;
 import com.dukeacademy.logic.commands.submit.SubmitCommandFactory;
 import com.dukeacademy.logic.commands.tab.TabCommandFactory;
 import com.dukeacademy.logic.commands.view.ViewCommandFactory;
+import com.dukeacademy.logic.notes.NotesLogic;
+import com.dukeacademy.logic.notes.NotesLogicManager;
 import com.dukeacademy.logic.program.ProgramSubmissionLogic;
 import com.dukeacademy.logic.program.ProgramSubmissionLogicManager;
 import com.dukeacademy.logic.program.exceptions.LogicCreationException;
 import com.dukeacademy.logic.question.QuestionsLogic;
 import com.dukeacademy.logic.question.QuestionsLogicManager;
 import com.dukeacademy.model.state.ApplicationState;
+import com.dukeacademy.storage.notes.JsonNoteBankStorage;
+import com.dukeacademy.storage.notes.NoteBankStorage;
 import com.dukeacademy.storage.question.JsonQuestionBankStorage;
 import com.dukeacademy.storage.question.QuestionBankStorage;
 import com.dukeacademy.ui.Ui;
@@ -61,6 +65,7 @@ public class MainApp extends Application {
     private Ui ui;
     private QuestionsLogic questionsLogic;
     private ProgramSubmissionLogic programSubmissionLogic;
+    private NotesLogic notesLogic;
     private ApplicationState applicationState;
 
     @Override
@@ -81,6 +86,7 @@ public class MainApp extends Application {
         applicationState = this.initApplicationState();
         questionsLogic = this.initQuestionsLogic(config);
         programSubmissionLogic = this.initProgramSubmissionLogic(config);
+        notesLogic = this.initNotesLogic(config);
 
         CommandLogicManager commandLogic = this.initCommandLogic();
 
@@ -159,6 +165,7 @@ public class MainApp extends Application {
             logger.info("Creating data folder at : " + testOutputPath);
 
             createQuestionBankFile(dataOutputPath.resolve("QuestionBank.json"));
+            createNoteBankFile(dataOutputPath.resolve("NoteBank.json"));
         }
     }
 
@@ -183,6 +190,22 @@ public class MainApp extends Application {
             }
         } catch (IOException | NullPointerException e) {
             logger.warning("Unable to create default question bank data file.");
+        }
+    }
+
+    private void createNoteBankFile(Path noteBankFilePath) {
+        try {
+            logger.info("Creating new note bank.");
+            FileUtil.createIfMissing(noteBankFilePath);
+            InputStream emptyNoteBankInputStream = this.getClass().getClassLoader()
+                    .getResourceAsStream("noteBank.json");
+            if (emptyNoteBankInputStream != null) {
+                logger.info("Copying note bank template into new note bank");
+                Files.copy(emptyNoteBankInputStream, noteBankFilePath, StandardCopyOption.REPLACE_EXISTING);
+                emptyNoteBankInputStream.close();
+            }
+        } catch (IOException | NullPointerException e) {
+            logger.warning("Unable to create new note bank data file.");
         }
     }
 
@@ -275,6 +298,13 @@ public class MainApp extends Application {
         return new QuestionsLogicManager(storage);
     }
 
+    private NotesLogicManager initNotesLogic(Config config) {
+        logger.info("============================ [ Initializing notes logic ] =============================");
+        NoteBankStorage storage = new JsonNoteBankStorage(config.getDataPath().resolve("NoteBank.json"));
+
+        return new NotesLogicManager(storage);
+    }
+
     /**
      * Returns a new ProgramSubmissionLogicManager based on the UserPrefs passed into the function.
      *
@@ -295,7 +325,7 @@ public class MainApp extends Application {
                       ProgramSubmissionLogic programSubmissionLogic, ApplicationState applicationState) {
         logger.info("============================ [ Initializing UI ] =============================");
         return new UiManager(commandLogic, questionsLogic,
-            programSubmissionLogic, applicationState);
+            programSubmissionLogic, notesLogic, applicationState);
     }
 
     @Override

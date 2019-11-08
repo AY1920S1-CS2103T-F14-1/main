@@ -1,7 +1,5 @@
 package com.dukeacademy.model.notes;
 
-import com.dukeacademy.model.question.Question;
-
 import java.util.UUID;
 
 import static com.dukeacademy.commons.util.CollectionUtil.requireAllNonNull;
@@ -11,25 +9,32 @@ public class Note {
 
     private final int id;
     private final String title;
-    private final String notes;
-    private final String sketchFileName;
+    private final String content;
+    private final UUID sketchId;
 
-    private Note(int id, String title, String notes, String sketchFileName) {
-        requireAllNonNull(id ,title, notes, sketchFileName);
+    private Note(int id, String title, String content, UUID sketchId) {
+        requireAllNonNull(id ,title, content, sketchId);
 
         this.id = id;
         this.title = title;
-        this.notes = notes;
-        this.sketchFileName = sketchFileName;
+        this.content = content;
+        this.sketchId = sketchId;
     }
 
-    public Note(String title, String notes, String sketchFileName) {
-        requireAllNonNull(title, notes, sketchFileName);
+    public Note(String title, String content) {
+        requireAllNonNull(title, content);
 
         this.id = noteCount++;
         this.title = title;
-        this.notes = notes;
-        this.sketchFileName = sketchFileName;
+        this.content = content;
+        this.sketchId = UUID.randomUUID();
+    }
+
+    public Note(String title, String content, UUID sketchId) {
+        this.id = noteCount++;
+        this.title = title;
+        this.content = content;
+        this.sketchId = sketchId;
     }
 
 
@@ -41,16 +46,16 @@ public class Note {
         return title;
     }
 
-    public String getNotes() {
-        return notes;
+    public String getContent() {
+        return content;
     }
 
-    public String getSketchFileName() {
-        return sketchFileName;
+    public UUID getSketchId() {
+        return sketchId;
     }
 
     public Note withNewNotes(String notes) {
-        return new Note(this.id, this.title, notes, this.sketchFileName);
+        return new Note(this.id, this.title, notes, this.sketchId);
     }
 
     @Override

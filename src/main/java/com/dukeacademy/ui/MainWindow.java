@@ -123,7 +123,7 @@ class MainWindow extends UiPart<Stage> {
                 programSubmissionLogic.getTestResultObservable());
         workspacePlaceholder.getChildren().add(workspace.getRoot());
 
-        NotesPage notesPage = new NotesPage();
+        NotesPage notesPage = new NotesPage(notesLogic);
         notesPagePlaceholder.getChildren().add(notesPage.getRoot());
 
         HelpPage helpPage = new HelpPage();

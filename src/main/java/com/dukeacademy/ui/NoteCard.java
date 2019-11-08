@@ -1,7 +1,6 @@
 package com.dukeacademy.ui;
 
 import com.dukeacademy.model.notes.Note;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.layout.Region;
 
@@ -19,6 +18,6 @@ public class NoteCard extends UiPart<Region> {
     public NoteCard(Note note) {
         super(FXML);
         noteTitle.setText(note.getTitle());
-        noteContent.setText(note.getNotes());
+        noteContent.setText(note.getContent());
     }
 }

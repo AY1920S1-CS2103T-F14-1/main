@@ -28,7 +28,7 @@
                         <Font name="Century Gothic" size="20.0" />
                     </font>
                 </Label>
-                <StackPane fx:id="notesListPanelPlaceHolder" GridPane.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                <StackPane fx:id="notesListPanelPlaceholder" GridPane.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
                 <padding>
                     <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
                 </padding>

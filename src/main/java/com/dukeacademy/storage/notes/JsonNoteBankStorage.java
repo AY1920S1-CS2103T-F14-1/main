@@ -1,12 +1,10 @@
 package com.dukeacademy.storage.notes;
 
-import com.dukeacademy.MainApp;
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.exceptions.DataConversionException;
 import com.dukeacademy.commons.exceptions.IllegalValueException;
 import com.dukeacademy.commons.util.JsonUtil;
 import com.dukeacademy.model.notes.NoteBank;
-import com.dukeacademy.storage.question.JsonSerializableStandardQuestionBank;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -15,11 +13,11 @@ import java.util.logging.Logger;
 
 import static java.util.Objects.requireNonNull;
 
-public class JsonNoteStorage implements  NoteStorage {
-    private static final Logger logger = LogsCenter.getLogger(JsonNoteStorage.class);
+public class JsonNoteBankStorage implements NoteBankStorage {
+    private static final Logger logger = LogsCenter.getLogger(JsonNoteBankStorage.class);
     private final Path filePath;
 
-    public JsonNoteStorage(Path filePath) {
+    public JsonNoteBankStorage(Path filePath) {
         this.filePath = filePath;
         logger.info("JsonNoteStorage file path set : " + filePath);
     }
@@ -40,7 +38,16 @@ public class JsonNoteStorage implements  NoteStorage {
 
         Optional<JsonSerializableNoteBank> jsonNoteBank = JsonUtil.readJsonFile(
                 filePath, JsonSerializableNoteBank.class);
-        return jsonNoteBank.map(JsonSerializableNoteBank::toModelType);
+
+        if (!jsonNoteBank.isPresent()) {
+            return Optional.empty();
+        }
+
+        try {
+            return Optional.of(jsonNoteBank.get().toModelType());
+        } catch (IllegalValueException e) {
+            throw new DataConversionException(e);
+        }
     }
 
     @Override
