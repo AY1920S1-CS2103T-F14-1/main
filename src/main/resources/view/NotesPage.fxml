@@ -12,6 +12,7 @@
 
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
 <AnchorPane style="-fx-background-color: #7d2277;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets left="45.0" right="45.0" />
@@ -33,6 +34,7 @@
             </VBox>
 
             <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Button fx:id="test" text="save"/>
                 <Label text="Notes:" textFill="#63075d">
                     <font>
                         <Font name="Century Gothic" size="20.0" />

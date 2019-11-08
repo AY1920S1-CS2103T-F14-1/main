@@ -9,10 +9,13 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+
+import javax.imageio.ImageIO;
 
 public class NotesCanvas extends UiPart<Region> {
     private static final String FXML = "NotesCanvas.fxml";
@@ -22,7 +25,7 @@ public class NotesCanvas extends UiPart<Region> {
     private final GraphicsContext graphicsContext;
 
     @FXML
-    private ResizableCanvas canvas;
+    private Canvas canvas;
 
     @FXML
     private Button pencilButton;
@@ -67,8 +70,24 @@ public class NotesCanvas extends UiPart<Region> {
     }
 
     private void initDraw(GraphicsContext graphicsContext) {
+        graphicsContext.setFill(Color.WHITE);
+        graphicsContext.fill();
+
         graphicsContext.setStroke(Color.BLACK);
         graphicsContext.setLineWidth(pencilWidth);
+    }
+
+    public WritableImage getImage() {
+        int imageWidth =  (int) canvas.getWidth();
+        int imageHeight = (int) canvas.getHeight();
+
+        WritableImage image = new WritableImage(imageWidth, imageHeight);
+        canvas.snapshot(null, image);
+        return image;
+    }
+
+    public void drawImage(WritableImage image) {
+        graphicsContext.drawImage(image, 0, 0);
     }
 
     private class MouseClickHandler implements EventHandler<MouseEvent> {
