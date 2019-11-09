@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -79,7 +78,7 @@ public class SketchManager {
 
         logger.info("Saving sketch at : " + file.getPath());
 
-        if (!file.createNewFile()) {
+        if (!file.exists() && !file.createNewFile()) {
             logger.warning("Unable to create sketch image file at : " + file.getPath());
             throw new IOException("Unable to create image file : " + file.toPath());
         }

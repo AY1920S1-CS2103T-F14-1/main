@@ -2,6 +2,9 @@ package com.dukeacademy.logic.notes;
 
 import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.commons.exceptions.DataConversionException;
+import com.dukeacademy.data.Pair;
+import com.dukeacademy.logic.notes.exceptions.NoNoteSetException;
+import com.dukeacademy.logic.notes.exceptions.NoteNotFoundRuntimeException;
 import com.dukeacademy.logic.program.exceptions.SubmissionChannelNotSetException;
 import com.dukeacademy.model.notes.Note;
 import com.dukeacademy.model.notes.NoteBank;
@@ -11,32 +14,41 @@ import com.dukeacademy.observable.StandardObservable;
 import com.dukeacademy.storage.notes.NoteBankStorage;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.image.WritableImage;
 
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 public class NotesLogicManager implements NotesLogic {
+    private static final WritableImage emptySketch = new WritableImage(2000, 2000);
+
     private final Logger logger;
     private final NoteBankStorage storage;
     private final NoteBank noteBank;
     private final FilteredList<Note> filteredList;
-    private final Observable<Note> selectedNote;
+    private final StandardObservable<Pair<Note, WritableImage>> selectedNoteAndSketch;
+
     private NoteSubmissionChannel noteSubmissionChannel;
+    private SketchManager sketchManager;
 
     public NotesLogicManager(NoteBankStorage storage) {
         this.logger = LogsCenter.getLogger(NotesLogicManager.class);
         this.storage = storage;
         this.noteBank = this.loadNotesFromStorage();
         this.filteredList = new FilteredList<>(this.noteBank.getReadOnlyNotesObservableList());
-        this.selectedNote = new StandardObservable<>();
+        this.selectedNoteAndSketch = new StandardObservable<>();
+
+        Path sketchStoragePath = storage.getNoteBankFilePath().getParent().resolve("sketches");
+        this.sketchManager = new SketchManager(sketchStoragePath);
     }
 
     @Override
     public SketchManager getSketchManager() {
-        Path sketchStoragePath = storage.getNoteBankFilePath().getParent().resolve("sketches");
-        return new SketchManager(sketchStoragePath);
+        return this.sketchManager;
     }
 
     @Override
@@ -62,33 +74,94 @@ public class NotesLogicManager implements NotesLogic {
 
     @Override
     public void addNote(Note note) {
+        try {
+            this.sketchManager.saveSketch(note.getSketchId(), NotesLogicManager.emptySketch);
+        } catch (IOException e) {
+            logger.warning("Unable to save sketch : " + note.getSketchId());
+        }
+
         this.noteBank.addNote(note);
         this.saveNotesToStorage(this.noteBank);
     }
 
     @Override
-    public void addNoteFromNoteSubmissionChannel() {
+    public void addNoteWithSketch(Note note, WritableImage sketch) {
+        try {
+            this.sketchManager.saveSketch(note.getSketchId(), sketch);
+        } catch (IOException e) {
+            logger.warning("Unable to save sketch : " + note.getSketchId());
+        }
+
+        this.noteBank.addNote(note);
+        this.saveNotesToStorage(this.noteBank);
+    }
+
+    @Override
+    public void saveNoteFromNoteSubmissionChannel() {
         if (this.noteSubmissionChannel == null) {
             throw new SubmissionChannelNotSetException();
         }
 
-        this.addNote(this.noteSubmissionChannel.getNote());
+        Pair<Note, WritableImage> noteAndSketchPair;
+
+        try {
+             noteAndSketchPair = this.noteSubmissionChannel.getNoteAndSketchPair();
+        } catch (NoNoteSetException e) {
+            logger.info("No current note set, skipping save...");
+            return;
+        }
+
+        Note note = noteAndSketchPair.getHead();
+        WritableImage sketch = noteAndSketchPair.getTail();
+
+        Optional<Note> oldNote = this.getAllNotesList().stream()
+                .filter(n -> n.getId() == note.getId()).findFirst();
+
+        if (oldNote.isEmpty()) {
+            this.addNoteWithSketch(note, sketch);
+            logger.info("New note detected, creating new note : " + note);
+            return;
+        }
+
+        this.replaceNote(oldNote.get(), note, sketch);
     }
 
     @Override
-    public void replaceNote(Note oldNote, Note newNote) {
+    public void replaceNote(Note oldNote, Note newNote, WritableImage newSketch) {
+        logger.info("Replacing old note : " + oldNote + " with new note : " + newNote);
+        UUID sketchId = newNote.getSketchId();
+
+        try {
+            this.sketchManager.saveSketch(sketchId, newSketch);
+        } catch (IOException e) {
+            logger.warning("Unable to save sketch : " + sketchId);
+        }
+
         this.noteBank.replaceNote(oldNote, newNote);
         this.saveNotesToStorage(this.noteBank);
     }
 
     @Override
-    public Observable<Note> getSelectedNote() {
-        return this.selectedNote;
+    public Observable<Pair<Note, WritableImage>> getSelectedNote() {
+        return this.selectedNoteAndSketch;
     }
 
     @Override
     public void selectNote(int id) {
-        throw new UnsupportedOperationException();
+        Note selectedNote = this.getAllNotesList().stream()
+                .filter(note -> note.getId() == id)
+                .findFirst()
+                .orElseThrow(NoteNotFoundRuntimeException::new);
+
+        WritableImage sketch;
+        try {
+            sketch = this.sketchManager.loadSketch(selectedNote.getSketchId());
+        } catch (IOException e) {
+            logger.warning("Unable to load sketch : " + selectedNote.getSketchId());
+            sketch = null;
+        }
+
+        this.selectedNoteAndSketch.setValue(new Pair<>(selectedNote, sketch));
     }
 
 

@@ -1,12 +1,12 @@
 package com.dukeacademy.logic.notes;
 
-import com.dukeacademy.commons.core.LogsCenter;
+import com.dukeacademy.data.Pair;
 import com.dukeacademy.model.notes.Note;
 import com.dukeacademy.observable.Observable;
 import javafx.collections.ObservableList;
+import javafx.scene.image.WritableImage;
 
 import java.util.function.Predicate;
-import java.util.logging.Logger;
 
 public interface NotesLogic {
     void setNoteSubmissionChannel(NoteSubmissionChannel noteSubmissionChannel);
@@ -19,13 +19,15 @@ public interface NotesLogic {
 
     void filterNotesList(Predicate<Note> predicate);
 
+    void addNoteWithSketch(Note note, WritableImage sketch);
+
     void addNote(Note note);
 
-    void addNoteFromNoteSubmissionChannel();
+    void saveNoteFromNoteSubmissionChannel();
 
-    void replaceNote(Note oldNote, Note newNote);
+    void replaceNote(Note oldNote, Note newNote, WritableImage newSketch);
 
-    Observable<Note> getSelectedNote();
+    Observable<Pair<Note, WritableImage>> getSelectedNote();
 
     void selectNote(int id);
 }

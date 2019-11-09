@@ -27,6 +27,9 @@ import com.dukeacademy.logic.commands.help.HelpCommandFactory;
 import com.dukeacademy.logic.commands.home.HomeCommandFactory;
 import com.dukeacademy.logic.commands.list.ListCommandFactory;
 import com.dukeacademy.logic.commands.load.LoadCommandFactory;
+import com.dukeacademy.logic.commands.notes.NewNoteCommandFactory;
+import com.dukeacademy.logic.commands.notes.OpenNoteCommand;
+import com.dukeacademy.logic.commands.notes.OpenNoteCommandFactory;
 import com.dukeacademy.logic.commands.submit.SubmitCommandFactory;
 import com.dukeacademy.logic.commands.tab.TabCommandFactory;
 import com.dukeacademy.logic.commands.view.ViewCommandFactory;
@@ -275,6 +278,12 @@ public class MainApp extends Application {
         HelpCommandFactory helpCommandFactory = new HelpCommandFactory(this.questionsLogic,
                 this.programSubmissionLogic, this.applicationState);
         commandLogicManager.registerCommand(helpCommandFactory);
+        // Registering new note command
+        NewNoteCommandFactory newNoteCommandFactory = new NewNoteCommandFactory(this.notesLogic);
+        commandLogicManager.registerCommand(newNoteCommandFactory);
+        // Registering open note command
+        OpenNoteCommandFactory openNoteCommandFactory = new OpenNoteCommandFactory(this.notesLogic);
+        commandLogicManager.registerCommand(openNoteCommandFactory);
 
         return commandLogicManager;
     }

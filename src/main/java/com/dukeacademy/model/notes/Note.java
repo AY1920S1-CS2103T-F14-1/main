@@ -66,4 +66,17 @@ public class Note {
 
         return false;
     }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(getTitle())
+                .append(" Title: ")
+                .append(title)
+                .append(" Content: ")
+                .append(content)
+                .append(" SketchId: ")
+                .append(sketchId);
+        return builder.toString();
+    }
 }

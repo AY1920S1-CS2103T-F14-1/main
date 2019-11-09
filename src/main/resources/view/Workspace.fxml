@@ -19,7 +19,7 @@
 
         <GridPane style="-fx-border-color: #7d2277" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0">
             <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                <Label prefWidth="208.0" text="Currently attempting:" textFill="#63075d">
+                <Label text="Currently attempting:" textFill="#63075d">
                     <font>
                         <Font name="Century Gothic" size="20.0" />
                     </font>
@@ -52,7 +52,7 @@
         </GridPane>
 
         <VBox spacing="15.0" style="-fx-border-color: #7d2277" GridPane.columnIndex="1" GridPane.rowIndex="0">
-            <Label prefHeight="22.0" prefWidth="139.0" text="Your program:" textFill="#63075d">
+            <Label text="Your program:" textFill="#63075d">
                 <font>
                     <Font name="Century Gothic" size="20.0" />
                 </font>
@@ -66,8 +66,9 @@
         </VBox>
 
         <rowConstraints>
-            <RowConstraints percentHeight="100" vgrow="ALWAYS" />
+            <RowConstraints vgrow="ALWAYS" />
         </rowConstraints>
+
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" percentWidth="30" />
             <ColumnConstraints hgrow="SOMETIMES" percentWidth="70" />

@@ -65,8 +65,7 @@ public class NotesCanvas extends UiPart<Region> {
             canvas.setCursor(new ImageCursor(image));
         });
 
-        clearButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> graphicsContext
-                .clearRect(0, 0, canvas.getWidth(), canvas.getHeight()));
+        clearButton.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> clearCanvas());
     }
 
     private void initDraw(GraphicsContext graphicsContext) {
@@ -78,11 +77,11 @@ public class NotesCanvas extends UiPart<Region> {
     }
 
     public void clearCanvas() {
-        clearCanvas();
+        graphicsContext.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
     }
 
     public WritableImage getImage() {
-        int imageWidth =  (int) canvas.getWidth();
+        int imageWidth = (int) canvas.getWidth();
         int imageHeight = (int) canvas.getHeight();
 
         WritableImage image = new WritableImage(imageWidth, imageHeight);

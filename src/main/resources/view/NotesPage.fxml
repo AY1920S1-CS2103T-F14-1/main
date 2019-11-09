@@ -14,6 +14,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.text.TextFlow?>
 <AnchorPane style="-fx-background-color: #7d2277;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets left="45.0" right="45.0" />
@@ -35,7 +36,22 @@
             </VBox>
 
             <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                <Button fx:id="test" text="save"/>
+
+                <Label text="Currently viewing:" textFill="#63075d">
+                    <font>
+                        <Font name="Century Gothic" size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="currentNoteTitle" VBox.vgrow="ALWAYS" editable="false"
+                           mouseTransparent="true" focusTraversable="false">
+                    <font>
+                        <Font name="Consolas Bold" size="16.0"/>
+                    </font>
+                    <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                    </padding>
+                </TextField>
+
                 <Label text="Notes:" textFill="#63075d">
                     <font>
                         <Font name="Century Gothic" size="20.0" />
@@ -69,7 +85,7 @@
                     <Font name="Century Gothic" size="20.0" />
                 </font>
             </Label>
-            <AnchorPane fx:id="canvasPlaceholder" VBox.vgrow="ALWAYS">
+            <AnchorPane fx:id="canvasPlaceholder">
 
             </AnchorPane>
             <padding>

@@ -1,9 +1,11 @@
 package com.dukeacademy.model.notes;
 
+import com.dukeacademy.logic.notes.exceptions.NoteNotFoundRuntimeException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.Collection;
+import java.util.stream.IntStream;
 
 public class StandardNoteBank implements NoteBank {
     private final ObservableList<Note> notesList = FXCollections.observableArrayList();
@@ -28,7 +30,13 @@ public class StandardNoteBank implements NoteBank {
 
     @Override
     public void replaceNote(Note oldNote, Note newNote) {
-        throw new UnsupportedOperationException();
+        int oldNoteIndex = IntStream.range(0, notesList.size())
+                .filter(i -> notesList.get(i).equals(oldNote))
+                .findFirst()
+                .orElseThrow(NoteNotFoundRuntimeException::new);
+
+        notesList.remove(oldNoteIndex);
+        notesList.add(oldNoteIndex, newNote);
     }
 
     @Override
