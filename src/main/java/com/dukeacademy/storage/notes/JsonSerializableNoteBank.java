@@ -14,21 +14,21 @@ import java.util.stream.Collectors;
 
 @JsonRootName(value = "noteBank")
 public class JsonSerializableNoteBank {
-    private final List<JsonAdaptedNote> notesList = new ArrayList<>();
+    private final List<JsonAdaptedNote> notes = new ArrayList<>();
 
     @JsonCreator
     public JsonSerializableNoteBank(@JsonProperty("notes") List<JsonAdaptedNote> notes) {
-        this.notesList.addAll(notes);
+        this.notes.addAll(notes);
     }
 
     public JsonSerializableNoteBank(NoteBank source) {
-        notesList.addAll(source.getReadOnlyNotesObservableList().stream()
+        notes.addAll(source.getReadOnlyNotesObservableList().stream()
                 .map(JsonAdaptedNote::new).collect(Collectors.toList()));
     }
 
     public NoteBank toModelType() throws IllegalValueException {
         StandardNoteBank noteBank = new StandardNoteBank();
-        for (JsonAdaptedNote note : notesList) {
+        for (JsonAdaptedNote note : notes) {
             noteBank.addNote(note.toModel());
         }
 

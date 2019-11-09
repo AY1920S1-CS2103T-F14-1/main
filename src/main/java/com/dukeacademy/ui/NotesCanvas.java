@@ -77,6 +77,10 @@ public class NotesCanvas extends UiPart<Region> {
         graphicsContext.setLineWidth(pencilWidth);
     }
 
+    public void clearCanvas() {
+        clearCanvas();
+    }
+
     public WritableImage getImage() {
         int imageWidth =  (int) canvas.getWidth();
         int imageHeight = (int) canvas.getHeight();

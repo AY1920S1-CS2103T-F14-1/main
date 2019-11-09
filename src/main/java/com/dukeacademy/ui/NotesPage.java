@@ -1,30 +1,22 @@
 package com.dukeacademy.ui;
 
+import com.dukeacademy.commons.core.LogsCenter;
 import com.dukeacademy.logic.notes.NotesLogic;
-import com.dukeacademy.logic.notes.NotesLogicManager;
-import com.dukeacademy.model.question.Question;
-import com.dukeacademy.observable.Observable;
-import javafx.embed.swing.SwingFXUtils;
+import com.dukeacademy.logic.notes.SketchManager;
+import com.dukeacademy.model.notes.Note;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import javafx.stage.FileChooser;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.file.Paths;
+import java.util.logging.Logger;
 
 public class NotesPage extends UiPart<Region> {
     private static final String FXML = "NotesPage.fxml";
@@ -41,10 +33,19 @@ public class NotesPage extends UiPart<Region> {
     @FXML
     private Button test;
 
+    private Logger logger;
     private NotesCanvas notesCanvas;
+    private Note selectedNote;
+    private final SketchManager sketchManager;
+    private final NotesLogic notesLogic;
 
     public NotesPage(NotesLogic notesLogic) {
         super(FXML);
+        this.logger = LogsCenter.getLogger(NotesPage.class);
+
+        this.notesLogic = notesLogic;
+        this.sketchManager = notesLogic.getSketchManager();
+        notesLogic.setNoteSubmissionChannel(this::getCurrentNote);
 
         notesCanvas = new NotesCanvas();
         canvasPlaceholder.getChildren().add(notesCanvas.getRoot());
@@ -53,36 +54,68 @@ public class NotesPage extends UiPart<Region> {
         noteListPanel.getRoot().addEventFilter(MouseEvent.MOUSE_PRESSED, Event::consume);
         notesListPanelPlaceholder.getChildren().add(noteListPanel.getRoot());
 
-        test.setOnMouseClicked(event -> this.saveCanvasDrawing());
+        notesLogic.getSelectedNote().addListener(this::loadNote);
 
-        this.loadImageOntoCanvas();
+        test.setOnMouseClicked(event -> notesLogic.addNote(this.getCurrentNote()));
     }
 
-    private void saveCanvasDrawing() {
-        boolean success = Paths.get("DukeAcademy","data", "notes").toFile().mkdirs();
-
-        try {
-            File file = Paths.get("DukeAcademy","data", "notes", "pic.png").toFile();
-            file.createNewFile();
-
-            RenderedImage drawing = SwingFXUtils.fromFXImage(notesCanvas.getImage(), null);
-            ImageIO.write(drawing, "png", file);
-        } catch (IOException e) {
-            System.out.println("failed");
-        }
+    public void newNote() {
+        this.selectedNote = null;
+        this.notesCanvas.clearCanvas();
+        this.notes.clear();
     }
 
-    private void loadImageOntoCanvas() {
-        File file = Paths.get("DukeAcademy","data", "notes", "pic.png").toFile();
+    private void saveCurrentNote() {
+        notesLogic.addNote(this.getCurrentNote());
+    }
 
-        try {
-            BufferedImage image = ImageIO.read(file);
-            WritableImage imagefx = SwingFXUtils.toFXImage(image, null);
+    private Note getCurrentNote() {
+        String title = "Test";
+        String content = notes.getText().strip();
 
-            this.notesCanvas.drawImage(imagefx);
-        } catch (IOException e) {
-            System.out.println("Fail");
+        Note currentNote;
+
+        if (selectedNote == null) {
+            currentNote = new Note(title, content);
+        } else {
+            currentNote = selectedNote.withNewNotes(content);
         }
 
+        try {
+            sketchManager.saveSketch(currentNote.getSketchId(), notesCanvas.getImage());
+        } catch (IOException e) {
+            logger.warning("Unable to save current sketch : " + currentNote.getSketchId()
+                    + " @ " + sketchManager.getSketchStorageFolderPath());
+        }
+
+        return currentNote;
+    }
+
+    private void loadNote(Note note) {
+        if (note == null) {
+            return;
+        }
+
+        selectedNote = note;
+
+        notes.setText(note.getContent());
+
+        WritableImage sketch;
+
+        try {
+            sketch = sketchManager.loadSketch(note.getSketchId());
+        } catch (FileNotFoundException e) {
+            logger.warning("Unable to find sketch : " + note.getSketchId()
+                    + " @ " + sketchManager.getSketchStorageFolderPath());
+            return;
+        } catch (IOException e) {
+            logger.warning("Unable to read sketch : " + note.getSketchId()
+                    + " @ " + sketchManager.getSketchStorageFolderPath());
+            return;
+        }
+
+        if (sketch != null) {
+            notesCanvas.drawImage(sketch);
+        }
     }
 }

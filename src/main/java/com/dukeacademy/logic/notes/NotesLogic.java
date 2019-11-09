@@ -9,6 +9,10 @@ import java.util.function.Predicate;
 import java.util.logging.Logger;
 
 public interface NotesLogic {
+    void setNoteSubmissionChannel(NoteSubmissionChannel noteSubmissionChannel);
+
+    SketchManager getSketchManager();
+
     ObservableList<Note> getAllNotesList();
 
     ObservableList<Note> getFilteredNotesList();
@@ -16,6 +20,8 @@ public interface NotesLogic {
     void filterNotesList(Predicate<Note> predicate);
 
     void addNote(Note note);
+
+    void addNoteFromNoteSubmissionChannel();
 
     void replaceNote(Note oldNote, Note newNote);
 

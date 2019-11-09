@@ -39,7 +39,7 @@ public class JsonNoteBankStorage implements NoteBankStorage {
         Optional<JsonSerializableNoteBank> jsonNoteBank = JsonUtil.readJsonFile(
                 filePath, JsonSerializableNoteBank.class);
 
-        if (!jsonNoteBank.isPresent()) {
+        if (jsonNoteBank.isEmpty()) {
             return Optional.empty();
         }
 
@@ -52,6 +52,6 @@ public class JsonNoteBankStorage implements NoteBankStorage {
 
     @Override
     public void saveNoteBank(NoteBank noteBank) throws IOException {
-
+        NoteBankStorage.saveNoteBank(noteBank, filePath);
     }
 }
