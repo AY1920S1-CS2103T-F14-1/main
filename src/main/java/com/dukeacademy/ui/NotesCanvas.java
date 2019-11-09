@@ -11,11 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-
-import javax.imageio.ImageIO;
+import javafx.scene.shape.Rectangle;
 
 public class NotesCanvas extends UiPart<Region> {
     private static final String FXML = "NotesCanvas.fxml";
@@ -23,6 +25,9 @@ public class NotesCanvas extends UiPart<Region> {
     private static final double eraserWidth = 20;
 
     private final GraphicsContext graphicsContext;
+
+    @FXML
+    private Pane canvasContainer;
 
     @FXML
     private Canvas canvas;
@@ -38,6 +43,13 @@ public class NotesCanvas extends UiPart<Region> {
 
     public NotesCanvas() {
         super(FXML);
+
+        Rectangle clipRect = new Rectangle(canvasContainer.getWidth(), canvasContainer.getHeight());
+        clipRect.heightProperty().bind(canvasContainer.heightProperty());
+        clipRect.widthProperty().bind(canvasContainer.widthProperty());
+
+        canvasContainer.setClip(clipRect);
+
         graphicsContext = canvas.getGraphicsContext2D();
         initDraw(graphicsContext);
         canvas.addEventHandler(MouseEvent.MOUSE_CLICKED, new MouseClickHandler());

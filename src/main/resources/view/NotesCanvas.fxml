@@ -7,8 +7,8 @@
 <?import javafx.scene.canvas.Canvas?>
 
 <AnchorPane xmlns:fx="http://javafx.com/javafx" style="-fx-border-color: #7d2277"
-            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-            AnchorPane.topAnchor="0.0">
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
           AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <ToolBar>
@@ -18,6 +18,8 @@
                 <Button fx:id="clearButton" text="Clear"/>
             </HBox>
         </ToolBar>
-        <Canvas fx:id="canvas" VBox.vgrow="ALWAYS" height="2000" width="2000"/>
+        <Pane fx:id="canvasContainer" VBox.vgrow="ALWAYS">
+            <Canvas fx:id="canvas" height="2000" width="2000"/>
+        </Pane>
     </VBox>
 </AnchorPane>
