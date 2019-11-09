@@ -115,7 +115,8 @@ public class NotesLogicManager implements NotesLogic {
         WritableImage sketch = noteAndSketchPair.getTail();
 
         Optional<Note> oldNote = this.getAllNotesList().stream()
-                .filter(n -> n.getId() == note.getId()).findFirst();
+                .filter(note::equals)
+                .findFirst();
 
         if (oldNote.isEmpty()) {
             this.addNoteWithSketch(note, sketch);
@@ -147,9 +148,19 @@ public class NotesLogicManager implements NotesLogic {
     }
 
     @Override
-    public void selectNote(int id) {
+    public void selectNote(int index) {
+        try {
+            Note selectedNote = this.getAllNotesList().get(index);
+            this.selectNote(selectedNote);
+        } catch (IndexOutOfBoundsException e) {
+            throw new NoteNotFoundRuntimeException();
+        }
+    }
+
+    @Override
+    public void selectNote(Note note) {
         Note selectedNote = this.getAllNotesList().stream()
-                .filter(note -> note.getId() == id)
+                .filter(note::equals)
                 .findFirst()
                 .orElseThrow(NoteNotFoundRuntimeException::new);
 
@@ -164,6 +175,17 @@ public class NotesLogicManager implements NotesLogic {
         this.selectedNoteAndSketch.setValue(new Pair<>(selectedNote, sketch));
     }
 
+    @Override
+    public void deleteNote(int index) {
+        try {
+            Note selectedNote = this.getAllNotesList().get(index);
+            this.noteBank.deleteNote(selectedNote);
+        } catch (IndexOutOfBoundsException e) {
+            throw new NoteNotFoundRuntimeException();
+        }
+
+        this.saveNotesToStorage(this.noteBank);
+    }
 
     private NoteBank loadNotesFromStorage() {
         logger.info("Storage instance built, trying to load notes...");

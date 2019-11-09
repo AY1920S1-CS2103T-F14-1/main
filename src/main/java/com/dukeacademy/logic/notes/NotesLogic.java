@@ -29,5 +29,9 @@ public interface NotesLogic {
 
     Observable<Pair<Note, WritableImage>> getSelectedNote();
 
-    void selectNote(int id);
+    void selectNote(int index);
+
+    void selectNote(Note note);
+
+    void deleteNote(int index);
 }

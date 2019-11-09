@@ -17,9 +17,9 @@ public class NoteCard extends UiPart<Region> {
     @FXML
     private Label noteContent;
 
-    public NoteCard(Note note) {
+    public NoteCard(Note note, int index) {
         super(FXML);
-        noteId.setText(String.valueOf(note.getId()));
+        noteId.setText(String.valueOf(index));
         noteTitle.setText(note.getTitle());
         noteContent.setText(note.getContent());
     }

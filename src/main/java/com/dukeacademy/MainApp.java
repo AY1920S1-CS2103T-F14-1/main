@@ -279,12 +279,13 @@ public class MainApp extends Application {
                 this.programSubmissionLogic, this.applicationState);
         commandLogicManager.registerCommand(helpCommandFactory);
         // Registering new note command
-        NewNoteCommandFactory newNoteCommandFactory = new NewNoteCommandFactory(this.notesLogic);
+        NewNoteCommandFactory newNoteCommandFactory = new NewNoteCommandFactory(this.applicationState,
+                this.notesLogic);
         commandLogicManager.registerCommand(newNoteCommandFactory);
         // Registering open note command
-        OpenNoteCommandFactory openNoteCommandFactory = new OpenNoteCommandFactory(this.notesLogic);
+        OpenNoteCommandFactory openNoteCommandFactory = new OpenNoteCommandFactory(this.applicationState,
+                this.notesLogic);
         commandLogicManager.registerCommand(openNoteCommandFactory);
-
         return commandLogicManager;
     }
 

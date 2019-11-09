@@ -15,7 +15,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" >
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+            style="-fx-background-color: #7d2277;">
+
     <padding>
         <Insets left="45.0" right="45.0"/>
     </padding>
@@ -24,20 +26,21 @@
               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-        <GridPane style="-fx-border-color: #7d2277" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0">
+        <GridPane style="-fx-border-color: #7d2277" GridPane.columnIndex="0" GridPane.hgrow="ALWAYS"
+                  GridPane.rowIndex="0">
 
             <VBox spacing="15.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
 
                 <Label text="Your notes:" textFill="#63075d">
                     <font>
-                        <Font name="Century Gothic" size="20.0" />
+                        <Font name="Century Gothic" size="20.0"/>
                     </font>
                 </Label>
 
-                <StackPane fx:id="notesListPanelPlaceholder" GridPane.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+                <StackPane fx:id="notesListPanelPlaceholder" GridPane.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
 
                 <padding>
-                    <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+                    <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
                 </padding>
 
             </VBox>
@@ -46,7 +49,7 @@
 
                 <Label text="Currently viewing:" textFill="#63075d">
                     <font>
-                        <Font name="Century Gothic" size="20.0" />
+                        <Font name="Century Gothic" size="20.0"/>
                     </font>
                 </Label>
 
@@ -57,13 +60,13 @@
                         <Font name="Consolas Bold" size="16.0"/>
                     </font>
                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                     </padding>
                 </TextField>
 
                 <Label text="Notes:" textFill="#63075d">
                     <font>
-                        <Font name="Century Gothic" size="20.0" />
+                        <Font name="Century Gothic" size="20.0"/>
                     </font>
                 </Label>
                 <TextArea fx:id="notes" VBox.vgrow="ALWAYS" promptText="Write your ideas here">
@@ -71,42 +74,42 @@
                         <Font name="Consolas Bold" size="16.0"/>
                     </font>
                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
                     </padding>
                 </TextArea>
                 <padding>
-                    <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+                    <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
                 </padding>
             </VBox>
 
             <rowConstraints>
-                <RowConstraints percentHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints percentHeight="70.0" vgrow="SOMETIMES" />
+                <RowConstraints percentHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints percentHeight="70.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <columnConstraints>
-                <ColumnConstraints hgrow="ALWAYS" percentWidth="100" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="100"/>
             </columnConstraints>
         </GridPane>
 
         <VBox spacing="15.0" style="-fx-border-color: #7d2277" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <Label text="Doodle pad:" textFill="#63075d">
                 <font>
-                    <Font name="Century Gothic" size="20.0" />
+                    <Font name="Century Gothic" size="20.0"/>
                 </font>
             </Label>
             <AnchorPane fx:id="canvasPlaceholder" VBox.vgrow="ALWAYS"/>
             <padding>
-                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0" />
+                <Insets bottom="15.0" left="35.0" right="35.0" top="15.0"/>
             </padding>
         </VBox>
 
         <rowConstraints>
-            <RowConstraints vgrow="ALWAYS" />
+            <RowConstraints vgrow="ALWAYS"/>
         </rowConstraints>
 
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="40" />
-            <ColumnConstraints hgrow="SOMETIMES" percentWidth="60" />
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="40"/>
+            <ColumnConstraints hgrow="SOMETIMES" percentWidth="60"/>
         </columnConstraints>
 
     </GridPane>

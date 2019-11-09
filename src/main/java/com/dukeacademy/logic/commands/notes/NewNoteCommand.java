@@ -6,16 +6,20 @@ import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.notes.NotesLogic;
 import com.dukeacademy.model.notes.Note;
+import com.dukeacademy.model.state.Activity;
+import com.dukeacademy.model.state.ApplicationState;
 
 import java.util.logging.Logger;
 
 public class NewNoteCommand implements Command {
     private final NotesLogic notesLogic;
+    private final ApplicationState applicationState;
     private final String noteTitle;
     private final Logger logger;
 
-    public NewNoteCommand(NotesLogic notesLogic, String noteTitle) {
+    public NewNoteCommand(ApplicationState applicationState, NotesLogic notesLogic, String noteTitle) {
         this.logger = LogsCenter.getLogger(NewNoteCommand.class);
+        this.applicationState = applicationState;
         this.notesLogic = notesLogic;
         this.noteTitle = noteTitle;
     }
@@ -31,9 +35,11 @@ public class NewNoteCommand implements Command {
         logger.info("Creating new note : " + noteTitle);
 
         notesLogic.addNote(newNote);
-        notesLogic.selectNote(newNote.getId());
+        notesLogic.selectNote(newNote);
 
         logger.info("Opening new note : " + newNote);
+
+        applicationState.setCurrentActivity(Activity.NOTE);
 
         return new CommandResult("New note successfully created : " + noteTitle, false);
     }

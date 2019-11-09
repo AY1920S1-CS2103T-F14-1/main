@@ -48,7 +48,7 @@ public class NotesPage extends UiPart<Region> {
         notesCanvas = new NotesCanvas();
         canvasPlaceholder.getChildren().add(notesCanvas.getRoot());
 
-        NoteListPanel noteListPanel = new NoteListPanel(notesLogic.getFilteredNotesList());
+        NoteListPanel noteListPanel = new NoteListPanel(notesLogic.getAllNotesList());
         noteListPanel.getRoot().addEventFilter(MouseEvent.MOUSE_PRESSED, Event::consume);
         notesListPanelPlaceholder.getChildren().add(noteListPanel.getRoot());
 

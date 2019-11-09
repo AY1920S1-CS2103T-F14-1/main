@@ -193,8 +193,12 @@ class MainWindow extends UiPart<Stage> {
             this.tabPane.getSelectionModel().select(2);
         }
 
-        if (activity == Activity.HELP) {
+        if (activity == Activity.NOTE) {
             this.tabPane.getSelectionModel().select(3);
+        }
+
+        if (activity == Activity.HELP) {
+            this.tabPane.getSelectionModel().select(4);
         }
     }
 
@@ -217,6 +221,10 @@ class MainWindow extends UiPart<Stage> {
             }
 
             if (newValue.intValue() == 3) {
+                resultDisplay.setFeedbackToUser(TabCommand.FEEDBACK + Activity.NOTE.toString());
+            }
+
+            if (newValue.intValue() == 4) {
                 resultDisplay.setFeedbackToUser(TabCommand.FEEDBACK + Activity.HELP.toString());
             }
         }

@@ -4,12 +4,15 @@ import com.dukeacademy.logic.commands.Command;
 import com.dukeacademy.logic.commands.CommandFactory;
 import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsException;
 import com.dukeacademy.logic.notes.NotesLogic;
+import com.dukeacademy.model.state.ApplicationState;
 
 public class NewNoteCommandFactory implements CommandFactory {
     private final NotesLogic notesLogic;
+    private final ApplicationState applicationState;
     private static final String TITLE_VALIDATION_REGEX = "[^\\s].*";
 
-    public NewNoteCommandFactory(NotesLogic notesLogic) {
+    public NewNoteCommandFactory(ApplicationState applicationState, NotesLogic notesLogic) {
+        this.applicationState = applicationState;
         this.notesLogic = notesLogic;
     }
 
@@ -24,6 +27,6 @@ public class NewNoteCommandFactory implements CommandFactory {
             throw new InvalidCommandArgumentsException("Note title should not be empty!");
         }
 
-        return new NewNoteCommand(notesLogic, commandArguments);
+        return new NewNoteCommand(applicationState, notesLogic, commandArguments);
     }
 }
