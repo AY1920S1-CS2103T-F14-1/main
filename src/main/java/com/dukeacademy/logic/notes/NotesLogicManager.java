@@ -177,15 +177,17 @@ public class NotesLogicManager implements NotesLogic {
     }
 
     @Override
-    public void deleteNote(int index) {
+    public Note deleteNote(int index) {
+        Note selectedNote;
         try {
-            Note selectedNote = this.getAllNotesList().get(index);
+            selectedNote = this.getAllNotesList().get(index);
             this.noteBank.deleteNote(selectedNote);
         } catch (IndexOutOfBoundsException e) {
             throw new NoteNotFoundRuntimeException();
         }
 
         this.saveNotesToStorage(this.noteBank);
+        return selectedNote;
     }
 
     private NoteBank loadNotesFromStorage() {

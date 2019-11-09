@@ -27,6 +27,7 @@ import com.dukeacademy.logic.commands.help.HelpCommandFactory;
 import com.dukeacademy.logic.commands.home.HomeCommandFactory;
 import com.dukeacademy.logic.commands.list.ListCommandFactory;
 import com.dukeacademy.logic.commands.load.LoadCommandFactory;
+import com.dukeacademy.logic.commands.notes.DeleteNoteCommandFactory;
 import com.dukeacademy.logic.commands.notes.NewNoteCommandFactory;
 import com.dukeacademy.logic.commands.notes.OpenNoteCommand;
 import com.dukeacademy.logic.commands.notes.OpenNoteCommandFactory;
@@ -292,6 +293,10 @@ public class MainApp extends Application {
         SaveNoteCommandFactory saveNoteCommandFactory = new SaveNoteCommandFactory(this.applicationState,
                 this.notesLogic);
         commandLogicManager.registerCommand(saveNoteCommandFactory);
+        // Registering delete note command
+        DeleteNoteCommandFactory deleteNoteCommandFactory = new DeleteNoteCommandFactory(this.applicationState,
+                this.notesLogic);
+        commandLogicManager.registerCommand(deleteNoteCommandFactory);
 
         return commandLogicManager;
     }

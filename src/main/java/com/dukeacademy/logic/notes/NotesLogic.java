@@ -34,5 +34,5 @@ public interface NotesLogic {
 
     void selectNote(Note note);
 
-    void deleteNote(int index);
+    Note deleteNote(int index);
 }

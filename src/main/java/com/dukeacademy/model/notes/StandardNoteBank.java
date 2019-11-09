@@ -41,6 +41,11 @@ public class StandardNoteBank implements NoteBank {
 
     @Override
     public void deleteNote(Note oldNote) {
-        throw new UnsupportedOperationException();
+        int oldNoteIndex = IntStream.range(0, notesList.size())
+                .filter(i -> notesList.get(i).equals(oldNote))
+                .findFirst()
+                .orElseThrow(NoteNotFoundRuntimeException::new);
+
+        notesList.remove(oldNoteIndex);
     }
 }
