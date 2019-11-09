@@ -233,7 +233,7 @@ public class MainApp extends Application {
 
         // Registering exit command
         ExitCommandFactory exitCommandFactory = new ExitCommandFactory(this.questionsLogic,
-                this.programSubmissionLogic);
+                this.programSubmissionLogic, this.notesLogic);
         commandLogicManager.registerCommand(exitCommandFactory);
         // Registering attempt command
         AttemptCommandFactory attemptCommandFactory = new AttemptCommandFactory(this.questionsLogic,
