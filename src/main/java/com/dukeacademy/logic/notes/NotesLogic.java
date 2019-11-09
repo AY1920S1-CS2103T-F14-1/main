@@ -6,6 +6,7 @@ import com.dukeacademy.observable.Observable;
 import javafx.collections.ObservableList;
 import javafx.scene.image.WritableImage;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 
 public interface NotesLogic {
@@ -23,7 +24,7 @@ public interface NotesLogic {
 
     void addNote(Note note);
 
-    void saveNoteFromNoteSubmissionChannel();
+    Optional<Note> saveNoteFromNoteSubmissionChannel();
 
     void replaceNote(Note oldNote, Note newNote, WritableImage newSketch);
 

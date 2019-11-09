@@ -30,6 +30,8 @@ import com.dukeacademy.logic.commands.load.LoadCommandFactory;
 import com.dukeacademy.logic.commands.notes.NewNoteCommandFactory;
 import com.dukeacademy.logic.commands.notes.OpenNoteCommand;
 import com.dukeacademy.logic.commands.notes.OpenNoteCommandFactory;
+import com.dukeacademy.logic.commands.notes.SaveNoteCommand;
+import com.dukeacademy.logic.commands.notes.SaveNoteCommandFactory;
 import com.dukeacademy.logic.commands.submit.SubmitCommandFactory;
 import com.dukeacademy.logic.commands.tab.TabCommandFactory;
 import com.dukeacademy.logic.commands.view.ViewCommandFactory;
@@ -286,6 +288,11 @@ public class MainApp extends Application {
         OpenNoteCommandFactory openNoteCommandFactory = new OpenNoteCommandFactory(this.applicationState,
                 this.notesLogic);
         commandLogicManager.registerCommand(openNoteCommandFactory);
+        // Registering save note command
+        SaveNoteCommandFactory saveNoteCommandFactory = new SaveNoteCommandFactory(this.applicationState,
+                this.notesLogic);
+        commandLogicManager.registerCommand(saveNoteCommandFactory);
+
         return commandLogicManager;
     }
 

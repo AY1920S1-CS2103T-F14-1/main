@@ -97,7 +97,7 @@ public class NotesLogicManager implements NotesLogic {
     }
 
     @Override
-    public void saveNoteFromNoteSubmissionChannel() {
+    public Optional<Note> saveNoteFromNoteSubmissionChannel() {
         if (this.noteSubmissionChannel == null) {
             throw new SubmissionChannelNotSetException();
         }
@@ -108,7 +108,7 @@ public class NotesLogicManager implements NotesLogic {
              noteAndSketchPair = this.noteSubmissionChannel.getNoteAndSketchPair();
         } catch (NoNoteSetException e) {
             logger.info("No current note set, skipping save...");
-            return;
+            return Optional.empty();
         }
 
         Note note = noteAndSketchPair.getHead();
@@ -121,10 +121,11 @@ public class NotesLogicManager implements NotesLogic {
         if (oldNote.isEmpty()) {
             this.addNoteWithSketch(note, sketch);
             logger.info("New note detected, creating new note : " + note);
-            return;
+            return Optional.of(note);
         }
 
         this.replaceNote(oldNote.get(), note, sketch);
+        return Optional.of(note);
     }
 
     @Override
