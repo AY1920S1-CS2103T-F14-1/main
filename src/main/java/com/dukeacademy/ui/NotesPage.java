@@ -67,9 +67,11 @@ public class NotesPage extends UiPart<Region> {
 
     private void loadNoteAndSketch(Pair<Note, WritableImage> noteAndSketchPair) {
         if (noteAndSketchPair == null) {
+            toggleEditable(false);
             return;
         }
 
+        toggleEditable(true);
         Note note = noteAndSketchPair.getHead();
         WritableImage sketch = noteAndSketchPair.getTail();
 
@@ -80,6 +82,22 @@ public class NotesPage extends UiPart<Region> {
         if (sketch != null) {
             notesCanvas.clearCanvas();
             notesCanvas.drawImage(sketch);
+        }
+    }
+
+    private void toggleEditable(boolean isEditable) {
+        if (!isEditable) {
+            notes.setMouseTransparent(true);
+            notes.setFocusTraversable(false);
+
+            canvasPlaceholder.setMouseTransparent(true);
+            canvasPlaceholder.setFocusTraversable(false);
+        } else {
+            notes.setMouseTransparent(false);
+            notes.setFocusTraversable(true);
+
+            canvasPlaceholder.setMouseTransparent(false);
+            canvasPlaceholder.setFocusTraversable(true);
         }
     }
 }

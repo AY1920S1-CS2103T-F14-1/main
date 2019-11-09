@@ -51,7 +51,8 @@
                 </Label>
 
                 <TextField fx:id="currentNoteTitle" VBox.vgrow="ALWAYS" editable="false"
-                           mouseTransparent="true" focusTraversable="false">
+                           mouseTransparent="true" focusTraversable="false"
+                           promptText="Open a note to start drawing and writing!">
                     <font>
                         <Font name="Consolas Bold" size="16.0"/>
                     </font>
