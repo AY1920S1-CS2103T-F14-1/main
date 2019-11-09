@@ -1,12 +1,10 @@
 package com.dukeacademy.testutil;
 
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import com.dukeacademy.data.Pair;
 import com.dukeacademy.logic.notes.NoteSubmissionChannel;
 import com.dukeacademy.logic.notes.NotesLogic;
-import com.dukeacademy.logic.notes.SketchManager;
 import com.dukeacademy.model.notes.Note;
 import com.dukeacademy.observable.Observable;
 import com.dukeacademy.observable.StandardObservable;
@@ -22,7 +20,7 @@ import javafx.scene.image.WritableImage;
  */
 public class MockNotesLogic implements NotesLogic {
     public static final Note BEFORE_SAVE_NOTE = new Note("test", "before save");
-    public static final Note AFTER_SAVE_NOTE = BEFORE_SAVE_NOTE.withNewNotes("after save");
+    public static final Note AFTER_SAVE_NOTE = BEFORE_SAVE_NOTE.withNewNoteContents("after save");
 
     private ObservableList<Note> notes;
     private StandardObservable<Pair<Note, WritableImage>> currentNoteObservable;
@@ -40,23 +38,8 @@ public class MockNotesLogic implements NotesLogic {
     }
 
     @Override
-    public SketchManager getSketchManager() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public ObservableList<Note> getAllNotesList() {
         return notes;
-    }
-
-    @Override
-    public ObservableList<Note> getFilteredNotesList() {
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public void filterNotesList(Predicate<Note> predicate) {
-        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -88,7 +71,7 @@ public class MockNotesLogic implements NotesLogic {
     }
 
     @Override
-    public Note selectNote(int index) {
+    public Note selectNote(int id) {
         throw new UnsupportedOperationException();
     }
 
@@ -98,7 +81,7 @@ public class MockNotesLogic implements NotesLogic {
     }
 
     @Override
-    public Note deleteNote(int index) {
+    public Note deleteNote(int id) {
         throw new UnsupportedOperationException();
     }
 }

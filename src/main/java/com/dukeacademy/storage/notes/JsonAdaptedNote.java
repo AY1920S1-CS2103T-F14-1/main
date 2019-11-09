@@ -1,12 +1,16 @@
 package com.dukeacademy.storage.notes;
 
+import java.util.UUID;
+
 import com.dukeacademy.commons.exceptions.IllegalValueException;
 import com.dukeacademy.model.notes.Note;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.UUID;
-
+/**
+ * A JSON serializable version of a Note.
+ */
 public class JsonAdaptedNote {
     private final String title;
     private final String content;
@@ -23,6 +27,10 @@ public class JsonAdaptedNote {
         this.sketchIdLeastSignificantBits = sketchIdLeastSignificantBits;
     }
 
+    /**
+     * Constructor, converts a given Note instance to the Json serializable version.
+     * @param source the Note to convert
+     */
     public JsonAdaptedNote(Note source) {
         this.title = source.getTitle();
         this.content = source.getContent();
@@ -30,6 +38,11 @@ public class JsonAdaptedNote {
         this.sketchIdLeastSignificantBits = String.valueOf(source.getSketchId().getLeastSignificantBits());
     }
 
+    /**
+     * Converts the JsonSerializableNote to a Note instance.
+     * @return the converted Note instance
+     * @throws IllegalValueException if there are invalid values
+     */
     public Note toModel() throws IllegalValueException {
         if (title == null) {
             throw new IllegalValueException("Title cannot be null.");

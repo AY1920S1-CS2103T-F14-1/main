@@ -6,6 +6,11 @@ import com.dukeacademy.logic.commands.exceptions.InvalidCommandArgumentsExceptio
 import com.dukeacademy.logic.notes.NotesLogic;
 import com.dukeacademy.model.state.ApplicationState;
 
+/**
+ * Factory class used to supply SaveNoteCommands. The SaveNoteCommand instances will be instantiated using the
+ * NotesLogic and ApplicationState instance contained in the factory. The corresponding command word to invoke this
+ * factory is "savenote".
+ * */
 public class SaveNoteCommandFactory implements CommandFactory {
     private final ApplicationState applicationState;
     private final NotesLogic notesLogic;
@@ -20,6 +25,11 @@ public class SaveNoteCommandFactory implements CommandFactory {
         return "savenote";
     }
 
+    /**
+     * The SaveNoteCommand does not take in any command arguments.
+     * @param commandArguments the command text from the user's input
+     * @throws InvalidCommandArgumentsException if the command argument is not empty
+     */
     @Override
     public Command getCommand(String commandArguments) throws InvalidCommandArgumentsException {
         if (!commandArguments.matches("\\s*")) {

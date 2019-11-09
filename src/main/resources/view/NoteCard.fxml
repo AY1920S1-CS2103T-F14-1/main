@@ -4,8 +4,8 @@
 <?import javafx.scene.text.TextFlow?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Label?>
-
 <?import javafx.geometry.Insets?>
+
 <VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
     <TextFlow>
         <Label fx:id="noteId">
