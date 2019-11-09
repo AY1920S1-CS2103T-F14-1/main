@@ -30,7 +30,7 @@ public interface NotesLogic {
 
     Observable<Pair<Note, WritableImage>> getSelectedNote();
 
-    void selectNote(int index);
+    Note selectNote(int index);
 
     void selectNote(Note note);
 

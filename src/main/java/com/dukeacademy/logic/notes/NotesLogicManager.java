@@ -141,6 +141,11 @@ public class NotesLogicManager implements NotesLogic {
 
         this.noteBank.replaceNote(oldNote, newNote);
         this.saveNotesToStorage(this.noteBank);
+
+        this.selectedNoteAndSketch.getValue()
+                .map(Pair::getHead)
+                .filter(note -> note.equals(newNote))
+                .ifPresent(note -> this.selectedNoteAndSketch.setValue(new Pair<>(newNote, newSketch)));
     }
 
     @Override
@@ -149,10 +154,11 @@ public class NotesLogicManager implements NotesLogic {
     }
 
     @Override
-    public void selectNote(int index) {
+    public Note selectNote(int index) {
         try {
             Note selectedNote = this.getAllNotesList().get(index);
             this.selectNote(selectedNote);
+            return selectedNote;
         } catch (IndexOutOfBoundsException e) {
             throw new NoteNotFoundRuntimeException();
         }
@@ -174,6 +180,7 @@ public class NotesLogicManager implements NotesLogic {
         }
 
         this.selectedNoteAndSketch.setValue(new Pair<>(selectedNote, sketch));
+
     }
 
     @Override
@@ -182,6 +189,11 @@ public class NotesLogicManager implements NotesLogic {
         try {
             selectedNote = this.getAllNotesList().get(index);
             this.noteBank.deleteNote(selectedNote);
+
+            this.selectedNoteAndSketch.getValue()
+                    .map(Pair::getHead)
+                    .filter(note -> note.equals(selectedNote))
+                    .ifPresent(note -> this.selectedNoteAndSketch.setValue(null));
         } catch (IndexOutOfBoundsException e) {
             throw new NoteNotFoundRuntimeException();
         }

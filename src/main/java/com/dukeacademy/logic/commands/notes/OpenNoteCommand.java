@@ -6,6 +6,7 @@ import com.dukeacademy.logic.commands.CommandResult;
 import com.dukeacademy.logic.commands.exceptions.CommandException;
 import com.dukeacademy.logic.notes.NotesLogic;
 import com.dukeacademy.logic.notes.exceptions.NoteNotFoundRuntimeException;
+import com.dukeacademy.model.notes.Note;
 import com.dukeacademy.model.state.Activity;
 import com.dukeacademy.model.state.ApplicationState;
 
@@ -29,16 +30,17 @@ public class OpenNoteCommand implements Command {
         logger.info("Attempting to save previously opened note...");
         this.notesLogic.saveNoteFromNoteSubmissionChannel();
 
+        Note selectedNote;
         try {
             logger.info("Attempting to open note at index : " + index);
-            this.notesLogic.selectNote(index);
+            selectedNote = this.notesLogic.selectNote(index);
         } catch (NoteNotFoundRuntimeException e) {
             logger.warning("No note found at index : " + index);
-            throw new CommandException("No note at index " + index + " found");
+            throw new CommandException("No note found at index : " + (index + 1));
         }
 
         applicationState.setCurrentActivity(Activity.NOTE);
-        logger.info("Successfully opened note at index : " + index);
-        return new CommandResult("Successfully opened note " + index, false);
+        logger.info("Successfully opened note at index : " + selectedNote);
+        return new CommandResult("Successfully opened note : " + selectedNote.getTitle(), false);
     }
 }

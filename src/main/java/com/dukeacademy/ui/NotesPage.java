@@ -67,6 +67,7 @@ public class NotesPage extends UiPart<Region> {
 
     private void loadNoteAndSketch(Pair<Note, WritableImage> noteAndSketchPair) {
         if (noteAndSketchPair == null) {
+            clearCurrentQuestion();
             toggleEditable(false);
             return;
         }
@@ -99,5 +100,12 @@ public class NotesPage extends UiPart<Region> {
             canvasPlaceholder.setMouseTransparent(false);
             canvasPlaceholder.setFocusTraversable(true);
         }
+    }
+
+    private void clearCurrentQuestion() {
+        this.selectedNote = null;
+        this.currentNoteTitle.setText(null);
+        this.notes.setText(null);
+        this.notesCanvas.clearCanvas();
     }
 }
