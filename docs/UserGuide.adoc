@@ -22,23 +22,23 @@ By: `CS2103T-F14-1`      Since: `Aug 2019`      Licence: `MIT`
 
 == Introduction
 
-DukeAcademy is a coding practice platform that operates entirely on your local machine without the need for an internet
+Duke Academy is a coding practice platform that operates entirely on your local machine without the need for an internet
 connection. Whether you are revising for a test, practicing for a tech interview, or just coding for the sheer joy of
 it, DukeAcademy gives you access to a wide range of programming problems from various categories. Easily find something
 that suits your needs and interests and start honing your skills today!
 
-DukeAcademy features a built-in list of problem sets and its very own text editor. Simply choose a problem statement
-that catches your eye, load it up in the problem display panel and start coding away! DukeAcademy also features your
+Duke Academy features a built-in list of problem sets and its very own text editor. Simply choose a problem statement
+that catches your eye, load it up in the problem display panel and start coding away! Duke Academy also features your
 very own profile page for you to immediately view all of your accomplishments at a glance. Your profile page also helps
 you keep track of the problems that you have attempted and those you have bookmarked, so that you can get back to them
 easily at a later time.
 
-For educators, you can use DukeAcademy as a platform to administer your assignments or practice questions. If you have
+For educators, you can use Duke Academy as a platform to administer your assignments or practice questions. If you have
 questions of your own you would like to test your students, you can use the built-in question loader in DukeAcademy to
 set your own questions and then distribute the updated _questionBank.json_ file to your students through your favourite
 communication channels.
 
-DukeAcademy is optimized for those who prefer to work with a CLI (Command Line Interface) while still enjoying the
+Duke Academy is optimized for those who prefer to work with a CLI (Command Line Interface) while still enjoying the
 benefits of a GUI (Graphical User Interface). If you are unfamiliar with using a CLI (which is an important skill for all
 programmers), you can get used to it while working on your coding skills here in DukeAcademy!
 
@@ -70,20 +70,20 @@ image::quickstart1.png[width="1000"]
 image::mainUi.png[width="1000"]
 +
 
-1. *CommandBox*
+1. *Command Box*
 +
 This will be the field where you input all your commands. After you press the kbd:[Enter] button, your command will be executed.
 +
 e.g. typing *`showall`*, followed by pressing kbd:[Enter] will display all the questions in the app.
 +
 To find out about the commands available in Duke Academy, please visit <<Features>>.
-2. *ResultDisplayBox*
+2. *Result Display Box*
 +
 Once you have executed a command, a feedback will be displayed in this field.
 +
 e.g. after executing *`showall`* command, "List all questions..." will be displayed.
 
-3. *TabView*
+3. *Tab View*
 +
 Consists of 3 different tabs: _Home_, _Questions_ and _Workspace_
 
@@ -100,7 +100,7 @@ image::questionindex.png[width="1000"]
 == Overview
 
 The application is divided into 3 separate tabs, each one of them serving a specific purpose. You can toggle between the
-different tabs by entering `tab` into the *CommandBox*.
+different tabs by entering `tab` into the *Command Box*.
 
 === Home
 The *Home* tab contains an introduction of the application, and more importantly, a *Personal Dashboard* for you to keep track of your progress made in Duke Academy.
@@ -140,13 +140,14 @@ The workspace is where you will work on the various questions.
 
 image::workspace.png[width="1000"]
 
-. *ProblemStatementDisplay*
+. *Problem Statement Display*
 +
 Displays the question that you are currently attempting.
 
-. *ProgramEvaluationDisplay*
+. *Program Evaluation Panel*
 +
-This window displays the results after DukeAcademy has finished evaluating the correctness of your program.
+This panel displays the correctness
+This window displays the results after Duke Academy has finished evaluating the correctness of your program.
 . *Editor*
 +
 A built-in editor for you to write your code.
