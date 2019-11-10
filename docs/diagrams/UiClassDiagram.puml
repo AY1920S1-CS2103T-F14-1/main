@@ -9,16 +9,26 @@ Interface Ui <<Interface>>
 Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
-Class HelpWindow
-Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
-Class StatusBarFooter
 Class CommandBox
-}
+Class ResultDisplay
+Class HomePage
+Class QuestionsPage
+Class QuestionListPanel
+Class QuestionCard
+Class Tag
+Class Workspace
+Class ProgramEvaluationPanel
+Class ProgramEvaluationCard
+Class Editor
+Class NotesPage
+Class NotesListPanel
+Class NotesCanvas
+Class NoteCard
+Class HelpPage
+Class ProblemStatementPanel
 
-package Model <<Rectangle>> {
-Class HiddenModel #FFFFFF
+package ObservableList <<Rectangle>> {
+Class HiddenObservableList<Question> #FFFFFF
 }
 
 package Logic <<Rectangle>> {
@@ -30,31 +40,52 @@ HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
 UiManager -down-> MainWindow
-MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
-MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> HomePage
+MainWindow *-down-> QuestionsPage
+MainWindow *-down-> Workspace
+MainWindow *-down-> NotesPage
+MainWindow *-down-> HelpPage
 
-PersonListPanel -down-> PersonCard
+QuestionsPage -down-> ProblemStatementPanel
+QuestionsPage *-down-> QuestionListPanel
+QuestionListPanel -down-> QuestionCard
+QuestionCard *-down-> Tag
+
+NotesPage *-down-> NotesCanvas
+NotesCanvas -down-> NotesListPanel
+NotesListPanel -down-> NoteCard
+
+Workspace -down-> ProblemStatementPanel
+Workspace *-down-> ProgramEvaluationPanel
+Workspace *-down-> Editor
+
+ProgramEvaluationPanel *-down-> ProgramEvaluationCard
+
 
 MainWindow -left-|> UiPart
-
-ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
-StatusBarFooter --|> UiPart
-HelpWindow -down-|> UiPart
+ResultDisplay --|> UiPart
+HomePage --|> UiPart
+QuestionsPage --|> UiPart
+QuestionListPanel --|> UiPart
+QuestionCard --|> UiPart
+Tag --|> UiPart
+Workspace --|> UiPart
+ProgramEvaluationPanel --|> UiPart
+ProgramEvaluationCard --|> UiPart
+Editor --|> UiPart
+NotesPage --|> UiPart
+NotesListPanel --|> UiPart
+NotesCanvas --|> UiPart
+NoteCard --|> UiPart
+HelpPage --|> UiPart
+ProblemStatementPanel --|> UiPart
 
-PersonCard ..> Model
+QuestionListPanel ...> ObservableList
+HomePage ...> ObservableList
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
-
-MainWindow -[hidden]-|> UiPart
 @enduml
