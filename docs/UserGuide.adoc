@@ -176,9 +176,18 @@ e.g. `browse [category]...` can be used as
 `browse easy linkedlist hashtable recursion` (i.e. 4 entries), etc.
 ====
 
+=== Access Help Tab: `help`
+
+Navigates to the *Help* Tab.
+
+*Format:* `help`
+
+image::home.png[width="1000"]
+
+
 === Access Home Tab: `home`
 
-Navigates back to the *Home* Tab.
+Navigates to the *Home* Tab.
 
 *Format:* `home`
 
