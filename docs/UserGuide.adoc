@@ -182,7 +182,7 @@ Navigates to the *Help* Tab.
 
 *Format:* `help`
 
-image::home.png[width="1000"]
+image::help.png[width="1000"]
 
 
 === Access Home Tab: `home`
