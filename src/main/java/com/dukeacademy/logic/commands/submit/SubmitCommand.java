@@ -70,7 +70,7 @@ public class SubmitCommand implements Command {
             resultsOptional = this.programSubmissionLogic.submitUserProgram(userProgram);
         } catch (IncorrectCanonicalNameException e) {
             logger.warning("Main class not detected, command will not be executed");
-            throw new CommandException("Main class needed as entry point.");
+            throw new CommandException("Please write your main method in a class called Main");
         } catch (EmptyUserProgramException e) {
             logger.warning("Program is empty, command will not be executed");
             throw new CommandException("Program must not be empty.");
