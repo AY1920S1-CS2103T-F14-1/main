@@ -148,8 +148,7 @@ Displays the question that you are currently attempting.
 
 . *Program Evaluation Panel*
 +
-This panel displays the correctness
-This window displays the results after Duke Academy has finished evaluating the correctness of your program.
+This panel displays the correctness of your program when evaluated against the pre-defined list of test cases tied to the question you are solving.
 . *Editor*
 +
 A built-in editor for you to write your code.
