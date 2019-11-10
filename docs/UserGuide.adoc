@@ -57,7 +57,7 @@ programmers), you can get used to it while working on your coding skills here in
 - Save the text file as a .bat file in the same location as the .jar file.
 - Then double-click on the newly created .bat file to run the app.
 
-. When launching the app for the first time, it will create a folder in your User home directory.
+. When launching the app for the first time, it will create a folder named _DukeAcademy_ in the directory where your jar is located.
 - This folder will contain all of your app's data. To fix any errors related to corrupted data, delete this folder and the app will be reinstalled.
 
 +

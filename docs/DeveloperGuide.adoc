@@ -91,28 +91,95 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
+
 [[Design-Logic]]
-=== Logic component
+=== Logic components
 
-[[fig-LogicClassDiagram]]
-.Structure of the Logic Component
-image::LogicClassDiagram.png[]
+==== Overview
+There are 4 main logic components found in the architecture of Duke Academy. They are `CommandLogic`, `QuestionsLogic`, `ProgramSubmissionLogic` and `NotesLogic`.
+Each logic component serves as a *facade* for the basic operations by the application with regards to *Commands*, *Questions*, *ProgramSubmission* and *Notes*.
 
-*API* :
-link:{repoURL}/src/main/java/seedu/difficulty/logic/Logic.java[`Logic.java`]
+They orchestrate the execution of these operations internally and expose a simple interface for other components, such as the `UI` to utilize.
 
-.  `Logic` uses the `AddressBookParser` class to parse the user command.
-.  This results in a `Command` object which is executed by the `LogicManager`.
-.  The command execution can affect the `Model` (e.g. adding a person).
-.  The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-.  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+The logic components are interfaces so their implementation can be changed easily.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+[[fig-CommandLogicClassDiagram]]
+.Class diagram of the CommandLogic interface
+image::CommandLogicClassDiagram.png[]
 
-.Interactions Inside the Logic Component for the `delete 1` Command
-image::DeleteSequenceDiagram.png[]
+[[fig-QuestionLogicClassDiagram]]
+.Class diagram of the QuestionLogic interface
+image::QuestionsLogicClassDiagram.png[]
 
-NOTE: The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+[[fig-ProgramSubmissionLogicClassDiagram]]
+.Class diagram of the ProgramSubmissionLogic interface
+image::ProgramSubmissionLogicClassDiagram.png[]
+
+[[fig-NotesLogicClassDiagram]]
+.Class diagram of the NotesLogic interface
+image::NotesLogicClassDiagram.png[]
+
+==== CommandLogic implementation
+The standard implementation of the CommandLogic is the `CommandLogicManager` class.
+This implementation works by requiring its users to register a `CommandSupplier` functional interface with a specific key.
+The command can also be registered with a `CommandFactory` which encapsulates the Key-CommandSupplier relation.
+
+Subsequent calls to the `executeCommand()` method will attempt to match the command String to all the registered keys to
+retrieve the correct `CommandSupplier`.
+
+Storage of these keys and the parsing of the `commandText` argument is performed by `CommandParser`.
+
+[[fig-CommandLogicManagerAssociations]]
+.Associations of the CommandLogicManager
+image::CommandLogicManager.png[]
+
+====
+* The `CommandSupplier` only accepts the arguments of the command.
+* `InvalidCommandArgumentException` is thrown if the arguments do not match the specification of the command.
+* The `CommandParser` splits the command String into the registered key and arguments in order to retrieve the corresponding command.
+====
+
+The basic sequence of command execution is as follows:
+
+. `Command` is registered upon startup by the application driver
+
+. The command and its matching key is stored in the `CommandParser` by the `CommandLogicManager`
+
+. User enters command text
+
+. Application driver passes the command text as a String to the `CommandLogicManager`
+
+. `CommandLogicManager` passes on the command text to the `CommandParser` for parsing and `Command` retrieval
+
+. `CommandLogicManager` executes the retrieved `Command`
+
+
+[[fig-CommandLogicSequenceDiagram]]
+.Sequence diagram for command execution
+image::CommandLogicSequence.png[]
+
+
+==== QuestionsLogic implementation
+The standard implementation of the `QuestionsLogic` interface is the `QuestionsLogicManager`. This implementation stores the questions
+in the application in the form of a `QuestionBank`. It saves any changes made to the `QuestionBank` immediately using a `QuestionBankStorage`.
+_(View <<Design-Storage>> for more details.)_
+
+[[fig-QuestionsLogicManagerAssociations]]
+.Associations of the QuestionLogicManager
+image::QuestionsLogicManager.png[]
+
+====
+* The `QuestionsLogicManager` constructor takes in a `QuestionBankStorage` instance which is used to load the initial `QuestionBank` and to save subsequent revisions to it.
+* The main bulk of the CRUD operations are handled by the `QuestionBank` class. the `QuestionLogicManager` orchestrate the invocation of the `QuestionBank` methods along with storage of the changes.
+====
+
+
+==== ProgramSubmissionLogic implementation
+
+==== NotesLogic implementation
+
+
+
 
 [[Design-Model]]
 === Model component
@@ -179,27 +246,6 @@ Classes used by multiple components are in the `com.dukeacademy.commons` package
 == Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
-
-// tag::submit[]
-=== [Proposed] Submit feature
-
-The submit mechanism is facilitated by `UserInterface`.
-
-The Sequence Diagram given below is an example of a scenario in which the submit command is executed when the user enters "submit" into the `CommandBox` terminal.
-
-image::submitSequenceDiagram.png[]
-
-Step 1. The user enters "submit" into the `CommandBox`.
-
-Step 2. The will call the `executeCommand()` method of the `CommandLogicManager` which will then call the `parseCommandText()` method of the `CommandParser`.
-
-Step 3. The CommandParser then calls the constructor of the Command class to create a new Command object, which is then returned to the `CommandLogicManager`.
-
-Step 4. CommandLogicManager then calls the `execute()` method of the newly created Command object.
-The UI will then retrieve the user-written code from within the `Editor` as a String to be passed onto the `ProgramSubmissionLogicManager` to be compiled as a .class file for execution.
-
-Step 5: After running the .class file, the output is then displayed to the user through the UI.
-// end::submit[]
 
 === Evaluation of user program submissions
 The evaluation of the user's programs is facilitated by the `solutions` package.
