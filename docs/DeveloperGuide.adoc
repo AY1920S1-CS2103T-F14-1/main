@@ -4,7 +4,7 @@
 :toc-title:
 :toc-placement: preamble
 :sectnums:
-:imagesDir: images
+:imagesDir: images/developerguide
 :stylesDir: stylesheets
 :xrefstyle: full
 ifdef::env-github[]
@@ -164,6 +164,13 @@ The standard implementation of the `QuestionsLogic` interface is the `QuestionsL
 in the application in the form of a `QuestionBank`. It saves any changes made to the `QuestionBank` immediately using a `QuestionBankStorage`.
 _(View <<Design-Storage>> for more details.)_
 
+- The `QuestionsLogicManager` allows other components of the application to make changes to the current state of questions using its methods.
+
+- Other components of the application can also observe the current state of questions by getting an `ObservableList` of all the questions in the application through the `getAllQuestionsList()` and `getFilteredQuestionsList()` method.
+
+- The `ObservableList` from the `getFilteredQuestionsList()` method is a filtered list of the questions in the application. This filter can be changed by the `setFilter(predicate)` method.
+
+
 [[fig-QuestionsLogicManagerAssociations]]
 .Associations of the QuestionLogicManager
 image::QuestionsLogicManager.png[]
@@ -175,6 +182,10 @@ image::QuestionsLogicManager.png[]
 
 
 ==== ProgramSubmissionLogic implementation
+The standard implementation of the `ProgramSubmissionLogic` is the `ProgramSubmissionLogicManager`. This implementation
+relies on the `TestExecutor` class to execute users' program submissions locally on their machine.
+_(View <<Implementation-ProgramEvaluation>> for more details.)_
+
 
 ==== NotesLogic implementation
 
@@ -186,20 +197,6 @@ image::QuestionsLogicManager.png[]
 
 .Structure of the Model Component
 image::ModelClassDiagram.png[]
-
-*API* : link:{repoURL}/src/main/java/seedu/difficulty/model/Model.java[`Model.java`]
-
-The `Model`,
-
-* stores a `UserPref` object that represents the user's preferences.
-* stores the Duke Academy data.
-* exposes an unmodifiable `ObservableList<Question>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-* does not depend on any of the other three components.
-
-[NOTE]
-As a more OOP model, we can store a `Tag` list in `Duke Academy`, which `Question` can reference. This would allow `Duke Academy` to only require one `Tag` object per unique `Tag`, instead of each `Question` needing their own `Tag` object. An example of how such a model may look like is given below. +
- +
-image:BetterModelClassDiagram.png[]
 
 //tag::storage[]
 
@@ -247,6 +244,7 @@ Classes used by multiple components are in the `com.dukeacademy.commons` package
 
 This section describes some noteworthy details on how certain features are implemented.
 
+[[Implementation-ProgramEvaluation]]
 === Evaluation of user program submissions
 The evaluation of the user's programs is facilitated by the `solutions` package.
 
@@ -261,12 +259,17 @@ The method utilizes the classes `TestCase` and `UserProgram` to model the data n
 ====
 *TestCase* - stores an input and an expected value
 
-image:TestCaseClassDiagram.png[width=240]
+[[fig-TestCaseResultClassDiagram]]
+.Class diagram for TestCaseResult
+image::TestCaseClassDiagram.png[width=240]
+
 
 *UserProgram* - stores the main class name and the program's source code a String (note that the specified class name
 must match the source code for it to be successfully evaluated)
 
-image:UserProgramClassDiagram.png[width=240]
+[[fig-UserProgramClassDiagram]]
+.Class diagram for UserProgram
+image::UserProgramClassDiagram.png[width=240]
 
 ====
 
@@ -276,6 +279,8 @@ The result of the evaluation is returned as a `TestResult` object.
 *TestResult* - encapsulates all the possible outcomes of evaluating the user's program. It is composed of other model
 classes -- `TestCaseResult`, `CompileError`.
 
+[[fig-TestResultClassDiagram]]
+.Class diagram for TestResult
 image::TestResultDiagram.png[align=center]
 
 ====
@@ -304,14 +309,20 @@ Each interface has its specialized role in the evaluation process.
 *CompilerEnvironment* - in charge of creating a temporary folder in the user's file system to create and write Java files.
 This temporary folder is deleted after `closed()`. Utilizes the model class `JavaFile`.
 
+[[fig-CompilerEnvironmentAssociations]]
+.Associations of CompilerEnvironment
 image::CompilerEnvironment.png[align=center]
 
 *Compiler* - in charge of compiling the Java files into Class files at a given file path. Utilizes the model class `ClassFile`.
 
+[[fig-CompilerAssociations]]
+.Associations of Compile
 image::Compiler.png[align=center]
 
 *ProgramExecutor* - in charge of executing the compiled Class files. Utilizes the model class `ProgramOutput`.
 
+[[fig-ProgramExecutorAssociations]]
+.Associations of ProgramExecutor
 image::ProgramExecutor.png[align=center]
 
 *Models:*
@@ -324,25 +335,34 @@ an `FileNotFoundException` is thrown during instantiation.
 * *ProgramOutput* - contains the String output produced by the user's program. It also contains convenience methods for producing different outputs.
 ====
 
-====
-*Sequence diagram:*
 
-1. `TestExecutor` calls `clearEnvironment()` of `CompilerEnvironment` to remove any redundant files from previous program
+*The basic flow of a program evaluation is as follows:*
+
+. `TestExecutor` calls `clearEnvironment()` of `CompilerEnvironment` to remove any redundant files from previous program
 evaluations.
 
-2. `TestExecutor` calls `createJavaFile()` of `CompilerEnvironment` to create the Java file with the class name and source code specified
+. `TestExecutor` calls `createJavaFile()` of `CompilerEnvironment` to create the Java file with the class name and source code specified
 in the `UserProgram` argument.
 
-3. `TestExecutor` calls `compileJavaFile()` of `Compiler` to compile the newly created Java file.
+. `TestExecutor` calls `compileJavaFile()` of `Compiler` to compile the newly created Java file.
 
-4. For each test case passed in the argument, `TestExecutor` calls `executeProgram` of `StandardProgramExecutor` with the input from the
-test case.
+. For each test case passed in the argument, `TestExecutor` calls `executeProgram` of `StandardProgramExecutor` with the input from the
+test case to retrieve the `CompletableFuture` async task of running the test case.
 
-5. `TestExecutor` maps each `ProgramOutput` received into a `TestCaseResult` model instance.
+. `TestExecutor` sets a timeout on the async tasks and maps each `ProgramOutput` received into a `TestCaseResult` model instance.
 
-6. `TestExecutor` packs all the data collected from the execution of the test cases into a single `TestResult` instance.
+. `TestExecutor` packs all the data collected from the execution of the test cases into a single `TestResult` instance.
 
+[[fig-TestExecutorSequenceDiagram]]
+.Sequence diagram for the evaluation of a user's program
 image::TestExecutorSequenceDiagram.png[align:center]
+
+====
+
+Note that if the evaluation `CompletableFuture` async task timesout before it is completed, an errored `TestCaseResult` with a "Time limit exceeded!" error message is returned instead.
+
+Compile errors and runtime errors will also be reflected in the `TestResult` and `TestCaseResult` models respectively.
+
 ====
 
 ==== Implementation details
@@ -652,24 +672,6 @@ Windows, Linux, Unix, OS-X
 * Confidential program sets for technical interviews.
 * To prevent plagiarism, input code files intended for graded school assessment.
 
-[appendix]
-== Product Survey
-
-*Product Name*
-
-Author: ...
-
-Pros:
-
-* ...
-* ...
-
-Cons:
-
-* ...
-* ...
-
-[appendix]
 == Instructions for Manual Testing
 
 Given below are instructions to test the app manually.
@@ -677,42 +679,52 @@ Given below are instructions to test the app manually.
 [NOTE]
 These instructions only provide a starting point for testers to work on; testers are expected to do more _exploratory_ testing.
 
-=== Launch and Shutdown
+=== Launch
 
 . Initial launch
 
 .. Download the jar file and copy into an empty folder
 .. Double-click the jar file +
-   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   Expected: Shows the GUI with the Home tab in focus. The questions tab should contain a list of sample questions
 
-. Saving window preferences
+=== Attempting question
 
-.. Resize the window to an optimum size. Move the window to a different location. Close the window.
-.. Re-launch the app by double-clicking the jar file. +
-   Expected: The most recent window size and location is retained.
+. Attempting questions
 
-_{ more test cases ... }_
+.. Attempt a question
+.. Exit the application and reopen it. +
+   Expected: The previous attempt should have been saved automatically
 
-=== Deleting a person
+. Submitting solutions
 
-. Deleting a person while all persons are listed
+.. Attempt a question
+.. Submit the solution +
+   Expected: The application should run the solution against sample test cases and display the results
+.. Submit a solution with a compile error +
+   Expected: The application should display the compile error in the Workspace tab
+.. Submit a solution with an infinite loop +
+   Expected: The evaluation should terminate in 5 seconds and a "Time limit exceeded" error is shown
+.. Submit a solution with a runtime error +
+   Expected: The application should display the runtime error
 
-.. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-.. Test case: `delete 1` +
-   Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
-.. Test case: `delete 0` +
-   Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-.. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size) _{give more}_ +
-   Expected: Similar to previous.
+=== Creating notes
 
-_{ more test cases ... }_
+. Creating notes
+.. Create a new note +
+   Expected: +
+   The new note should be loaded into the Notes tab +
+   The sketchpad should be available for drawing +
+   The note text input should also be available for editing
 
-=== Saving data
+. Deleting notes
+.. Delete a note +
+   Expected: The new note should no longer be reflected in the GUI
 
-. Dealing with missing/corrupted data files
-
-.. _{explain how to simulate a missing/corrupted file and the expected behavior}_
-
-_{ more test cases ... }_
+. Saving notes
+.. Create a new note
+.. Edit the note however you like
+.. Save the note
+.. Restart the app +
+   Expected: The changes to the note should be saved and reflected in the app
 
 //end::appendix[]
