@@ -1,0 +1,1030 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Alex Koh - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">DukeAcademy</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Alex Koh - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-duke-academy"><a class="link" href="#project-duke-academy">PROJECT: Duke Academy</a></h2>
+<div class="sectionbody">
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Duke Academy is an all-in-one programming practice app targeted for students taking introductory and intermediate programming classes. While most of the user interaction happens through a CLI, the app also comes with a GUI built with JavaFX. Duke Academy was developed by a team of 4 software engineering students, and has a codebase of about 15k LOC, mostly written in Java.<br></p>
+</div>
+<div class="paragraph">
+<p>Here is a preview of Duke Academy:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/UiPreview.png" alt="UiPreview" width="1000">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major enhancement</strong>: Implemented the Dashboard, as well as two relevant user commands that interacts with it, namely <code>bookmark</code> <code>deletebookmark</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: The Dashboard allows the user to keep track of his learning journey in Duke Academy, through three GUI components.</p>
+<div class="paragraph">
+<p>1) Gamified progress indicator, with both percentage of questions completed and a corresponding skill tier</p>
+</div>
+<div class="paragraph">
+<p>2) The list of questions the user is still attempting</p>
+</div>
+<div class="paragraph">
+<p>3) The list of questions specially bookmarked by the user<br></p>
+</div>
+<div class="paragraph">
+<p>The <code>bookmark</code> command allows the user to add a question to the list of bookmarked questions, while the <code>deletebookmark</code> command allows the user to remove any question from that list.</p>
+</div>
+</li>
+<li>
+<p>Justification: The Personal Dashboard improves user experience significantly. When it comes to programming practice, there are many cases where a student wants to note down a particular question for future reference. For example, a student might find a few questions particularly challenging for him, and he wants to note down these questions for future revision. The <code>bookmark</code> command would allow him to conveniently do that, without the traditional need for pen and paper or an external notepad application. This is because the list of bookmarked questions on the Personal Dashboard would update immediately upon the bookmark command. The student is also able to remove any of the questions from the bookmarked list using the deletebookmark command. Also, the inclusion of a gamified progress indicator can actually provide many students with an extra source of motivation and interest towards the arduous and challenging activity of programming.</p>
+</li>
+<li>
+<p>Highlights: The implementation of <code>bookmark</code> command and <code>deletebookmark</code> command required a deep understanding of the Question class, because Question objects were required to be either bookmarked or not bookmarked. Also, the Personal Dashboard was developed to be able to support other commands implemented by other developers in the team, namely <code>attempt</code> and <code>submit</code>. Hence, it required strong understanding of the code written by other developers, and more importantly, effective communication with them to deliver a fully functional dashboard that can accurately support all 4 commands, <code>bookmark</code>, <code>deletebookmark</code>, <code>attempt</code> and <code>submit</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>: Added a Program Evaluation Panel that allows the user to view how well his program performed against the pre-defined test cases tied to each question.</p>
+</li>
+<li>
+<p><strong>Code contributed</strong>: [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=alxkohh&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=alxkohh&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Functional code</a>] [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=alxkohh&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=alxkohh&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Test code</a>]</p>
+</li>
+<li>
+<p><strong>Other contributions</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project management:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Managed releases <code>v1.2</code> - <code>v1.4</code> (3 releases) on GitHub, in terms of creation, assignment and tracking of GitHub issues, and also deadline scheduling of the version release.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Enhancements to existing features:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Modified AB3&#8217;s <code>help</code> command to provide user with a quick overview of all commands used in Duke Academy, through the Help Tab (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/175">#175</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Documentation:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated README Page to be aligned with the app&#8217;s full release (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/95">#95</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/125">#125</a>)</p>
+</li>
+<li>
+<p>Wrote About Us Page (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/14">#14</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/19">#19</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/96">#96</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/116">#116</a>)</p>
+</li>
+<li>
+<p>Wrote Contact Us Page (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/15">#15</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/20">#20</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/98">#98</a>)</p>
+</li>
+<li>
+<p>Contributed to the User Guide for Dashboard, Bookmark, DeleteBookmark, Help (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/174">#174</a>)</p>
+</li>
+<li>
+<p>Contributed to the Developer Guide for Ui component, Dashboard, BookmarkCommand (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/79">#79</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tools:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Provided assistance with GUI development through expertise with Gluon Scene Builder</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="dashboard-tab"><a class="link" href="#dashboard-tab">Dashboard Tab</a></h3>
+<div class="paragraph">
+<p>The <strong>Dashboard</strong> allows you to keep track of your learning journey and progress made in Duke Academy.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/dashboard.png" alt="dashboard" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>On the <strong>Dashboard</strong> you can:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>See the percentage of questions you completed and your current skill tier.</p>
+<div class="paragraph">
+<p>Novice 0 - 29 % &#160;<br>
+Apprentice 30 - 49 % &#160;<br>
+Master 50 - 69 % &#160;<br>
+Grandmaster 70 - 89 % &#160;<br>
+Duke 90 - 100 %</p>
+</div>
+</li>
+<li>
+<p>Keep track of the questions that you are currently attempting.</p>
+</li>
+<li>
+<p>Keep track of the questions that you bookmarked.
+=== Access Dashboard: <code>dashboard</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Navigates to the <strong>Dashboard</strong> Tab.<br>
+The Dashboard allows the user to keep track of his learning journey and progress made in Duke Academy.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>dashboard</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/dashboard.png" alt="dashboard" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-bookmark-code-bookmark-code"><a class="link" href="#adding-bookmark-code-bookmark-code">Adding bookmark: <code>bookmark</code></a></h3>
+<div class="paragraph">
+<p>Bookmarks a specific question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>bookmark [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The bookmarked question will appear in the list of bookmarked questions located within your <strong>Personal Dashboard</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/bookmark.png" alt="bookmark" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-bookmark-code-deletebookmark-code"><a class="link" href="#removing-bookmark-code-deletebookmark-code">Removing bookmark: <code>deletebookmark</code></a></h3>
+<div class="paragraph">
+<p>Removes the bookmark from a specific question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deletebookmark [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The question with the bookmark removed will disappear from the list of bookmarked questions located within your <strong>Personal Dashboard</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="help-tab"><a class="link" href="#help-tab">Help Tab</a></h3>
+<div class="paragraph">
+<p>The help tab is where you can get a quick overview of commands used in Duke Academy, and the URL to the official User Guide.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/help.png" alt="help" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="access-help-tab-code-help-code"><a class="link" href="#access-help-tab-code-help-code">Access Help Tab: <code>help</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Help</strong> Tab.<br>
+The <strong>Help</strong> tab contains a quick overview of commands used in Duke Academy, and also the URL to the official User Guide.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>help</code></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/help.png" alt="help" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="access-dashboard-code-dashboard-code"><a class="link" href="#access-dashboard-code-dashboard-code">Access Dashboard: <code>dashboard</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Dashboard</strong> Tab.<br>
+The Dashboard allows the user to keep track of his learning journey and progress made in Duke Academy.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>dashboard</code></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/dashboard.png" alt="dashboard" width="1000">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list-all-questions-code-showall-code"><a class="link" href="#list-all-questions-code-showall-code">List all questions: <code>showall</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Questions</strong> Tab and displays all available questions.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>showall</code></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/listallquestions.png" alt="listallquestions" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-bookmark-code-bookmark-code-2"><a class="link" href="#adding-bookmark-code-bookmark-code-2">Adding bookmark: <code>bookmark</code></a></h3>
+<div class="paragraph">
+<p>Bookmarks a specific question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>bookmark [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The bookmarked question will appear in the list of bookmarked questions located within your <strong>Personal Dashboard</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/bookmark.png" alt="bookmark" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="removing-bookmark-code-deletebookmark-code-2"><a class="link" href="#removing-bookmark-code-deletebookmark-code-2">Removing bookmark: <code>deletebookmark</code></a></h3>
+<div class="paragraph">
+<p>Removes the bookmark from a specific question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deletebookmark [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The id of a question can be found next to its title.</p>
+</li>
+<li>
+<p>The question with the bookmark removed will disappear from the list of bookmarked questions located within your <strong>Personal Dashboard</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-question-by-title-code-find-code"><a class="link" href="#find-question-by-title-code-find-code">Find question by title : <code>find</code></a></h3>
+<div class="paragraph">
+<p>Searches for question of which the title contains <strong>strictly</strong> the keywords entered.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find [keyword]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does not work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will <strong>NOT</strong> yield questions with titles such as <code>Sudoku</code> or <code>The Supreme Seven</code></p>
+</div>
+</li>
+<li>
+<p>The search is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>recursion</code> will match <code>Recursion</code>.</p>
+</div>
+</li>
+<li>
+<p>The order of the keywords does not matter.</p>
+<div class="paragraph">
+<p>e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
+</div>
+</li>
+<li>
+<p>Questions with title matching at least one keyword will be displayed</p>
+<div class="paragraph">
+<p>e.g. searching for <code>sudoku adder</code> will yield questions with titles such as <code>Valid Sudoku</code> and <code>Two Number Adder</code>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find binary search tree</code><br>
+Finds and displays all questions containing the substrings "binary",  "search" and "tree" in their title.</p>
+</li>
+<li>
+<p><code>find fizz buzz</code><br>
+Finds and displays all the questions containing the substrings "fizz" and "buzz" in its title, but not questions with
+titles such as "fizzbuzz".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="browse-by-keywords-code-browse-code"><a class="link" href="#browse-by-keywords-code-browse-code">Browse by keywords: <code>browse</code></a></h3>
+<div class="paragraph">
+<p>Searches through all questions with the specified keyword(s). A question is listed as a search result as long as it
+contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>browse [keywords]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does <strong>NOT</strong> work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will not yield questions with titles that do not strictly contain the word "su", such as "super".</p>
+</div>
+</li>
+<li>
+<p>The category is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>easy</code> will match <code>Easy</code>.</p>
+</div>
+</li>
+<li>
+<p>Typing <code>browse topic</code> would not list all topics. You can only browse by specific topics. The complete list of topics include: <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>,
+<code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, <code>OTHERS</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>browse hashtable linkedlist</code><br>
+Finds and displays all questions that contain "hashtable" and "linkedlist".</p>
+</li>
+<li>
+<p><code>browse number</code><br>
+Finds and displays questions that contain strictly the keyword "number".</p>
+<div class="paragraph">
+<p>Questions that do not and instead contain words
+with "number" as a substring of a word in their <em>title, topics, description, status</em> or <em>difficulty</em> will not be displayed.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-problem-statement-code-view-code"><a class="link" href="#viewing-the-problem-statement-code-view-code">Viewing the problem statement : <code>view</code></a></h3>
+<div class="paragraph">
+<p>Displays the problem statement of the question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>view [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the problem statement with the corresponding id.</p>
+</li>
+<li>
+<p>The id of the question can be seen next to its title.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/view.png" alt="view" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 1</code><br>
+Displays the question with the id "1" in the right side window of the GUI, as shown in the above picture.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attempting-a-question-code-attempt-code"><a class="link" href="#attempting-a-question-code-attempt-code">Attempting a question : <code>attempt</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Questions</strong> tab where you can code your solution to solve the problem statement.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>attempt [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the question with the corresponding id on the upper-left of the GUI.</p>
+</li>
+<li>
+<p>The <strong>Editor</strong> will appear on the right side for you to code your solution.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/attempt.png" alt="attempt" width="1000"">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="submitting-your-answer-code-submit-code"><a class="link" href="#submitting-your-answer-code-submit-code">Submitting your answer: <code>submit</code></a></h3>
+<div class="paragraph">
+<p>Submits your solution.​ Your code will be compiled and run against test cases. The results will be displayed in
+the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>submit</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure to check that your code compiles or you will receive an error message.</p>
+</li>
+<li>
+<p>Remember to import the relevant packages that you have used in your code!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/submit.png" alt="submit" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-new-note-code-newnote-code"><a class="link" href="#creating-a-new-note-code-newnote-code">Creating a new note: <code>newnote</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Notes</strong> tab and creates a new note with the given title.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>newnote [title]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The new note will be loaded immediately into the notes tab</p>
+</li>
+<li>
+<p>You can start writing/drawing your ideas in the note text input or the sketchpad.</p>
+</li>
+<li>
+<p>Save any changes you wish to make using the <code>savenote</code> command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/newnotecommand.png" alt="newnotecommand" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>newnote Linked Lists</code><br>
+Creates a new note titled "Linked Lists" and loads it into the Notes page for you to edit/view.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-changes-to-a-note-code-savenote-code"><a class="link" href="#saving-changes-to-a-note-code-savenote-code">Saving changes to a note: <code>savenote</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Notes</strong> tab and saves any changes made to the note that you were previously viewing/editing.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>savenote</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The saved changes will be reflected the next time you open the note again.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="opening-an-existing-note-code-opennote-code"><a class="link" href="#opening-an-existing-note-code-opennote-code">Opening an existing note: <code>opennote</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Notes</strong> tab and opens the note corresponding to the id for viewing/editing.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>opennote [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Be careful as there is no way to retrieve your notes once they are deleted!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/ak_ppp/opennotecommand.png" alt="opennotecommand" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>opennote 1</code><br>
+Navigates to the <strong>Notes</strong> page after opening the note with the id 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-existing-note-code-deletenote-code"><a class="link" href="#deleting-an-existing-note-code-deletenote-code">Deleting an existing note: <code>deletenote</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Notes</strong> tab and deleting the note corresponding to the id.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>deletenote [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the text content of the note into the note text input</p>
+</li>
+<li>
+<p>Displays the sketch of the note into the sketchpad</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deletenote 1</code><br>
+Navigates to the <strong>Notes</strong> page after deleting the note with the id 1.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="loading-new-questions-code-loadquestions-code"><a class="link" href="#loading-new-questions-code-loadquestions-code">Loading new questions: <code>loadquestions</code></a></h3>
+<div class="paragraph">
+<p>Imports new questions into the application through a text file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>loadquestions [filename]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Your text file should be located in the <code>../DukeAcademy/newQuestions/</code> directory. The <code>DukeAcademy</code> folder
+is located in the same directory as where you put the jar file.</p>
+</li>
+<li>
+<p>Your text file should follow the format specified at <a href="#Custom-Questions">Format for Custom Questions</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>loadquestions my_problem_set.txt</code><br>
+Loads the questions from the file "my_problem_set.txt" located in the <code>../DukeAcademy/newQuestions/</code> directory.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have prepared a dummy problem set for you to try out as shown in diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/default_problem_set.png" alt="default problem set" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Type <code>loadquestions NewProblems.txt</code> (case sensitive), and
+two new questions titled <code>Apple</code> and <code>Banana</code> will be loaded onto Duke Academy.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exit-the-application-code-exit-code"><a class="link" href="#exit-the-application-code-exit-code">Exit the application: <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits the application</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>exit</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="faq"><a class="link" href="#faq">FAQ</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Q:</strong> How do I transfer my own problem sets to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Copy the problem set text file into DukeAcademy’s home folder on the other computer
+and repeat the ​ loadquestions​ command.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> How do I transfer data to another computer?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Install the app in the other computer and overwrite the empty data file it creates
+with the file that contains the data of your previous DukeAcademy folder.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> What is the format of problem setting?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> It should contain the following: problem statement, input and output files, difficulty
+level, solution, as well as algorithm category. Check out <a href="#Custom-Questions">Format for Custom Questions</a> for detailed reference.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> What if I want to delete questions?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Currently there is no delete question feature implemented. To restore to default setting, delete the <code>DukeAcademy</code> folder located at the same directory as the <code>DukeAcademy.jar</code>, and restart the app.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">Command Summary</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Home: <code>home</code></p>
+</li>
+<li>
+<p>List all questions: <code>showall</code></p>
+</li>
+<li>
+<p>Adding bookmark: <code>bookmark [id]</code></p>
+</li>
+<li>
+<p>Removing bookmark: <code>deletebookmark [id]</code></p>
+</li>
+<li>
+<p>Find by question title: <code>find​ [keyword]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>Browse by category: ​<code>browse​ [keyword]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p>View: <code>view​ [id]</code></p>
+</li>
+<li>
+<p>Attempt a question: <code>attempt​ [id]</code></p>
+</li>
+<li>
+<p>Submit:​ <code>submit</code></p>
+</li>
+<li>
+<p>Load questions: ​<code>loadquestions​ [filename]</code></p>
+</li>
+<li>
+<p>Create a new note: <code>newnote [title]</code></p>
+</li>
+<li>
+<p>Save current note: <code>savenote</code></p>
+</li>
+<li>
+<p>Open a note: <code>opennote [id]</code></p>
+</li>
+<li>
+<p>Delete a note: <code>deletenote [id]</code></p>
+</li>
+<li>
+<p>Switch tab sequentially: <code>tab</code></p>
+</li>
+<li>
+<p>Exit: <code>exit</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="question-storage-file-format"><a class="link" href="#question-storage-file-format">Question storage file format</a></h2>
+<div class="sectionbody">
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The text file is a json list of json objects representing each question.</p>
+</li>
+<li>
+<p>Each question is a json object with the following key-value pairs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>title: a string representing the title of the question</p>
+</li>
+<li>
+<p>description: a string representing the description and preamble of the question</p>
+</li>
+<li>
+<p>tc: a list of json objects representing the list of test cases (see below for details)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Each test case is another json object with the following key-value pairs.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>input: the input for the test case</p>
+</li>
+<li>
+<p>result: the expected result for the test case</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Custom-Questions"><a class="link" href="#Custom-Questions">Format for Custom Questions</a></h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/custom_questions.png" alt="custom questions" width="920">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a .txt file.</p>
+</li>
+<li>
+<p>The format of a question goes like follows:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Question::
+
+Title::
+
+Description::
+
+Difficulty::
+
+Topics::
+
+TestCase::
+
+Input::
+
+Output::</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All inputs must be in the order stated above.</p>
+</li>
+<li>
+<p>Title, Description can be any non-empty string.</p>
+</li>
+<li>
+<p>Difficulty can only be <code>EASY</code>, <code>MEDIUM</code> or <code>HARD</code>. (Must be capitalized)</p>
+</li>
+<li>
+<p>Topics can only be <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>, <code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, or <code>OTHERS</code>. (Must be capitalized)</p>
+</li>
+<li>
+<p>One question can only have one title, description and difficulty. It can have multiple topics separated by <code>,</code>. It can have multiple test cases, each begin with a <code>TestCase::</code> identifier.</p>
+</li>
+<li>
+<p>For sample questions, refer to the <code>../DukeAcademy/newQuestions/NewProblems.txt</code> file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ak_ppp/UiClassUmlDiagram.png" alt="UiClassUmlDiagram">
+</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
+</div>
+<div class="paragraph">
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/difficulty/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of 7 parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>Workspace</code>, <code>NotesPage</code>, <code>HelpPage</code>, <code>Dashboard</code> and <code>QuestionsPage</code>. All these parts, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.
+Some of the 7 UI parts are also made up of other UI parts. For example, listed on the UML diagram, <code>QuestionsPage</code> is made up of <code>QuestionsListPanel</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses the JavaFX UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/difficulty/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Listens for changes through the Observer pattern. The UI updates as the <code>ObservableList</code> changes.
+=== Bookmark Command
+.Sequence Diagram for the execution of a BookmarkCommand instance
+image::BookmarkCommandSequenceDiagram.png[]</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The sequence is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User calls execute() on a BookmarkCommand object.</p>
+</li>
+<li>
+<p>The BookmarkCommand object calls getUserSelectedQuestion(), activating an instance of QuestionsLogic.</p>
+</li>
+<li>
+<p>The QuestionsLogic object returns userSelectedQuestion, which is the question the user chose to bookmark.</p>
+</li>
+<li>
+<p>If userSelectedQuestion is already bookmarked, the BookmarkCommand object calls notifyUserNoActionTaken() as a response to the user. Else, the BookmarkCommand object calls bookmarkUserSelectedQuestion(), and then calls notifyUserBookmarkSuccess() as a response to the user.
+=== Bookmarking a question / Removing bookmark for a question</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Bookmark a question</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Bookmark any question in the question library. For example, bookmark question 3 through <code>bookmark 3</code>.</p>
+</li>
+<li>
+<p>Navigate to the Dashboard tab, either through clicking or typing <code>dashboard</code>.<br>
+Expected: The question you chose to bookmark should be in the list of bookmarked questions.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Removing a bookmark</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>On the Dashboard, refer to the list of bookmarked questions and pick one question to remove the bookmark.</p>
+</li>
+<li>
+<p>Remove the bookmark for that question. For example, <code>deletebookmark 3</code><br>
+Expected: The question is no longer in the list of bookmarked questions.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:17:21 UTC</div></div></div></body></html>
