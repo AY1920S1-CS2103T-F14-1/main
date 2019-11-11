@@ -26,9 +26,10 @@
 <li><a href="#logging">3.2. Logging</a></li>
 <li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
 <li><a href="#dashboard">3.4. Dashboard</a></li>
-<li><a href="#bookmark-command">3.5. Bookmark Command</a></li>
-<li><a href="#program-evaluation-panel">3.6. Program Evaluation Panel</a></li>
-<li><a href="#problem-description-panel">3.7. Problem Description Panel</a></li>
+<li><a href="#problem-description-panel">3.5. Problem Description Panel</a></li>
+<li><a href="#bookmark-command">3.6. Bookmark Command</a></li>
+<li><a href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></li>
+<li><a href="#editor-panel">3.8. Editor Panel</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -69,7 +70,7 @@
 <h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
-<img src="images/developerguide/ArchitectureDiagram.png" alt="ArchitectureDiagram">
+<img src="images/developerguide/DaArchitectureDiagram.png" alt="DaArchitectureDiagram">
 </div>
 <div class="title">Figure 1. Architecture Diagram</div>
 </div>
@@ -131,9 +132,6 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </li>
 <li>
 <p><a href="#Design-Storage"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
-</li>
-<li>
-<p><a href="#Design-Observable"><strong><code>Observable</code></strong></a>:</p>
 </li>
 <li>
 <p><a href="#Design-TextExecutor"><strong><code>TextExecutor</code></strong></a>: Compile the user program and run it against test cases. Output result.</p>
@@ -1051,7 +1049,15 @@ three pieces of data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bookmark-command"><a class="link" href="#bookmark-command">3.5. Bookmark Command</a></h3>
+<h3 id="problem-description-panel"><a class="link" href="#problem-description-panel">3.5. Problem Description Panel</a></h3>
+<div class="paragraph">
+<p>The <strong>Problem Display Panel</strong> is responsible for displaying the problem statement of the user-selected question. This
+panel is activated after the <code>ViewCommand</code> is executed, when the status of the question view is updated and reflected
+back to the current application state.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bookmark-command"><a class="link" href="#bookmark-command">3.6. Bookmark Command</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developerguide/BookmarkCommandSequenceDiagram.png" alt="BookmarkCommandSequenceDiagram">
@@ -1079,13 +1085,13 @@ three pieces of data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="program-evaluation-panel"><a class="link" href="#program-evaluation-panel">3.6. Program Evaluation Panel</a></h3>
+<h3 id="program-evaluation-panel"><a class="link" href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></h3>
 <div class="paragraph">
-<p>The code result panel is a panel below the editor that shows the evaluation of the user&#8217;s program against the specified
-test cases in the question.</p>
+<p>The <strong>Code Result Panel</strong> is located beneath the <strong>Problem Display Panel</strong>. It is responsible for showing the results after
+the user-submitted code is evaluated for its correctness against a pre-defined set of test cases.</p>
 </div>
 <div class="paragraph">
-<p>It takes in a <code>List</code> of <code>TestCaseResults</code> which contains useful information about how the user&#8217;s program fared against
+<p>It takes in a <code>List</code> of <code>TestCaseResults</code> which contains useful information on how the user&#8217;s program fared against
 the various test cases.</p>
 </div>
 <div class="paragraph">
@@ -1093,8 +1099,23 @@ the various test cases.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="problem-description-panel"><a class="link" href="#problem-description-panel">3.7. Problem Description Panel</a></h3>
-
+<h3 id="editor-panel"><a class="link" href="#editor-panel">3.8. Editor Panel</a></h3>
+<div class="paragraph">
+<p>The editor panel is the panel right next to the <strong>Problem Display Panel</strong> and the <strong>Program Evaluation Panel</strong>. The editor panel
+consists of two parts: The main text editor and the line counter component.</p>
+</div>
+<div class="paragraph">
+<p>The main text editor is where the user codes and is responsible for feeding the text input to the <code>Program Submission
+Logic Manager</code> for compilation of the user-written code. It is capable of performing auto-indentations for the user and
+this is achieved by overwriting the function of the Enter key. Through helper methods available in <code>Editor.java</code>, the
+number of unclosed braces can easily be counted so as to perform the appropriate indentations.</p>
+</div>
+<div class="paragraph">
+<p>The line counter component of the editor keeps track of the number of lines written by the user in the editor. It takes
+in a <code>SimpleIntegerProperty</code> and is updated automatically whenever there are changes to the text observed in the editor.
+This is achieved through adding a <code>InvalidationListener</code> to the text property of the editor, along with using the
+necessary helper functions to count the number of newline characters in the text.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1783,4 +1804,4 @@ Expected: The changes to the note should be saved and reflected in the app</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 12:56:31 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:04:00 UTC</div></div></div></body></html>
