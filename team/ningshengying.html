@@ -11,7 +11,8 @@ application for our Software Engineering project. We chose to morph it into a co
 </div>
 <div class="paragraph">
 <p>Duke Academy is written in the Java programming language and the Graphical User Interface (GUI) of the application is
-created with JavaFX. It relies primarily on Command Line Interface (CLI) as its primary input for user commands.</p>
+created with JavaFX. It relies primarily on Command Line Interface (CLI) as its primary input for user commands, which
+means users will mostly be typing to perform specific functions instead of clicking with a mouse (unlike GUI).</p>
 </div>
 <div class="paragraph">
 <p>Duke Academy is designed for both coding students and educators alike. It is equipped with a library of programming
@@ -150,9 +151,6 @@ much such that the inner components become unusable.</p>
 <li>
 <p>Made early changes to the redesign of the UI for Duke Academy (Pull requests <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/99">#99</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/191">#191</a>)</p>
 </li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>) // &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;need work on this&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</p>
-</li>
 </ul>
 </div>
 </li>
@@ -235,7 +233,7 @@ on the right.</p>
 <li>
 <p><strong>Program Evaluation Panel</strong></p>
 <div class="paragraph">
-<p>This panel displays the correctness of your program when evaluated against the pre-defined list of test cases tied to the question you are solving.</p>
+<p>Displays the correctness of your program when evaluated against the pre-defined list of test cases tied to the question you are solving.</p>
 </div>
 </li>
 <li>
@@ -497,6 +495,206 @@ the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
 <img src="../images/nsy_ppp/submit.png" alt="submit" width="1000">
 </div>
 </div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>find [keyword]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does not work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will <strong>NOT</strong> yield questions with titles such as <code>Sudoku</code> or <code>The Supreme Seven</code></p>
+</div>
+</li>
+<li>
+<p>The search is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>recursion</code> will match <code>Recursion</code>.</p>
+</div>
+</li>
+<li>
+<p>The order of the keywords does not matter.</p>
+<div class="paragraph">
+<p>e.g. <code>Fun tree</code> will match <code>tree Fun</code>.</p>
+</div>
+</li>
+<li>
+<p>Questions with title matching at least one keyword will be displayed</p>
+<div class="paragraph">
+<p>e.g. searching for <code>sudoku adder</code> will yield questions with titles such as <code>Valid Sudoku</code> and <code>Two Number Adder</code>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find binary search tree</code><br>
+Finds and displays all questions containing the substrings "binary",  "search" and "tree" in their title.</p>
+</li>
+<li>
+<p><code>find fizz buzz</code><br>
+Finds and displays all the questions containing the substrings "fizz" and "buzz" in its title, but not questions with
+titles such as "fizzbuzz".</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="browse-by-keywords-code-browse-code-2"><a class="link" href="#browse-by-keywords-code-browse-code-2">Browse by keywords: <code>browse</code></a></h3>
+<div class="paragraph">
+<p>Searches through all questions with the specified keyword(s). A question is listed as a search result as long as it
+contains one of the keyword(s) in their <em>title, topics, description, status</em> or <em>difficulty</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>browse [keywords]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>NOTE</strong>: This function does <strong>NOT</strong> work for character sequences!</p>
+<div class="paragraph">
+<p>e.g. Searching for <code>su</code> will not yield questions with titles that do not strictly contain the word "su", such as "super".</p>
+</div>
+</li>
+<li>
+<p>The category is case insensitive.</p>
+<div class="paragraph">
+<p>e.g <code>easy</code> will match <code>Easy</code>.</p>
+</div>
+</li>
+<li>
+<p>Typing <code>browse topic</code> would not list all topics. You can only browse by specific topics. The complete list of topics include: <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>,
+<code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, <code>OTHERS</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>browse hashtable linkedlist</code><br>
+Finds and displays all questions that contain "hashtable" and "linkedlist".</p>
+</li>
+<li>
+<p><code>browse number</code><br>
+Finds and displays questions that contain strictly the keyword "number".</p>
+<div class="paragraph">
+<p>Questions that do not and instead contain words
+with "number" as a substring of a word in their <em>title, topics, description, status</em> or <em>difficulty</em> will not be displayed.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="viewing-the-problem-statement-code-view-code-2"><a class="link" href="#viewing-the-problem-statement-code-view-code-2">Viewing the problem statement : <code>view</code></a></h3>
+<div class="paragraph">
+<p>Displays the problem statement of the question.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>view [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the problem statement with the corresponding id.</p>
+</li>
+<li>
+<p>The id of the question can be seen next to its title.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nsy_ppp/view.png" alt="view" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>view 1</code><br>
+Displays the question with the id "1" in the right side window of the GUI, as shown in the above picture.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attempting-a-question-code-attempt-code-2"><a class="link" href="#attempting-a-question-code-attempt-code-2">Attempting a question : <code>attempt</code></a></h3>
+<div class="paragraph">
+<p>Navigates to the <strong>Questions</strong> tab where you can code your solution to solve the problem statement.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>attempt [id]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Displays the question with the corresponding id on the upper-left of the GUI.</p>
+</li>
+<li>
+<p>The <strong>Editor</strong> will appear on the right side for you to code your solution.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nsy_ppp/attempt.png" alt="attempt" width="1000"">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="submitting-your-answer-code-submit-code-2"><a class="link" href="#submitting-your-answer-code-submit-code-2">Submitting your answer: <code>submit</code></a></h3>
+<div class="paragraph">
+<p>Submits your solution.​ Your code will be compiled and run against test cases. The results will be displayed in
+the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>submit</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure to check that your code compiles or you will receive an error message.</p>
+</li>
+<li>
+<p>Remember to import the relevant packages that you have used in your code!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nsy_ppp/submit.png" alt="submit" width="1000">
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -513,14 +711,107 @@ the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="editor-panel"><a class="link" href="#editor-panel">Editor Panel</a></h3>
+<div class="paragraph">
+<p>The editor panel is the panel right next to the <strong>Problem Display Panel</strong> and the <strong>Program Evaluation Panel</strong>. The editor panel
+consists of two parts: The main text editor and the line counter component.</p>
+</div>
+<div class="paragraph">
+<p>The main text editor is where the user codes and is responsible for feeding the text input to the <code>Program Submission
+Logic Manager</code> for compilation of the user-written code. It is capable of performing auto-indentations for the user and
+this is achieved by overwriting the function of the ENTER key. Through helper methods available in <code>Editor.java</code>, the
+number of unclosed braces can easily be counted so as to perform the appropriate indentations.</p>
+</div>
+<div class="paragraph">
+<p>There are other modifications to key inputs to make the text editor imitate the behaviour of an actual IDE editor. These
+include overwriting the TAB key to input 4 spaces instead of 8, and also performing auto de-indentation when a right brace
+(i.e. "}") is typed. Refer to the activity diagram below for the possible outcomes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nsy_ppp/TextInputActivityDiagram.png" alt="TextInputActivityDiagram">
+</div>
+<div class="title">Figure 2. Activity Diagram for Text Input</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>For this implementation, we have used a onKeyRelease event to overwrite the function of the ENTER key.</p>
+</li>
+<li>
+<p>We recognize that this implementation is not desirable as the auto-indentation is only performed only after the ENTER
+key is released. Meaning to say, if a character is typed while the ENTER key is held down, those characters will not be
+auto-indented.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The line counter component of the editor keeps track of the number of lines written by the user in the editor. It takes
+in a <code>SimpleIntegerProperty</code> and is updated automatically whenever there are changes to the text observed in the editor.</p>
+</div>
+<div class="paragraph">
+<p>This is achieved through adding a <code>InvalidationListener</code> to the text property of the editor, along with using the
+necessary helper functions to count the number of newline characters in the text. The Sequence Diagram below shows how
+the <code>UI</code> interacts with the <code>Editor</code> class to generate the line counter in the text editor.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/nsy_ppp/LineCounterSequenceDiagram.png" alt="LineCounterSequenceDiagram">
+</div>
+<div class="title">Figure 3. Sequence Diagram for Generating Line Counter Input</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h2>
 <div class="sectionbody">
-<hr>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p>Aspect: Overwriting ENTER key function</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1</strong>: Overwrite with onKeyPress event</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pro</strong>: The auto-indentation will behave exactly as intended.</p>
+</li>
+<li>
+<p><strong>Drawback</strong>: Due to a bug in JavaFX that could not be resolved, we decided to avoid this implementation.</p>
+<div class="paragraph">
+<p>If we were to choose to overwrite with onKeyPress event, the event will have to be consumed as anything specified in the
+onKeyPress event will be executed <strong>before</strong> the original key function is performed. However, the mentioned bug earlier causes
+the onKeyPress events to be executed twice. Which means, 2 newline characters will be inserted on a single press of the
+overwritten ENTER key. Because of this drawback, we decided to go for the alternative implementation.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2 (Current Choice)</strong>: Overwrite with onKeyRelease event</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros</strong>: Avoids entering 2 newline characters with a single ENTER key press and auto-indention still works. OnKeyRelease
+events are executed <strong>after</strong> the original key function is performed. Thus, there is no need to include inserting a newline character in
+the onKeyRelease event, which avoids the issue faced by Alternative 1.</p>
+</li>
+<li>
+<p><strong>Drawback</strong>: The auto-indentation is not behaving ideally. As mentioned earlier, because the auto-indentation only happens
+after the ENTER key is released, characters typed while the ENTER key is held down will not be auto-indented.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:02:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:12:55 UTC</div></div></div></body></html>

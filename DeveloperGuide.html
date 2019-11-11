@@ -1240,10 +1240,30 @@ this is achieved by overwriting the function of the Enter key. Through helper me
 number of unclosed braces can easily be counted so as to perform the appropriate indentations.</p>
 </div>
 <div class="paragraph">
+<p>There are other modifications to key inputs to make the text editor imitate the behaviour of an actual IDE editor. These
+include overwriting the <code>tab</code> key to input 4 spaces instead of 8, and also performing auto de-indentation when a right brace
+(i.e. "}") is typed. Refer to the activity diagram below for the possible outcomes.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/TextInputActivityDiagram.png" alt="TextInputActivityDiagram">
+</div>
+<div class="title">Figure 21. Activity Diagram for Text Input</div>
+</div>
+<div class="paragraph">
 <p>The line counter component of the editor keeps track of the number of lines written by the user in the editor. It takes
-in a <code>SimpleIntegerProperty</code> and is updated automatically whenever there are changes to the text observed in the editor.
-This is achieved through adding a <code>InvalidationListener</code> to the text property of the editor, along with using the
-necessary helper functions to count the number of newline characters in the text.</p>
+in a <code>SimpleIntegerProperty</code> and is updated automatically whenever there are changes to the text observed in the editor.</p>
+</div>
+<div class="paragraph">
+<p>This is achieved through adding a <code>InvalidationListener</code> to the text property of the editor, along with using the
+necessary helper functions to count the number of newline characters in the text. The Sequence Diagram below shows how
+the <code>UI</code> interacts with the <code>Editor</code> class to generate the line counter in the text editor.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/LineCounterSequenceDiagram.png" alt="LineCounterSequenceDiagram">
+</div>
+<div class="title">Figure 22. Sequence Diagram for Generating Line Counter Input</div>
 </div>
 </div>
 </div>
@@ -2100,4 +2120,4 @@ Output::</pre>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:02:23 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:12:55 UTC</div></div></div></body></html>
