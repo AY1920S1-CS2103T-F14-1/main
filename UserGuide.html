@@ -44,7 +44,7 @@
 <li><a href="#faq">6. FAQ</a></li>
 <li><a href="#command-summary">7. Command Summary</a></li>
 <li><a href="#question-storage-file-format">8. Question storage file format</a></li>
-<li><a href="#Custom-Questions">9. Load Your Custom Questions</a></li>
+<li><a href="#Custom-Questions">9. Format for Custom Questions</a></li>
 </ul>
 </div>
 </div>
@@ -178,7 +178,7 @@ programmers), you can get used to it while working on your coding skills here in
 </div>
 </li>
 <li>
-<p>After executing <strong><code>showall</code></strong> in the <strong>CommandBox</strong>, find a question that interests you and type <code>attempt &lt;Qn Index&gt;</code>
+<p>After executing <strong><code>showall</code></strong> in the <strong>CommandBox</strong>, find a question that interests you and type <code>attempt [Qn Index]</code>
 into the <strong>CommandBox</strong> to start your DukeAcademy experience.</p>
 <div class="paragraph">
 <p><em>Note: the index of a question is the number displayed next to its title.</em></p>
@@ -296,7 +296,7 @@ on the right.</p>
 <p>To submit your attempt, enter <code>submit</code> into the <strong>Command Box</strong>.</p>
 </div>
 <div class="paragraph">
-<p>To begin your attempt on a question, enter <code>attempt &lt;Qn Index&gt;</code> into the <strong>Command Box</strong>.</p>
+<p>To begin your attempt on a question, enter <code>attempt [Qn Index]</code> into the <strong>CommandBox</strong>.</p>
 </div>
 <div class="paragraph">
 <p>To submit your attempt, enter <code>submit</code> into the <strong>Command Box</strong>.</p>
@@ -854,24 +854,14 @@ Navigates to the <strong>Notes</strong> page after deleting the note with the id
 <div class="ulist">
 <ul>
 <li>
-<p>Your text file should be located at the Desktop.</p>
+<p>Your text file should be located in the <code>../DukeAcademy/newQuestions/</code> directory. The <code>DukeAcademy</code> folder
+is located in the same directory as where you put the jar file.</p>
 </li>
 <li>
-<p>Your text file should follow the format specified at <a href="#Custom-Questions">Section 9, &#8220;Load Your Custom Questions&#8221;</a>.</p>
-</li>
-<li>
-<p>The questions in the text file will only be loaded after entering this command.</p>
-</li>
-<li>
-<p>Your questions will be loaded immediately.</p>
+<p>Your text file should follow the format specified at <a href="#Custom-Questions">Section 9, &#8220;Format for Custom Questions&#8221;</a>.</p>
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/userguide/loadquestions.png" alt="loadquestions" width="1000">
 </div>
 </div>
 <div class="paragraph">
@@ -881,9 +871,21 @@ Navigates to the <strong>Notes</strong> page after deleting the note with the id
 <ul>
 <li>
 <p><code>loadquestions my_problem_set.txt</code><br>
-Loads the questions from the file "my_problem_set.txt" located on your desktop.</p>
+Loads the questions from the file "my_problem_set.txt" located in the <code>../DukeAcademy/newQuestions/</code> directory.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>We have prepared a dummy problem set for you to try out as shown in diagram below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/default_problem_set.png" alt="default problem set" width="1000">
+</div>
+</div>
+<div class="paragraph">
+<p>Type <code>loadquestions NewProblems.txt</code> (case sensitive), and
+two new questions titled <code>Apple</code> and <code>Banana</code> will be loaded onto Duke Academy.</p>
 </div>
 </div>
 <div class="sect2">
@@ -919,7 +921,13 @@ with the file that contains the data of your previous DukeAcademy folder.</p>
 </div>
 <div class="paragraph">
 <p><strong>A:</strong> It should contain the following: problem statement, input and output files, difficulty
-level, solution, algorithm category. Check out ​ default_problem_set.txt​ for reference.</p>
+level, solution, as well as algorithm category. Check out <a href="#Custom-Questions">Section 9, &#8220;Format for Custom Questions&#8221;</a> for detailed reference.</p>
+</div>
+<div class="paragraph">
+<p><strong>Q:</strong> What if I want to delete questions?</p>
+</div>
+<div class="paragraph">
+<p><strong>A:</strong> Currently there is no delete question feature implemented. To restore to default setting, delete the <code>DukeAcademy</code> folder located at the same directory as the <code>DukeAcademy.jar</code>, and restart the app.</p>
 </div>
 </div>
 </div>
@@ -947,7 +955,7 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 <p>Browse by category: ​<code>browse​ [keyword]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p>View: view: ​<code>view​ [id]</code></p>
+<p>View: <code>view​ [id]</code></p>
 </li>
 <li>
 <p>Attempt a question: <code>attempt​ [id]</code></p>
@@ -965,10 +973,13 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 <p>Save current note: <code>savenote</code></p>
 </li>
 <li>
-<p>Open a  note: <code>opennote [id]</code></p>
+<p>Open a note: <code>opennote [id]</code></p>
 </li>
 <li>
 <p>Delete a note: <code>deletenote [id]</code></p>
+</li>
+<li>
+<p>Switch tab sequentially: <code>tab</code></p>
 </li>
 <li>
 <p>Exit: <code>exit</code></p>
@@ -1023,8 +1034,13 @@ level, solution, algorithm category. Check out ​ default_problem_set.txt​ fo
 </div>
 </div>
 <div class="sect1">
-<h2 id="Custom-Questions"><a class="link" href="#Custom-Questions">9. Load Your Custom Questions</a></h2>
+<h2 id="Custom-Questions"><a class="link" href="#Custom-Questions">9. Format for Custom Questions</a></h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/userguide/custom_questions.png" alt="custom questions" width="920">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1063,18 +1079,18 @@ Output::</code></pre>
 <p>Title, Description can be any non-empty string.</p>
 </li>
 <li>
-<p>Difficulty can only be EASY, MEDIUM or HARD.</p>
+<p>Difficulty can only be <code>EASY</code>, <code>MEDIUM</code> or <code>HARD</code>. (Must be capitalized)</p>
 </li>
 <li>
-<p>Topics can only be ARRAY, LINKED_LIST, HASHTABLE, TREE, GRAPH, RECURSION, DIVIDE_AND_CONQUER, DYNAMIC_PROGRAMMING, SORTING, or OTHERS.</p>
+<p>Topics can only be <code>ARRAY</code>, <code>LINKED_LIST</code>, <code>HASHTABLE</code>, <code>TREE</code>, <code>GRAPH</code>, <code>RECURSION</code>, <code>DIVIDE_AND_CONQUER</code>, <code>DYNAMIC_PROGRAMMING</code>, <code>SORTING</code>, or <code>OTHERS</code>. (Must be capitalized)</p>
 </li>
 <li>
 <p>One question can only have one title, description and difficulty. It can have multiple topics separated by <code>,</code>. It can have multiple test cases, each begin with a <code>TestCase::</code> identifier.</p>
 </li>
 <li>
-<p>For sample questions, refer to the image above.</p>
+<p>For sample questions, refer to the <code>../DukeAcademy/newQuestions/NewProblems.txt</code> file.</p>
 </li>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:04:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:23:27 UTC</div></div></div></body></html>

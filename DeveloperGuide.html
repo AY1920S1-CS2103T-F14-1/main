@@ -9,32 +9,31 @@
 <div id="toc" class="toc">
 <div id="toctitle"></div>
 <ul class="sectlevel1">
-<li><a href="#setting-up">1. Setting up</a></li>
-<li><a href="#design">2. Design</a>
+<li><a href="#setting-up">1. Setting up</a>
 <ul class="sectlevel2">
-<li><a href="#Design-Architecture">2.1. Architecture</a></li>
-<li><a href="#Design-Ui">2.2. UI component</a></li>
-<li><a href="#Design-Logic">2.3. Logic components</a></li>
-<li><a href="#Design-Model">2.4. Model component</a></li>
-<li><a href="#Design-Storage">2.5. Storage component</a></li>
-<li><a href="#Design-Commons">2.6. Common classes</a></li>
+<li><a href="#Design-Architecture">1.1. Architecture</a></li>
+<li><a href="#Design-Ui">1.2. UI component</a></li>
+<li><a href="#Design-Logic">1.3. Logic components</a></li>
+<li><a href="#Design-Model">1.4. Model component</a></li>
+<li><a href="#Design-Storage">1.5. Storage component</a></li>
+<li><a href="#Design-Commons">1.6. Common classes</a></li>
 </ul>
 </li>
-<li><a href="#implementation">3. Implementation</a>
+<li><a href="#implementation-2">2. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#Implementation-ProgramEvaluation">3.1. Evaluation of user program submissions</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.3. Configuration</a></li>
-<li><a href="#dashboard">3.4. Dashboard</a></li>
-<li><a href="#problem-description-panel">3.5. Problem Description Panel</a></li>
-<li><a href="#bookmark-command">3.6. Bookmark Command</a></li>
-<li><a href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></li>
-<li><a href="#editor-panel">3.8. Editor Panel</a></li>
+<li><a href="#Implementation-ProgramEvaluation">2.1. Evaluation of user program submissions</a></li>
+<li><a href="#logging">2.2. Logging</a></li>
+<li><a href="#Implementation-Configuration">2.3. Configuration</a></li>
+<li><a href="#dashboard">2.4. Dashboard</a></li>
+<li><a href="#problem-statement-panel">2.5. Problem Statement Panel</a></li>
+<li><a href="#bookmark-command">2.6. Bookmark Command</a></li>
+<li><a href="#program-evaluation-panel">2.7. Program Evaluation Panel</a></li>
+<li><a href="#editor-panel">2.8. Editor Panel</a></li>
 </ul>
 </li>
-<li><a href="#documentation">4. Documentation</a></li>
-<li><a href="#testing">5. Testing</a></li>
-<li><a href="#dev-ops">6. Dev Ops</a></li>
+<li><a href="#documentation">3. Documentation</a></li>
+<li><a href="#testing">4. Testing</a></li>
+<li><a href="#dev-ops">5. Dev Ops</a></li>
 <li><a href="#product-scope">Appendix A: Product Scope</a></li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a>
@@ -45,11 +44,13 @@
 </li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#instructions-for-manual-testing">7. Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">6. Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch">7.1. Launch</a></li>
-<li><a href="#attempting-question">7.2. Attempting question</a></li>
-<li><a href="#creating-notes">7.3. Creating notes</a></li>
+<li><a href="#launch">6.1. Launch</a></li>
+<li><a href="#navigate-in-the-app">6.2. Navigate in the app</a></li>
+<li><a href="#attempting-question">6.3. Attempting question</a></li>
+<li><a href="#creating-notes">6.4. Creating notes</a></li>
+<li><a href="#loading-custom-questions">6.5. Loading Custom Questions</a></li>
 </ul>
 </li>
 </ul>
@@ -59,15 +60,11 @@
 <h2 id="setting-up"><a class="link" href="#setting-up">1. Setting up</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Refer to the guide <a href="SettingUp.html">here</a>.</p>
+<p>Refer to the guide <a href="SettingUp.html">here</a>.
+== Design</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="design"><a class="link" href="#design">2. Design</a></h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">2.1. Architecture</a></h3>
+<h3 id="Design-Architecture"><a class="link" href="#Design-Architecture">1.1. Architecture</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developerguide/DaArchitectureDiagram.png" alt="DaArchitectureDiagram">
@@ -76,19 +73,6 @@
 </div>
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//docs/diagrams/">diagrams</a> folder.
-Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
-</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p><code>Main</code> has two classes called <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/Main.java"><code>Main</code></a> and <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/seedu/difficulty/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
@@ -104,25 +88,17 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </ul>
 </div>
 <div class="paragraph">
-<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components.</p>
+<p><a href="#Design-Commons"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components.
+<a href="#Design-Observable"><strong><code>Observable</code></strong></a> is responsible for updates on User Interface if internal data changes.
+`LogsCenter`is used by many classes to write log messages to the App&#8217;s log file.</p>
 </div>
 <div class="paragraph">
-<p>The following class plays an important role at the architecture level:</p>
+<p>The following five components plays an important role at the architecture level:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>LogsCenter</code> : Used by many classes to write log messages to the App&#8217;s log file.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The rest of the App consists of six components.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The UI of the App.</p>
+<p><a href="#Design-Ui"><strong><code>UI</code></strong></a>: The User Interface of the App.</p>
 </li>
 <li>
 <p><a href="#Design-Logic"><strong><code>Logic</code></strong></a>: Includes 3 types of executors: the Command Executor, the Program Submission Executor, and the Question Builder Executor,.</p>
@@ -162,20 +138,20 @@ Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how 
 </div>
 <h4 id="how-the-architecture-components-interact-with-each-other" class="discrete">How the architecture components interact with each other</h4>
 <div class="paragraph">
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>delete 1</code>.</p>
+<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code>submit</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/developerguide/ArchitectureSequenceDiagram.png" alt="ArchitectureSequenceDiagram">
 </div>
-<div class="title">Figure 3. Component interactions for <code>view 1</code> command</div>
+<div class="title">Figure 3. Component interactions for <code>submit</code> command</div>
 </div>
 <div class="paragraph">
 <p>The sections below give more details of each component.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Ui"><a class="link" href="#Design-Ui">2.2. UI component</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">1.2. UI component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developerguide/UiClassUmlDiagram.png" alt="UiClassUmlDiagram">
@@ -207,9 +183,9 @@ Some of the 7 UI parts are also made up of other UI parts. For example, listed o
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Logic"><a class="link" href="#Design-Logic">2.3. Logic components</a></h3>
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">1.3. Logic components</a></h3>
 <div class="sect3">
-<h4 id="overview"><a class="link" href="#overview">2.3.1. Overview</a></h4>
+<h4 id="overview"><a class="link" href="#overview">1.3.1. Overview</a></h4>
 <div class="paragraph">
 <p>There are 4 main logic components found in the architecture of Duke Academy. They are <code>CommandLogic</code>, <code>QuestionsLogic</code>, <code>ProgramSubmissionLogic</code> and <code>NotesLogic</code>.
 Each logic component serves as a <strong>facade</strong> for the basic operations by the application with regards to <strong>Commands</strong>, <strong>Questions</strong>, <strong>ProgramSubmission</strong> and <strong>Notes</strong>.</p>
@@ -339,7 +315,7 @@ Each logic component serves as a <strong>facade</strong> for the basic operation
 </div>
 </div>
 <div class="sect3">
-<h4 id="commandlogic-implementation"><a class="link" href="#commandlogic-implementation">2.3.2. CommandLogic implementation</a></h4>
+<h4 id="commandlogic-implementation"><a class="link" href="#commandlogic-implementation">1.3.2. CommandLogic implementation</a></h4>
 <div class="paragraph">
 <p>The standard implementation of the CommandLogic is the <code>CommandLogicManager</code> class.</p>
 </div>
@@ -421,11 +397,11 @@ retrieve the correct <code>CommandSupplier</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="questionslogic-implementation"><a class="link" href="#questionslogic-implementation">2.3.3. QuestionsLogic implementation</a></h4>
+<h4 id="questionslogic-implementation"><a class="link" href="#questionslogic-implementation">1.3.3. QuestionsLogic implementation</a></h4>
 <div class="paragraph">
 <p>The standard implementation of the <code>QuestionsLogic</code> interface is the <code>QuestionsLogicManager</code>. This implementation stores the questions
 in the application in the form of a <code>QuestionBank</code>. It saves any changes made to the <code>QuestionBank</code> immediately using a <code>QuestionBankStorage</code>.
-<em>(View <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> for more details.)</em></p>
+<em>(View <a href="#Design-Storage">Section 1.5, &#8220;Storage component&#8221;</a> for more details.)</em></p>
 </div>
 <div class="paragraph">
 <p><strong>Overview:</strong></p>
@@ -465,11 +441,11 @@ in the application in the form of a <code>QuestionBank</code>. It saves any chan
 </div>
 </div>
 <div class="sect3">
-<h4 id="programsubmissionlogic-implementation"><a class="link" href="#programsubmissionlogic-implementation">2.3.4. ProgramSubmissionLogic implementation</a></h4>
+<h4 id="programsubmissionlogic-implementation"><a class="link" href="#programsubmissionlogic-implementation">1.3.4. ProgramSubmissionLogic implementation</a></h4>
 <div class="paragraph">
 <p>The standard implementation of the <code>ProgramSubmissionLogic</code> is the <code>ProgramSubmissionLogicManager</code>. This implementation
 relies on the <code>TestExecutor</code> class to execute users' program submissions locally on their machine.
-<em>(View <a href="#Implementation-ProgramEvaluation">Section 3.1, &#8220;Evaluation of user program submissions&#8221;</a> for more details.)</em></p>
+<em>(View <a href="#Implementation-ProgramEvaluation">Section 2.1, &#8220;Evaluation of user program submissions&#8221;</a> for more details.)</em></p>
 </div>
 <div class="paragraph">
 <p><strong>Overview:</strong></p>
@@ -545,11 +521,11 @@ run the user&#8217;s program against test cases found in this <code>Question</co
 </div>
 </div>
 <div class="sect3">
-<h4 id="noteslogic-implementation"><a class="link" href="#noteslogic-implementation">2.3.5. NotesLogic implementation</a></h4>
+<h4 id="noteslogic-implementation"><a class="link" href="#noteslogic-implementation">1.3.5. NotesLogic implementation</a></h4>
 <div class="paragraph">
 <p>The standard implementation of the <code>NotesLogic</code> interface is the <code>NotesLogicManager</code>. This implementation relies on <code>SketchManager</code> to handle the loading and writing of the <strong>Sketch</strong> png image files.
 It also stores the notes in the application in the form of a <code>NoteBank</code>. It saves any changes made to the <code>NoteBank</code> immediately using a <code>NoteBankStorage</code>.
-<em>(View <a href="#Design-Storage">Section 2.5, &#8220;Storage component&#8221;</a> for more details.)</em></p>
+<em>(View <a href="#Design-Storage">Section 1.5, &#8220;Storage component&#8221;</a> for more details.)</em></p>
 </div>
 <div class="paragraph">
 <p><strong>Overview:</strong></p>
@@ -648,25 +624,17 @@ It also stores the notes in the application in the form of a <code>NoteBank</cod
 </div>
 </div>
 <div class="sect2">
-<h3 id="Design-Model"><a class="link" href="#Design-Model">2.4. Model component</a></h3>
-
+<h3 id="Design-Model"><a class="link" href="#Design-Model">1.4. Model component</a></h3>
+<div class="paragraph">
+<p>We created models for <code>Question</code>, <code>Program</code>, <code>Note</code> and <code>Profile</code>.</p>
+</div>
 </div>
 <div class="sect2">
-<h3 id="Design-Storage"><a class="link" href="#Design-Storage">2.5. Storage component</a></h3>
-<div class="imageblock">
-<div class="content">
-<img src="images/developerguide/StorageClassDiagram.png" alt="StorageClassDiagram">
-</div>
-<div class="title">Figure 18. Structure of the Storage Component for Questions</div>
-</div>
+<h3 id="Design-Storage"><a class="link" href="#Design-Storage">1.5. Storage component</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">1.5.1. Overview</a></h4>
 <div class="paragraph">
-<p><strong>API</strong> :</p>
-</div>
-<div class="paragraph">
-<p>For Questions, <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/com/dukeacademy/storage/question/QuestionBankStorage.java"><code>QuestionBankStorage.java</code></a></p>
-</div>
-<div class="paragraph">
-<p>For Profile, link: <a href="https://ay1920s1-cs2103t-f14-1.github.io/main//src/main/java/com/dukeacademy/storage/profile/ProfileStorage.java"><code>ProfileStorage.java</code></a></p>
+<p>There are 2 main storage components found in the architecture of Duke Academy. They are <code>QuestionBankStorage</code> and <code>NoteBankStorage</code>. Each storage component serves as a <strong>facade</strong> for the basic operations by the application with regards to <strong>Commands</strong> and <strong>Notes</strong>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -680,54 +648,85 @@ It also stores the notes in the application in the form of a <code>NoteBank</cod
 <p>can save the Duke Academy question bank in json format and read it back.</p>
 </li>
 <li>
-<p>can save the user information in json format and read it back.</p>
+<p>can save the notes and read it back.</p>
 </li>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">1.5.2. Implementation</a></h4>
+<div class="paragraph">
+<p>The storage components are interfaces so their implementation can be changed easily.</p>
+</div>
+<div class="paragraph">
+<p><code>JsonAdaptedQuestion</code> serves as a good starting point to understand the implementation.</p>
+</div>
+<div class="paragraph">
+<p><strong>JsonAdaptedQuestion:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/JsonAdaptedQuestionClassDiagram.png" alt="JsonAdaptedQuestionClassDiagram">
+</div>
+<div class="title">Figure 18. Class diagram of the JsonAdaptedQuestion class</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It contains all the necessary attributes for a question, including title, completion status, difficulty level, isBookmarked, topics belonged to, testCases, userProgram attempted and question description.</p>
+</li>
+<li>
+<p>Compared with a standard <code>question</code> object, this <code>JsonAdaptedQuestion</code> object has processed its attributes to be compatible with json format. That is, this object  can be directly serialized to and de-serialized from json files.</p>
+</li>
+<li>
+<p>The constructor is used to serialize the <code>Question</code> object using the <code>@JsonProperty</code> notation.</p>
+</li>
+<li>
+<p>The <code>@JsonProperty</code> is also able to deserialize strings obtained from json files. The <code>toModel()</code> function is then used to construct and return a new <code>Question</code> object using attributes it obtained using the getter methods.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="structure"><a class="link" href="#structure">1.5.3. Structure</a></h4>
+<div class="paragraph">
+<p>We would hereby use <code>QuestionBankStorage</code> to illustrate the implementation.</p>
+</div>
+<div class="paragraph">
+<p>The standard implementation of the <code>QuestionBankStorage</code> is the <code>JsonSerializableStandardQuestionBank</code> class.</p>
+</div>
+<div class="paragraph">
+<p><strong>Overview:</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/developerguide/StorageClassDiagram.png" alt="StorageClassDiagram">
+</div>
+<div class="title">Figure 19. Structure of the Storage Component for Questions</div>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="Design-Commons"><a class="link" href="#Design-Commons">2.6. Common classes</a></h3>
+<h3 id="Design-Commons"><a class="link" href="#Design-Commons">1.6. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>com.dukeacademy.commons</code> package.</p>
-</div>
-<div class="paragraph">
-<p><strong>Core</strong>:</p>
-</div>
-<div class="paragraph">
-<p><strong>Exceptions</strong>:</p>
-</div>
-<div class="paragraph">
-<p><code>DataConversionException</code>: occurs when loading files with incorrect data format.</p>
-</div>
-<div class="paragraph">
-<p><code>IllegalValueException</code>: occurs when user inputs a invalid command.</p>
-</div>
-<div class="paragraph">
-<p><strong>Util</strong>:</p>
-</div>
-<div class="paragraph">
-<p><code>FileUtil</code>: for loading and saving of files.
-<code>JsonUtil</code>: for serializing and deserializing json files.</p>
-</div>
-<div class="paragraph">
-<p>&#8230;&#8203;TBA</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
+<h2 id="implementation-2"><a class="link" href="#implementation-2">2. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="Implementation-ProgramEvaluation"><a class="link" href="#Implementation-ProgramEvaluation">3.1. Evaluation of user program submissions</a></h3>
+<h3 id="Implementation-ProgramEvaluation"><a class="link" href="#Implementation-ProgramEvaluation">2.1. Evaluation of user program submissions</a></h3>
 <div class="paragraph">
 <p>The evaluation of the user&#8217;s programs is facilitated by the <code>solutions</code> package.</p>
 </div>
 <div class="sect3">
-<h4 id="entry-point"><a class="link" href="#entry-point">3.1.1. Entry point</a></h4>
+<h4 id="entry-point"><a class="link" href="#entry-point">2.1.1. Entry point</a></h4>
 <div class="paragraph">
 <p>It contains the class <code>TestExecutor</code>
 which contains a single method <code>runTestCases(testCases, program)</code>. This method is used to run a user&#8217;s program against
@@ -745,7 +744,7 @@ a series of test cases.</p>
 <div class="content">
 <img src="images/developerguide/TestCaseClassDiagram.png" alt="TestCaseClassDiagram" width="240">
 </div>
-<div class="title">Figure 19. Class diagram for TestCaseResult</div>
+<div class="title">Figure 20. Class diagram for TestCaseResult</div>
 </div>
 <div class="paragraph">
 <p><strong>UserProgram</strong> - stores the main class name and the program&#8217;s source code a String (note that the specified class name
@@ -755,7 +754,7 @@ must match the source code for it to be successfully evaluated)</p>
 <div class="content">
 <img src="images/developerguide/UserProgramClassDiagram.png" alt="UserProgramClassDiagram" width="240">
 </div>
-<div class="title">Figure 20. Class diagram for UserProgram</div>
+<div class="title">Figure 21. Class diagram for UserProgram</div>
 </div>
 </div>
 </div>
@@ -772,13 +771,13 @@ classes&#8201;&#8212;&#8201;<code>TestCaseResult</code>, <code>CompileError</cod
 <div class="content">
 <img src="images/developerguide/TestResultDiagram.png" alt="TestResultDiagram">
 </div>
-<div class="title">Figure 21. Class diagram for TestResult</div>
+<div class="title">Figure 22. Class diagram for TestResult</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-overview"><a class="link" href="#implementation-overview">3.1.2. Implementation overview</a></h4>
+<h4 id="implementation-overview"><a class="link" href="#implementation-overview">2.1.2. Implementation overview</a></h4>
 <div class="paragraph">
 <p>The evaluation of a user&#8217;s program is done in 3 main steps, each handled by a specialized interface. The 3 steps include:</p>
 </div>
@@ -819,7 +818,7 @@ This temporary folder is deleted after <code>closed()</code>. Utilizes the model
 <div class="content">
 <img src="images/developerguide/CompilerEnvironment.png" alt="CompilerEnvironment">
 </div>
-<div class="title">Figure 22. Associations of CompilerEnvironment</div>
+<div class="title">Figure 23. Associations of CompilerEnvironment</div>
 </div>
 <div class="paragraph">
 <p><strong>Compiler</strong> - in charge of compiling the Java files into Class files at a given file path. Utilizes the model class <code>ClassFile</code>.</p>
@@ -828,7 +827,7 @@ This temporary folder is deleted after <code>closed()</code>. Utilizes the model
 <div class="content">
 <img src="images/developerguide/Compiler.png" alt="Compiler">
 </div>
-<div class="title">Figure 23. Associations of Compile</div>
+<div class="title">Figure 24. Associations of Compile</div>
 </div>
 <div class="paragraph">
 <p><strong>ProgramExecutor</strong> - in charge of executing the compiled Class files. Utilizes the model class <code>ProgramOutput</code>.</p>
@@ -837,7 +836,7 @@ This temporary folder is deleted after <code>closed()</code>. Utilizes the model
 <div class="content">
 <img src="images/developerguide/ProgramExecutor.png" alt="ProgramExecutor">
 </div>
-<div class="title">Figure 24. Associations of ProgramExecutor</div>
+<div class="title">Figure 25. Associations of ProgramExecutor</div>
 </div>
 <div class="paragraph">
 <p><strong>Models:</strong></p>
@@ -894,7 +893,7 @@ test case to retrieve the <code>CompletableFuture</code> async task of running t
 <div class="content">
 <img src="images/developerguide/TestExecutorSequenceDiagram.png" alt="align:center">
 </div>
-<div class="title">Figure 25. Sequence diagram for the evaluation of a user&#8217;s program</div>
+<div class="title">Figure 26. Sequence diagram for the evaluation of a user&#8217;s program</div>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -908,7 +907,7 @@ test case to retrieve the <code>CompletableFuture</code> async task of running t
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation-details"><a class="link" href="#implementation-details">3.1.3. Implementation details</a></h4>
+<h4 id="implementation-details"><a class="link" href="#implementation-details">2.1.3. Implementation details</a></h4>
 <div class="paragraph">
 <p>The implementations of <code>CompilerEnvironment</code>, <code>Compiler</code> and <code>ProgramExecutor</code> used in the application are as follows:</p>
 </div>
@@ -976,14 +975,14 @@ test case to retrieve the <code>CompletableFuture</code> async task of running t
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">2.2. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.3, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 2.3, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1014,13 +1013,13 @@ test case to retrieve the <code>CompletableFuture</code> async task of running t
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.3. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">2.3. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dashboard"><a class="link" href="#dashboard">3.4. Dashboard</a></h3>
+<h3 id="dashboard"><a class="link" href="#dashboard">2.4. Dashboard</a></h3>
 <div class="paragraph">
 <p>The home page of Duke Academy is the main page that the user sees upon app initialization. Not only does it provide an
 introduction and greeting to the user, it also functions as a personal dashboard.</p>
@@ -1049,20 +1048,57 @@ three pieces of data.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="problem-description-panel"><a class="link" href="#problem-description-panel">3.5. Problem Description Panel</a></h3>
+<h3 id="problem-statement-panel"><a class="link" href="#problem-statement-panel">2.5. Problem Statement Panel</a></h3>
 <div class="paragraph">
-<p>The <strong>Problem Display Panel</strong> is responsible for displaying the problem statement of the user-selected question. This
-panel is activated after the <code>ViewCommand</code> is executed, when the status of the question view is updated and reflected
-back to the current application state.</p>
+<p>Since the problem description cannot be viewed fully from the question list, we introduced a new problem description panel. When type <code>view [id]</code>, the panel updates to
+display all the additional information a question has to provide.</p>
+</div>
+<div class="paragraph">
+<p>General Procedure of Command execution:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>User types <code>view [id]</code> in the command box.
+The <code>MainApp</code> class receives the input, calls the <code>commandLogic</code> class to executes the command and returns an <code>CommandResult</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The implementation details are narrated following user cases as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>When the <code>view</code> command is executed, it switches the pane to "Question" by calling the <code>applicationState</code> object&#8217;s <code>setCurrentActivity(Activity pane)</code> method.</p>
+</li>
+<li>
+<p>It then updates the <code>questionLogic</code> object of the current question being viewed by calling its <code>selectQuestion(int id)</code> method.</p>
+</li>
+<li>
+<p>The <code>ProblemStatementPanel</code> UI utilizes a JavaFx <code>@FXML</code> property called <code>TextArea</code> to display information.</p>
+</li>
+<li>
+<p>Every time when the <code>QuestionPage</code> pane or the <code>Workspace</code> pane is displayed, their respective UI controller checks whether <code>questionLogic</code> refers to a
+question that is currently of interest by the user. If positive, they will call the <code>ProblemStatementPanel</code> controller&#8217;s <code>setProblemStatement(String problemStatement)</code> to display data.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>As such, the functionality required by problem display panel is well covered.</p>
+</div>
+<div class="paragraph">
+<p>In version 2.0, we aim to achieve rich text display of problem description. It can be in MarkDown format, containing LaTeX formulas, images, URL links,
+coloured text, formatted code snippet, etc.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="bookmark-command"><a class="link" href="#bookmark-command">3.6. Bookmark Command</a></h3>
+<h3 id="bookmark-command"><a class="link" href="#bookmark-command">2.6. Bookmark Command</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/developerguide/BookmarkCommandSequenceDiagram.png" alt="BookmarkCommandSequenceDiagram">
 </div>
-<div class="title">Figure 26. Sequence Diagram for the execution of a BookmarkCommand instance</div>
+<div class="title">Figure 27. Sequence Diagram for the execution of a BookmarkCommand instance</div>
 </div>
 <div class="paragraph">
 <p>The sequence is as follows:</p>
@@ -1085,7 +1121,7 @@ back to the current application state.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="program-evaluation-panel"><a class="link" href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></h3>
+<h3 id="program-evaluation-panel"><a class="link" href="#program-evaluation-panel">2.7. Program Evaluation Panel</a></h3>
 <div class="paragraph">
 <p>The <strong>Code Result Panel</strong> is located beneath the <strong>Problem Display Panel</strong>. It is responsible for showing the results after
 the user-submitted code is evaluated for its correctness against a pre-defined set of test cases.</p>
@@ -1099,7 +1135,7 @@ the various test cases.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editor-panel"><a class="link" href="#editor-panel">3.8. Editor Panel</a></h3>
+<h3 id="editor-panel"><a class="link" href="#editor-panel">2.8. Editor Panel</a></h3>
 <div class="paragraph">
 <p>The editor panel is the panel right next to the <strong>Problem Display Panel</strong> and the <strong>Program Evaluation Panel</strong>. The editor panel
 consists of two parts: The main text editor and the line counter component.</p>
@@ -1120,7 +1156,7 @@ necessary helper functions to count the number of newline characters in the text
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">4. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">3. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Documentation.html">here</a>.</p>
@@ -1128,7 +1164,7 @@ necessary helper functions to count the number of newline characters in the text
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">5. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">4. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="Testing.html">here</a>.</p>
@@ -1136,7 +1172,7 @@ necessary helper functions to count the number of newline characters in the text
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">6. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">5. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Refer to the guide <a href="DevOps.html">here</a>.</p>
@@ -1666,7 +1702,7 @@ necessary helper functions to count the number of newline characters in the text
 </div>
 </div>
 <div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">7. Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">6. Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -1684,7 +1720,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch"><a class="link" href="#launch">7.1. Launch</a></h3>
+<h3 id="launch"><a class="link" href="#launch">6.1. Launch</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1705,7 +1741,52 @@ Expected: Shows the GUI with the Home tab in focus. The questions tab should con
 </div>
 </div>
 <div class="sect2">
-<h3 id="attempting-question"><a class="link" href="#attempting-question">7.2. Attempting question</a></h3>
+<h3 id="navigate-in-the-app"><a class="link" href="#navigate-in-the-app">6.2. Navigate in the app</a></h3>
+<div class="sect3">
+<h4 id="navigate-between-panes"><a class="link" href="#navigate-between-panes">6.2.1. Navigate between panes</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Type <code>tab</code> in command box.</p>
+</li>
+<li>
+<p>Or use mouse to click the tabs.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-in-the-question-pane"><a class="link" href="#navigate-in-the-question-pane">6.2.2. Navigate in the Question Pane</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>showall</code>: list all questions</p>
+</li>
+<li>
+<p><code>browse [keyword]</code>: find question by topic, difficulty, title, description&#8230;&#8203; etc. It can find multiple keywords at one time. It finds by matching words, not by matching characters.</p>
+</li>
+<li>
+<p><code>find [keyword]</code>: find by question title.</p>
+</li>
+<li>
+<p><code>view [id]</code>: views the problem statement of the question with such id. If id is out of range, prompts error.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="navigate-to-the-workspace"><a class="link" href="#navigate-to-the-workspace">6.2.3. Navigate to the workspace</a></h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>attempt [id]</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attempting-question"><a class="link" href="#attempting-question">6.3. Attempting question</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1752,7 +1833,7 @@ Expected: The application should display the runtime error</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-notes"><a class="link" href="#creating-notes">7.3. Creating notes</a></h3>
+<h3 id="creating-notes"><a class="link" href="#creating-notes">6.4. Creating notes</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -1803,5 +1884,127 @@ Expected: The changes to the note should be saved and reflected in the app</p>
 </ol>
 </div>
 </div>
+<div class="sect2">
+<h3 id="loading-custom-questions"><a class="link" href="#loading-custom-questions">6.5. Loading Custom Questions</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Load question files prepared by developers</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>type <code>loadquestions NewProblems.txt</code> in the command box.<br>
+Expected: The Question List is updated with newly loaded questions named <code>Apple</code> and <code>Banana</code>.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:04:00 UTC</div></div></div></body></html>
+</li>
+<li>
+<p>Question file in wrong format</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Navigate to to the <code>DukeAcademy/newQuestions/NewProblems.txt</code> file. The <code>DukeAcademy</code> folder is in the same directory as where you put the jar file.</p>
+</li>
+<li>
+<p>Change <code>Difficulty: EASY</code> to <code>Difficulty: easy</code>.<br>
+Expected: Prompts an error.</p>
+</li>
+<li>
+<p>Other ways include changing Topics to invalid values or uncapitalized words.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Question file not saved in specified location</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Drag the file to Desktop and re-enter <code>loadquestions NewProblems.txt</code>.<br>
+Expected: Prompts an error.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Entered commands with wrong file name</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Type in command box <code>loadquestions newproblem</code> or any unexistant file.<br>
+Expected: Prompts an error.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Load your own set of questions</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>You can directly edit from the <code>NewProblems.txt</code> file. Description can be multi-lined, as long as the identifiers (e.g. <code>Difficulty:</code>) occupy a single line.<br>
+Expected: New questions are loaded.</p>
+</li>
+<li>
+<p>Alternatively, you can create questions from scratch. The instructions below are copied from user guide.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Create a .txt file.</p>
+</li>
+<li>
+<p>The format of a question goes like follows:</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Question::
+
+Title::
+
+Description::
+
+Difficulty::
+
+Topics::
+
+TestCase::
+
+Input::
+
+Output::</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Some notes:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>All inputs must be in the order stated above.</p>
+</li>
+<li>
+<p>Title, Description can be any non-empty string.</p>
+</li>
+<li>
+<p>Difficulty can only be EASY, MEDIUM or HARD. (Must be capitalized)</p>
+</li>
+<li>
+<p>Topics can only be ARRAY, LINKED_LIST, HASHTABLE, TREE, GRAPH, RECURSION, DIVIDE_AND_CONQUER, DYNAMIC_PROGRAMMING, SORTING, or OTHERS. (Must be capitalized)</p>
+</li>
+<li>
+<p>One question can only have one title, description and difficulty. It can have multiple topics separated by <code>,</code>. It can have multiple test cases, each begin with a <code>TestCase::</code> identifier.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:23:27 UTC</div></div></div></body></html>
