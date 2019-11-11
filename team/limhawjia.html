@@ -1,72 +1,260 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Lim Haw Jia - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Lim Haw Jia - Project Portfolio</title><link rel="stylesheet" href="../stylesheets//gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">DukeAcademy</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lim Haw Jia - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-duke-academy"><a class="link" href="#project-duke-academy">PROJECT: Duke Academy</a></h2>
-<div class="sectionbody">
-<hr>
-</div>
-</div>
-<div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<link rel="stylesheet" href="../stylesheets//coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">DukeAcademy</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://ay1920s1-cs2103t-f14-1.github.io/main/"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Lim Haw Jia - Project Portfolio</h1></div><div id="content"><div class="sect1">
+<h2 id="project-duke-academy"><a class="link" href="#project-duke-academy">1. Project: Duke Academy</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Duke Academy is a Java programming platform equipped with a library of programming questions related to the field of Data Structures and Algorithms, as well as an automated judging system. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 15 kLoC.</p>
+<p>Duke Academy is a Java based programming practice application equipped with a wide range of questions related to the field of Data Structures and Algorithms.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="overview"><a class="link" href="#overview">2. Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Duke Academy was built to emulate a Command Line Application where users interact with the GUI by typing commands into a command box.
+This is to allow new learners to also familiarize themselves with using a Command Line Interface, an invaluable skill for all programmers.</p>
+</div>
+<div class="imageblock text-center" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/DukeAcademyGUI.png" alt="DukeAcademyGUI" width="800">
+</div>
+<div class="title">Figure 1. Main GUI of Duke Academy</div>
+</div>
+<div class="paragraph">
+<p>Duke Academy is an integrated platform with a built-in text editor, an auto-grader and a note-taking feature.</p>
+</div>
+<div class="paragraph">
+<p>DukeAcademy can also be used as a teaching tool by educators as they can set their own questions to be loaded by their students using our simplified text format.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="my-roles-and-contributions"><a class="link" href="#my-roles-and-contributions">3. My Roles and Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following segment illustrates the different roles and tasks that I have performed for our team in detail.
+It also provides a bit of justification for the different choices that I have made pertaining to these roles and tasks.</p>
+</div>
+<div class="sect2">
+<h3 id="change-underlying-architecture-to-suit-our-needs-refactor"><a class="link" href="#change-underlying-architecture-to-suit-our-needs-refactor">3.1. Change underlying architecture to suit our needs [refactor]</a></h3>
+<div class="paragraph">
+<p><em>Due to the increased complexity of our product, a large part of the existing architecture of AddressBook3 had to be changed.
+Most of the changes can be summarized into the 3 following sections :</em></p>
+</div>
+<div class="sect3">
+<h4 id="strong-separate-logic-component-strong"><a class="link" href="#strong-separate-logic-component-strong">3.1.1. <strong>Separate Logic component</strong></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Split the old <code>Logic</code> interface in AddressBook3 into separate interfaces, each with their own specialized functions.</p>
+</li>
+<li>
+<p>The new interfaces are <code>CommandLogic</code>, <code>QuestionsLogic</code>, <code>ProgramSubmissionLogic</code> and <code>NotesLogic</code>.</p>
+</li>
+<li>
+<p>Each interface facilitates operations pertaining to a different part of our application.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Justification :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Functionality of our application can be split into more cohesive components</p>
+</li>
+<li>
+<p>Reduce coupling to make the codebase more  testable and maintainable</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="strong-implemented-observer-pattern-strong-br"><a class="link" href="#strong-implemented-observer-pattern-strong-br">3.1.2. <strong>Implemented Observer pattern</strong><br></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a new simple and lightweight observable class that can be customized using Java generics.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Justification :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Enable UI components to observe and reflect changes in the application state without introducing them as unnecessary dependencies.</p>
+</li>
+<li>
+<p>JavaFX&#8217;s native Observable class was over-engineered for our use case.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="strong-refactor-command-pattern-strong"><a class="link" href="#strong-refactor-command-pattern-strong">3.1.3. <strong>Refactor Command pattern</strong></a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p>Change the implementation of the Command pattern to be more flexible.</p>
+</li>
+<li>
+<p><code>execute()</code> no longer depends on <code>Model</code>.</p>
+</li>
+<li>
+<p>Parsing of command arguments is now handled by individual commands.</p>
+</li>
+<li>
+<p>Open-closed principle is maintained by registering commands into <code>CommandLogic</code> with a <code>Supplier</code>.</p>
+</li>
+<li>
+<p><code>Supplier</code> is in charge of injecting dependencies into the various commands.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Justification :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>New commands no longer depend on <code>Model</code> and have their own dependencies.</p>
+</li>
+<li>
+<p>New commands require their own unique argument parsing logic.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="program-evaluation-feature-feature"><a class="link" href="#program-evaluation-feature-feature">3.2. Program evaluation feature [feature]</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>What it does</strong> :<br>
+Allows users' solutions to be automatically evaluated by our application. The solution is evaluated against test cases specified in the <code>Question</code> class.</p>
+</li>
+<li>
+<p><strong>Justification</strong> :<br>
+It is difficult to come up with your own test cases to evaluate your solutions whenever you attempt programming questions. It is also very cumbersome to run each test case manually. Allowing users to automatically have their solutions evaluated will allow them to focus more on their learning.</p>
+</li>
+<li>
+<p><strong>Highlights</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Compile and runtime errors are also displayed to the user in the event that they occur so that users are able to learn from their mistakes.</p>
+</li>
+<li>
+<p>A <em>Time Limit Exceeded</em> error is displayed if the user&#8217;s program takes too long to complete. This will allow users to know if their solutions are properly optimized.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/ProgramEvaluation.png" alt="ProgramEvaluation" width="800">
+</div>
+<div class="title">Figure 2. Program evaluation example</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/CompileError.png" alt="CompileError" width="800">
+</div>
+<div class="title">Figure 3. Compile error example</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="note-taking-feature-feature"><a class="link" href="#note-taking-feature-feature">3.3. Note-taking feature [feature]</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does :<br>
+Allows users to record notes in the form of text or a simple sketch.</p>
+</li>
+<li>
+<p>Justification :<br>
+Being able to pen down ideas is extremely useful when coming up with solutions to programming questions. Furthermore, being able to take notes for future reference will help to reinforce our users' learning.</p>
+</li>
+<li>
+<p>Highlights :<br>
+In addition to taking notes in the form of text, user&#8217;s are also able to sketch their ideas within a a sketch pad and have them saved for future reference. This is particularly useful when dealing with data structures.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/NotePage.png" alt="NotePage" width="800">
+</div>
+<div class="title">Figure 4. Notes page preview</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tabs-feature"><a class="link" href="#tabs-feature">3.4. Tabs [feature]</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does  :<br>
+Splits the various functions of the application&#8201;&#8212;&#8201;<em>browsing and viewing of questions</em>, <em>attempting of questions and evaluation of results</em>, <em>note-taking</em>, into individual tabs.</p>
+</li>
+<li>
+<p>Justification :<br>
+Separating the various functions of our application into their own separate tabs will reduce clutter and enable users to be more organized in their learning.</p>
+</li>
+<li>
+<p>Highlights :<br>
+In line with the <em>Command Line</em> theme, the user is able to switch tabs by typing the command <em>"tab"</em> instead of using a mouse-click.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-contributions"><a class="link" href="#other-contributions">4. Other Contributions</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p>Project management</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>Managed and enforced branching workflow on GitHub</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Set up auto-publishing of docs (<a href="https://github.com/AY1920S1-CS2103T-F14-1/main/commit/ccde6b5fba8b4d5294678804d0e63c03804ce24c">commit</a>)</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
-</li>
-<li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Managed releases <code>v1.3</code> - <code>v1.4</code> on GitHub (2 releases)</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
+<p>Product design:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Updated the GUI layout and color scheme (Pull requests <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/112">#112</a>)</p>
 </li>
 </ul>
 </div>
@@ -76,7 +264,23 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Cosmetic tweaks to contents of the User Guide (Pull requests <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/13">#13</a> <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/34">#34</a>)</p>
+</li>
+<li>
+<p>Actively contributed to the writing of the User Guide and Developer Guide (Pull requests <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/77">#77</a> <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/83">#83</a>  <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/185">#185</a> <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/190">#190</a>)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Testing:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Wrote tests to validate the code base (Pull requests <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/87">#87</a> <a href="https://github.com/AY1920S1-CS2103T-F14-1/main/pull/88">#88</a>)</p>
+</li>
+<li>
+<p>Actively wrote tests for most major pull requests</p>
 </li>
 </ul>
 </div>
@@ -86,79 +290,857 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Reported bugs and suggestions for other teams in the class (<a href="https://github.com/nus-cs2103-AY1920S1/addressbook-level3/pull/25">Liberry</a>)</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>Tools:</p>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="code-contributions"><a class="link" href="#code-contributions">5. Code Contributions</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Click the links below to view my code contributions on RepoSense.
+On RepoSense, you can select options to view my functional code and test code.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p><a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=F14&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=limhawjia&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Functional code</a></p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p><a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=F14&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=limhawjia&amp;tabRepo=AY1920S1-CS2103T-F14-1%2Fmain%5Bmaster%5D">Test code</a></p>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">6. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Given below are some of the sections that I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="Overview"><a class="link" href="#Overview">7. Overview</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application is divided into 5 separate tabs, each one of them serving a specific purpose. You can toggle between the
+different tabs by entering <code>tab</code> into the <strong>CommandBox</strong>.</p>
+</div>
+<div class="sect2">
+<h3 id="dashboard"><a class="link" href="#dashboard">7.1. Dashboard</a></h3>
+<div class="paragraph">
+<p>The <strong>Dashboard</strong> tab contains an introduction of the application, and more importantly, a <strong>Personal Dashboard</strong> for you to keep track of your progress made in Duke Academy.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/homepage.png" alt="homepage" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Completion Progress</strong><br>
+Displays the number of questions that you have completed and how close you are to the next skill tier</p>
+</li>
+<li>
+<p><strong>Currently attempting</strong><br>
+Displays all the questions that you are currently attempting</p>
+</li>
+<li>
+<p><strong>Bookmarked questions</strong><br>
+Displays all your bookmarked questions</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>Duke Academy ranks</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Novice</strong> - 0 - 29 % &#160;</p>
+</li>
+<li>
+<p><strong>Apprentice</strong> - 30 - 49 % &#160;</p>
+</li>
+<li>
+<p><strong>Master</strong> 50 - 69 % &#160;</p>
+</li>
+<li>
+<p><strong>Grandmaster</strong> - 70 - 89 % &#160;</p>
+</li>
+<li>
+<p><strong>Duke</strong> - 90 - 100 %</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="questions"><a class="link" href="#questions">7.2. Questions</a></h3>
+<div class="paragraph">
+<p>The <strong>Questions</strong> tab contains a list of all the available questions and also a window to view your problem statements.</p>
+</div>
+<div class="paragraph">
+<p>You can use commands such as <code>browse</code> and <code>find</code> to filter through the list of questions in order to find what you
+are looking for. <code>browse</code> can lookup any keywords in titles, difficulty, description, topics, etc. <code>find</code> only finds by titles. <em>(View <a href="#Features">[Features]</a> for more details.)</em></p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/questionspage.png" alt="questionspage" width="800">
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To quickly see all questions, enter <code>showall</code> into the <strong>CommandBox</strong>.</p>
+</li>
+<li>
+<p>To view the problem statement for a question, enter <code>view &lt;Qn Index&gt;</code>. The problem statement will then be displayed
+on the right.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="workspace"><a class="link" href="#workspace">7.3. Workspace</a></h3>
+<div class="paragraph">
+<p>The workspace is where you will work on the various questions.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/workspace.png" alt="workspace" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Problem Statement Display</strong></p>
+<div class="paragraph">
+<p>Displays the question that you are currently attempting.</p>
+</div>
+</li>
+<li>
+<p><strong>Program Evaluation Panel</strong></p>
+<div class="paragraph">
+<p>This panel displays the correctness of your program when evaluated against the pre-defined list of test cases tied to the question you are solving.</p>
+</div>
+</li>
+<li>
+<p><strong>Editor</strong></p>
+<div class="paragraph">
+<p>A built-in editor for you to write your code.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To submit your attempt, enter <code>submit</code> into the <strong>CommandBox</strong>.</p>
+</li>
+<li>
+<p>To begin your attempt on a question, enter <code>attempt &lt;Qn Index&gt;</code> into the <strong>CommandBox</strong>.</p>
+</li>
+<li>
+<p>To submit your attempt, enter <code>submit</code> into the <strong>CommandBox</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes"><a class="link" href="#notes">7.4. Notes</a></h3>
+<div class="paragraph">
+<p>The notes page is where you can record notes or even sketch out some of your ideas to aid your learning process.</p>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/notespage.png" alt="notespage" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>NotesListDisplay</strong></p>
+<div class="paragraph">
+<p>Displays all of the notes that you have previously created.</p>
+</div>
+</li>
+<li>
+<p><strong>CurrentNoteTitle</strong></p>
+<div class="paragraph">
+<p>Shows the title of the note that you are currently viewing/editing.</p>
+</div>
+</li>
+<li>
+<p><strong>NoteTextInput</strong></p>
+<div class="paragraph">
+<p>Input space for any text-based notes that you wish to record.</p>
+</div>
+</li>
+<li>
+<p><strong>Sketchpad</strong></p>
+<div class="paragraph">
+<p>A canvas for you to draw any ideas you may have pertaining to data structures!</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To create a new note, enter <code>newnote &lt;Title&gt;</code> into the <strong>CommandBox</strong></p>
+</li>
+<li>
+<p>To open an exiting note, enter `opennote &lt;Id&gt; into the <strong>CommandBox</strong>.</p>
+</li>
+<li>
+<p>The id of the note is the number that appears next to the title in the <strong>NotesListDisplay</strong>.</p>
+</li>
+<li>
+<p>To save any changes to your notes, enter <code>savenote</code> into the <strong>CommandBox</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="BeforeStart"><a class="link" href="#BeforeStart">8. Before you start</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The evaluator searches for a class with the class name <code>Main</code> as the entry point into your program. Please ensure
+that you declare your <strong>main method</strong> in a class called <code>Main</code>.</p>
+</li>
+<li>
+<p>The program evaluator uses <strong>stdin</strong> to feed your program inputs and <strong>stdout</strong> to receive your program&#8217;s outputs. Thus,
+it is important that your program uses the <code>Scanner</code> class to read inputs and for you to print your results.</p>
+</li>
+<li>
+<p>Take note that your program is being evaluated <strong>on your local machine</strong> and not within a container or a virtual machine.
+Thus, <strong>do not write any code that you would not want to run on your local machine</strong>.</p>
+</li>
+<li>
+<p>Most importantly, remember to have fun!</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="submitting-your-answer-code-submit-code"><a class="link" href="#submitting-your-answer-code-submit-code">8.1. Submitting your answer: <code>submit</code></a></h3>
+<div class="paragraph">
+<p>Submits your solution.​ Your code will be compiled and run against test cases. The results will be displayed in
+the <strong>ProgramEvaluationDisplay</strong> on the bottom left of the GUI.</p>
+</div>
+<div class="paragraph">
+<p><strong>Format:</strong> <code>submit</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure to check that your code compiles or you will receive an error message.</p>
+</li>
+<li>
+<p>Remember to import the relevant packages that you have used in your code!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/submit.png" alt="submit" width="800">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">9. Contributions to the Developer Guide</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are some of the sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</p>
+</div>
+<div class="sect2">
+<h3 id="Design-Logic"><a class="link" href="#Design-Logic">9.1. Logic components</a></h3>
+<div class="sect3">
+<h4 id="overview-2"><a class="link" href="#overview-2">9.1.1. Overview</a></h4>
+<div class="paragraph">
+<p>There are 4 main logic components in the architecture of Duke Academy. They are <code>CommandLogic</code>, <code>QuestionsLogic</code>, <code>ProgramSubmissionLogic</code> and <code>NotesLogic</code>.
+Each logic component serves as a <strong>facade</strong> for basic operations with regards to <strong>Commands</strong>, <strong>Questions</strong>, <strong>ProgramSubmission</strong> and <strong>Notes</strong>.</p>
+</div>
+<div class="paragraph">
+<p>They orchestrate the execution of these operations internally and expose a simple interface for other components, such as the <code>UI</code> to utilize.</p>
+</div>
+<div class="paragraph">
+<p>The logic components are interfaces so their implementation can be changed easily.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph text-center">
+<p><em>Class diagrams for various logic classes</em></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/hj_ppp/CommandLogicClassDiagram.png" alt="CommandLogicClassDiagram" width="150"></span>
+<span class="image"><img src="../images/hj_ppp/ProgramSubmissionLogicClassDiagram.png" alt="ProgramSubmissionLogicClassDiagram" width="250"></span>
+<span class="image"><img src="../images/hj_ppp/NotesLogicClassDiagram.png" alt="NotesLogicClassDiagram" width="250"></span>
+<span class="image"><img src="../images/hj_ppp/QuestionsLogicClassDiagram.png" alt="QuestionsLogicClassDiagram" width="250"></span></p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>CommandLogic</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only has one method  which is used by the application to execute commands.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>QuestionsLogic:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deals with all CRUD operations pertaining to the questions found in the application.</p>
+</li>
+<li>
+<p>Keeps track a <em>selected question</em> which represents the <code>Question</code> that is currently being viewed by the user.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>ProgramSubmissionLogic:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Performs the evaluation of the user&#8217;s program submissions.</p>
+</li>
+<li>
+<p>Keeps track of a <em>currently attempting</em> question which is used to test user program submissions.</p>
+</li>
+<li>
+<p>Uses the <code>UserProgramChannel</code> interface to enable other components such as the <code>UI</code> to serve as a source for <code>UserProgram</code> without introducing them as dependencies.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>NotesLogic:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Deals with all CRUD operations pertaining to the notes found in the application.</p>
+</li>
+<li>
+<p>Uses the <code>NoteSubmissionChannel</code> interface to enable other components such as the <code>UI</code> to serve as a source for notes without introducing them as dependencies.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="commandlogic-implementation"><a class="link" href="#commandlogic-implementation">9.1.2. CommandLogic implementation</a></h4>
+<div class="paragraph">
+<p>The standard implementation of the CommandLogic is the <code>CommandLogicManager</code> class.</p>
+</div>
+<div class="paragraph">
+<p><strong>Overview:</strong></p>
+</div>
+<div id="fig-CommandLogicManagerAssociations" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/CommandLogicManager.png" alt="CommandLogicManager" width="600">
+</div>
+<div class="title">Figure 5. Associations of the CommandLogicManager</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For commands to be parsed by <code>CommandLogic</code>,  they have to be registered with <code>registerCommand()</code>.</p>
+</li>
+<li>
+<p>A <code>CommandSupplier</code> and a command word is required to register a <code>Command</code></p>
+</li>
+<li>
+<p>A <code>Command</code> can also be registered with a <code>CommandFactory</code>.</p>
+</li>
+<li>
+<p>When <code>executeCommand(commandText)</code> is invoke, <code>CommandLogicManager</code> searches all previously registered commands for the right one to execute.</p>
+</li>
+<li>
+<p>Storage of these keys and the parsing of the <code>commandText</code> argument is performed by <code>CommandParser</code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>CommandSupplier</code> is a functional interface that returns a <code>Command</code>.</p>
+</li>
+<li>
+<p>Each <code>CommandSupplier</code> is mapped to a command word</p>
+</li>
+<li>
+<p>This command word is used to search for the appropriate <code>Command</code></p>
+</li>
+<li>
+<p><code>CommandParser</code> splits the text input of the user into the command word and arguments.</p>
+</li>
+<li>
+<p>Each <code>Command</code> is  responsible for parsing its own arguments.</p>
+</li>
+<li>
+<p><code>InvalidCommandArgumentException</code> is thrown if the arguments do not match the specification of the command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div id="fig-CommandLogicSequenceDiagram" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/CommandLogicSequence.png" alt="CommandLogicSequence" width="800">
+</div>
+<div class="title">Figure 6. Sequence diagram for command execution</div>
+</div>
+<div class="paragraph">
+<p><strong>The basic sequence of command execution is as follows:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Command</code> is registered upon startup by the application driver</p>
+</li>
+<li>
+<p><code>Command</code> and matching command word is stored in <code>CommandParser</code> by <code>CommandLogicManager</code></p>
+</li>
+<li>
+<p>User enters command text</p>
+</li>
+<li>
+<p>Application driver passes the command text as String to <code>CommandLogicManager</code></p>
+</li>
+<li>
+<p><code>CommandLogicManager</code> passes command text to <code>CommandParser</code> for parsing and <code>Command</code> retrieval</p>
+</li>
+<li>
+<p><code>CommandLogicManager</code> receives and executes <code>Command</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="noteslogic-implementation"><a class="link" href="#noteslogic-implementation">9.1.3. NotesLogic implementation</a></h4>
+<div class="paragraph">
+<p>The standard implementation of the <code>NotesLogic</code> interface is the <code>NotesLogicManager</code>. It relies on <code>SketchManager</code> to handle loadiand saving of the <strong>Sketches</strong>.
+It also stores the notes in the application in the form of a <code>NoteBank</code>. <em>(View <a href="#Design-Storage">[Design-Storage]</a> for more details.)</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Overview:</strong></p>
+</div>
+<div id="fig-NotesLogicManagerAssociations" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/NotesLogicManager.png" alt="NotesLogicManager" width="600">
+</div>
+<div class="title">Figure 7. Associations of the NotesLogicManager</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Allows other components of the application to make changes to the current state of notes using its interface.</p>
+</li>
+<li>
+<p>Other components of the application can also observe the current state of notes by getting an <code>ObservableList</code> through <code>getAllNotesList()</code></p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>NotesLogicManager</code> constructor takes in a <code>NoteBankStorage</code> instance which is used to load the initial <code>QuestionBank</code> and to save subsequent revisions to it.</p>
+</li>
+<li>
+<p>The main bulk of the CRUD operations are handled by the <code>NoteBank</code> class.</p>
+</li>
+<li>
+<p><code>NotesLogicManager</code> saves the <code>NoteBank</code> methods along after each change</p>
+</li>
+<li>
+<p><code>NoteSubmissionChannel</code> is required to provide a pair of values&#8201;&#8212;&#8201;a <code>Note</code> and a <code>WritableImage</code> instance to represent the user&#8217;s sketch.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>SketchManager:</strong></p>
+</div>
+<div id="fig-SketchManagerClassDiagram" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/SketchManagerClassDiagram.png" alt="SketchManagerClassDiagram" width="250">
+</div>
+<div class="title">Figure 8. Class diagram of the SketchManager</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Handles the saving, loading and deleting of <strong>sketches</strong>.</p>
+</li>
+<li>
+<p>Deals with <strong>sketches</strong> in two formats, <code>WritableImage</code> class used by the JavaFX <code>UI</code> components for rendering the image, and png form in storage.</p>
+</li>
+<li>
+<p>Converts <strong>sketches</strong> between the two formats upon loading/before saving.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div id="fig-NoteSavingSequence" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/NoteSavingSequence.png" alt="NoteSavingSequence" width="650">
+</div>
+<div class="title">Figure 9. Sequence diagram of saving a note</div>
+</div>
+<div class="paragraph">
+<p><strong>The basic sequence of saving a user&#8217;s note from a <code>UI</code>  component is as follows:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Register the <code>UI</code> component as the <code>NoteSubmissionChannel</code></p>
+</li>
+<li>
+<p>Invoke the <code>saveNoteFromSubmissionChannel()</code> method</p>
+</li>
+<li>
+<p><code>Note</code> and <strong>sketch</strong> is retrieved from the <code>NoteSubmissionChannel</code></p>
+</li>
+<li>
+<p><code>Note</code> is saved by the <code>NoteBankStorage</code> while the <strong>sketch</strong> is saved by the <code>SketchManager</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-ProgramEvaluation"><a class="link" href="#Implementation-ProgramEvaluation">9.2. Evaluation of user program submissions</a></h3>
+<div class="paragraph">
+<p>The evaluation of the user&#8217;s programs is facilitated by the <code>testexecutor</code> package.</p>
+</div>
+<div class="sect3">
+<h4 id="entry-point"><a class="link" href="#entry-point">9.2.1. Entry point</a></h4>
+<div class="ulist">
+<ul>
+<li>
+<p><code>TestExecutor</code> contains a single method <code>runTestCases(testCases, program)</code> which evaluates a <code>UserProgram</code> against
+a list of <code>TestCase</code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>TestCase</strong> - stores an input and an expected value.</p>
+</div>
+<div class="paragraph">
+<p><strong>UserProgram</strong> - stores the name of the class which contains the <em>main method</em> along with the source code (<em>note that the class name must match the source code for it to be evaluated successfully</em>).</p>
+</div>
+<div class="paragraph text-center">
+<p><em>Class Diagrams for UserProgram and TestCase</em></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/hj_ppp/UserProgramClassDiagram.png" alt="UserProgramClassDiagram" width="150"></span>
+<span class="image"><img src="../images/hj_ppp/TestCaseClassDiagram.png" alt="TestCaseClassDiagram" width="150"></span></p>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The result of the program evaluation is returned as a <code>TestResult</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>TestResult</strong> - encapsulates all possible outcomes of evaluating the user&#8217;s program. It is contains <code>TestCaseResult</code> and <code>CompileError</code>.</p>
+</div>
+<div id="fig-TestResultClassDiagram" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/TestResultDiagram.png" alt="TestResultDiagram">
+</div>
+<div class="title">Figure 10. Class diagram for TestResult</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-overview"><a class="link" href="#implementation-overview">9.2.2. Implementation overview</a></h4>
+<div class="paragraph">
+<p>The evaluation of a user&#8217;s program is done in 5 main steps, each handled by a specialized interface. The 5 steps include:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a Java file inside a temporary directory and write the source code into the file.</p>
+</li>
+<li>
+<p>Compile the Java file. Catch and store any compile errors.</p>
+</li>
+<li>
+<p>Execute the generated Class file and provide the inputs of the test cases.</p>
+</li>
+<li>
+<p>Collect and store any output from the program.</p>
+</li>
+<li>
+<p>Package the output, errors and results as a <code>TestResult</code> instance.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The 3 specialized interfaces used are <code>CompilerEnvironment</code>, <code>Compiler</code> and <code>ProgramExecutor</code>. They provided through dependency injection in the <code>TestExecutor</code> constructor.</p>
+</div>
+<div class="paragraph">
+<p><code>TestExecutor</code> acts as an orchestrator for the 3 interfaces.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>CompilerEnvironment</strong> - in charge of creating a temporary folder in the user&#8217;s file system to create Java files.
+This temporary folder is deleted in <code>closed()</code>. Uses <code>JavaFile</code>.</p>
+</div>
+<div id="fig-CompilerEnvironmentAssociations" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/CompilerEnvironment.png" alt="CompilerEnvironment" width="500">
+</div>
+<div class="title">Figure 11. Associations of CompilerEnvironment</div>
+</div>
+<div class="paragraph">
+<p><strong>Compiler</strong> - in charge of compiling the Java files into Class files at a given file path. Uses <code>ClassFile</code>.</p>
+</div>
+<div id="fig-CompilerAssociations" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/Compiler.png" alt="Compiler" width="500">
+</div>
+<div class="title">Figure 12. Associations of Compiler</div>
+</div>
+<div class="paragraph">
+<p><strong>ProgramExecutor</strong> - in charge of executing the compiled Class files. Uses <code>ProgramOutput</code>.</p>
+</div>
+<div id="fig-ProgramExecutorAssociations" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/ProgramExecutor.png" alt="ProgramExecutor" width="1000">
+</div>
+<div class="title">Figure 13. Associations of ProgramExecutor</div>
+</div>
+<div class="paragraph">
+<p><strong>Models classes:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JavaFile</strong> - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an <code>FileNotFoundException</code> is thrown during instantiation.</p>
+</li>
+<li>
+<p><strong>ClassFile</strong> - contains the canonical name and class path of a Java file with various convenience methods. Note that the file must actually exist or
+an <code>FileNotFoundException</code> is thrown during instantiation.</p>
+</li>
+<li>
+<p><strong>ProgramInput</strong> - contains the String input to be fed into the user&#8217;s program.</p>
+</li>
+<li>
+<p><strong>ProgramOutput</strong> - contains the String output produced by the user&#8217;s program. It also contains convenience methods for producing different outputs.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>The basic flow of a program evaluation is as follows:</strong></p>
+</div>
+<div id="fig-TestExecutorSequenceDiagram" class="imageblock" style="text-align: center">
+<div class="content">
+<img src="../images/hj_ppp/TestExecutorSequenceDiagram.png" alt="TestExecutorSequenceDiagram" width="650">
+</div>
+<div class="title">Figure 14. Sequence diagram for the evaluation of a user&#8217;s program</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>TestExecutor</code> calls <code>clearEnvironment()</code> of <code>CompilerEnvironment</code> to remove any leftover files from previous program evaluations.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> calls <code>createJavaFile()</code> of <code>CompilerEnvironment</code> to create the Java file with the correct class name and source code.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> calls <code>compileJavaFile()</code> of <code>Compiler</code> to compile the newly created Java file.</p>
+</li>
+<li>
+<p>For each test case, <code>TestExecutor</code> calls <code>executeProgram</code> of <code>StandardProgramExecutor</code> with the corresponding input to retrieve a <code>CompletableFuture</code> of the results.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> sets a timeout on the <code>CompletableFuture</code> and maps the result into a <code>TestCaseResult</code>.</p>
+</li>
+<li>
+<p><code>TestExecutor</code> packages all the errors and results into a single <code>TestResult</code> instance.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Note that if the evaluation <code>CompletableFuture</code> async task timesout before it is completed, an errored <code>TestCaseResult</code> with a "Time limit exceeded!" error message is returned instead.</p>
+</li>
+<li>
+<p>Compile errors and runtime errors will also be reflected in the <code>TestResult</code> and <code>TestCaseResult</code> models respectively.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="user-interaction"><a class="link" href="#user-interaction">9.2.3. User interaction</a></h4>
+<div class="paragraph">
+<p>In the application, the user&#8217;s interactions when submitting  a program is as follows:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User submits program after typing it into the <code>Editor</code> UI component.</p>
+</li>
+<li>
+<p><code>ProgramSubmissionLogic</code> retrieves the program from <code>Editor</code> and evaluates it against the <em>currently attempting</em> <code>Question</code> in <code>QuestionLogic</code>.</p>
+</li>
+<li>
+<p><code>ProgramEvaluationPanel</code> observes the latest <code>TestResult</code> and reflects new result in the UI.</p>
+</li>
+</ol>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>Editor</code> must have been set as the <code>UserProgramChannel</code> in <code>ProgramSubmissionLogic</code>.</p>
+</li>
+<li>
+<p><code>ProgramEvaluationPanel</code> must be observing the test result <code>Observable</code> provided by <code>ProgramSubmissionLogic</code>.</p>
+</li>
+<li>
+<p>View <a href="#Logic-ProgramSubmissionLogic">[Logic-ProgramSubmissionLogic]</a> for details about the sequence of events</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">9.2.4. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-the-programs-are-run"><a class="link" href="#aspect-how-the-programs-are-run">Aspect : How the programs are run</a></h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 : Use native Java packages and run the program locally (current choice)</th>
+<th class="tableblock halign-left valign-top">Alternative 2 : Host an online server which receives user programs via HTTP requests</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : No additional installation requirements is needed from the user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Can support multiple languages</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : No internet connection is required</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Scale of tests can be increased</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Easy to implement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Reduce strain on user&#8217;s machine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : Creates files in the user&#8217;s machine (dependent on memory/permissions)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : Difficult to implement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : Can only support the execution of Java programs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : Dependent on internet</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
-<div class="sectionbody">
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 100%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
-</tr>
-</tbody>
-</table>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:23:27 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:02:23 UTC</div></div></div></body></html>
