@@ -28,8 +28,7 @@
 <li><a href="#dashboard">3.4. Dashboard</a></li>
 <li><a href="#problem-statement-panel">3.5. Problem Statement Panel</a></li>
 <li><a href="#bookmark-command">3.6. Bookmark Command</a></li>
-<li><a href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></li>
-<li><a href="#editor-panel">3.8. Editor Panel</a></li>
+<li><a href="#editor-panel">3.7. Editor Panel</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -1256,23 +1255,41 @@ the command generated is a <code>view</code> command. If yes, force the <code>Pr
 </li>
 </ol>
 </div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.6.1. Design considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-bookmark-a-question"><a class="link" href="#aspect-how-to-bookmark-a-question">Aspect : How to bookmark a question</a></h5>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Alternative 1 : Add an instance boolean attribute, isBookmarked, to the Question class</th>
+<th class="tableblock halign-left valign-top">Alternative 2 : Create a global list of bookmarked questions, named bookmarkedQuestions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Better Object Oriented Design</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pro : Easy to implement</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : All unit tests pertaining to Question objects have to be modified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Con : Repeated reference to the global list, coupling is higher</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Decision: Alternative 1<br>
+Alternative 1 was chosen because good software engineering practices were prioritised over ease of implementation. Firstly, Object Oriented Design from AB3 was maintained. Next, we prevented an increase in coupling, which would reduce the testability of the project.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="program-evaluation-panel"><a class="link" href="#program-evaluation-panel">3.7. Program Evaluation Panel</a></h3>
-<div class="paragraph">
-<p>The <strong>Code Result Panel</strong> is located beneath the <strong>Problem Display Panel</strong>. It is responsible for showing the results after
-the user-submitted code is evaluated for its correctness against a pre-defined set of test cases.</p>
-</div>
-<div class="paragraph">
-<p>It takes in a <code>List</code> of <code>TestCaseResults</code> which contains useful information on how the user&#8217;s program fared against
-the various test cases.</p>
-</div>
-<div class="paragraph">
-<p>These information are then displayed on the Code Result Panel through standard JavaFX controls.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editor-panel"><a class="link" href="#editor-panel">3.8. Editor Panel</a></h3>
+<h3 id="editor-panel"><a class="link" href="#editor-panel">3.7. Editor Panel</a></h3>
 <div class="paragraph">
 <p>The editor panel is the panel right next to the <strong>Problem Display Panel</strong> and the <strong>Program Evaluation Panel</strong>. The editor panel
 consists of two parts: The main text editor and the line counter component.</p>
@@ -2199,4 +2216,4 @@ Output::</pre>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:51:56 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 15:55:23 UTC</div></div></div></body></html>
